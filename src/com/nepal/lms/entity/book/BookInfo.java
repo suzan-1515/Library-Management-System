@@ -30,7 +30,7 @@ public class BookInfo extends Book {
     /**
      * @param availableCopies the availableCopies to set
      */
-    public void setAvailableCopies(int availableCopies) {
+    private void setAvailableCopies(int availableCopies) {
         this.availableCopies = availableCopies;
     }
 

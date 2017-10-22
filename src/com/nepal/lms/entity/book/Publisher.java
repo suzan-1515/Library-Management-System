@@ -11,24 +11,19 @@ import java.io.Serializable;
  *
  * @author Suzn
  */
-public class Publisher implements Serializable{
-    
+public class Publisher implements Serializable {
+
     private int id;
     private String title;
     private String contact;
 
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
+    public Publisher() {
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
+    public Publisher(int id, String title, String contact) {
         this.id = id;
+        this.title = title;
+        this.contact = contact;
     }
 
     /**
@@ -58,5 +53,19 @@ public class Publisher implements Serializable{
     public void setContact(String contact) {
         this.contact = contact;
     }
-    
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }
