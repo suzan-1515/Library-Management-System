@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.main;
+package com.nepal.lms.dao.member;
+
+import com.nepal.lms.dao.DAO;
+import com.nepal.lms.entity.member.MemberInfo;
 
 /**
  *
  * @author Suzn
  */
-public class Main {
-    
-    public static void main(String... args){
-        System.out.println("This is it!");
-    }
-    
+public interface MemberDAO extends DAO<MemberInfo> {
+
 }

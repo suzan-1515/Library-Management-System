@@ -3,16 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.main;
+package com.nepal.lms.dao;
+
+import java.util.List;
 
 /**
  *
  * @author Suzn
+ * @param <T>
  */
-public class Main {
-    
-    public static void main(String... args){
-        System.out.println("This is it!");
-    }
-    
+public interface DAO<T> {
+
+    int save(T t);
+
+    int update(T t);
+
+    int remove(T t);
+
+    T findById(int id);
+
+    List<T> findAll();
 }
