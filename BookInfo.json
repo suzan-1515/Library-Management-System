@@ -24,31 +24,5 @@
       "location": 4
     },
     "numberOfCopy": 5
-  },
-  {
-    "availableCopies": 5,
-    "id": 2,
-    "title": "OOP Java",
-    "subject": {
-      "id": 1,
-      "title": "Java"
-    },
-    "author": {
-      "id": 1,
-      "title": "Sujan",
-      "contact": "8526552"
-    },
-    "publisher": {
-      "id": 1,
-      "title": "Janata Publication",
-      "contact": "4425639"
-    },
-    "edition": "2008",
-    "isbn": "252kj52",
-    "shelfNo": {
-      "id": 1,
-      "location": 4
-    },
-    "numberOfCopy": 5
   }
 ]
