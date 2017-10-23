@@ -5,6 +5,10 @@
  */
 package com.nepal.lms.entity.book;
 
+import com.nepal.lms.entity.shelf.Shelf;
+import com.nepal.lms.entity.author.Author;
+import com.nepal.lms.entity.publisher.Publisher;
+import com.nepal.lms.entity.subject.Subject;
 import java.io.Serializable;
 
 /**

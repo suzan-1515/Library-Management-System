@@ -1,28 +1,28 @@
 [
   {
-    "availableCopies": 5,
+    "availableCopies": 10,
     "id": 1,
-    "title": "OOP Java",
+    "title": "C++ ho ho",
     "subject": {
-      "id": 1,
-      "title": "Java"
+      "id": 4,
+      "title": "C++"
     },
     "author": {
-      "id": 1,
+      "id": 2,
       "title": "Rajesh",
-      "contact": "8526552"
+      "contact": "2562"
     },
     "publisher": {
-      "id": 1,
-      "title": "Janata Publication",
-      "contact": "4425639"
+      "id": 3,
+      "title": "Mero Publication",
+      "contact": "455225"
     },
-    "edition": "2008",
-    "isbn": "252kj52",
+    "edition": "2010",
+    "isbn": "2256fs",
     "shelfNo": {
-      "id": 1,
-      "location": 4
+      "id": 2,
+      "location": "B7"
     },
-    "numberOfCopy": 5
+    "numberOfCopy": 10
   }
 ]

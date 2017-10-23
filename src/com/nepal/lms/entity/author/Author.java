@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.entity.book;
+package com.nepal.lms.entity.author;
 
 import java.io.Serializable;
 
@@ -11,16 +11,16 @@ import java.io.Serializable;
  *
  * @author Suzn
  */
-public class Publisher implements Serializable {
+public class Author implements Serializable {
 
     private int id;
     private String title;
     private String contact;
 
-    public Publisher() {
+    public Author() {
     }
 
-    public Publisher(int id, String title, String contact) {
+    public Author(int id, String title, String contact) {
         this.id = id;
         this.title = title;
         this.contact = contact;

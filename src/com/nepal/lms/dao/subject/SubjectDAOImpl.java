@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.dao.book;
+package com.nepal.lms.dao.subject;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.nepal.lms.entity.book.Book;
-import com.nepal.lms.entity.book.BookInfo;
-import com.nepal.lms.entity.book.BookParams;
+import com.nepal.lms.entity.subject.Subject;
+import com.nepal.lms.entity.subject.SubjectParams;
 import com.nepal.lms.util.JsonHelper;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -31,19 +33,19 @@ import java.util.logging.Logger;
  *
  * @author Suzn
  */
-public class BookDAOImpl implements BookDAO {
+public class SubjectDAOImpl implements SubjectDAO {
 
-    private static final String FILENAME = "BookInfo.json";
+    private static final String FILENAME = "Subject.json";
     private final Gson gson;
 
-    public BookDAOImpl() {
+    public SubjectDAOImpl() {
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
     @Override
-    public boolean isBookAvailable(Book book) {
+    public boolean isSubjectAvailable(Subject subject) {
         try {
-            return findById(book.getId()) != null;
+            return findById(subject.getId()) != null;
         } catch (Exception e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
@@ -52,7 +54,7 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     @SuppressWarnings("UseSpecificCatch")
-    public int save(BookInfo t) {
+    public int save(Subject t) {
         try {
 
             if (Files.notExists(Paths.get(FILENAME))) {
@@ -76,8 +78,7 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
-    public int update(BookInfo t) {
+    public int update(Subject t) {
         try {
 
             try (Reader reader = new FileReader(FILENAME)) {
@@ -86,17 +87,9 @@ public class BookDAOImpl implements BookDAO {
                 boolean found = false;
                 while (iterator.hasNext()) {
                     JsonObject item = iterator.next().getAsJsonObject();
-                    if (item.get(BookParams.ID).getAsInt() == t.getId()) {
+                    if (item.get(SubjectParams.ID).getAsInt() == t.getId()) {
 
-                        item.addProperty(BookParams.AVAILABLE_COPIES, t.getAvailableCopies());
-                        item.addProperty(BookParams.TITLE, t.getTitle());
-                        item.add(BookParams.SUBJECT, gson.toJsonTree(t.getSubject()));
-                        item.add(BookParams.AUTHOR, gson.toJsonTree(t.getAuthor()));
-                        item.add(BookParams.PUBLISHER, gson.toJsonTree(t.getPublisher()));
-                        item.addProperty(BookParams.EDITION, t.getEdition());
-                        item.addProperty(BookParams.ISBN, t.getIsbn());
-                        item.add(BookParams.SHELF_NO, gson.toJsonTree(t.getShelfNo()));
-                        item.addProperty(BookParams.NUMBER_OF_COPY, t.getNumberOfCopy());
+                        item.addProperty(SubjectParams.TITLE, t.getTitle());
 
                         found = true;
                         break;
@@ -109,15 +102,14 @@ public class BookDAOImpl implements BookDAO {
 
             }
             return -1;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
-    public int remove(BookInfo t) {
+    public int remove(Subject t) {
         try {
 
             try (Reader reader = new FileReader(FILENAME)) {
@@ -126,7 +118,7 @@ public class BookDAOImpl implements BookDAO {
                 boolean found = false;
                 while (iterator.hasNext()) {
                     JsonObject item = iterator.next().getAsJsonObject();
-                    if (item.get(BookParams.ID).getAsInt() == t.getId()) {
+                    if (item.get(SubjectParams.ID).getAsInt() == t.getId()) {
                         rootArray.remove(item);
                         found = true;
                         break;
@@ -139,15 +131,14 @@ public class BookDAOImpl implements BookDAO {
 
             }
             return -1;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
-    public BookInfo findById(int id) {
+    public Subject findById(int id) {
         try {
 
             try (Reader reader = new FileReader(FILENAME)) {
@@ -155,31 +146,30 @@ public class BookDAOImpl implements BookDAO {
                 Iterator<JsonElement> iterator = rootArray.iterator();
                 while (iterator.hasNext()) {
                     JsonObject item = iterator.next().getAsJsonObject();
-                    if (item.get(BookParams.ID).getAsInt() == id) {
-                        return gson.fromJson(item, BookInfo.class);
+                    if (item.get(SubjectParams.ID).getAsInt() == id) {
+                        return gson.fromJson(item, Subject.class);
                     }
                 }
             }
             return null;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
-    public List<BookInfo> findAll() {
+    public List<Subject> findAll() {
         try {
             if (Files.notExists(Paths.get(FILENAME))) {
                 return Collections.EMPTY_LIST;
             } else {
                 try (Reader reader = new FileReader(FILENAME)) {
-                    return gson.fromJson(reader, new TypeToken<List<BookInfo>>() {
+                    return gson.fromJson(reader, new TypeToken<List<Subject>>() {
                     }.getType());
                 }
             }
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }

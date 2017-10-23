@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.entity.book;
+package com.nepal.lms.entity.shelf;
 
 import java.io.Serializable;
 
@@ -14,9 +14,9 @@ import java.io.Serializable;
 public class Shelf implements Serializable{
     
     private int id;
-    private int location;
+    private String location;
 
-    public Shelf(int id, int location) {
+    public Shelf(int id, String location) {
         this.id = id;
         this.location = location;
     }
@@ -38,14 +38,14 @@ public class Shelf implements Serializable{
     /**
      * @return the location
      */
-    public int getLocation() {
+    public String getLocation() {
         return location;
     }
 
     /**
      * @param location the location to set
      */
-    public void setLocation(int location) {
+    public void setLocation(String location) {
         this.location = location;
     }
     

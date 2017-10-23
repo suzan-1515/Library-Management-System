@@ -7,11 +7,11 @@ package com.nepal.lms.book;
 
 import com.nepal.lms.dao.book.BookDAO;
 import com.nepal.lms.dao.book.BookDAOImpl;
-import com.nepal.lms.entity.book.Author;
+import com.nepal.lms.entity.author.Author;
 import com.nepal.lms.entity.book.BookInfo;
-import com.nepal.lms.entity.book.Publisher;
-import com.nepal.lms.entity.book.Shelf;
-import com.nepal.lms.entity.book.Subject;
+import com.nepal.lms.entity.publisher.Publisher;
+import com.nepal.lms.entity.shelf.Shelf;
+import com.nepal.lms.entity.subject.Subject;
 import java.io.IOException;
 import java.util.List;
 import junit.framework.TestCase;
@@ -42,7 +42,7 @@ public class BookTest {
         book.setIsbn("252kj52");
         book.setNumberOfCopy(5);
         book.setPublisher(new Publisher(1, "Janata Publication", "4425639"));
-        book.setShelfNo(new Shelf(1, 4));
+        book.setShelfNo(new Shelf(1, "A4"));
         book.setSubject(new Subject(1, "Java"));
         book.setTitle("OOP Java");
 
@@ -59,11 +59,43 @@ public class BookTest {
         book.setIsbn("252kj52");
         book.setNumberOfCopy(5);
         book.setPublisher(new Publisher(1, "Janata Publication", "4425639"));
-        book.setShelfNo(new Shelf(1, 4));
+        book.setShelfNo(new Shelf(1, "B4"));
         book.setSubject(new Subject(1, "Java"));
         book.setTitle("OOP Java");
 
         bookDAO.save(book);
+    }
+
+    @Test
+    public void updateBookTestCase() {
+        BookInfo book = new BookInfo();
+        book.setId(1);
+        book.setAuthor(new Author(2, "Rajesh", "2562"));
+        book.setEdition("2010");
+        book.setIsbn("2256fs");
+        book.setNumberOfCopy(10);
+        book.setPublisher(new Publisher(3, "Mero Publication", "455225"));
+        book.setShelfNo(new Shelf(2, "B7"));
+        book.setSubject(new Subject(4, "C++"));
+        book.setTitle("C++ ho ho");
+
+        assertEquals(book.getId(), bookDAO.update(book));
+    }
+
+    @Test
+    public void updateBookWithInvalidIdTestCase() {
+        BookInfo book = new BookInfo();
+        book.setId(2);
+        book.setAuthor(new Author(2, "Rajesh", "2562"));
+        book.setEdition("2010");
+        book.setIsbn("2256fs");
+        book.setNumberOfCopy(10);
+        book.setPublisher(new Publisher(3, "Mero Publication", "455225"));
+        book.setShelfNo(new Shelf(2, "B7"));
+        book.setSubject(new Subject(4, "C++"));
+        book.setTitle("C++ ho ho");
+
+        assertEquals(-1, bookDAO.update(book));
     }
 
     @Test
@@ -72,7 +104,7 @@ public class BookTest {
         Assert.assertNotNull(findById);
         System.out.println(findById.getId());
     }
-    
+
     @Test
     public void removeBookByIdTestCase() {
         BookInfo bookInfo = new BookInfo();
