@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Sujan Parajuli",
+    "username": "admin",
+    "password": "admin",
+    "role": {
+      "id": 1,
+      "title": "admin"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Leela",
+    "username": "Student",
+    "password": "passowrd",
+    "role": {
+      "id": 2,
+      "title": "student"
+    }
+  }
+]

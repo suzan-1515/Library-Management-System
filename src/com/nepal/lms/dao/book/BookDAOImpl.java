@@ -9,14 +9,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.lms.entity.book.Book;
 import com.nepal.lms.entity.book.BookInfo;
 import com.nepal.lms.entity.book.BookParams;
 import com.nepal.lms.util.JsonHelper;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -51,7 +54,6 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public int save(BookInfo t) {
         try {
 
@@ -69,14 +71,13 @@ public class BookDAOImpl implements BookDAO {
                 }
             }
             return t.getId();
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public int update(BookInfo t) {
         try {
 
@@ -109,14 +110,13 @@ public class BookDAOImpl implements BookDAO {
 
             }
             return -1;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public int remove(BookInfo t) {
         try {
 
@@ -139,14 +139,13 @@ public class BookDAOImpl implements BookDAO {
 
             }
             return -1;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public BookInfo findById(int id) {
         try {
 
@@ -161,14 +160,13 @@ public class BookDAOImpl implements BookDAO {
                 }
             }
             return null;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public List<BookInfo> findAll() {
         try {
             if (Files.notExists(Paths.get(FILENAME))) {
@@ -179,7 +177,7 @@ public class BookDAOImpl implements BookDAO {
                     }.getType());
                 }
             }
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }

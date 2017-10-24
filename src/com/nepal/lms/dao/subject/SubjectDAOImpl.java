@@ -53,7 +53,6 @@ public class SubjectDAOImpl implements SubjectDAO {
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public int save(Subject t) {
         try {
 
@@ -71,7 +70,7 @@ public class SubjectDAOImpl implements SubjectDAO {
                 }
             }
             return t.getId();
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }

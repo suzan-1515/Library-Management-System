@@ -9,13 +9,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.lms.entity.publisher.Publisher;
 import com.nepal.lms.entity.publisher.PublisherParams;
 import com.nepal.lms.util.JsonHelper;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -50,7 +53,6 @@ public class PublisherDAOImpl implements PublisherDAO {
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public int save(Publisher t) {
         try {
 
@@ -68,14 +70,13 @@ public class PublisherDAOImpl implements PublisherDAO {
                 }
             }
             return t.getId();
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public int update(Publisher t) {
         try {
 
@@ -101,14 +102,13 @@ public class PublisherDAOImpl implements PublisherDAO {
 
             }
             return -1;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public int remove(Publisher t) {
         try {
 
@@ -131,14 +131,13 @@ public class PublisherDAOImpl implements PublisherDAO {
 
             }
             return -1;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public Publisher findById(int id) {
         try {
 
@@ -153,14 +152,13 @@ public class PublisherDAOImpl implements PublisherDAO {
                 }
             }
             return null;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public List<Publisher> findAll() {
         try {
             if (Files.notExists(Paths.get(FILENAME))) {
@@ -171,7 +169,7 @@ public class PublisherDAOImpl implements PublisherDAO {
                     }.getType());
                 }
             }
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.entity.user;
+package com.nepal.lms.entity.role;
 
 /**
  *
@@ -13,6 +13,15 @@ public class Role {
     
     private int id;
     private String title;
+
+    public Role() {
+    }
+
+    public Role(int id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
 
     /**
      * @return the id

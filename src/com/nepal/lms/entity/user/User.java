@@ -5,6 +5,7 @@
  */
 package com.nepal.lms.entity.user;
 
+import com.nepal.lms.entity.role.Role;
 import java.io.Serializable;
 
 /**

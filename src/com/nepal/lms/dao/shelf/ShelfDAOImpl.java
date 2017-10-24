@@ -9,13 +9,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.nepal.lms.entity.shelf.Shelf;
 import com.nepal.lms.entity.shelf.ShelfParams;
 import com.nepal.lms.util.JsonHelper;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -50,7 +53,6 @@ public class ShelfDAOImpl implements ShelfDAO {
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public int save(Shelf t) {
         try {
 
@@ -68,14 +70,13 @@ public class ShelfDAOImpl implements ShelfDAO {
                 }
             }
             return t.getId();
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public int update(Shelf t) {
         try {
 
@@ -100,14 +101,13 @@ public class ShelfDAOImpl implements ShelfDAO {
 
             }
             return -1;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public int remove(Shelf t) {
         try {
 
@@ -130,14 +130,13 @@ public class ShelfDAOImpl implements ShelfDAO {
 
             }
             return -1;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public Shelf findById(int id) {
         try {
 
@@ -152,14 +151,13 @@ public class ShelfDAOImpl implements ShelfDAO {
                 }
             }
             return null;
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    @SuppressWarnings("UseSpecificCatch")
     public List<Shelf> findAll() {
         try {
             if (Files.notExists(Paths.get(FILENAME))) {
@@ -170,7 +168,7 @@ public class ShelfDAOImpl implements ShelfDAO {
                     }.getType());
                 }
             }
-        } catch (Exception e) {
+        } catch (JsonIOException | JsonSyntaxException | IOException e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
             throw new RuntimeException(e);
         }
