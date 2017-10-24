@@ -13,6 +13,8 @@ import com.nepal.lms.entity.Params;
  */
 public class PublisherParams extends Params{
 
+    public static final String FILENAME = "PublisherInfo.json";
+    
     public static final String CONTACT = "contact";
 
 }

@@ -5,8 +5,11 @@
  */
 package com.nepal.lms.dao.publisher;
 
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 import com.nepal.lms.dao.DAO;
 import com.nepal.lms.entity.publisher.Publisher;
+import java.io.IOException;
 
 /**
  *
@@ -14,6 +17,6 @@ import com.nepal.lms.entity.publisher.Publisher;
  */
 public interface PublisherDAO extends DAO<Publisher> {
 
-    boolean isPublisherAvailable(Publisher book);
+    boolean isPublisherAvailable(Publisher book) throws IOException, JsonIOException, JsonSyntaxException;
 
 }

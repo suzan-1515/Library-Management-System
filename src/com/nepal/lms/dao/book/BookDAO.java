@@ -5,9 +5,12 @@
  */
 package com.nepal.lms.dao.book;
 
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 import com.nepal.lms.dao.DAO;
 import com.nepal.lms.entity.book.Book;
 import com.nepal.lms.entity.book.BookInfo;
+import java.io.IOException;
 
 /**
  *
@@ -15,6 +18,6 @@ import com.nepal.lms.entity.book.BookInfo;
  */
 public interface BookDAO extends DAO<BookInfo> {
 
-    boolean isBookAvailable(Book book);
+    boolean isBookAvailable(Book book) throws IOException, JsonIOException, JsonSyntaxException;
 
 }

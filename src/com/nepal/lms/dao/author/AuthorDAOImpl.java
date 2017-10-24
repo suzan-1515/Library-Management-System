@@ -6,7 +6,6 @@
 package com.nepal.lms.dao.author;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonIOException;
@@ -20,14 +19,9 @@ import com.nepal.lms.util.JsonHelper;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -35,144 +29,177 @@ import java.util.logging.Logger;
  */
 public class AuthorDAOImpl implements AuthorDAO {
 
-    private static final String FILENAME = "Author.json";
+    private final String filename;
     private final Gson gson;
 
-    public AuthorDAOImpl() {
-        gson = new GsonBuilder().setPrettyPrinting().create();
+    /**
+     *
+     * @param gson
+     * @param filename
+     */
+    public AuthorDAOImpl(Gson gson, String filename) {
+        this.gson = gson;
+        this.filename = filename;
     }
 
+    /**
+     *
+     * @param author
+     * @return boolean
+     * @throws IOException
+     * @throws JsonIOException
+     * @throws JsonSyntaxException
+     */
     @Override
-    public boolean isAuthorAvailable(Author author) {
-        try {
-            return findById(author.getId()) != null;
-        } catch (Exception e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-            throw new RuntimeException(e);
+    public boolean isAuthorAvailable(Author author) throws IOException, JsonIOException, JsonSyntaxException {
+        return findById(author.getId()) != null;
+    }
+
+    /**
+     *
+     * @param t
+     * @return Integer
+     * @throws IOException
+     * @throws JsonIOException
+     * @throws JsonSyntaxException
+     */
+    @Override
+    public int save(Author t) throws IOException, JsonIOException, JsonSyntaxException {
+        JsonHelper.writeToFile(Arrays.asList(t), filename, gson);
+        return t.getId();
+    }
+
+    /**
+     *
+     * @param t
+     * @return Integer
+     * @throws IOException
+     * @throws JsonIOException
+     * @throws JsonSyntaxException
+     */
+    @Override
+    public int append(Author t) throws IOException, JsonIOException, JsonSyntaxException {
+
+        try (Reader reader = new FileReader(filename)) {
+            JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
+            JsonObject newData = new JsonParser().parse(gson.toJson(t)).getAsJsonObject();
+
+            rootArray.add(newData);
+
+            JsonHelper.writeToFile(rootArray, filename, gson);
+
         }
+
+        return t.getId();
     }
 
+    /**
+     *
+     * @param t
+     * @return
+     * @throws IOException
+     * @throws JsonIOException
+     * @throws JsonSyntaxException
+     */
     @Override
-    public int save(Author t) {
-        try {
+    public int update(Author t) throws IOException, JsonIOException, JsonSyntaxException {
 
-            if (Files.notExists(Paths.get(FILENAME))) {
-                JsonHelper.writeToFile(Arrays.asList(t), FILENAME, gson);
-            } else {
-                try (Reader reader = new FileReader(FILENAME)) {
-                    JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
-                    JsonObject newData = new JsonParser().parse(gson.toJson(t)).getAsJsonObject();
+        try (Reader reader = new FileReader(filename)) {
+            JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
+            Iterator<JsonElement> iterator = rootArray.iterator();
+            boolean found = false;
+            while (iterator.hasNext()) {
+                JsonObject item = iterator.next().getAsJsonObject();
+                if (item.get(AuthorParams.ID).getAsInt() == t.getId()) {
 
-                    rootArray.add(newData);
+                    item.addProperty(AuthorParams.TITLE, t.getTitle());
+                    item.addProperty(AuthorParams.CONTACT, t.getContact());
 
-                    JsonHelper.writeToFile(rootArray, FILENAME, gson);
-
+                    found = true;
+                    break;
                 }
             }
-            return t.getId();
-        } catch (JsonIOException | JsonSyntaxException | IOException e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-            throw new RuntimeException(e);
+            if (found) {
+                JsonHelper.writeToFile(rootArray, filename, gson);
+                return t.getId();
+            }
+
         }
+        return -1;
     }
 
+    /**
+     *
+     * @param t
+     * @return
+     * @throws IOException
+     * @throws JsonIOException
+     * @throws JsonSyntaxException
+     */
     @Override
-    public int update(Author t) {
-        try {
+    public int remove(Author t) throws IOException, JsonIOException, JsonSyntaxException {
 
-            try (Reader reader = new FileReader(FILENAME)) {
-                JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
-                Iterator<JsonElement> iterator = rootArray.iterator();
-                boolean found = false;
-                while (iterator.hasNext()) {
-                    JsonObject item = iterator.next().getAsJsonObject();
-                    if (item.get(AuthorParams.ID).getAsInt() == t.getId()) {
-
-                        item.addProperty(AuthorParams.TITLE, t.getTitle());
-                        item.addProperty(AuthorParams.CONTACT, t.getContact());
-
-                        found = true;
-                        break;
-                    }
+        try (Reader reader = new FileReader(filename)) {
+            JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
+            Iterator<JsonElement> iterator = rootArray.iterator();
+            boolean found = false;
+            while (iterator.hasNext()) {
+                JsonObject item = iterator.next().getAsJsonObject();
+                if (item.get(AuthorParams.ID).getAsInt() == t.getId()) {
+                    rootArray.remove(item);
+                    found = true;
+                    break;
                 }
-                if (found) {
-                    JsonHelper.writeToFile(rootArray, FILENAME, gson);
-                    return t.getId();
-                }
-
             }
-            return -1;
-        } catch (JsonIOException | JsonSyntaxException | IOException e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-            throw new RuntimeException(e);
+            if (found) {
+                JsonHelper.writeToFile(rootArray, filename, gson);
+                return t.getId();
+            }
+
         }
+        return -1;
+
     }
 
+    /**
+     *
+     * @param id
+     * @return Author
+     * @throws IOException
+     * @throws JsonIOException
+     * @throws JsonSyntaxException
+     */
     @Override
-    public int remove(Author t) {
-        try {
+    public Author findById(int id) throws IOException, JsonIOException, JsonSyntaxException {
 
-            try (Reader reader = new FileReader(FILENAME)) {
-                JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
-                Iterator<JsonElement> iterator = rootArray.iterator();
-                boolean found = false;
-                while (iterator.hasNext()) {
-                    JsonObject item = iterator.next().getAsJsonObject();
-                    if (item.get(AuthorParams.ID).getAsInt() == t.getId()) {
-                        rootArray.remove(item);
-                        found = true;
-                        break;
-                    }
+        try (Reader reader = new FileReader(filename)) {
+            JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
+            Iterator<JsonElement> iterator = rootArray.iterator();
+            while (iterator.hasNext()) {
+                JsonObject item = iterator.next().getAsJsonObject();
+                if (item.get(AuthorParams.ID).getAsInt() == id) {
+                    return gson.fromJson(item, Author.class);
                 }
-                if (found) {
-                    JsonHelper.writeToFile(rootArray, FILENAME, gson);
-                    return t.getId();
-                }
-
             }
-            return -1;
-        } catch (JsonIOException | JsonSyntaxException | IOException e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-            throw new RuntimeException(e);
         }
+        return null;
     }
 
+    /**
+     *
+     * @return
+     * @throws IOException
+     * @throws JsonIOException
+     * @throws JsonSyntaxException
+     */
     @Override
-    public Author findById(int id) {
-        try {
+    public List<Author> findAll() throws IOException, JsonIOException, JsonSyntaxException {
 
-            try (Reader reader = new FileReader(FILENAME)) {
-                JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
-                Iterator<JsonElement> iterator = rootArray.iterator();
-                while (iterator.hasNext()) {
-                    JsonObject item = iterator.next().getAsJsonObject();
-                    if (item.get(AuthorParams.ID).getAsInt() == id) {
-                        return gson.fromJson(item, Author.class);
-                    }
-                }
-            }
-            return null;
-        } catch (JsonIOException | JsonSyntaxException | IOException e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-            throw new RuntimeException(e);
+        try (Reader reader = new FileReader(filename)) {
+            return gson.fromJson(reader, new TypeToken<List<Author>>() {
+            }.getType());
         }
-    }
 
-    @Override
-    public List<Author> findAll() {
-        try {
-            if (Files.notExists(Paths.get(FILENAME))) {
-                return Collections.EMPTY_LIST;
-            } else {
-                try (Reader reader = new FileReader(FILENAME)) {
-                    return gson.fromJson(reader, new TypeToken<List<Author>>() {
-                    }.getType());
-                }
-            }
-        } catch (JsonIOException | JsonSyntaxException | IOException e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
-            throw new RuntimeException(e);
-        }
     }
 
 }

@@ -5,6 +5,9 @@
  */
 package com.nepal.lms.dao;
 
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -14,13 +17,15 @@ import java.util.List;
  */
 public interface DAO<T> {
 
-    int save(T t);
+    int save(T t) throws IOException, JsonIOException, JsonSyntaxException;
+    
+    int append(T t) throws IOException, JsonIOException, JsonSyntaxException;
 
-    int update(T t);
+    int update(T t) throws IOException, JsonIOException, JsonSyntaxException;
 
-    int remove(T t);
+    int remove(T t) throws IOException, JsonIOException, JsonSyntaxException;
 
-    T findById(int id);
+    T findById(int id) throws IOException, JsonIOException, JsonSyntaxException;
 
-    List<T> findAll();
+    List<T> findAll() throws IOException, JsonIOException, JsonSyntaxException;
 }

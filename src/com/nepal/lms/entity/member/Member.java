@@ -5,6 +5,7 @@
  */
 package com.nepal.lms.entity.member;
 
+import com.nepal.lms.entity.address.Address;
 import java.io.Serializable;
 
 /**

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.entity.member;
+package com.nepal.lms.entity.address;
 
 import java.io.Serializable;
 
@@ -11,24 +11,17 @@ import java.io.Serializable;
  *
  * @author Suzn
  */
-public class Address implements Serializable{
-    
-    private int id;
+public class Address implements Serializable {
+
     private String permanent;
     private String temporary;
 
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
+    public Address() {
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
+    public Address(String permanent, String temporary) {
+        this.permanent = permanent;
+        this.temporary = temporary;
     }
 
     /**
@@ -58,5 +51,5 @@ public class Address implements Serializable{
     public void setTemporary(String temporary) {
         this.temporary = temporary;
     }
-    
+
 }

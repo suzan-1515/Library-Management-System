@@ -1,0 +1,15 @@
+[
+  {
+    "membershipId": "sa55",
+    "expiryDate": "Jan 1, 1970",
+    "joinedDate": "Jan 1, 1970",
+    "id": 1,
+    "name": "sujan",
+    "address": {
+      "id": 1,
+      "permanent": "Sindhupalchok",
+      "temporary": "pepsicola"
+    },
+    "contact": "98522"
+  }
+]

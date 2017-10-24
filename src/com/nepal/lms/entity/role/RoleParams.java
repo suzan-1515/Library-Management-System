@@ -13,5 +13,6 @@ import com.nepal.lms.entity.Params;
  */
 public class RoleParams extends Params{
  
+    public static final String FILENAME = "RoleInfo.json";
     
 }

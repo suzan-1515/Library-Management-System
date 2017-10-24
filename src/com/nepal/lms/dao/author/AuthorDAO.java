@@ -5,8 +5,11 @@
  */
 package com.nepal.lms.dao.author;
 
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 import com.nepal.lms.dao.DAO;
 import com.nepal.lms.entity.author.Author;
+import java.io.IOException;
 
 /**
  *
@@ -14,6 +17,6 @@ import com.nepal.lms.entity.author.Author;
  */
 public interface AuthorDAO extends DAO<Author> {
 
-    boolean isAuthorAvailable(Author author);
+    boolean isAuthorAvailable(Author author) throws IOException, JsonIOException, JsonSyntaxException;
 
 }

@@ -5,9 +5,12 @@
  */
 package com.nepal.lms.dao.user;
 
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 import com.nepal.lms.dao.DAO;
 import com.nepal.lms.entity.user.User;
 import com.nepal.lms.entity.user.UserInfo;
+import java.io.IOException;
 
 /**
  *
@@ -15,6 +18,8 @@ import com.nepal.lms.entity.user.UserInfo;
  */
 public interface UserDAO extends DAO<UserInfo> {
 
-    boolean isUserAvailable(User user);
-    
+    boolean isUserAvailable(User user) throws IOException, JsonIOException, JsonSyntaxException;
+
+    UserInfo loginUser(User user) throws IOException, JsonIOException, JsonSyntaxException;
+
 }

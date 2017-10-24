@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.entity.subject;
+package com.nepal.lms.dao.role;
 
-import com.nepal.lms.entity.Params;
+import com.nepal.lms.dao.DAO;
+import com.nepal.lms.entity.role.Role;
 
 /**
  *
  * @author Suzn
  */
-public class SubjectParams extends Params{
+public interface RoleDAO extends DAO<Role> {
 
-    public static final String FILENAME = "SubjectInfo.json";
 
 }

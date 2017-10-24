@@ -13,6 +13,8 @@ import com.nepal.lms.entity.Params;
  */
 public class ShelfParams extends Params {
 
+    public static final String FILENAME = "ShelfInfo.json";
+    
     public static final String LOCATION = "location";
 
 }

@@ -13,6 +13,8 @@ import com.nepal.lms.entity.Params;
  */
 public class BookParams extends Params{
 
+    public static final String FILENAME = "BookInfo.json";
+    
     public static final String AVAILABLE_COPIES = "availableCopies";
     public static final String SUBJECT = "subject";
     public static final String SUBJECT_ID = "id";

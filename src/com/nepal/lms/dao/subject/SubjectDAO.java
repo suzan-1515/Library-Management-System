@@ -5,8 +5,11 @@
  */
 package com.nepal.lms.dao.subject;
 
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 import com.nepal.lms.dao.DAO;
 import com.nepal.lms.entity.subject.Subject;
+import java.io.IOException;
 
 /**
  *
@@ -14,6 +17,6 @@ import com.nepal.lms.entity.subject.Subject;
  */
 public interface SubjectDAO extends DAO<Subject> {
 
-    boolean isSubjectAvailable(Subject book);
+    boolean isSubjectAvailable(Subject book) throws IOException, JsonIOException, JsonSyntaxException;
 
 }

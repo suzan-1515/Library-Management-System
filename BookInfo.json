@@ -24,5 +24,31 @@
       "location": "B7"
     },
     "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 5,
+    "id": 2,
+    "title": "Java Programming",
+    "subject": {
+      "id": 1,
+      "title": "Java"
+    },
+    "author": {
+      "id": 1,
+      "title": "Sujan",
+      "contact": "2562"
+    },
+    "publisher": {
+      "id": 3,
+      "title": "Lala Publication",
+      "contact": "455225"
+    },
+    "edition": "2010",
+    "isbn": "2256fs",
+    "shelfNo": {
+      "id": 2,
+      "location": "B7"
+    },
+    "numberOfCopy": 5
   }
 ]

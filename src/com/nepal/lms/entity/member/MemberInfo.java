@@ -5,8 +5,7 @@
  */
 package com.nepal.lms.entity.member;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -16,7 +15,7 @@ public class MemberInfo extends Member {
 
     private String membershipId;
     private Date expiryDate;
-    private Timestamp joinedDate;
+    private Date joinedDate;
 
     /**
      * @return the membershipId
@@ -49,14 +48,14 @@ public class MemberInfo extends Member {
     /**
      * @return the joinedDate
      */
-    public Timestamp getJoinedDate() {
+    public Date getJoinedDate() {
         return joinedDate;
     }
 
     /**
      * @param joinedDate the joinedDate to set
      */
-    public void setJoinedDate(Timestamp joinedDate) {
+    public void setJoinedDate(Date joinedDate) {
         this.joinedDate = joinedDate;
     }
 
