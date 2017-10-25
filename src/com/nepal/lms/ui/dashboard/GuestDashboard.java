@@ -14,7 +14,12 @@ import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.util.Logy;
 import java.util.List;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -43,16 +48,19 @@ public class GuestDashboard extends javax.swing.JFrame {
         rootPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        controlPanel = new javax.swing.JPanel();
-        toolbarPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
+        loginPanel = new javax.swing.JPanel();
+        logoutIconPanel = new javax.swing.JPanel();
         loginButton = new javax.swing.JButton();
-        exitButton = new javax.swing.JButton();
+        controlPanel = new javax.swing.JPanel();
         searchPanel = new javax.swing.JPanel();
         searchControlPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         searchTextField = new javax.swing.JTextField();
-        searchButton = new javax.swing.JButton();
         centerPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -60,8 +68,10 @@ public class GuestDashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Library");
-        setMinimumSize(new java.awt.Dimension(680, 460));
+        setTitle("Knowledgica - Library Management System");
+        setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/icon.png")));
+        setMinimumSize(new java.awt.Dimension(780, 620));
+        setPreferredSize(new java.awt.Dimension(780, 620));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -69,55 +79,155 @@ public class GuestDashboard extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new java.awt.CardLayout());
 
+        rootPanel.setBackground(new java.awt.Color(255, 255, 255));
         rootPanel.setLayout(new java.awt.BorderLayout());
 
         topPanel.setBackground(new java.awt.Color(39, 26, 252));
         topPanel.setLayout(new java.awt.GridLayout(2, 1, 10, 10));
 
         titlePanel.setBackground(new java.awt.Color(39, 26, 252));
+        titlePanel.setPreferredSize(new java.awt.Dimension(508, 125));
+        titlePanel.setLayout(new java.awt.GridLayout(1, 2, 5, 0));
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(39, 26, 252));
+        jPanel2.setPreferredSize(new java.awt.Dimension(350, 125));
+
+        jPanel1.setBackground(new java.awt.Color(39, 26, 252));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 1, 42)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Library");
-        titlePanel.add(jLabel2);
+        jLabel2.setText("Knowledgica");
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Library Management System");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addContainerGap())
+        );
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        logo.setText("jLabel4");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
+        );
+
+        titlePanel.add(jPanel2);
+
+        loginPanel.setBackground(new java.awt.Color(39, 26, 252));
+        loginPanel.setPreferredSize(new java.awt.Dimension(370, 125));
+        loginPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING, 20, 30));
+
+        logoutIconPanel.setBackground(new java.awt.Color(39, 26, 252));
+
+        loginButton.setBackground(new java.awt.Color(39, 26, 252));
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
+        loginButton.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        loginButton.setContentAreaFilled(false);
+        loginButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
+        loginButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login1x.png"))); // NOI18N
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout logoutIconPanelLayout = new javax.swing.GroupLayout(logoutIconPanel);
+        logoutIconPanel.setLayout(logoutIconPanelLayout);
+        logoutIconPanelLayout.setHorizontalGroup(
+            logoutIconPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoutIconPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        logoutIconPanelLayout.setVerticalGroup(
+            logoutIconPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loginButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        loginPanel.add(logoutIconPanel);
+
+        titlePanel.add(loginPanel);
 
         topPanel.add(titlePanel);
 
-        controlPanel.setLayout(new java.awt.GridLayout());
+        controlPanel.setBackground(new java.awt.Color(39, 26, 252));
+        controlPanel.setLayout(new java.awt.BorderLayout());
 
-        toolbarPanel.setPreferredSize(new java.awt.Dimension(349, 74));
-        toolbarPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+        searchPanel.setBackground(new java.awt.Color(39, 26, 252));
+        searchPanel.setPreferredSize(new java.awt.Dimension(349, 50));
 
-        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.gif"))); // NOI18N
-        loginButton.setMinimumSize(new java.awt.Dimension(64, 64));
-        loginButton.setPreferredSize(new java.awt.Dimension(64, 64));
-        toolbarPanel.add(loginButton);
+        searchControlPanel.setBackground(new java.awt.Color(39, 26, 252));
 
-        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Exit5.gif"))); // NOI18N
-        exitButton.setMinimumSize(new java.awt.Dimension(64, 64));
-        exitButton.setPreferredSize(new java.awt.Dimension(64, 64));
-        exitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonActionPerformed(evt);
-            }
-        });
-        toolbarPanel.add(exitButton);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
 
-        controlPanel.add(toolbarPanel);
-
-        searchPanel.setPreferredSize(new java.awt.Dimension(349, 74));
-
-        jLabel3.setText("Search:");
-
+        searchTextField.setBackground(new java.awt.Color(39, 26, 252));
+        searchTextField.setForeground(new java.awt.Color(255, 255, 255));
+        searchTextField.setToolTipText("Search for title, publisher, author..");
+        searchTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
+        searchTextField.setCaretColor(new java.awt.Color(255, 255, 255));
         searchTextField.setMinimumSize(new java.awt.Dimension(200, 15));
         searchTextField.setPreferredSize(new java.awt.Dimension(200, 15));
-
-        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/find.gif"))); // NOI18N
-        searchButton.setMinimumSize(new java.awt.Dimension(48, 32));
-        searchButton.setPreferredSize(new java.awt.Dimension(48, 32));
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
+        searchTextField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = searchTextField.getText();
+                System.out.println(text);
+                if (text.trim().length() == 0) {
+                    ((TableRowSorter<TableModel>)table.getRowSorter()).setRowFilter(null);
+                } else {
+                    ((TableRowSorter<TableModel>)table.getRowSorter()).setRowFilter(RowFilter.regexFilter("^(?i)" + text));
+                }
+                table.repaint();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = searchTextField.getText();
+                if (text.trim().length() == 0) {
+                    ((TableRowSorter<TableModel>)table.getRowSorter()).setRowFilter(null);
+                } else {
+                    ((TableRowSorter<TableModel>)table.getRowSorter()).setRowFilter(RowFilter.regexFilter("^(?i)" + text));
+                }
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                //not needed: throw new UnsupportedOperationException("Not supported yet.");
             }
         });
 
@@ -129,10 +239,8 @@ public class GuestDashboard extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addComponent(jLabel3)
                 .addGap(5, 5, 5)
-                .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                .addContainerGap())
         );
         searchControlPanelLayout.setVerticalGroup(
             searchControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,22 +248,23 @@ public class GuestDashboard extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(searchControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
         searchPanel.add(searchControlPanel);
 
-        controlPanel.add(searchPanel);
+        controlPanel.add(searchPanel, java.awt.BorderLayout.CENTER);
 
         topPanel.add(controlPanel);
 
         rootPanel.add(topPanel, java.awt.BorderLayout.PAGE_START);
 
+        centerPanel.setBackground(new java.awt.Color(255, 255, 255));
         centerPanel.setLayout(new java.awt.CardLayout(5, 5));
 
-        table.setAutoCreateRowSorter(true);
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.table.DefaultTableModel tableModel = new javax.swing.table.DefaultTableModel(){
             @Override
             public boolean isCellEditable(int i, int i1) {
@@ -175,11 +284,15 @@ public class GuestDashboard extends javax.swing.JFrame {
         table.setRowHeight(24);
         table.setShowHorizontalLines(false);
         table.setShowVerticalLines(false);
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
         jScrollPane1.setViewportView(table);
 
         centerPanel.add(jScrollPane1, "card2");
 
         rootPanel.add(centerPanel, java.awt.BorderLayout.CENTER);
+
+        bottomPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 2, 14)); // NOI18N
         jLabel1.setText("Developed by: Sujan Parajuli");
@@ -192,17 +305,13 @@ public class GuestDashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitButtonActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         loadTableData();
     }//GEN-LAST:event_formWindowOpened
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        searchData(searchTextField.getText());
-    }//GEN-LAST:event_searchButtonActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,20 +346,23 @@ public class GuestDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel controlPanel;
-    private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loginButton;
+    private javax.swing.JPanel loginPanel;
+    private javax.swing.JLabel logo;
+    private javax.swing.JPanel logoutIconPanel;
     private javax.swing.JPanel rootPanel;
-    private javax.swing.JButton searchButton;
     private javax.swing.JPanel searchControlPanel;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JTable table;
     private javax.swing.JPanel titlePanel;
-    private javax.swing.JPanel toolbarPanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 
@@ -277,7 +389,7 @@ public class GuestDashboard extends javax.swing.JFrame {
 
         bookInfoList.stream().forEach((bookInfo) -> {
             Object[] object;
-            object = new Object[numOfColumn];
+            object = new Object[numOfColumn + 1]; //+1 for id
             object[0] = bookInfo.getTitle();
             object[1] = bookInfo.getSubject().getTitle();
             object[2] = bookInfo.getAuthor().getTitle();
@@ -286,13 +398,11 @@ public class GuestDashboard extends javax.swing.JFrame {
             object[5] = bookInfo.getIsbn();
             object[6] = bookInfo.getShelfNo().getLocation();
             object[7] = bookInfo.getAvailableCopies() > 0;
+            object[8] = bookInfo.getId();
 
             defaultTableModel.addRow(object);
         });
 
     }
 
-    private void searchData(String text) {
-        
-    }
 }
