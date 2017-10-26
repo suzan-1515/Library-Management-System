@@ -6,9 +6,8 @@
 package com.nepal.lms.ui.dashboard;
 
 import com.nepal.lms.ui.book.LibrarianBookPanel;
+import com.nepal.lms.util.ComponentUtils;
 import com.nepal.lms.util.Logy;
-import java.awt.Component;
-import javax.swing.JPanel;
 
 /**
  *
@@ -134,13 +133,13 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         centerPanel.setBackground(new java.awt.Color(255, 255, 255));
         centerPanel.setMinimumSize(new java.awt.Dimension(300, 10));
         centerPanel.setPreferredSize(new java.awt.Dimension(500, 10));
-        centerPanel.setLayout(new java.awt.CardLayout(5, 5));
+        centerPanel.setLayout(new java.awt.CardLayout());
         rootPanel.add(centerPanel, java.awt.BorderLayout.CENTER);
 
         leftPanel.setBackground(new java.awt.Color(204, 204, 204));
         leftPanel.setMinimumSize(new java.awt.Dimension(150, 10));
         leftPanel.setPreferredSize(new java.awt.Dimension(180, 412));
-        leftPanel.setLayout(new java.awt.CardLayout(5, 5));
+        leftPanel.setLayout(new java.awt.CardLayout(5, 0));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
@@ -249,7 +248,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         logoutButtonPanelLayout.setVerticalGroup(
             logoutButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoutButtonPanelLayout.createSequentialGroup()
-                .addContainerGap(203, Short.MAX_VALUE)
+                .addContainerGap(213, Short.MAX_VALUE)
                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -267,7 +266,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
 
     private void bookMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Book menu clicked");
-        addSubPanel(getLibrarianBookPanel());
+        ComponentUtils.addToPanel(this.centerPanel, getLibrarianBookPanel());
     }
 
     private void userMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,18 +334,5 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         }
 
         return librarianBookPanel;
-    }
-
-    private void addSubPanel(JPanel panel) {
-        for (Component component : centerPanel.getComponents()) {
-            if (component.equals(panel)) {
-                Logy.d("Librarian panel already attacted");
-                return;
-            }
-        }
-
-        Logy.d("Attaching Librarian panel");
-        this.centerPanel.removeAll();
-        this.centerPanel.add(panel);
     }
 }

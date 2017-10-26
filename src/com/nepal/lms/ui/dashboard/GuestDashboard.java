@@ -15,8 +15,6 @@ import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.util.Logy;
 import java.util.List;
 import javax.swing.RowFilter;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -204,9 +202,9 @@ public class GuestDashboard extends javax.swing.JFrame {
         searchTextField.setCaretColor(new java.awt.Color(255, 255, 255));
         searchTextField.setMinimumSize(new java.awt.Dimension(200, 15));
         searchTextField.setPreferredSize(new java.awt.Dimension(200, 15));
-        searchTextField.getDocument().addDocumentListener(new DocumentListener() {
+        searchTextField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             @Override
-            public void insertUpdate(DocumentEvent e) {
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
                 String text = searchTextField.getText();
                 System.out.println(text);
                 if (text.trim().length() == 0) {
@@ -217,7 +215,7 @@ public class GuestDashboard extends javax.swing.JFrame {
                 table.repaint();
             }
             @Override
-            public void removeUpdate(DocumentEvent e) {
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
                 String text = searchTextField.getText();
                 if (text.trim().length() == 0) {
                     ((TableRowSorter<TableModel>)table.getRowSorter()).setRowFilter(null);
@@ -226,7 +224,7 @@ public class GuestDashboard extends javax.swing.JFrame {
                 }
             }
             @Override
-            public void changedUpdate(DocumentEvent e) {
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
                 //not needed: throw new UnsupportedOperationException("Not supported yet.");
             }
         });

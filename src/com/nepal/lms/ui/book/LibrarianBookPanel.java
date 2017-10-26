@@ -5,17 +5,26 @@
  */
 package com.nepal.lms.ui.book;
 
+import com.nepal.lms.util.ComponentUtils;
+import com.nepal.lms.util.Logy;
+
 /**
  *
  * @author Suzn
  */
 public class LibrarianBookPanel extends javax.swing.JPanel {
 
+    private BookStockPanel bookStockPanel;
+    private BookSubjectPanel bookSubjectPanel;
+
     /**
      * Creates new form LibrarianBookPanel
      */
     public LibrarianBookPanel() {
         initComponents();
+
+        Logy.d("Librarian Book panel initialized");
+        ComponentUtils.addToPanel(this.centerPanel, getBookStockPanel());
     }
 
     /**
@@ -29,137 +38,385 @@ public class LibrarianBookPanel extends javax.swing.JPanel {
 
         centerPanel = new javax.swing.JPanel();
         topPanel = new javax.swing.JPanel();
-        tabPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        searchPanel = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        searchTextField = new javax.swing.JTextField();
-        leftPanel = new javax.swing.JPanel();
+        titlePanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        tabMenuPanel = new javax.swing.JPanel();
+        tabsPanel = new javax.swing.JPanel();
+        stockMenuButton = new javax.swing.JButton();
+        subjectMenuButton = new javax.swing.JButton();
+        authorMenuButton = new javax.swing.JButton();
+        publisherMenuButton = new javax.swing.JButton();
+        shelfMenuButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
-        centerPanel.setLayout(centerPanelLayout);
-        centerPanelLayout.setHorizontalGroup(
-            centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        centerPanelLayout.setVerticalGroup(
-            centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
+        centerPanel.setLayout(new java.awt.CardLayout());
         add(centerPanel, java.awt.BorderLayout.CENTER);
 
-        topPanel.setBackground(new java.awt.Color(255, 255, 255));
+        topPanel.setBackground(new java.awt.Color(249, 249, 249));
+        topPanel.setOpaque(false);
+        topPanel.setPreferredSize(new java.awt.Dimension(367, 80));
         topPanel.setLayout(new java.awt.GridLayout(1, 2, 5, 0));
 
-        tabPanel.setBackground(new java.awt.Color(255, 153, 153));
-        tabPanel.setPreferredSize(new java.awt.Dimension(367, 90));
+        titlePanel.setBackground(new java.awt.Color(255, 255, 255));
+        titlePanel.setOpaque(false);
+        titlePanel.setPreferredSize(new java.awt.Dimension(100, 80));
+        titlePanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
-        jButton1.setText("jButton1");
+        jPanel1.setOpaque(false);
 
-        javax.swing.GroupLayout tabPanelLayout = new javax.swing.GroupLayout(tabPanel);
-        tabPanel.setLayout(tabPanelLayout);
-        tabPanelLayout.setHorizontalGroup(
-            tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabPanelLayout.createSequentialGroup()
+        title.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        title.setText("Book");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addComponent(title)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        tabPanelLayout.setVerticalGroup(
-            tabPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabPanelLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(title)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        titlePanel.add(jPanel1);
+
+        topPanel.add(titlePanel);
+
+        tabMenuPanel.setOpaque(false);
+        tabMenuPanel.setPreferredSize(new java.awt.Dimension(471, 70));
+
+        tabsPanel.setBackground(new java.awt.Color(255, 255, 255));
+        tabsPanel.setOpaque(false);
+
+        stockMenuButton.setBackground(selectedMenuColor);
+        stockMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        stockMenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        stockMenuButton.setText("Stock");
+        stockMenuButton.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(215, 215, 215))));
+        stockMenuButton.setContentAreaFilled(false);
+        stockMenuButton.setOpaque(true);
+        stockMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if(!com.nepal.lms.util.ColorUtils.isSame(stockMenuButton.getBackground(),selectedMenuColor)){
+                    stockMenuButton.setBackground(hoverMenuColor);
+                }
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                if(!com.nepal.lms.util.ColorUtils.isSame(stockMenuButton.getBackground(),selectedMenuColor)){
+                    stockMenuButton.setBackground(defaultMenuColor);
+                }
+            }
+        });
+        stockMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockMenuButton.setBackground(selectedMenuColor);
+                stockMenuButton.setForeground(selectedMenuTextColor);
+                stockMenuButton.setBorder(selectedMenuBorder);
+
+                subjectMenuButton.setBackground(defaultMenuColor);
+                subjectMenuButton.setBorder(defaultMenuBorder);
+                subjectMenuButton.setForeground(defaultMenuTextColor);
+                authorMenuButton.setBackground(defaultMenuColor);
+                authorMenuButton.setBorder(defaultMenuBorder);
+                authorMenuButton.setForeground(defaultMenuTextColor);
+                publisherMenuButton.setBackground(defaultMenuColor);
+                publisherMenuButton.setBorder(defaultMenuBorder);
+                publisherMenuButton.setForeground(defaultMenuTextColor);
+                shelfMenuButton.setBackground(defaultMenuColor);
+                shelfMenuButton.setBorder(defaultMenuBorder);
+                shelfMenuButton.setForeground(defaultMenuTextColor);
+                stockMenuButtonActionPerformed(evt);
+            }
+        });
+
+        subjectMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        subjectMenuButton.setForeground(new java.awt.Color(62, 40, 40));
+        subjectMenuButton.setText("Subject");
+        subjectMenuButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 51, 0)));
+        subjectMenuButton.setContentAreaFilled(false);
+        subjectMenuButton.setOpaque(true);
+        subjectMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if(!com.nepal.lms.util.ColorUtils.isSame(subjectMenuButton.getBackground(),selectedMenuColor)){
+                    subjectMenuButton.setBackground(hoverMenuColor);
+                }
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                if(!com.nepal.lms.util.ColorUtils.isSame(subjectMenuButton.getBackground(),selectedMenuColor)){
+                    subjectMenuButton.setBackground(defaultMenuColor);
+                }
+            }
+        });
+        subjectMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subjectMenuButton.setBackground(selectedMenuColor);
+                subjectMenuButton.setForeground(selectedMenuTextColor);
+                subjectMenuButton.setBorder(selectedMenuBorder);
+
+                stockMenuButton.setBackground(defaultMenuColor);
+                stockMenuButton.setBorder(defaultMenuBorder);
+                stockMenuButton.setForeground(defaultMenuTextColor);
+                authorMenuButton.setBackground(defaultMenuColor);
+                authorMenuButton.setBorder(defaultMenuBorder);
+                authorMenuButton.setForeground(defaultMenuTextColor);
+                publisherMenuButton.setBackground(defaultMenuColor);
+                publisherMenuButton.setBorder(defaultMenuBorder);
+                publisherMenuButton.setForeground(defaultMenuTextColor);
+                shelfMenuButton.setBackground(defaultMenuColor);
+                shelfMenuButton.setBorder(defaultMenuBorder);
+                shelfMenuButton.setForeground(defaultMenuTextColor);
+                subjectMenuButtonActionPerformed(evt);
+            }
+        });
+
+        authorMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        authorMenuButton.setForeground(new java.awt.Color(62, 40, 40));
+        authorMenuButton.setText("Author");
+        authorMenuButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 51, 0)));
+        authorMenuButton.setContentAreaFilled(false);
+        authorMenuButton.setOpaque(true);
+        authorMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if(!com.nepal.lms.util.ColorUtils.isSame(authorMenuButton.getBackground(),selectedMenuColor)){
+                    authorMenuButton.setBackground(hoverMenuColor);
+                }
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                if(!com.nepal.lms.util.ColorUtils.isSame(authorMenuButton.getBackground(),selectedMenuColor)){
+                    authorMenuButton.setBackground(defaultMenuColor);
+                }
+            }
+        });
+        authorMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                authorMenuButton.setBackground(selectedMenuColor);
+                authorMenuButton.setForeground(selectedMenuTextColor);
+                authorMenuButton.setBorder(selectedMenuBorder);
+
+                stockMenuButton.setBackground(defaultMenuColor);
+                stockMenuButton.setBorder(defaultMenuBorder);
+                stockMenuButton.setForeground(defaultMenuTextColor);
+                subjectMenuButton.setBackground(defaultMenuColor);
+                subjectMenuButton.setBorder(defaultMenuBorder);
+                subjectMenuButton.setForeground(defaultMenuTextColor);
+                publisherMenuButton.setBackground(defaultMenuColor);
+                publisherMenuButton.setBorder(defaultMenuBorder);
+                publisherMenuButton.setForeground(defaultMenuTextColor);
+                shelfMenuButton.setBackground(defaultMenuColor);
+                shelfMenuButton.setBorder(defaultMenuBorder);
+                shelfMenuButton.setForeground(defaultMenuTextColor);
+                authorMenuButtonActionPerformed(evt);
+            }
+        });
+
+        publisherMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        publisherMenuButton.setForeground(new java.awt.Color(62, 40, 40));
+        publisherMenuButton.setText("Publisher");
+        publisherMenuButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 51, 0)));
+        publisherMenuButton.setContentAreaFilled(false);
+        publisherMenuButton.setOpaque(true);
+        publisherMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if(!com.nepal.lms.util.ColorUtils.isSame(publisherMenuButton.getBackground(),selectedMenuColor)){
+                    publisherMenuButton.setBackground(hoverMenuColor);
+                }
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                if(!com.nepal.lms.util.ColorUtils.isSame(publisherMenuButton.getBackground(),selectedMenuColor)){
+                    publisherMenuButton.setBackground(defaultMenuColor);
+                }
+            }
+        });
+        publisherMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                publisherMenuButton.setBackground(selectedMenuColor);
+                publisherMenuButton.setForeground(selectedMenuTextColor);
+                publisherMenuButton.setBorder(selectedMenuBorder);
+
+                stockMenuButton.setBackground(defaultMenuColor);
+                stockMenuButton.setBorder(defaultMenuBorder);
+                stockMenuButton.setForeground(defaultMenuTextColor);
+                subjectMenuButton.setBackground(defaultMenuColor);
+                subjectMenuButton.setBorder(defaultMenuBorder);
+                subjectMenuButton.setForeground(defaultMenuTextColor);
+                authorMenuButton.setBackground(defaultMenuColor);
+                authorMenuButton.setBorder(defaultMenuBorder);
+                authorMenuButton.setForeground(defaultMenuTextColor);
+                shelfMenuButton.setBackground(defaultMenuColor);
+                shelfMenuButton.setBorder(defaultMenuBorder);
+                shelfMenuButton.setForeground(defaultMenuTextColor);
+                publisherMenuButtonActionPerformed(evt);
+            }
+        });
+
+        shelfMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        shelfMenuButton.setForeground(new java.awt.Color(62, 40, 40));
+        shelfMenuButton.setText("Shelf");
+        shelfMenuButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 51, 0)));
+        shelfMenuButton.setContentAreaFilled(false);
+        shelfMenuButton.setOpaque(true);
+        shelfMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if(!com.nepal.lms.util.ColorUtils.isSame(shelfMenuButton.getBackground(),selectedMenuColor)){
+                    shelfMenuButton.setBackground(hoverMenuColor);
+                }
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                if(!com.nepal.lms.util.ColorUtils.isSame(shelfMenuButton.getBackground(),selectedMenuColor)){
+                    shelfMenuButton.setBackground(defaultMenuColor);
+                }
+            }
+        });
+        shelfMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shelfMenuButton.setBackground(selectedMenuColor);
+                shelfMenuButton.setForeground(selectedMenuTextColor);
+                shelfMenuButton.setBorder(selectedMenuBorder);
+
+                stockMenuButton.setBackground(defaultMenuColor);
+                stockMenuButton.setBorder(defaultMenuBorder);
+                stockMenuButton.setForeground(defaultMenuTextColor);
+                subjectMenuButton.setBackground(defaultMenuColor);
+                subjectMenuButton.setBorder(defaultMenuBorder);
+                subjectMenuButton.setForeground(defaultMenuTextColor);
+                authorMenuButton.setBackground(defaultMenuColor);
+                authorMenuButton.setBorder(defaultMenuBorder);
+                authorMenuButton.setForeground(defaultMenuTextColor);
+                publisherMenuButton.setBackground(defaultMenuColor);
+                publisherMenuButton.setBorder(defaultMenuBorder);
+                publisherMenuButton.setForeground(defaultMenuTextColor);
+                shelfMenuButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout tabsPanelLayout = new javax.swing.GroupLayout(tabsPanel);
+        tabsPanel.setLayout(tabsPanelLayout);
+        tabsPanelLayout.setHorizontalGroup(
+            tabsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                .addComponent(stockMenuButton)
+                .addGap(0, 0, 0)
+                .addComponent(subjectMenuButton)
+                .addGap(0, 0, 0)
+                .addComponent(authorMenuButton)
+                .addGap(0, 0, 0)
+                .addComponent(publisherMenuButton)
+                .addGap(0, 0, 0)
+                .addComponent(shelfMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        topPanel.add(tabPanel);
+        tabsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {authorMenuButton, publisherMenuButton, shelfMenuButton, stockMenuButton, subjectMenuButton});
 
-        searchPanel.setBackground(new java.awt.Color(255, 255, 255));
-        searchPanel.setPreferredSize(new java.awt.Dimension(367, 90));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(250, 65));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search_blue.png"))); // NOI18N
-
-        searchTextField.setForeground(new java.awt.Color(255, 255, 255));
-        searchTextField.setToolTipText("Search for title, publisher, author..");
-        searchTextField.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(39, 26, 252)));
-        searchTextField.setCaretColor(new java.awt.Color(255, 255, 255));
-        searchTextField.setMinimumSize(new java.awt.Dimension(200, 15));
-        searchTextField.setPreferredSize(new java.awt.Dimension(200, 15));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(jLabel3)
-                .addGap(5, 5, 5)
-                .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+        tabsPanelLayout.setVerticalGroup(
+            tabsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabsPanelLayout.createSequentialGroup()
+                .addGroup(tabsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(authorMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(subjectMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(stockMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(publisherMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(shelfMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+
+        tabsPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {authorMenuButton, publisherMenuButton, shelfMenuButton, stockMenuButton, subjectMenuButton});
+
+        javax.swing.GroupLayout tabMenuPanelLayout = new javax.swing.GroupLayout(tabMenuPanel);
+        tabMenuPanel.setLayout(tabMenuPanelLayout);
+        tabMenuPanelLayout.setHorizontalGroup(
+            tabMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabMenuPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(tabsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        tabMenuPanelLayout.setVerticalGroup(
+            tabMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabMenuPanelLayout.createSequentialGroup()
+                .addComponent(tabsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11))
         );
 
-        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
-        searchPanel.setLayout(searchPanelLayout);
-        searchPanelLayout.setHorizontalGroup(
-            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        searchPanelLayout.setVerticalGroup(
-            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchPanelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
-        );
-
-        topPanel.add(searchPanel);
+        topPanel.add(tabMenuPanel);
 
         add(topPanel, java.awt.BorderLayout.PAGE_START);
-
-        javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
-        leftPanel.setLayout(leftPanelLayout);
-        leftPanelLayout.setHorizontalGroup(
-            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 699, Short.MAX_VALUE)
-        );
-        leftPanelLayout.setVerticalGroup(
-            leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
-        );
-
-        add(leftPanel, java.awt.BorderLayout.WEST);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void stockMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("Book stock menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getBookStockPanel());
+    }
+
+    private void subjectMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("Book subject menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getBookSubjectPanel());
+    }
+
+    private void authorMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("Book author menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getBookStockPanel());
+    }
+
+    private void publisherMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("Book publisher menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getBookStockPanel());
+    }
+
+    private void shelfMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("Book shelf menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getBookStockPanel());
+    }
+
+    private BookStockPanel getBookStockPanel() {
+        if (bookStockPanel == null) {
+            Logy.d("Creating book stock panel instance");
+            bookStockPanel = new BookStockPanel();
+        } else {
+            Logy.d("book stock panel already created, returning available instance");
+        }
+        return bookStockPanel;
+    }
+
+    private BookSubjectPanel getBookSubjectPanel() {
+        if (bookSubjectPanel == null) {
+            Logy.d("Creating book subject panel instance");
+            bookSubjectPanel = new BookSubjectPanel();
+        } else {
+            Logy.d("book subject panel already created, returning available instance");
+        }
+        return bookSubjectPanel;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton authorMenuButton;
     private javax.swing.JPanel centerPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel leftPanel;
-    private javax.swing.JPanel searchPanel;
-    private javax.swing.JTextField searchTextField;
-    private javax.swing.JPanel tabPanel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton publisherMenuButton;
+    private javax.swing.JButton shelfMenuButton;
+    private javax.swing.JButton stockMenuButton;
+    private java.awt.Color selectedMenuColor = new java.awt.Color(149, 149, 149);
+    private java.awt.Color hoverMenuColor = new java.awt.Color(234,84,68);
+    private java.awt.Color defaultMenuColor = new java.awt.Color(214,217,223);
+    private java.awt.Color defaultMenuTextColor = new java.awt.Color(1, 1, 1);
+    private java.awt.Color selectedMenuTextColor = new java.awt.Color(255, 255, 255);
+    private javax.swing.border.Border selectedMenuBorder = javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(215, 215, 215)));
+    private javax.swing.border.Border defaultMenuBorder = javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 51, 0));
+    private javax.swing.JButton subjectMenuButton;
+    private javax.swing.JPanel tabMenuPanel;
+    private javax.swing.JPanel tabsPanel;
+    private javax.swing.JLabel title;
+    private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
+
 }

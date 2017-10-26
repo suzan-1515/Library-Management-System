@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -11,7 +11,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-56,0,0,2,-29"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,7,0,0,3,7"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -23,23 +23,16 @@
         </Constraint>
       </Constraints>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
     </Container>
     <Container class="javax.swing.JPanel" name="topPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+          <Color blue="f9" green="f9" red="f9" type="rgb"/>
+        </Property>
+        <Property name="opaque" type="boolean" value="false"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[367, 80]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -54,167 +47,267 @@
         <Property name="rows" type="int" value="1"/>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="tabPanel">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="99" red="ff" type="rgb"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[367, 90]"/>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="284" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" pref="68" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="searchPanel">
+        <Container class="javax.swing.JPanel" name="titlePanel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[367, 90]"/>
+              <Dimension value="[100, 80]"/>
             </Property>
           </Properties>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel2" min="-2" pref="347" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="jPanel2" min="-2" pref="62" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+            <Property name="alignment" type="int" value="3"/>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel2">
+            <Container class="javax.swing.JPanel" name="jPanel1">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 65]"/>
-                </Property>
+                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="searchTextField" pref="291" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="title" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="jLabel3" alignment="2" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="searchTextField" alignment="2" min="-2" pref="32" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="title" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="title">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/images/search_blue.png"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="24" style="1"/>
                     </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="searchTextField">
-                  <Properties>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="Search for title, publisher, author.."/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                        <MatteColorBorder bottom="2" left="0" right="0" top="0">
-                          <Color PropertyName="color" blue="fc" green="1a" red="27" type="rgb"/>
-                        </MatteColorBorder>
-                      </Border>
-                    </Property>
-                    <Property name="caretColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[200, 15]"/>
-                    </Property>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[200, 15]"/>
-                    </Property>
+                    <Property name="text" type="java.lang.String" value="Book"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="leftPanel">
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="West"/>
-        </Constraint>
-      </Constraints>
+        <Container class="javax.swing.JPanel" name="tabMenuPanel">
+          <Properties>
+            <Property name="opaque" type="boolean" value="false"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[471, 70]"/>
+            </Property>
+          </Properties>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="699" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="366" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="tabsPanel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="tabsPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="tabsPanel">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="false"/>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="stockMenuButton" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="subjectMenuButton" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="authorMenuButton" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="publisherMenuButton" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="shelfMenuButton" linkSize="1" min="-2" pref="73" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="authorMenuButton" linkSize="2" max="32767" attributes="0"/>
+                              <Component id="subjectMenuButton" linkSize="2" max="32767" attributes="0"/>
+                              <Component id="stockMenuButton" linkSize="2" max="32767" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="publisherMenuButton" linkSize="2" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                                  <Component id="shelfMenuButton" linkSize="2" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="stockMenuButton">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="selectedMenuColor" type="code"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Stock"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
+                        <CompoundBorder>
+                          <Border PropertyName="outside" info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                            <MatteColorBorder bottom="1" left="0" right="0" top="0">
+                              <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
+                            </MatteColorBorder>
+                          </Border>
+                          <Border PropertyName="inside" info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                            <MatteColorBorder bottom="3" left="0" right="0" top="0">
+                              <Color PropertyName="color" blue="d7" green="d7" red="d7" type="rgb"/>
+                            </MatteColorBorder>
+                          </Border>
+                        </CompoundBorder>
+                      </Border>
+                    </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private java.awt.Color selectedMenuColor = new java.awt.Color(149, 149, 149);&#xa;private java.awt.Color hoverMenuColor = new java.awt.Color(234,84,68);&#xa;private java.awt.Color defaultMenuColor = new java.awt.Color(214,217,223);&#xa;private java.awt.Color defaultMenuTextColor = new java.awt.Color(1, 1, 1);&#xa;private java.awt.Color selectedMenuTextColor = new java.awt.Color(255, 255, 255);&#xa;private javax.swing.border.Border selectedMenuBorder = javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(153, 153, 153)), javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(215, 215, 215)));&#xa;private javax.swing.border.Border defaultMenuBorder = javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 51, 0));"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="stockMenuButton.setOpaque(true);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="stockMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        if(!com.nepal.lms.util.ColorUtils.isSame(stockMenuButton.getBackground(),selectedMenuColor)){&#xa;            stockMenuButton.setBackground(hoverMenuColor);&#xa;        }&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        if(!com.nepal.lms.util.ColorUtils.isSame(stockMenuButton.getBackground(),selectedMenuColor)){&#xa;            stockMenuButton.setBackground(defaultMenuColor);&#xa;        }&#xa;    }&#xa;});&#xa;stockMenuButton.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        stockMenuButton.setBackground(selectedMenuColor);&#xa;        stockMenuButton.setForeground(selectedMenuTextColor);&#xa;        stockMenuButton.setBorder(selectedMenuBorder);&#xa;        &#xa;        subjectMenuButton.setBackground(defaultMenuColor);&#xa;        subjectMenuButton.setBorder(defaultMenuBorder);&#xa;        subjectMenuButton.setForeground(defaultMenuTextColor);&#xa;        authorMenuButton.setBackground(defaultMenuColor);&#xa;        authorMenuButton.setBorder(defaultMenuBorder);&#xa;        authorMenuButton.setForeground(defaultMenuTextColor);&#xa;        publisherMenuButton.setBackground(defaultMenuColor);&#xa;        publisherMenuButton.setBorder(defaultMenuBorder);&#xa;        publisherMenuButton.setForeground(defaultMenuTextColor);&#xa;        shelfMenuButton.setBackground(defaultMenuColor);&#xa;        shelfMenuButton.setBorder(defaultMenuBorder);&#xa;        shelfMenuButton.setForeground(defaultMenuTextColor);&#xa;        stockMenuButtonActionPerformed(evt);&#xa;    }&#xa;});"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="subjectMenuButton">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="28" green="28" red="3e" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Subject"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                        <MatteColorBorder bottom="3" left="0" right="0" top="0">
+                          <Color PropertyName="color" blue="0" green="33" red="ff" type="rgb"/>
+                        </MatteColorBorder>
+                      </Border>
+                    </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="opaque" type="boolean" value="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="subjectMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        if(!com.nepal.lms.util.ColorUtils.isSame(subjectMenuButton.getBackground(),selectedMenuColor)){&#xa;            subjectMenuButton.setBackground(hoverMenuColor);&#xa;        }&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        if(!com.nepal.lms.util.ColorUtils.isSame(subjectMenuButton.getBackground(),selectedMenuColor)){&#xa;            subjectMenuButton.setBackground(defaultMenuColor);&#xa;        }&#xa;    }&#xa;});&#xa;subjectMenuButton.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        subjectMenuButton.setBackground(selectedMenuColor);&#xa;        subjectMenuButton.setForeground(selectedMenuTextColor);&#xa;        subjectMenuButton.setBorder(selectedMenuBorder);&#xa;        &#xa;        stockMenuButton.setBackground(defaultMenuColor);&#xa;        stockMenuButton.setBorder(defaultMenuBorder);&#xa;        stockMenuButton.setForeground(defaultMenuTextColor);&#xa;        authorMenuButton.setBackground(defaultMenuColor);&#xa;        authorMenuButton.setBorder(defaultMenuBorder);&#xa;        authorMenuButton.setForeground(defaultMenuTextColor);&#xa;        publisherMenuButton.setBackground(defaultMenuColor);&#xa;        publisherMenuButton.setBorder(defaultMenuBorder);&#xa;        publisherMenuButton.setForeground(defaultMenuTextColor);&#xa;        shelfMenuButton.setBackground(defaultMenuColor);&#xa;        shelfMenuButton.setBorder(defaultMenuBorder);&#xa;        shelfMenuButton.setForeground(defaultMenuTextColor);&#xa;        subjectMenuButtonActionPerformed(evt);&#xa;    }&#xa;});"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="authorMenuButton">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="28" green="28" red="3e" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Author"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                        <MatteColorBorder bottom="3" left="0" right="0" top="0">
+                          <Color PropertyName="color" blue="0" green="33" red="ff" type="rgb"/>
+                        </MatteColorBorder>
+                      </Border>
+                    </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="opaque" type="boolean" value="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="authorMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        if(!com.nepal.lms.util.ColorUtils.isSame(authorMenuButton.getBackground(),selectedMenuColor)){&#xa;            authorMenuButton.setBackground(hoverMenuColor);&#xa;        }&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        if(!com.nepal.lms.util.ColorUtils.isSame(authorMenuButton.getBackground(),selectedMenuColor)){&#xa;            authorMenuButton.setBackground(defaultMenuColor);&#xa;        }&#xa;    }&#xa;});&#xa;authorMenuButton.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        authorMenuButton.setBackground(selectedMenuColor);&#xa;        authorMenuButton.setForeground(selectedMenuTextColor);&#xa;        authorMenuButton.setBorder(selectedMenuBorder);&#xa;        &#xa;        stockMenuButton.setBackground(defaultMenuColor);&#xa;        stockMenuButton.setBorder(defaultMenuBorder);&#xa;        stockMenuButton.setForeground(defaultMenuTextColor);&#xa;        subjectMenuButton.setBackground(defaultMenuColor);&#xa;        subjectMenuButton.setBorder(defaultMenuBorder);&#xa;        subjectMenuButton.setForeground(defaultMenuTextColor);&#xa;        publisherMenuButton.setBackground(defaultMenuColor);&#xa;        publisherMenuButton.setBorder(defaultMenuBorder);&#xa;        publisherMenuButton.setForeground(defaultMenuTextColor);&#xa;        shelfMenuButton.setBackground(defaultMenuColor);&#xa;        shelfMenuButton.setBorder(defaultMenuBorder);&#xa;        shelfMenuButton.setForeground(defaultMenuTextColor);&#xa;        authorMenuButtonActionPerformed(evt);&#xa;    }&#xa;});"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="publisherMenuButton">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="28" green="28" red="3e" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Publisher"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                        <MatteColorBorder bottom="3" left="0" right="0" top="0">
+                          <Color PropertyName="color" blue="0" green="33" red="ff" type="rgb"/>
+                        </MatteColorBorder>
+                      </Border>
+                    </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="opaque" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="true" type="code"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="publisherMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        if(!com.nepal.lms.util.ColorUtils.isSame(publisherMenuButton.getBackground(),selectedMenuColor)){&#xa;            publisherMenuButton.setBackground(hoverMenuColor);&#xa;        }&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        if(!com.nepal.lms.util.ColorUtils.isSame(publisherMenuButton.getBackground(),selectedMenuColor)){&#xa;            publisherMenuButton.setBackground(defaultMenuColor);&#xa;        }&#xa;    }&#xa;});&#xa;publisherMenuButton.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        publisherMenuButton.setBackground(selectedMenuColor);&#xa;        publisherMenuButton.setForeground(selectedMenuTextColor);&#xa;        publisherMenuButton.setBorder(selectedMenuBorder);&#xa;        &#xa;        stockMenuButton.setBackground(defaultMenuColor);&#xa;        stockMenuButton.setBorder(defaultMenuBorder);&#xa;        stockMenuButton.setForeground(defaultMenuTextColor);&#xa;        subjectMenuButton.setBackground(defaultMenuColor);&#xa;        subjectMenuButton.setBorder(defaultMenuBorder);&#xa;        subjectMenuButton.setForeground(defaultMenuTextColor);&#xa;        authorMenuButton.setBackground(defaultMenuColor);&#xa;        authorMenuButton.setBorder(defaultMenuBorder);&#xa;        authorMenuButton.setForeground(defaultMenuTextColor);&#xa;        shelfMenuButton.setBackground(defaultMenuColor);&#xa;        shelfMenuButton.setBorder(defaultMenuBorder);&#xa;        shelfMenuButton.setForeground(defaultMenuTextColor);&#xa;        publisherMenuButtonActionPerformed(evt);&#xa;    }&#xa;});"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="shelfMenuButton">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="28" green="28" red="3e" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Shelf"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                        <MatteColorBorder bottom="3" left="0" right="0" top="0">
+                          <Color PropertyName="color" blue="0" green="33" red="ff" type="rgb"/>
+                        </MatteColorBorder>
+                      </Border>
+                    </Property>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="opaque" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="true" type="code"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="shelfMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        if(!com.nepal.lms.util.ColorUtils.isSame(shelfMenuButton.getBackground(),selectedMenuColor)){&#xa;            shelfMenuButton.setBackground(hoverMenuColor);&#xa;        }&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        if(!com.nepal.lms.util.ColorUtils.isSame(shelfMenuButton.getBackground(),selectedMenuColor)){&#xa;            shelfMenuButton.setBackground(defaultMenuColor);&#xa;        }&#xa;    }&#xa;});&#xa;shelfMenuButton.addActionListener(new java.awt.event.ActionListener() {&#xa;    public void actionPerformed(java.awt.event.ActionEvent evt) {&#xa;        shelfMenuButton.setBackground(selectedMenuColor);&#xa;        shelfMenuButton.setForeground(selectedMenuTextColor);&#xa;        shelfMenuButton.setBorder(selectedMenuBorder);&#xa;        &#xa;        stockMenuButton.setBackground(defaultMenuColor);&#xa;        stockMenuButton.setBorder(defaultMenuBorder);&#xa;        stockMenuButton.setForeground(defaultMenuTextColor);&#xa;        subjectMenuButton.setBackground(defaultMenuColor);&#xa;        subjectMenuButton.setBorder(defaultMenuBorder);&#xa;        subjectMenuButton.setForeground(defaultMenuTextColor);&#xa;        authorMenuButton.setBackground(defaultMenuColor);&#xa;        authorMenuButton.setBorder(defaultMenuBorder);&#xa;        authorMenuButton.setForeground(defaultMenuTextColor);&#xa;        publisherMenuButton.setBackground(defaultMenuColor);&#xa;        publisherMenuButton.setBorder(defaultMenuBorder);&#xa;        publisherMenuButton.setForeground(defaultMenuTextColor);&#xa;        shelfMenuButtonActionPerformed(evt);&#xa;    }&#xa;});"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
     </Container>
   </SubComponents>
 </Form>
