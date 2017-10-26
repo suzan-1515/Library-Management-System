@@ -16,6 +16,9 @@ public class LibrarianBookPanel extends javax.swing.JPanel {
 
     private BookStockPanel bookStockPanel;
     private BookSubjectPanel bookSubjectPanel;
+    private BookAuthorPanel bookAuthorPanel;
+    private BookPublisherPanel bookPublisherPanel;
+    private BookShelfPanel bookShelfPanel;
 
     /**
      * Creates new form LibrarianBookPanel
@@ -364,17 +367,17 @@ public class LibrarianBookPanel extends javax.swing.JPanel {
 
     private void authorMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Book author menu clicked");
-        ComponentUtils.addToPanel(this.centerPanel, getBookStockPanel());
+        ComponentUtils.addToPanel(this.centerPanel, getBookAuthorPanel());
     }
 
     private void publisherMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Book publisher menu clicked");
-        ComponentUtils.addToPanel(this.centerPanel, getBookStockPanel());
+        ComponentUtils.addToPanel(this.centerPanel, getBookPublisherPanel());
     }
 
     private void shelfMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Book shelf menu clicked");
-        ComponentUtils.addToPanel(this.centerPanel, getBookStockPanel());
+        ComponentUtils.addToPanel(this.centerPanel, getBookShelfPanel());
     }
 
     private BookStockPanel getBookStockPanel() {
@@ -395,6 +398,36 @@ public class LibrarianBookPanel extends javax.swing.JPanel {
             Logy.d("book subject panel already created, returning available instance");
         }
         return bookSubjectPanel;
+    }
+
+    private BookAuthorPanel getBookAuthorPanel() {
+        if (bookAuthorPanel == null) {
+            Logy.d("Creating book author panel instance");
+            bookAuthorPanel = new BookAuthorPanel();
+        } else {
+            Logy.d("book author panel already created, returning available instance");
+        }
+        return bookAuthorPanel;
+    }
+
+    private BookPublisherPanel getBookPublisherPanel() {
+        if (bookPublisherPanel == null) {
+            Logy.d("Creating book publisher panel instance");
+            bookPublisherPanel = new BookPublisherPanel();
+        } else {
+            Logy.d("book publisher panel already created, returning available instance");
+        }
+        return bookPublisherPanel;
+    }
+
+    private BookShelfPanel getBookShelfPanel() {
+        if (bookShelfPanel == null) {
+            Logy.d("Creating book shelf panel instance");
+            bookShelfPanel = new BookShelfPanel();
+        } else {
+            Logy.d("book shelf panel already created, returning available instance");
+        }
+        return bookShelfPanel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

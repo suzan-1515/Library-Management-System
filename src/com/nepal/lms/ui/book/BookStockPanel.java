@@ -12,6 +12,7 @@ import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.util.Logy;
+import com.nepal.lms.view.BookView;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Suzn
  */
-public class BookStockPanel extends javax.swing.JPanel {
+public class BookStockPanel extends javax.swing.JPanel implements BookView<BookInfo> {
 
     private List<BookInfo> bookList;
 
@@ -143,6 +144,7 @@ public class BookStockPanel extends javax.swing.JPanel {
             }
         };
 
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.ID.toUpperCase());
         tableModel.addColumn(com.nepal.lms.entity.book.BookParams.TITLE.toUpperCase());
         tableModel.addColumn(com.nepal.lms.entity.book.BookParams.SUBJECT.toUpperCase());
         tableModel.addColumn(com.nepal.lms.entity.book.BookParams.AUTHOR.toUpperCase());
@@ -260,7 +262,8 @@ public class BookStockPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_updateBookButtonActionPerformed
 
-    private void loadTableData() {
+    @Override
+    public final void loadTableData() {
 
         if (bookList == null || bookList.isEmpty()) {
             Logy.d("Loading book from file for first Time");
@@ -279,24 +282,25 @@ public class BookStockPanel extends javax.swing.JPanel {
 
     }
 
-    private void fillTableData(List<BookInfo> bookInfoList) {
+    @Override
+    public final void fillTableData(List<BookInfo> bookInfoList) {
         DefaultTableModel defaultTableModel = (DefaultTableModel) table.getModel();
         int numOfColumn = defaultTableModel.getColumnCount();
 
         bookInfoList.stream().forEach((bookInfo) -> {
             Object[] object;
-            object = new Object[numOfColumn + 1]; //+1 for id
-            object[0] = bookInfo.getTitle();
-            object[1] = bookInfo.getSubject().getTitle();
-            object[2] = bookInfo.getAuthor().getTitle();
-            object[3] = bookInfo.getPublisher().getTitle();
-            object[4] = bookInfo.getEdition();
-            object[5] = bookInfo.getIsbn();
-            object[6] = bookInfo.getNumberOfCopy();
-            object[7] = bookInfo.getAvailableCopies();
-            object[8] = bookInfo.getShelfNo().getLocation();
-            object[9] = bookInfo.getAvailableCopies() > 0;
-            object[10] = bookInfo.getId();
+            object = new Object[numOfColumn]; 
+            object[0] = bookInfo.getId();
+            object[1] = bookInfo.getTitle();
+            object[2] = bookInfo.getSubject().getTitle();
+            object[3] = bookInfo.getAuthor().getTitle();
+            object[4] = bookInfo.getPublisher().getTitle();
+            object[5] = bookInfo.getEdition();
+            object[6] = bookInfo.getIsbn();
+            object[7] = bookInfo.getNumberOfCopy();
+            object[8] = bookInfo.getAvailableCopies();
+            object[9] = bookInfo.getShelfNo().getLocation();
+            object[10] = bookInfo.getAvailableCopies() > 0;
 
             defaultTableModel.addRow(object);
         });

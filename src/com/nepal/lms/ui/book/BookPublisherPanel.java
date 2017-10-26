@@ -5,9 +5,9 @@
  */
 package com.nepal.lms.ui.book;
 
-import com.nepal.lms.bll.SubjectBLL;
+import com.nepal.lms.bll.PublisherBLL;
 import com.nepal.lms.custom.Alert;
-import com.nepal.lms.entity.subject.Subject;
+import com.nepal.lms.entity.publisher.Publisher;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
@@ -18,16 +18,16 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Suzn
+ * @publisher Suzn
  */
-public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Subject> {
+public class BookPublisherPanel extends javax.swing.JPanel implements BookView<Publisher> {
 
-    private List<Subject> subjectList;
+    private List<Publisher> publisherList;
 
     /**
-     * Creates new form BookSubjectPanel
+     * Creates new form BookPublisherPanel
      */
-    public BookSubjectPanel() {
+    public BookPublisherPanel() {
         initComponents();
         this.loadTableData();
     }
@@ -52,8 +52,8 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
         table = new javax.swing.JTable();
         bottomPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        updateBookButton = new javax.swing.JButton();
-        addBookButton = new javax.swing.JButton();
+        updatePublisherButton = new javax.swing.JButton();
+        addPublisherButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -141,8 +141,9 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
             }
         };
 
-        tableModel.addColumn(com.nepal.lms.entity.subject.SubjectParams.ID.toUpperCase());
-        tableModel.addColumn(com.nepal.lms.entity.subject.SubjectParams.TITLE.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.publisher.PublisherParams.ID.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.publisher.PublisherParams.TITLE.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.publisher.PublisherParams.CONTACT.toUpperCase());
         table.setModel(tableModel);
         table.setRowHeight(26);
         table.setShowHorizontalLines(false);
@@ -158,19 +159,19 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
 
         jPanel3.setOpaque(false);
 
-        updateBookButton.setText("Update");
-        updateBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updateBookButton.addActionListener(new java.awt.event.ActionListener() {
+        updatePublisherButton.setText("Update");
+        updatePublisherButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updatePublisherButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBookButtonActionPerformed(evt);
+                updatePublisherButtonActionPerformed(evt);
             }
         });
 
-        addBookButton.setText("Add New");
-        addBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addBookButton.addActionListener(new java.awt.event.ActionListener() {
+        addPublisherButton.setText("Add New");
+        addPublisherButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addPublisherButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBookButtonActionPerformed(evt);
+                addPublisherButtonActionPerformed(evt);
             }
         });
 
@@ -180,9 +181,9 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(addBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addComponent(addPublisherButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(updatePublisherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel3Layout.setVerticalGroup(
@@ -190,8 +191,8 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addPublisherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updatePublisherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -204,23 +205,21 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
+    private void addPublisherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPublisherButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addPublisherButtonActionPerformed
 
-
-    }//GEN-LAST:event_addBookButtonActionPerformed
-
-    private void updateBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookButtonActionPerformed
-
-
-    }//GEN-LAST:event_updateBookButtonActionPerformed
+    private void updatePublisherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePublisherButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatePublisherButtonActionPerformed
 
     @Override
     public final void loadTableData() {
 
-        if (subjectList == null || subjectList.isEmpty()) {
-            Logy.d("Loading subject from file for first Time");
+        if (publisherList == null || publisherList.isEmpty()) {
+            Logy.d("Loading publisher from file for first Time");
             try {
-                subjectList = SubjectBLL.getAllSubject();
+                publisherList = PublisherBLL.getAllPublisher();
             } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
                 Alert.showError(this, ex.getMessage());
@@ -228,22 +227,27 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
             }
 
         } else {
-            Logy.d("subject already loaded");
+            Logy.d("publisher already loaded");
         }
-        this.fillTableData(subjectList);
 
+        this.fillTableData(publisherList);
     }
 
+    /**
+     *
+     * @param publisherInfoList
+     */
     @Override
-    public final void fillTableData(List<Subject> subjectInfoList) {
+    public final void fillTableData(List<Publisher> publisherInfoList) {
         DefaultTableModel defaultTableModel = (DefaultTableModel) table.getModel();
         int numOfColumn = defaultTableModel.getColumnCount();
 
-        subjectInfoList.stream().forEach((subjectInfo) -> {
+        publisherInfoList.stream().forEach((publisherInfo) -> {
             Object[] object;
             object = new Object[numOfColumn];
-            object[0] = subjectInfo.getId();
-            object[1] = subjectInfo.getTitle();
+            object[0] = publisherInfo.getId();
+            object[1] = publisherInfo.getTitle();
+            object[2] = publisherInfo.getContact();
 
             defaultTableModel.addRow(object);
         });
@@ -252,7 +256,7 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBookButton;
+    private javax.swing.JButton addPublisherButton;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerSubPanel;
@@ -264,6 +268,6 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JTable table;
-    private javax.swing.JButton updateBookButton;
+    private javax.swing.JButton updatePublisherButton;
     // End of variables declaration//GEN-END:variables
 }
