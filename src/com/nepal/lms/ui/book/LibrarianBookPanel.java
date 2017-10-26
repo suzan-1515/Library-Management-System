@@ -5,6 +5,11 @@
  */
 package com.nepal.lms.ui.book;
 
+import com.nepal.lms.ui.book.stock.BookStockPanel;
+import com.nepal.lms.ui.book.shelf.BookShelfPanel;
+import com.nepal.lms.ui.book.publisher.BookPublisherPanel;
+import com.nepal.lms.ui.book.author.BookAuthorPanel;
+import com.nepal.lms.ui.book.subject.BookSubjectPanel;
 import com.nepal.lms.util.ComponentUtils;
 import com.nepal.lms.util.Logy;
 

@@ -15,7 +15,7 @@ import java.io.Serializable;
  *
  * @author Suzn
  */
-public class Book implements Serializable{
+public class Book implements Serializable {
 
     private int id;
     private String title;
@@ -152,6 +152,5 @@ public class Book implements Serializable{
     public void setNumberOfCopy(int numberOfCopy) {
         this.numberOfCopy = numberOfCopy;
     }
-    
-    
+
 }

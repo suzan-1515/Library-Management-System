@@ -18,7 +18,7 @@ import java.util.List;
 public interface DAO<T> {
 
     int save(T t) throws IOException, JsonIOException, JsonSyntaxException;
-    
+
     int append(T t) throws IOException, JsonIOException, JsonSyntaxException;
 
     int update(T t) throws IOException, JsonIOException, JsonSyntaxException;

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.ui.book;
+package com.nepal.lms.ui.book.publisher;
 
-import com.nepal.lms.bll.ShelfBLL;
+import com.nepal.lms.bll.PublisherBLL;
 import com.nepal.lms.custom.Alert;
-import com.nepal.lms.entity.shelf.Shelf;
+import com.nepal.lms.entity.publisher.Publisher;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
@@ -18,16 +18,16 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @shelf Suzn
+ * @publisher Suzn
  */
-public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf> {
+public class BookPublisherPanel extends javax.swing.JPanel implements BookView<Publisher> {
 
-    private List<Shelf> shelfList;
+    private List<Publisher> publisherList;
 
     /**
-     * Creates new form BookShelfPanel
+     * Creates new form BookPublisherPanel
      */
-    public BookShelfPanel() {
+    public BookPublisherPanel() {
         initComponents();
         this.loadTableData();
     }
@@ -42,36 +42,36 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
     private void initComponents() {
 
         centerPanel = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         searchPanel = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         searchTextField = new javax.swing.JTextField();
         centerSubPanel = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        bottomPanel2 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        updateBookShelfButton = new javax.swing.JButton();
-        addBookShelfButton = new javax.swing.JButton();
+        bottomPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        updatePublisherButton = new javax.swing.JButton();
+        addPublisherButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
         centerPanel.setLayout(new java.awt.CardLayout());
 
-        jPanel8.setLayout(new java.awt.BorderLayout());
+        jPanel4.setLayout(new java.awt.BorderLayout());
 
         searchPanel.setBackground(new java.awt.Color(249, 249, 249));
         searchPanel.setPreferredSize(new java.awt.Dimension(367, 70));
-        java.awt.FlowLayout flowLayout3 = new java.awt.FlowLayout();
-        flowLayout3.setAlignOnBaseline(true);
-        searchPanel.setLayout(flowLayout3);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout();
+        flowLayout1.setAlignOnBaseline(true);
+        searchPanel.setLayout(flowLayout1);
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setOpaque(false);
-        jPanel9.setPreferredSize(new java.awt.Dimension(280, 65));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setOpaque(false);
+        jPanel2.setPreferredSize(new java.awt.Dimension(280, 65));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search_blue.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search_blue.png"))); // NOI18N
 
         searchTextField.setBackground(new java.awt.Color(249, 249, 249));
         searchTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -107,30 +107,30 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
             }
         });
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addComponent(jLabel5)
+                .addComponent(jLabel3)
                 .addGap(5, 5, 5)
                 .addComponent(searchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
-        searchPanel.add(jPanel9);
+        searchPanel.add(jPanel2);
 
-        jPanel8.add(searchPanel, java.awt.BorderLayout.PAGE_START);
+        jPanel4.add(searchPanel, java.awt.BorderLayout.PAGE_START);
 
         centerSubPanel.setLayout(new java.awt.CardLayout());
 
@@ -141,84 +141,85 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
             }
         };
 
-        tableModel.addColumn(com.nepal.lms.entity.shelf.ShelfParams.ID.toUpperCase());
-        tableModel.addColumn(com.nepal.lms.entity.shelf.ShelfParams.LOCATION.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.publisher.PublisherParams.ID.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.publisher.PublisherParams.TITLE.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.publisher.PublisherParams.CONTACT.toUpperCase());
         table.setModel(tableModel);
         table.setRowHeight(26);
         table.setShowHorizontalLines(false);
-        jScrollPane3.setViewportView(table);
+        jScrollPane1.setViewportView(table);
         javax.swing.table.TableRowSorter<javax.swing.table.TableModel> rowSorter = new javax.swing.table.TableRowSorter<>(table.getModel());
         table.setRowSorter(rowSorter);
 
-        centerSubPanel.add(jScrollPane3, "card2");
+        centerSubPanel.add(jScrollPane1, "card2");
 
-        jPanel8.add(centerSubPanel, java.awt.BorderLayout.CENTER);
+        jPanel4.add(centerSubPanel, java.awt.BorderLayout.CENTER);
 
-        bottomPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
+        bottomPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
-        jPanel10.setOpaque(false);
+        jPanel3.setOpaque(false);
 
-        updateBookShelfButton.setText("Update");
-        updateBookShelfButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updateBookShelfButton.addActionListener(new java.awt.event.ActionListener() {
+        updatePublisherButton.setText("Update");
+        updatePublisherButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updatePublisherButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBookShelfButtonActionPerformed(evt);
+                updatePublisherButtonActionPerformed(evt);
             }
         });
 
-        addBookShelfButton.setText("Add New");
-        addBookShelfButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addBookShelfButton.addActionListener(new java.awt.event.ActionListener() {
+        addPublisherButton.setText("Add New");
+        addPublisherButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addPublisherButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBookShelfButtonActionPerformed(evt);
+                addPublisherButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(addBookShelfButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addComponent(addPublisherButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateBookShelfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(updatePublisherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBookShelfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBookShelfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addPublisherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updatePublisherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        bottomPanel2.add(jPanel10);
+        bottomPanel.add(jPanel3);
 
-        jPanel8.add(bottomPanel2, java.awt.BorderLayout.PAGE_END);
+        jPanel4.add(bottomPanel, java.awt.BorderLayout.PAGE_END);
 
-        centerPanel.add(jPanel8, "card2");
+        centerPanel.add(jPanel4, "card2");
 
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateBookShelfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookShelfButtonActionPerformed
+    private void addPublisherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPublisherButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_updateBookShelfButtonActionPerformed
+    }//GEN-LAST:event_addPublisherButtonActionPerformed
 
-    private void addBookShelfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookShelfButtonActionPerformed
+    private void updatePublisherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePublisherButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addBookShelfButtonActionPerformed
+    }//GEN-LAST:event_updatePublisherButtonActionPerformed
 
     @Override
     public final void loadTableData() {
 
-        if (shelfList == null || shelfList.isEmpty()) {
-            Logy.d("Loading shelf from file for first Time");
+        if (publisherList == null || publisherList.isEmpty()) {
+            Logy.d("Loading publisher from file for first Time");
             try {
-                shelfList = ShelfBLL.getAllShelf();
+                publisherList = PublisherBLL.getAllPublisher();
             } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
                 Alert.showError(this, ex.getMessage());
@@ -226,26 +227,27 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
             }
 
         } else {
-            Logy.d("shelf already loaded");
+            Logy.d("publisher already loaded");
         }
-        this.fillTableData(shelfList);
 
+        this.fillTableData(publisherList);
     }
 
     /**
      *
-     * @param shelfInfoList
+     * @param publisherInfoList
      */
     @Override
-    public final void fillTableData(List<Shelf> shelfInfoList) {
+    public final void fillTableData(List<Publisher> publisherInfoList) {
         DefaultTableModel defaultTableModel = (DefaultTableModel) table.getModel();
         int numOfColumn = defaultTableModel.getColumnCount();
 
-        shelfInfoList.stream().forEach((shelfInfo) -> {
+        publisherInfoList.stream().forEach((publisherInfo) -> {
             Object[] object;
             object = new Object[numOfColumn];
-            object[0] = shelfInfo.getId();
-            object[1] = shelfInfo.getLocation();
+            object[0] = publisherInfo.getId();
+            object[1] = publisherInfo.getTitle();
+            object[2] = publisherInfo.getContact();
 
             defaultTableModel.addRow(object);
         });
@@ -254,18 +256,18 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBookShelfButton;
-    private javax.swing.JPanel bottomPanel2;
+    private javax.swing.JButton addPublisherButton;
+    private javax.swing.JPanel bottomPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerSubPanel;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JTable table;
-    private javax.swing.JButton updateBookShelfButton;
+    private javax.swing.JButton updatePublisherButton;
     // End of variables declaration//GEN-END:variables
 }

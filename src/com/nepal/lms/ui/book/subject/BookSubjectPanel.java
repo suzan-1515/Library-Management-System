@@ -3,31 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.ui.book;
+package com.nepal.lms.ui.book.subject;
 
-import com.nepal.lms.bll.AuthorBLL;
+import com.nepal.lms.bll.SubjectBLL;
 import com.nepal.lms.custom.Alert;
-import com.nepal.lms.entity.author.Author;
+import com.nepal.lms.entity.subject.Subject;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.util.Logy;
 import com.nepal.lms.view.BookView;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Suzn
  */
-public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Author> {
+public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Subject> {
 
-    private List<Author> authorList;
+    private List<Subject> subjectList;
 
     /**
-     * Creates new form BookAuthorPanel
+     * Creates new form BookSubjectPanel
      */
-    public BookAuthorPanel() {
+    public BookSubjectPanel() {
         initComponents();
         this.loadTableData();
     }
@@ -52,8 +54,8 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
         table = new javax.swing.JTable();
         bottomPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        updateBookAuthorButton = new javax.swing.JButton();
-        addBookAuthorButton = new javax.swing.JButton();
+        updateBookButton = new javax.swing.JButton();
+        addBookButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -141,9 +143,8 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
             }
         };
 
-        tableModel.addColumn(com.nepal.lms.entity.author.AuthorParams.ID.toUpperCase());
-        tableModel.addColumn(com.nepal.lms.entity.author.AuthorParams.TITLE.toUpperCase());
-        tableModel.addColumn(com.nepal.lms.entity.author.AuthorParams.CONTACT.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.subject.SubjectParams.ID.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.subject.SubjectParams.TITLE.toUpperCase());
         table.setModel(tableModel);
         table.setRowHeight(26);
         table.setShowHorizontalLines(false);
@@ -159,19 +160,19 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
 
         jPanel3.setOpaque(false);
 
-        updateBookAuthorButton.setText("Update");
-        updateBookAuthorButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updateBookAuthorButton.addActionListener(new java.awt.event.ActionListener() {
+        updateBookButton.setText("Update");
+        updateBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBookAuthorButtonActionPerformed(evt);
+                updateBookButtonActionPerformed(evt);
             }
         });
 
-        addBookAuthorButton.setText("Add New");
-        addBookAuthorButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addBookAuthorButton.addActionListener(new java.awt.event.ActionListener() {
+        addBookButton.setText("Add New");
+        addBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBookAuthorButtonActionPerformed(evt);
+                addBookButtonActionPerformed(evt);
             }
         });
 
@@ -181,9 +182,9 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(addBookAuthorButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addComponent(addBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateBookAuthorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         jPanel3Layout.setVerticalGroup(
@@ -191,8 +192,8 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBookAuthorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBookAuthorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -205,21 +206,31 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addBookAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookAuthorButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addBookAuthorButtonActionPerformed
+    private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
+        BookSubjectInsertDialog bookSubjectInsertDialog = new BookSubjectInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
+        bookSubjectInsertDialog.setItemAddedListener((Subject subject) -> {
+            subjectList.add(subject);
+            ((DefaultTableModel) table.getModel()).insertRow(0, new Object[]{
+                subject.getId(),
+                subject.getTitle()
+            });
+        });
+        bookSubjectInsertDialog.setVisible(true);
 
-    private void updateBookAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookAuthorButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateBookAuthorButtonActionPerformed
+    }//GEN-LAST:event_addBookButtonActionPerformed
+
+    private void updateBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookButtonActionPerformed
+
+
+    }//GEN-LAST:event_updateBookButtonActionPerformed
 
     @Override
     public final void loadTableData() {
 
-        if (authorList == null || authorList.isEmpty()) {
-            Logy.d("Loading author from file for first Time");
+        if (subjectList == null || subjectList.isEmpty()) {
+            Logy.d("Loading subject from file for first Time");
             try {
-                authorList = AuthorBLL.getAllAuthor();
+                subjectList = SubjectBLL.getAllSubject();
             } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
                 Alert.showError(this, ex.getMessage());
@@ -227,28 +238,22 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
             }
 
         } else {
-            Logy.d("author already loaded");
+            Logy.d("subject already loaded");
         }
-
-        this.fillTableData(authorList);
+        this.fillTableData(subjectList);
 
     }
 
-    /**
-     *
-     * @param authorInfoList
-     */
     @Override
-    public final void fillTableData(List<Author> authorInfoList) {
+    public final void fillTableData(List<Subject> subjectInfoList) {
         DefaultTableModel defaultTableModel = (DefaultTableModel) table.getModel();
         int numOfColumn = defaultTableModel.getColumnCount();
 
-        authorInfoList.stream().forEach((authorInfo) -> {
+        subjectInfoList.stream().forEach((subjectInfo) -> {
             Object[] object;
             object = new Object[numOfColumn];
-            object[0] = authorInfo.getId();
-            object[1] = authorInfo.getTitle();
-            object[2] = authorInfo.getContact();
+            object[0] = subjectInfo.getId();
+            object[1] = subjectInfo.getTitle();
 
             defaultTableModel.addRow(object);
         });
@@ -257,7 +262,7 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBookAuthorButton;
+    private javax.swing.JButton addBookButton;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerSubPanel;
@@ -269,6 +274,6 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JTable table;
-    private javax.swing.JButton updateBookAuthorButton;
+    private javax.swing.JButton updateBookButton;
     // End of variables declaration//GEN-END:variables
 }

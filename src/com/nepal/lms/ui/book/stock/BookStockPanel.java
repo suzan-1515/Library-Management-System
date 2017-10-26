@@ -3,31 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.ui.book;
+package com.nepal.lms.ui.book.stock;
 
-import com.nepal.lms.bll.SubjectBLL;
+import com.nepal.lms.bll.BookBLL;
 import com.nepal.lms.custom.Alert;
-import com.nepal.lms.entity.subject.Subject;
+import com.nepal.lms.entity.book.BookInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.util.Logy;
 import com.nepal.lms.view.BookView;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Suzn
  */
-public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Subject> {
+public class BookStockPanel extends javax.swing.JPanel implements BookView<BookInfo> {
 
-    private List<Subject> subjectList;
+    private List<BookInfo> bookList;
 
     /**
-     * Creates new form BookSubjectPanel
+     * Creates new form BookStockPanel
      */
-    public BookSubjectPanel() {
+    public BookStockPanel() {
         initComponents();
         this.loadTableData();
     }
@@ -54,6 +56,9 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
         jPanel3 = new javax.swing.JPanel();
         updateBookButton = new javax.swing.JButton();
         addBookButton = new javax.swing.JButton();
+        borrowBookButton = new javax.swing.JButton();
+        returnBookButton = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -141,14 +146,23 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
             }
         };
 
-        tableModel.addColumn(com.nepal.lms.entity.subject.SubjectParams.ID.toUpperCase());
-        tableModel.addColumn(com.nepal.lms.entity.subject.SubjectParams.TITLE.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.ID.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.TITLE.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.SUBJECT.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.AUTHOR.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.PUBLISHER.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.EDITION.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.ISBN.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.NUMBER_OF_COPY.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.AVAILABLE_COPIES.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.book.BookParams.SHELF_NO.toUpperCase());
+        tableModel.addColumn("Available".toUpperCase());
         table.setModel(tableModel);
+        javax.swing.table.TableRowSorter<javax.swing.table.TableModel> rowSorter = new javax.swing.table.TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
         table.setRowHeight(26);
         table.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(table);
-        javax.swing.table.TableRowSorter<javax.swing.table.TableModel> rowSorter = new javax.swing.table.TableRowSorter<>(table.getModel());
-        table.setRowSorter(rowSorter);
 
         centerSubPanel.add(jScrollPane1, "card2");
 
@@ -174,12 +188,36 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
             }
         });
 
+        borrowBookButton.setText("Borrow");
+        borrowBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(255, 51, 0), new java.awt.Color(255, 51, 0)));
+        borrowBookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                borrowBookButtonActionPerformed(evt);
+            }
+        });
+
+        returnBookButton.setText("Return");
+        returnBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(255, 51, 0), new java.awt.Color(255, 51, 0)));
+        returnBookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnBookButtonActionPerformed(evt);
+            }
+        });
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator1.setPreferredSize(new java.awt.Dimension(5, 10));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addComponent(borrowBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(returnBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,10 +227,16 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(borrowBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(returnBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         bottomPanel.add(jPanel3);
@@ -204,23 +248,30 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void borrowBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrowBookButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_borrowBookButtonActionPerformed
+
+    private void returnBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBookButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_returnBookButtonActionPerformed
+
     private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
-
-
+        BookStockInsertDialog bookStockInsertDialog = new BookStockInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
+        bookStockInsertDialog.setVisible(true);
     }//GEN-LAST:event_addBookButtonActionPerformed
 
     private void updateBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookButtonActionPerformed
-
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_updateBookButtonActionPerformed
 
     @Override
     public final void loadTableData() {
 
-        if (subjectList == null || subjectList.isEmpty()) {
-            Logy.d("Loading subject from file for first Time");
+        if (bookList == null || bookList.isEmpty()) {
+            Logy.d("Loading book from file for first Time");
             try {
-                subjectList = SubjectBLL.getAllSubject();
+                bookList = BookBLL.getAllBook();
             } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
                 Alert.showError(this, ex.getMessage());
@@ -228,22 +279,31 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
             }
 
         } else {
-            Logy.d("subject already loaded");
+            Logy.d("book already loaded");
         }
-        this.fillTableData(subjectList);
+        this.fillTableData(bookList);
 
     }
 
     @Override
-    public final void fillTableData(List<Subject> subjectInfoList) {
+    public final void fillTableData(List<BookInfo> bookInfoList) {
         DefaultTableModel defaultTableModel = (DefaultTableModel) table.getModel();
         int numOfColumn = defaultTableModel.getColumnCount();
 
-        subjectInfoList.stream().forEach((subjectInfo) -> {
+        bookInfoList.stream().forEach((bookInfo) -> {
             Object[] object;
             object = new Object[numOfColumn];
-            object[0] = subjectInfo.getId();
-            object[1] = subjectInfo.getTitle();
+            object[0] = bookInfo.getId();
+            object[1] = bookInfo.getTitle();
+            object[2] = bookInfo.getSubject().getTitle();
+            object[3] = bookInfo.getAuthor().getTitle();
+            object[4] = bookInfo.getPublisher().getTitle();
+            object[5] = bookInfo.getEdition();
+            object[6] = bookInfo.getIsbn();
+            object[7] = bookInfo.getNumberOfCopy();
+            object[8] = bookInfo.getAvailableCopies();
+            object[9] = bookInfo.getShelfNo().getLocation();
+            object[10] = bookInfo.getAvailableCopies() > 0;
 
             defaultTableModel.addRow(object);
         });
@@ -253,6 +313,7 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBookButton;
+    private javax.swing.JButton borrowBookButton;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerSubPanel;
@@ -261,6 +322,8 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton returnBookButton;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JTable table;
