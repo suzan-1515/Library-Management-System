@@ -15,6 +15,7 @@ import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.util.Logy;
 import java.util.List;
 import javax.swing.RowFilter;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -24,8 +25,6 @@ import javax.swing.table.TableRowSorter;
  * @author Suzn
  */
 public class GuestDashboard extends javax.swing.JFrame {
-
-    private List<BookInfo> bookList;
 
     /**
      * Creates new form GuestDashboard
@@ -67,6 +66,7 @@ public class GuestDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Knowledgica - Library Management System");
+        setExtendedState(6);
         setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/icon.png")));
         setMinimumSize(new java.awt.Dimension(780, 620));
         setPreferredSize(new java.awt.Dimension(780, 620));
@@ -308,7 +308,9 @@ public class GuestDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        
+        LibrarianDashboard librarianDashboard = new LibrarianDashboard();
+        librarianDashboard.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
@@ -365,19 +367,16 @@ public class GuestDashboard extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void loadTableData() {
-
-        if (bookList == null || bookList.isEmpty()) {
+        SwingUtilities.invokeLater(() -> {
 
             try {
-                bookList = BookBLL.getAllBook();
+                fillTableData(BookBLL.getAllBook());
             } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
                 Alert.showError(this, ex.getMessage());
-                return;
             }
 
-        }
-        this.fillTableData(bookList);
+        });
 
     }
 

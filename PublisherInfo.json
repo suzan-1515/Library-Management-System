@@ -3,18 +3,25 @@
     "id": 1,
     "title": "Black Horse Publication",
     "contact": "442623"
-  },{
+  },
+  {
     "id": 2,
     "title": "Asian Publication",
     "contact": "5526354"
-  }
-  ,{
+  },
+  {
     "id": 3,
     "title": "Sajha Publication",
     "contact": "4496352"
-  }  ,{
+  },
+  {
     "id": 4,
     "title": "Himalayan Publication",
     "contact": "4935562"
+  },
+  {
+    "id": 7633,
+    "title": "Mero Publication",
+    "contact": "499070936"
   }
 ]

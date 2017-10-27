@@ -5,6 +5,7 @@
  */
 package com.nepal.lms.ui.book.author;
 
+import com.nepal.lms.action.AuthorListener;
 import com.nepal.lms.bll.AuthorBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.author.Author;
@@ -14,13 +15,15 @@ import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.util.Logy;
 import com.nepal.lms.view.BookView;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Suzn
  */
-public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Author> {
+public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Author>, AuthorListener {
 
     private List<Author> authorList;
 
@@ -206,7 +209,11 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBookAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookAuthorButtonActionPerformed
-        // TODO add your handling code here:
+        BookAuthorInsertDialog bookAuthorInsertDialog = new BookAuthorInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
+        bookAuthorInsertDialog.setItemAddedListener((Author author) -> {
+            appendAuthorData(author);
+        });
+        bookAuthorInsertDialog.setVisible(true);
     }//GEN-LAST:event_addBookAuthorButtonActionPerformed
 
     private void updateBookAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookAuthorButtonActionPerformed
@@ -240,19 +247,19 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
      */
     @Override
     public final void fillTableData(List<Author> authorInfoList) {
-        DefaultTableModel defaultTableModel = (DefaultTableModel) table.getModel();
-        int numOfColumn = defaultTableModel.getColumnCount();
 
         authorInfoList.stream().forEach((authorInfo) -> {
-            Object[] object;
-            object = new Object[numOfColumn];
-            object[0] = authorInfo.getId();
-            object[1] = authorInfo.getTitle();
-            object[2] = authorInfo.getContact();
-
-            defaultTableModel.addRow(object);
+            addAuthorRowData(authorInfo);
         });
 
+    }
+
+    public void addAuthorRowData(Author author) {
+        ((DefaultTableModel) table.getModel()).insertRow(0, new Object[]{
+            author.getId(),
+            author.getTitle(),
+            author.getContact()
+        });
     }
 
 
@@ -271,4 +278,14 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
     private javax.swing.JTable table;
     private javax.swing.JButton updateBookAuthorButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onAuthorDataChanged(Author a) {
+        appendAuthorData(a);
+    }
+
+    private void appendAuthorData(Author author) {
+        authorList.add(author);
+        addAuthorRowData(author);
+    }
 }

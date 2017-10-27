@@ -5,6 +5,10 @@
  */
 package com.nepal.lms.ui.book.stock;
 
+import com.nepal.lms.action.AuthorListener;
+import com.nepal.lms.action.PublisherListener;
+import com.nepal.lms.action.ShelfListener;
+import com.nepal.lms.action.SubjectListener;
 import com.nepal.lms.bll.BookBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.book.BookInfo;
@@ -25,6 +29,10 @@ import javax.swing.table.DefaultTableModel;
 public class BookStockPanel extends javax.swing.JPanel implements BookView<BookInfo> {
 
     private List<BookInfo> bookList;
+    private SubjectListener subjectListener;
+    private AuthorListener authorListener;
+    private PublisherListener publisherListener;
+    private ShelfListener shelfListener;
 
     /**
      * Creates new form BookStockPanel
@@ -258,6 +266,13 @@ public class BookStockPanel extends javax.swing.JPanel implements BookView<BookI
 
     private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
         BookStockInsertDialog bookStockInsertDialog = new BookStockInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
+        bookStockInsertDialog.setItemAddedListener((BookInfo bookInfo) -> {
+            appendBookData(bookInfo);
+        });
+        bookStockInsertDialog.setSubjectListener(subjectListener);
+        bookStockInsertDialog.setAuthorListener(authorListener);
+        bookStockInsertDialog.setPublisherListener(publisherListener);
+        bookStockInsertDialog.setShelfListener(shelfListener);
         bookStockInsertDialog.setVisible(true);
     }//GEN-LAST:event_addBookButtonActionPerformed
 
@@ -267,49 +282,54 @@ public class BookStockPanel extends javax.swing.JPanel implements BookView<BookI
 
     @Override
     public final void loadTableData() {
+        SwingUtilities.invokeLater(() -> {
+            if (bookList == null || bookList.isEmpty()) {
+                Logy.d("Loading book from file for first Time");
+                try {
+                    bookList = BookBLL.getAllBook();
+                } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
+                    Logy.e(ex);
+                    Alert.showError(this, ex.getMessage());
+                    return;
+                }
 
-        if (bookList == null || bookList.isEmpty()) {
-            Logy.d("Loading book from file for first Time");
-            try {
-                bookList = BookBLL.getAllBook();
-            } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
-                Logy.e(ex);
-                Alert.showError(this, ex.getMessage());
-                return;
+            } else {
+                Logy.d("book already loaded");
             }
-
-        } else {
-            Logy.d("book already loaded");
-        }
-        this.fillTableData(bookList);
+            this.fillTableData(bookList);
+        });
 
     }
 
     @Override
     public final void fillTableData(List<BookInfo> bookInfoList) {
-        DefaultTableModel defaultTableModel = (DefaultTableModel) table.getModel();
-        int numOfColumn = defaultTableModel.getColumnCount();
 
         bookInfoList.stream().forEach((bookInfo) -> {
-            Object[] object;
-            object = new Object[numOfColumn];
-            object[0] = bookInfo.getId();
-            object[1] = bookInfo.getTitle();
-            object[2] = bookInfo.getSubject().getTitle();
-            object[3] = bookInfo.getAuthor().getTitle();
-            object[4] = bookInfo.getPublisher().getTitle();
-            object[5] = bookInfo.getEdition();
-            object[6] = bookInfo.getIsbn();
-            object[7] = bookInfo.getNumberOfCopy();
-            object[8] = bookInfo.getAvailableCopies();
-            object[9] = bookInfo.getShelfNo().getLocation();
-            object[10] = bookInfo.getAvailableCopies() > 0;
-
-            defaultTableModel.addRow(object);
+            addBookRowData(bookInfo);
         });
 
     }
 
+    private void appendBookData(BookInfo b) {
+        bookList.add(b);
+        addBookRowData(b);
+    }
+
+    public void addBookRowData(BookInfo bookInfo) {
+        ((DefaultTableModel) table.getModel()).insertRow(0, new Object[]{
+            bookInfo.getId(),
+            bookInfo.getTitle(),
+            bookInfo.getSubject().getTitle(),
+            bookInfo.getAuthor().getTitle(),
+            bookInfo.getPublisher().getTitle(),
+            bookInfo.getEdition(),
+            bookInfo.getIsbn(),
+            bookInfo.getNumberOfCopy(),
+            bookInfo.getAvailableCopies(),
+            bookInfo.getShelfNo().getLocation(),
+            bookInfo.getAvailableCopies() > 0
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBookButton;
@@ -329,4 +349,61 @@ public class BookStockPanel extends javax.swing.JPanel implements BookView<BookI
     private javax.swing.JTable table;
     private javax.swing.JButton updateBookButton;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the subjectListener
+     */
+    public SubjectListener getSubjectListener() {
+        return subjectListener;
+    }
+
+    /**
+     * @param subjectListener the subjectListener to set
+     */
+    public void setSubjectListener(SubjectListener subjectListener) {
+        this.subjectListener = subjectListener;
+    }
+
+    /**
+     * @return the authorListener
+     */
+    public AuthorListener getAuthorListener() {
+        return authorListener;
+    }
+
+    /**
+     * @param authorListener the authorListener to set
+     */
+    public void setAuthorListener(AuthorListener authorListener) {
+        this.authorListener = authorListener;
+    }
+
+    /**
+     * @return the publisherListener
+     */
+    public PublisherListener getPublisherListener() {
+        return publisherListener;
+    }
+
+    /**
+     * @param publisherListener the publisherListener to set
+     */
+    public void setPublisherListener(PublisherListener publisherListener) {
+        this.publisherListener = publisherListener;
+    }
+
+    /**
+     * @return the shelfListener
+     */
+    public ShelfListener getShelfListener() {
+        return shelfListener;
+    }
+
+    /**
+     * @param shelfListener the shelfListener to set
+     */
+    public void setShelfListener(ShelfListener shelfListener) {
+        this.shelfListener = shelfListener;
+    }
+
 }

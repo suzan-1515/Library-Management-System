@@ -5,6 +5,7 @@
  */
 package com.nepal.lms.ui.book.subject;
 
+import com.nepal.lms.action.SubjectListener;
 import com.nepal.lms.bll.SubjectBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.subject.Subject;
@@ -22,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Suzn
  */
-public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Subject> {
+public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Subject>, SubjectListener {
 
     private List<Subject> subjectList;
 
@@ -209,11 +210,7 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
     private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
         BookSubjectInsertDialog bookSubjectInsertDialog = new BookSubjectInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
         bookSubjectInsertDialog.setItemAddedListener((Subject subject) -> {
-            subjectList.add(subject);
-            ((DefaultTableModel) table.getModel()).insertRow(0, new Object[]{
-                subject.getId(),
-                subject.getTitle()
-            });
+            appendSubjectData(subject);
         });
         bookSubjectInsertDialog.setVisible(true);
 
@@ -223,6 +220,13 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
 
 
     }//GEN-LAST:event_updateBookButtonActionPerformed
+
+    public void addSubjectRowData(Subject subject) {
+        ((DefaultTableModel) table.getModel()).insertRow(0, new Object[]{
+            subject.getId(),
+            subject.getTitle()
+        });
+    }
 
     @Override
     public final void loadTableData() {
@@ -246,16 +250,8 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
 
     @Override
     public final void fillTableData(List<Subject> subjectInfoList) {
-        DefaultTableModel defaultTableModel = (DefaultTableModel) table.getModel();
-        int numOfColumn = defaultTableModel.getColumnCount();
-
         subjectInfoList.stream().forEach((subjectInfo) -> {
-            Object[] object;
-            object = new Object[numOfColumn];
-            object[0] = subjectInfo.getId();
-            object[1] = subjectInfo.getTitle();
-
-            defaultTableModel.addRow(object);
+            addSubjectRowData(subjectInfo);
         });
 
     }
@@ -276,4 +272,14 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
     private javax.swing.JTable table;
     private javax.swing.JButton updateBookButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onSubjectDataChanged(Subject s) {
+        appendSubjectData(s);
+    }
+
+    private void appendSubjectData(Subject s) {
+        subjectList.add(s);
+        addSubjectRowData(s);
+    }
 }

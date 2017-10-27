@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.ui.book.subject;
+package com.nepal.lms.ui.book.shelf;
 
-import com.nepal.lms.bll.SubjectBLL;
+import com.nepal.lms.bll.ShelfBLL;
 import com.nepal.lms.custom.Alert;
-import com.nepal.lms.entity.subject.Subject;
+import com.nepal.lms.entity.shelf.Shelf;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.DuplicateRecordException;
 import com.nepal.lms.exception.MissingFileException;
@@ -19,14 +19,14 @@ import com.nepal.lms.validation.book.BookValidation;
  *
  * @author Suzn
  */
-public class BookSubjectInsertDialog extends javax.swing.JDialog {
+public class BookShelfInsertDialog extends javax.swing.JDialog {
 
     private final BookValidation validation;
     private ItemAddedListener itemAddedListener;
 
-    private void notifyDataSetChanged(Subject subject) {
+    private void notifyDataSetChanged(Shelf shelf) {
         if (itemAddedListener != null) {
-            itemAddedListener.onNewItemAdded(subject);
+            itemAddedListener.onNewItemAdded(shelf);
         }
     }
 
@@ -36,7 +36,7 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
 
     public interface ItemAddedListener {
 
-        void onNewItemAdded(Subject subject);
+        void onNewItemAdded(Shelf shelf);
     }
 
     /**
@@ -45,7 +45,7 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public BookSubjectInsertDialog(java.awt.Frame parent, boolean modal) {
+    public BookShelfInsertDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
@@ -100,7 +100,7 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Add Subject");
+        jLabel1.setText("Add Shelf");
         jLabel1.setPreferredSize(new java.awt.Dimension(113, 50));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -262,16 +262,16 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        if (validation.isSubjectFormValid(titleTextField.getText())) {
+        if (validation.isShelfFormValid(titleTextField.getText())) {
 
-            Subject subject = new Subject();
-            subject.setId(Utils.generateRandomID());
-            subject.setTitle(titleTextField.getText());
+            Shelf shelf = new Shelf();
+            shelf.setId(Utils.generateRandomID());
+            shelf.setLocation(titleTextField.getText());
 
             try {
-                SubjectBLL.insertSubject(subject);
-                notifyDataSetChanged(subject);
-                Alert.showInformation(this, "Subject inserted successfully!");
+                ShelfBLL.insertShelf(shelf);
+                notifyDataSetChanged(shelf);
+                Alert.showInformation(this, "Shelf inserted successfully!");
 
                 resetFields();
             } catch (DuplicateRecordException | MissingFileException | CorruptedDataException ex) {
@@ -299,8 +299,10 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BookSubjectInsertDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookShelfInsertDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -309,7 +311,7 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            BookSubjectInsertDialog dialog = new BookSubjectInsertDialog(new javax.swing.JFrame(), true);
+            BookShelfInsertDialog dialog = new BookShelfInsertDialog(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {

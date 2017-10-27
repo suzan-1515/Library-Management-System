@@ -5,6 +5,7 @@
  */
 package com.nepal.lms.ui.book.shelf;
 
+import com.nepal.lms.action.ShelfListener;
 import com.nepal.lms.bll.ShelfBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.shelf.Shelf;
@@ -14,13 +15,15 @@ import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.util.Logy;
 import com.nepal.lms.view.BookView;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @shelf Suzn
  */
-public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf> {
+public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf>, ShelfListener {
 
     private List<Shelf> shelfList;
 
@@ -209,7 +212,11 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
     }//GEN-LAST:event_updateBookShelfButtonActionPerformed
 
     private void addBookShelfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookShelfButtonActionPerformed
-        // TODO add your handling code here:
+        BookShelfInsertDialog bookShelfInsertDialog = new BookShelfInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
+        bookShelfInsertDialog.setItemAddedListener((Shelf shelf) -> {
+            appendShelfData(shelf);
+        });
+        bookShelfInsertDialog.setVisible(true);
     }//GEN-LAST:event_addBookShelfButtonActionPerformed
 
     @Override
@@ -238,18 +245,18 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
      */
     @Override
     public final void fillTableData(List<Shelf> shelfInfoList) {
-        DefaultTableModel defaultTableModel = (DefaultTableModel) table.getModel();
-        int numOfColumn = defaultTableModel.getColumnCount();
 
         shelfInfoList.stream().forEach((shelfInfo) -> {
-            Object[] object;
-            object = new Object[numOfColumn];
-            object[0] = shelfInfo.getId();
-            object[1] = shelfInfo.getLocation();
-
-            defaultTableModel.addRow(object);
+            addShelfRowData(shelfInfo);
         });
 
+    }
+
+    public void addShelfRowData(Shelf shelf) {
+        ((DefaultTableModel) table.getModel()).insertRow(0, new Object[]{
+            shelf.getId(),
+            shelf.getLocation()
+        });
     }
 
 
@@ -268,4 +275,14 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
     private javax.swing.JTable table;
     private javax.swing.JButton updateBookShelfButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onShelfDataChanged(Shelf s) {
+        appendShelfData(s);
+    }
+
+    private void appendShelfData(Shelf s) {
+        shelfList.add(s);
+        addShelfRowData(s);
+    }
 }

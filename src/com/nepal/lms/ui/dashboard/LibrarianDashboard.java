@@ -22,6 +22,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
      */
     public LibrarianDashboard() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -54,6 +55,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Knowledgica - Librarian Panel");
+        setExtendedState(6);
         getContentPane().setLayout(new java.awt.CardLayout());
 
         rootPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,7 +141,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         leftPanel.setBackground(new java.awt.Color(204, 204, 204));
         leftPanel.setMinimumSize(new java.awt.Dimension(150, 10));
         leftPanel.setPreferredSize(new java.awt.Dimension(180, 412));
-        leftPanel.setLayout(new java.awt.CardLayout(5, 0));
+        leftPanel.setLayout(new java.awt.CardLayout());
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
@@ -191,7 +193,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         userMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         userMenuButton.setForeground(new java.awt.Color(255, 255, 255));
         userMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
-        userMenuButton.setText("User");
+        userMenuButton.setText("Member");
         userMenuButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
         buttonGroup1.add(userMenuButton);
         userMenuButton.setContentAreaFilled(false);
@@ -238,6 +240,11 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         logoutButton.setOpaque(true);
         logoutButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
         logoutButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout1x.png"))); // NOI18N
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout logoutButtonPanelLayout = new javax.swing.GroupLayout(logoutButtonPanel);
         logoutButtonPanel.setLayout(logoutButtonPanelLayout);
@@ -263,6 +270,12 @@ public class LibrarianDashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        GuestDashboard guestDashboard = new GuestDashboard();
+        guestDashboard.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void bookMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Book menu clicked");

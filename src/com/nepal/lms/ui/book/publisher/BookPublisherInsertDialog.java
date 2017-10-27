@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.ui.book.subject;
+package com.nepal.lms.ui.book.publisher;
 
-import com.nepal.lms.bll.SubjectBLL;
+import com.nepal.lms.bll.PublisherBLL;
 import com.nepal.lms.custom.Alert;
-import com.nepal.lms.entity.subject.Subject;
+import com.nepal.lms.entity.publisher.Publisher;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.DuplicateRecordException;
 import com.nepal.lms.exception.MissingFileException;
@@ -17,35 +17,36 @@ import com.nepal.lms.validation.book.BookValidation;
 
 /**
  *
- * @author Suzn
+ * @publisher Suzn
  */
-public class BookSubjectInsertDialog extends javax.swing.JDialog {
+public class BookPublisherInsertDialog extends javax.swing.JDialog {
 
     private final BookValidation validation;
     private ItemAddedListener itemAddedListener;
 
-    private void notifyDataSetChanged(Subject subject) {
-        if (itemAddedListener != null) {
-            itemAddedListener.onNewItemAdded(subject);
+    private void notifyDataSetChanged(Publisher publisher) {
+        if (getItemAddedListener() != null) {
+            getItemAddedListener().onNewItemAdded(publisher);
         }
     }
 
     private void resetFields() {
         titleTextField.setText(null);
+        contactTextField.setText(null);
     }
 
     public interface ItemAddedListener {
 
-        void onNewItemAdded(Subject subject);
+        void onNewItemAdded(Publisher publisher);
     }
 
     /**
-     * Creates new form BookStockInsertDialog
+     * Creates new form BookPublisherInsertDialog
      *
      * @param parent
      * @param modal
      */
-    public BookSubjectInsertDialog(java.awt.Frame parent, boolean modal) {
+    public BookPublisherInsertDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
@@ -72,14 +73,13 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         titleTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        contactTextField = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         cancelButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setModal(true);
-        setResizable(false);
-        setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new java.awt.CardLayout());
 
         rootPanel.setLayout(new java.awt.BorderLayout());
@@ -100,7 +100,7 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Add Subject");
+        jLabel1.setText("Add Publisher");
         jLabel1.setPreferredSize(new java.awt.Dimension(113, 50));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -125,9 +125,9 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,26 +148,51 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
 
         jPanel5.setOpaque(false);
 
-        jLabel2.setLabelFor(titleTextField);
         jLabel2.setText("Title");
+
+        jLabel3.setText("Contact");
+
+        contactTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                char enter = evt.getKeyChar();
+                if(!(Character.isDigit(enter))){
+                    evt.consume();
+                }
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(titleTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                    .addComponent(contactTextField))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        jPanel5Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {contactTextField, titleTextField});
+
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {contactTextField, titleTextField});
 
         jPanel6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(255, 51, 0)));
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -210,8 +235,6 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cancelButton, saveButton});
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -231,7 +254,7 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
@@ -239,15 +262,15 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
         centerPanelLayout.setHorizontalGroup(
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, centerPanelLayout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         centerPanelLayout.setVerticalGroup(
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(centerPanelLayout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 62, Short.MAX_VALUE))
+                .addGap(0, 78, Short.MAX_VALUE))
         );
 
         rootPanel.add(centerPanel, java.awt.BorderLayout.CENTER);
@@ -262,16 +285,17 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        if (validation.isSubjectFormValid(titleTextField.getText())) {
+        if (validation.isPublisherFormValid(titleTextField.getText(), contactTextField.getText())) {
 
-            Subject subject = new Subject();
-            subject.setId(Utils.generateRandomID());
-            subject.setTitle(titleTextField.getText());
+            Publisher publisher = new Publisher();
+            publisher.setId(Utils.generateRandomID());
+            publisher.setTitle(titleTextField.getText());
+            publisher.setContact(contactTextField.getText());
 
             try {
-                SubjectBLL.insertSubject(subject);
-                notifyDataSetChanged(subject);
-                Alert.showInformation(this, "Subject inserted successfully!");
+                PublisherBLL.insertPublisher(publisher);
+                notifyDataSetChanged(publisher);
+                Alert.showInformation(this, "Publisher inserted successfully!");
 
                 resetFields();
             } catch (DuplicateRecordException | MissingFileException | CorruptedDataException ex) {
@@ -299,17 +323,16 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BookSubjectInsertDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BookPublisherInsertDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
 
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            BookSubjectInsertDialog dialog = new BookSubjectInsertDialog(new javax.swing.JFrame(), true);
+            BookPublisherInsertDialog dialog = new BookPublisherInsertDialog(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -323,8 +346,10 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JPanel centerPanel;
+    private javax.swing.JTextField contactTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -350,5 +375,4 @@ public class BookSubjectInsertDialog extends javax.swing.JDialog {
     public void setItemAddedListener(ItemAddedListener itemAddedListener) {
         this.itemAddedListener = itemAddedListener;
     }
-
 }

@@ -5,6 +5,10 @@
  */
 package com.nepal.lms.ui.book.stock;
 
+import com.nepal.lms.action.AuthorListener;
+import com.nepal.lms.action.PublisherListener;
+import com.nepal.lms.action.ShelfListener;
+import com.nepal.lms.action.SubjectListener;
 import com.nepal.lms.bll.AuthorBLL;
 import com.nepal.lms.bll.BookBLL;
 import com.nepal.lms.bll.PublisherBLL;
@@ -20,6 +24,9 @@ import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.DuplicateRecordException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
+import com.nepal.lms.ui.book.author.BookAuthorInsertDialog;
+import com.nepal.lms.ui.book.publisher.BookPublisherInsertDialog;
+import com.nepal.lms.ui.book.shelf.BookShelfInsertDialog;
 import com.nepal.lms.ui.book.subject.BookSubjectInsertDialog;
 import com.nepal.lms.util.Logy;
 import com.nepal.lms.util.Utils;
@@ -37,6 +44,23 @@ import javax.swing.SwingUtilities;
 public class BookStockInsertDialog extends javax.swing.JDialog {
 
     private final BookValidation validation;
+    private SubjectListener subjectListener;
+    private AuthorListener authorListener;
+    private PublisherListener publisherListener;
+    private ShelfListener shelfListener;
+
+    private ItemAddedListener itemAddedListener;
+
+    private void notifyDataSetChanged(BookInfo bookInfo) {
+        if (getItemAddedListener() != null) {
+            getItemAddedListener().onNewItemAdded(bookInfo);
+        }
+    }
+
+    public interface ItemAddedListener {
+
+        void onNewItemAdded(BookInfo bookInfo);
+    }
 
     /**
      * Creates new form BookStockInsertDialog
@@ -487,7 +511,14 @@ public class BookStockInsertDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void authorAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorAddButtonActionPerformed
-        // TODO add your handling code here:
+        BookAuthorInsertDialog bookAuthorInsertDialog = new BookAuthorInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
+        bookAuthorInsertDialog.setItemAddedListener((Author author) -> {
+            authorComboBox.addItem(author);
+            if (authorListener != null) {
+                authorListener.onAuthorDataChanged(author);
+            }
+        });
+        bookAuthorInsertDialog.setVisible(true);
     }//GEN-LAST:event_authorAddButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -511,7 +542,10 @@ public class BookStockInsertDialog extends javax.swing.JDialog {
 
             try {
                 BookBLL.insertBook(bookInfo);
+                notifyDataSetChanged(bookInfo);
                 Alert.showInformation(this, "Book inserted successfully!");
+                
+                resetFields();
             } catch (DuplicateRecordException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
                 Alert.showError(this, ex.getMessage());
@@ -521,17 +555,34 @@ public class BookStockInsertDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void publisherAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_publisherAddButtonActionPerformed
-        // TODO add your handling code here:
+        BookPublisherInsertDialog bookPublisherInsertDialog = new BookPublisherInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
+        bookPublisherInsertDialog.setItemAddedListener((Publisher publisher) -> {
+            publisherComboBox.addItem(publisher);
+            if (publisherListener != null) {
+                publisherListener.onPublisherDataChanged(publisher);
+            }
+        });
+        bookPublisherInsertDialog.setVisible(true);
     }//GEN-LAST:event_publisherAddButtonActionPerformed
 
     private void shelfAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shelfAddButtonActionPerformed
-        // TODO add your handling code here:
+        BookShelfInsertDialog bookShelfInsertDialog = new BookShelfInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
+        bookShelfInsertDialog.setItemAddedListener((Shelf shelf) -> {
+            shelfComboBox.addItem(shelf);
+            if (shelfListener != null) {
+                shelfListener.onShelfDataChanged(shelf);
+            }
+        });
+        bookShelfInsertDialog.setVisible(true);
     }//GEN-LAST:event_shelfAddButtonActionPerformed
 
     private void subjectAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectAddButtonActionPerformed
         BookSubjectInsertDialog bookSubjectInsertDialog = new BookSubjectInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
         bookSubjectInsertDialog.setItemAddedListener((Subject subject) -> {
             subjectComboBox.addItem(subject);
+            if (subjectListener != null) {
+                subjectListener.onSubjectDataChanged(subject);
+            }
         });
         bookSubjectInsertDialog.setVisible(true);
     }//GEN-LAST:event_subjectAddButtonActionPerformed
@@ -610,27 +661,112 @@ public class BookStockInsertDialog extends javax.swing.JDialog {
 
     private void loadData() {
 
-        try {
-            SubjectBLL.getAllSubject().stream()
-                    .forEach(subject -> {
-                        subjectComboBox.addItem(subject);
-                    });
-            AuthorBLL.getAllAuthor().stream()
-                    .forEach(author -> {
-                        authorComboBox.addItem(author);
-                    });
-            PublisherBLL.getAllPublisher().stream()
-                    .forEach(publisher -> {
-                        publisherComboBox.addItem(publisher);
-                    });
-            ShelfBLL.getAllShelf().stream()
-                    .forEach(shelf -> {
-                        shelfComboBox.addItem(shelf);
-                    });
-        } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
-            Logy.e(ex);
-            Alert.showError(this, ex.getMessage());
-        }
+        SwingUtilities.invokeLater(() -> {
+
+            try {
+                SubjectBLL.getAllSubject().stream()
+                        .forEach(subject -> {
+                            subjectComboBox.addItem(subject);
+                        });
+                AuthorBLL.getAllAuthor().stream()
+                        .forEach(author -> {
+                            authorComboBox.addItem(author);
+                        });
+                PublisherBLL.getAllPublisher().stream()
+                        .forEach(publisher -> {
+                            publisherComboBox.addItem(publisher);
+                        });
+                ShelfBLL.getAllShelf().stream()
+                        .forEach(shelf -> {
+                            shelfComboBox.addItem(shelf);
+                        });
+            } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
+                Logy.e(ex);
+                Alert.showError(this, ex.getMessage());
+            }
+        });
+    }
+
+    /**
+     * @return the subjectListener
+     */
+    public SubjectListener getSubjectListener() {
+        return subjectListener;
+    }
+
+    /**
+     * @param subjectListener the subjectListener to set
+     */
+    public void setSubjectListener(SubjectListener subjectListener) {
+        this.subjectListener = subjectListener;
+    }
+
+    /**
+     * @return the authorListener
+     */
+    public AuthorListener getAuthorListener() {
+        return authorListener;
+    }
+
+    /**
+     * @param authorListener the authorListener to set
+     */
+    public void setAuthorListener(AuthorListener authorListener) {
+        this.authorListener = authorListener;
+    }
+
+    /**
+     * @return the publisherListener
+     */
+    public PublisherListener getPublisherListener() {
+        return publisherListener;
+    }
+
+    /**
+     * @param publisherListener the publisherListener to set
+     */
+    public void setPublisherListener(PublisherListener publisherListener) {
+        this.publisherListener = publisherListener;
+    }
+
+    /**
+     * @return the shelfListener
+     */
+    public ShelfListener getShelfListener() {
+        return shelfListener;
+    }
+
+    /**
+     * @param shelfListener the shelfListener to set
+     */
+    public void setShelfListener(ShelfListener shelfListener) {
+        this.shelfListener = shelfListener;
+    }
+
+    private void resetFields() {
+        titleTextField.setText(null);
+        editionTextField.setText(null);
+        isbnTextField.setText(null);
+        quantityTextField.setText(null);
+
+        subjectComboBox.setSelectedIndex(0);
+        authorComboBox.setSelectedIndex(0);
+        publisherComboBox.setSelectedIndex(0);
+        shelfComboBox.setSelectedIndex(0);
+    }
+
+    /**
+     * @return the itemAddedListener
+     */
+    public ItemAddedListener getItemAddedListener() {
+        return itemAddedListener;
+    }
+
+    /**
+     * @param itemAddedListener the itemAddedListener to set
+     */
+    public void setItemAddedListener(ItemAddedListener itemAddedListener) {
+        this.itemAddedListener = itemAddedListener;
     }
 
 }

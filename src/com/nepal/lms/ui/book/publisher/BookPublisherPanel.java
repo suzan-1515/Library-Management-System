@@ -5,6 +5,7 @@
  */
 package com.nepal.lms.ui.book.publisher;
 
+import com.nepal.lms.action.PublisherListener;
 import com.nepal.lms.bll.PublisherBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.publisher.Publisher;
@@ -14,13 +15,15 @@ import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.util.Logy;
 import com.nepal.lms.view.BookView;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @publisher Suzn
  */
-public class BookPublisherPanel extends javax.swing.JPanel implements BookView<Publisher> {
+public class BookPublisherPanel extends javax.swing.JPanel implements BookView<Publisher>, PublisherListener {
 
     private List<Publisher> publisherList;
 
@@ -206,7 +209,11 @@ public class BookPublisherPanel extends javax.swing.JPanel implements BookView<P
     }// </editor-fold>//GEN-END:initComponents
 
     private void addPublisherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPublisherButtonActionPerformed
-        // TODO add your handling code here:
+        BookPublisherInsertDialog bookPublisherInsertDialog = new BookPublisherInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
+        bookPublisherInsertDialog.setItemAddedListener((Publisher publisher) -> {
+            appendPublisherData(publisher);
+        });
+        bookPublisherInsertDialog.setVisible(true);
     }//GEN-LAST:event_addPublisherButtonActionPerformed
 
     private void updatePublisherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePublisherButtonActionPerformed
@@ -233,23 +240,23 @@ public class BookPublisherPanel extends javax.swing.JPanel implements BookView<P
         this.fillTableData(publisherList);
     }
 
+    public void addPublisherRowData(Publisher publisher) {
+        ((DefaultTableModel) table.getModel()).insertRow(0, new Object[]{
+            publisher.getId(),
+            publisher.getTitle(),
+            publisher.getContact()
+        });
+    }
+
     /**
      *
      * @param publisherInfoList
      */
     @Override
     public final void fillTableData(List<Publisher> publisherInfoList) {
-        DefaultTableModel defaultTableModel = (DefaultTableModel) table.getModel();
-        int numOfColumn = defaultTableModel.getColumnCount();
 
         publisherInfoList.stream().forEach((publisherInfo) -> {
-            Object[] object;
-            object = new Object[numOfColumn];
-            object[0] = publisherInfo.getId();
-            object[1] = publisherInfo.getTitle();
-            object[2] = publisherInfo.getContact();
-
-            defaultTableModel.addRow(object);
+            addPublisherRowData(publisherInfo);
         });
 
     }
@@ -270,4 +277,15 @@ public class BookPublisherPanel extends javax.swing.JPanel implements BookView<P
     private javax.swing.JTable table;
     private javax.swing.JButton updatePublisherButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onPublisherDataChanged(Publisher p) {
+        appendPublisherData(p);
+    }
+
+    private void appendPublisherData(Publisher publisher) {
+        publisherList.add(publisher);
+        addPublisherRowData(publisher);
+    }
+
 }

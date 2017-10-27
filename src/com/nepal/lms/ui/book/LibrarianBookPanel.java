@@ -399,6 +399,7 @@ public class LibrarianBookPanel extends javax.swing.JPanel {
         if (bookSubjectPanel == null) {
             Logy.d("Creating book subject panel instance");
             bookSubjectPanel = new BookSubjectPanel();
+            bookStockPanel.setSubjectListener(bookSubjectPanel);
         } else {
             Logy.d("book subject panel already created, returning available instance");
         }
@@ -409,6 +410,7 @@ public class LibrarianBookPanel extends javax.swing.JPanel {
         if (bookAuthorPanel == null) {
             Logy.d("Creating book author panel instance");
             bookAuthorPanel = new BookAuthorPanel();
+            bookStockPanel.setAuthorListener(bookAuthorPanel);
         } else {
             Logy.d("book author panel already created, returning available instance");
         }
@@ -419,6 +421,7 @@ public class LibrarianBookPanel extends javax.swing.JPanel {
         if (bookPublisherPanel == null) {
             Logy.d("Creating book publisher panel instance");
             bookPublisherPanel = new BookPublisherPanel();
+            bookStockPanel.setPublisherListener(bookPublisherPanel);
         } else {
             Logy.d("book publisher panel already created, returning available instance");
         }
@@ -429,6 +432,7 @@ public class LibrarianBookPanel extends javax.swing.JPanel {
         if (bookShelfPanel == null) {
             Logy.d("Creating book shelf panel instance");
             bookShelfPanel = new BookShelfPanel();
+            bookStockPanel.setShelfListener(bookShelfPanel);
         } else {
             Logy.d("book shelf panel already created, returning available instance");
         }

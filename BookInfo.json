@@ -76,5 +76,83 @@
       "location": "B2-C"
     },
     "numberOfCopy": 0
+  },
+  {
+    "availableCopies": 1,
+    "id": 6050,
+    "title": "hci for dummies",
+    "subject": {
+      "id": 6873,
+      "title": "HCI"
+    },
+    "author": {
+      "id": 1,
+      "title": "Sujan Parajuli",
+      "contact": "499652"
+    },
+    "publisher": {
+      "id": 1,
+      "title": "Black Horse Publication",
+      "contact": "442623"
+    },
+    "edition": "1",
+    "isbn": "1A",
+    "shelfNo": {
+      "id": 2,
+      "location": "B2-C"
+    },
+    "numberOfCopy": 1
+  },
+  {
+    "availableCopies": 5,
+    "id": 5975,
+    "title": "Networking for Professional",
+    "subject": {
+      "id": 3,
+      "title": "Networking"
+    },
+    "author": {
+      "id": 6793,
+      "title": "Ram Sharma",
+      "contact": "985632651"
+    },
+    "publisher": {
+      "id": 3,
+      "title": "Sajha Publication",
+      "contact": "4496352"
+    },
+    "edition": "2015",
+    "isbn": "2555asd22",
+    "shelfNo": {
+      "id": 2857,
+      "location": "B6-A1"
+    },
+    "numberOfCopy": 5
+  },
+  {
+    "availableCopies": 1,
+    "id": 8822,
+    "title": "Mero Nepali",
+    "subject": {
+      "id": 6129,
+      "title": "Nepali"
+    },
+    "author": {
+      "id": 3,
+      "title": "Obhama",
+      "contact": "7712256"
+    },
+    "publisher": {
+      "id": 7633,
+      "title": "Mero Publication",
+      "contact": "499070936"
+    },
+    "edition": "2008",
+    "isbn": "225asdas25",
+    "shelfNo": {
+      "id": 3,
+      "location": "A1"
+    },
+    "numberOfCopy": 1
   }
 ]

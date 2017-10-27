@@ -16,6 +16,9 @@ public class Shelf implements Serializable{
     private int id;
     private String location;
 
+    public Shelf() {
+    }
+    
     public Shelf(int id, String location) {
         this.id = id;
         this.location = location;
