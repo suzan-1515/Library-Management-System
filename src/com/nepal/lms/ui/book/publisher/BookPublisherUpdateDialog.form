@@ -237,8 +237,8 @@
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="titleTextField2" alignment="0" pref="166" max="32767" attributes="0"/>
-                                  <Component id="contactTextField2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="titleTextField" alignment="0" pref="166" max="32767" attributes="0"/>
+                                  <Component id="contactTextField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -249,12 +249,12 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel8" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="titleTextField2" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="titleTextField" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel9" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="contactTextField2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="contactTextField" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -267,14 +267,14 @@
                         <Property name="text" type="java.lang.String" value="Title"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="titleTextField2">
+                    <Component class="javax.swing.JTextField" name="titleTextField">
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel9">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Contact"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="contactTextField2">
+                    <Component class="javax.swing.JTextField" name="contactTextField">
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="contactTextField.addKeyListener(new java.awt.event.KeyAdapter() {&#xa;    public void keyTyped(java.awt.event.KeyEvent evt) {&#xa;        char enter = evt.getKeyChar();&#xa;        if(!(Character.isDigit(enter))){&#xa;            evt.consume();&#xa;        }&#xa;    }&#xa;});"/>
                       </AuxValues>

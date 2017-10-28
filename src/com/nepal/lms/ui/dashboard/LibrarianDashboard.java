@@ -5,6 +5,7 @@
  */
 package com.nepal.lms.ui.dashboard;
 
+import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.ui.book.LibrarianBookPanel;
 import com.nepal.lms.ui.member.LibrarianMemberPanel;
 import com.nepal.lms.util.ComponentUtils;
@@ -18,13 +19,21 @@ public class LibrarianDashboard extends javax.swing.JFrame {
 
     private LibrarianBookPanel librarianBookPanel;
     private LibrarianMemberPanel librarianMemberPanel;
+    private LibrarianHomePanel librarianHomePanel;
+
+    private final UserInfo userInfo;
 
     /**
      * Creates new form LibrarianDashboard
+     *
+     * @param userInfo
      */
-    public LibrarianDashboard() {
+    public LibrarianDashboard(UserInfo userInfo) {
         initComponents();
         setLocationRelativeTo(null);
+        this.userInfo = userInfo;
+        Logy.d("Librarian panel initialized");
+        ComponentUtils.addToPanel(this.centerPanel, getLibrarianHomePanel());
     }
 
     /**
@@ -48,10 +57,14 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         centerPanel = new javax.swing.JPanel();
         leftPanel = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        homeMenuButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         bookMenuButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        userMenuButton = new javax.swing.JButton();
+        memberMenuButton = new javax.swing.JButton();
         logoutButtonPanel = new javax.swing.JPanel();
         logoutButton = new javax.swing.JButton();
 
@@ -60,7 +73,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         setExtendedState(6);
         getContentPane().setLayout(new java.awt.CardLayout());
 
-        rootPanel.setBackground(new java.awt.Color(255, 255, 255));
+        rootPanel.setBackground(new java.awt.Color(214, 217, 223));
         rootPanel.setLayout(new java.awt.BorderLayout());
 
         topPanel.setBackground(new java.awt.Color(39, 26, 252));
@@ -136,19 +149,69 @@ public class LibrarianDashboard extends javax.swing.JFrame {
 
         centerPanel.setBackground(new java.awt.Color(255, 255, 255));
         centerPanel.setMinimumSize(new java.awt.Dimension(300, 10));
+        centerPanel.setOpaque(false);
         centerPanel.setPreferredSize(new java.awt.Dimension(500, 10));
         centerPanel.setLayout(new java.awt.CardLayout());
         rootPanel.add(centerPanel, java.awt.BorderLayout.CENTER);
 
-        leftPanel.setBackground(new java.awt.Color(204, 204, 204));
+        leftPanel.setBackground(new java.awt.Color(214, 217, 223));
         leftPanel.setMinimumSize(new java.awt.Dimension(150, 10));
         leftPanel.setPreferredSize(new java.awt.Dimension(180, 412));
         leftPanel.setLayout(new java.awt.CardLayout());
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.PAGE_AXIS));
+        jPanel6.setOpaque(false);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setBackground(new java.awt.Color(249, 249, 249));
+        jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jPanel7.setOpaque(false);
+        jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPanel5.setBackground(new java.awt.Color(153, 0, 153));
+        jPanel5.setOpaque(false);
+        jPanel5.setPreferredSize(new java.awt.Dimension(136, 70));
+
+        homeMenuButton.setBackground(new java.awt.Color(102, 102, 255));
+        homeMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        homeMenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        homeMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
+        homeMenuButton.setText("Home");
+        homeMenuButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(255, 0, 0)));
+        buttonGroup1.add(homeMenuButton);
+        homeMenuButton.setContentAreaFilled(false);
+        homeMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        homeMenuButton.setIconTextGap(10);
+        homeMenuButton.setOpaque(true);
+        homeMenuButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
+        homeMenuButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home1x.png"))); // NOI18N
+        homeMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeMenuButton.setBorder(selectedDashboardMenuBorder);
+                bookMenuButton.setBorder(defaultDashboardMenuBorder);
+                memberMenuButton.setBorder(defaultDashboardMenuBorder);
+                homeMenuButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(homeMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(homeMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel7.add(jPanel5);
+
+        jPanel3.setBackground(new java.awt.Color(102, 255, 102));
+        jPanel3.setOpaque(false);
 
         bookMenuButton.setBackground(new java.awt.Color(102, 102, 255));
         bookMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -166,8 +229,9 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         bookMenuButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/book1x.png"))); // NOI18N
         bookMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bookMenuButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(255, 0, 0)));
-                userMenuButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0));
+                bookMenuButton.setBorder(selectedDashboardMenuBorder);
+                memberMenuButton.setBorder(defaultDashboardMenuBorder);
+                homeMenuButton.setBorder(defaultDashboardMenuBorder);
                 bookMenuButtonActionPerformed(evt);
             }
         });
@@ -176,7 +240,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bookMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+            .addComponent(bookMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,28 +250,30 @@ public class LibrarianDashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel6.add(jPanel3);
+        jPanel7.add(jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(136, 70));
 
-        userMenuButton.setBackground(new java.awt.Color(102, 102, 255));
-        userMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        userMenuButton.setForeground(new java.awt.Color(255, 255, 255));
-        userMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
-        userMenuButton.setText("Member");
-        userMenuButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
-        buttonGroup1.add(userMenuButton);
-        userMenuButton.setContentAreaFilled(false);
-        userMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        userMenuButton.setIconTextGap(10);
-        userMenuButton.setOpaque(true);
-        userMenuButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
-        userMenuButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user1x.png"))); // NOI18N
-        userMenuButton.addActionListener(new java.awt.event.ActionListener() {
+        memberMenuButton.setBackground(new java.awt.Color(102, 102, 255));
+        memberMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        memberMenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        memberMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
+        memberMenuButton.setText("Member");
+        memberMenuButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
+        buttonGroup1.add(memberMenuButton);
+        memberMenuButton.setContentAreaFilled(false);
+        memberMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        memberMenuButton.setIconTextGap(10);
+        memberMenuButton.setOpaque(true);
+        memberMenuButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
+        memberMenuButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user1x.png"))); // NOI18N
+        memberMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userMenuButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(255, 0, 0)));
-                bookMenuButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0));
+                memberMenuButton.setBorder(selectedDashboardMenuBorder);
+                bookMenuButton.setBorder(defaultDashboardMenuBorder);
+                homeMenuButton.setBorder(defaultDashboardMenuBorder);
                 userMenuButtonActionPerformed(evt);
             }
         });
@@ -216,19 +282,20 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(userMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+            .addComponent(memberMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(userMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(memberMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel6.add(jPanel4);
+        jPanel7.add(jPanel4);
 
         logoutButtonPanel.setBackground(new java.awt.Color(255, 255, 255));
+        logoutButtonPanel.setOpaque(false);
 
         logoutButton.setBackground(new java.awt.Color(255, 82, 36));
         logoutButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -257,12 +324,48 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         logoutButtonPanelLayout.setVerticalGroup(
             logoutButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoutButtonPanelLayout.createSequentialGroup()
-                .addContainerGap(213, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel6.add(logoutButtonPanel);
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(logoutButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addComponent(logoutButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
 
         leftPanel.add(jPanel6, "card2");
 
@@ -287,6 +390,11 @@ public class LibrarianDashboard extends javax.swing.JFrame {
     private void userMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Member menu clicked");
         ComponentUtils.addToPanel(this.centerPanel, getLibrarianMemberPanel());
+    }
+
+    private void homeMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("Home menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getLibrarianHomePanel());
     }
 
     /**
@@ -314,7 +422,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new LibrarianDashboard().setVisible(true);
+            new LibrarianDashboard(new UserInfo()).setVisible(true);
         });
     }
 
@@ -322,21 +430,27 @@ public class LibrarianDashboard extends javax.swing.JFrame {
     private javax.swing.JButton bookMenuButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel centerPanel;
+    private javax.swing.JButton homeMenuButton;
+    private javax.swing.border.Border defaultDashboardMenuBorder = javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 0);
+    private javax.swing.border.Border selectedDashboardMenuBorder = javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 0, new java.awt.Color(255, 0, 0));
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JLabel logo;
     private javax.swing.JButton logoutButton;
     private javax.swing.JPanel logoutButtonPanel;
+    private javax.swing.JButton memberMenuButton;
     private javax.swing.JPanel rootPanel;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel topPanel;
-    private javax.swing.JButton userMenuButton;
     // End of variables declaration//GEN-END:variables
 
     private LibrarianBookPanel getLibrarianBookPanel() {
@@ -355,5 +469,14 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         }
 
         return librarianMemberPanel;
+    }
+
+    private LibrarianHomePanel getLibrarianHomePanel() {
+        if (librarianHomePanel == null) {
+            Logy.d("Creating librarian home panel instance");
+            librarianHomePanel = new LibrarianHomePanel(userInfo);
+        }
+
+        return librarianHomePanel;
     }
 }

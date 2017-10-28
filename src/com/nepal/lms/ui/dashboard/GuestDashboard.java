@@ -9,6 +9,7 @@ import com.nepal.lms.bll.BookBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.book.BookInfo;
 import com.nepal.lms.entity.book.BookParams;
+import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
@@ -28,6 +29,8 @@ public class GuestDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form GuestDashboard
+     *
+     * @param userInfo
      */
     public GuestDashboard() {
         initComponents();
@@ -308,7 +311,9 @@ public class GuestDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        LibrarianDashboard librarianDashboard = new LibrarianDashboard();
+        UserInfo userInfo = new UserInfo();
+        userInfo.setName("Sujan Parajuli");
+        LibrarianDashboard librarianDashboard = new LibrarianDashboard(userInfo);
         librarianDashboard.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
