@@ -1,10 +1,10 @@
 [
   {
-    "availableCopies": 10,
+    "availableCopies": 5,
     "id": 1,
     "title": "C++ ho ho",
     "subject": {
-      "id": 4,
+      "id": 2,
       "title": "C++"
     },
     "author": {
@@ -13,17 +13,17 @@
       "contact": "2562"
     },
     "publisher": {
-      "id": 3,
-      "title": "Mero Publication",
-      "contact": "455225"
+      "id": 4,
+      "title": "Himalayan Publication",
+      "contact": "4935562"
     },
-    "edition": "2010",
-    "isbn": "2256fs",
+    "edition": "2012",
+    "isbn": "2256fsjjil78g",
     "shelfNo": {
       "id": 2,
       "location": "B7"
     },
-    "numberOfCopy": 10
+    "numberOfCopy": 5
   },
   {
     "availableCopies": 5,
@@ -128,31 +128,5 @@
       "location": "B6-A1"
     },
     "numberOfCopy": 5
-  },
-  {
-    "availableCopies": 1,
-    "id": 8822,
-    "title": "Mero Nepali",
-    "subject": {
-      "id": 6129,
-      "title": "Nepali"
-    },
-    "author": {
-      "id": 3,
-      "title": "Obhama",
-      "contact": "7712256"
-    },
-    "publisher": {
-      "id": 7633,
-      "title": "Mero Publication",
-      "contact": "499070936"
-    },
-    "edition": "2008",
-    "isbn": "225asdas25",
-    "shelfNo": {
-      "id": 3,
-      "location": "A1"
-    },
-    "numberOfCopy": 1
   }
 ]

@@ -6,6 +6,7 @@
 package com.nepal.lms.ui.dashboard;
 
 import com.nepal.lms.ui.book.LibrarianBookPanel;
+import com.nepal.lms.ui.member.LibrarianMemberPanel;
 import com.nepal.lms.util.ComponentUtils;
 import com.nepal.lms.util.Logy;
 
@@ -16,6 +17,7 @@ import com.nepal.lms.util.Logy;
 public class LibrarianDashboard extends javax.swing.JFrame {
 
     private LibrarianBookPanel librarianBookPanel;
+    private LibrarianMemberPanel librarianMemberPanel;
 
     /**
      * Creates new form LibrarianDashboard
@@ -283,7 +285,8 @@ public class LibrarianDashboard extends javax.swing.JFrame {
     }
 
     private void userMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+        Logy.d("Member menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getLibrarianMemberPanel());
     }
 
     /**
@@ -302,15 +305,11 @@ public class LibrarianDashboard extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LibrarianDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LibrarianDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LibrarianDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LibrarianDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -342,10 +341,19 @@ public class LibrarianDashboard extends javax.swing.JFrame {
 
     private LibrarianBookPanel getLibrarianBookPanel() {
         if (librarianBookPanel == null) {
-            Logy.d("Creating librarian panel instance");
+            Logy.d("Creating librarian book panel instance");
             librarianBookPanel = new LibrarianBookPanel();
         }
 
         return librarianBookPanel;
+    }
+
+    private LibrarianMemberPanel getLibrarianMemberPanel() {
+        if (librarianMemberPanel == null) {
+            Logy.d("Creating librarian member panel instance");
+            librarianMemberPanel = new LibrarianMemberPanel();
+        }
+
+        return librarianMemberPanel;
     }
 }

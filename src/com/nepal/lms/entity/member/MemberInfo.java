@@ -13,23 +13,8 @@ import java.sql.Date;
  */
 public class MemberInfo extends Member {
 
-    private String membershipId;
     private Date expiryDate;
     private Date joinedDate;
-
-    /**
-     * @return the membershipId
-     */
-    public String getMembershipId() {
-        return membershipId;
-    }
-
-    /**
-     * @param membershipId the membershipId to set
-     */
-    public void setMembershipId(String membershipId) {
-        this.membershipId = membershipId;
-    }
 
     /**
      * @return the expiryDate

@@ -5,6 +5,7 @@
  */
 package com.nepal.lms.validation.book;
 
+import com.nepal.lms.validation.BaseValidation;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.util.Logy;
 import java.awt.Component;
@@ -15,10 +16,8 @@ import java.awt.Component;
  */
 public class BookValidation extends BaseValidation {
 
-    private final Component component;
-
     public BookValidation(Component component) {
-        this.component = component;
+        super(component);
     }
 
     public boolean isStockFormValid(String title, String edition, String isbn, String quantity) {

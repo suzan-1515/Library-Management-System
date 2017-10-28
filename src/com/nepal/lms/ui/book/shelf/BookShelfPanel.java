@@ -208,7 +208,18 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateBookShelfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookShelfButtonActionPerformed
-        // TODO add your handling code here:
+        int row = table.getSelectedRow();
+        if (row > -1) {
+            Shelf s = getBeanFromRow(row);
+            if (s != null) {
+                BookShelfUpdateDialog bookShelfUpdateDialog = new BookShelfUpdateDialog((JFrame) SwingUtilities.getWindowAncestor(this),
+                        true, s);
+                bookShelfUpdateDialog.setItemUpdatedListener((Shelf shelf) -> {
+                    updateShelfData(shelf, row);
+                });
+                bookShelfUpdateDialog.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_updateBookShelfButtonActionPerformed
 
     private void addBookShelfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookShelfButtonActionPerformed
@@ -259,6 +270,28 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
         });
     }
 
+    private void updateShelfData(Shelf s, int row) {
+        for (Shelf shelf : shelfList) {
+            if (shelf.getId() == shelf.getId()) {
+                shelf.setLocation(shelf.getLocation());
+                break;
+            }
+        }
+
+        updateShelfRowData(s, row);
+    }
+
+    private void updateShelfRowData(Shelf shelf, int row) {
+        ((DefaultTableModel) table.getModel()).setValueAt(shelf.getLocation(), row, 1);
+    }
+
+    private Shelf getBeanFromRow(int row) {
+        int id = (int) table.getModel().getValueAt(row, 0);
+        return shelfList.stream()
+                .filter((shelf) -> shelf.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBookShelfButton;

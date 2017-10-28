@@ -277,7 +277,22 @@ public class BookStockPanel extends javax.swing.JPanel implements BookView<BookI
     }//GEN-LAST:event_addBookButtonActionPerformed
 
     private void updateBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookButtonActionPerformed
-        // TODO add your handling code here:
+        int row = table.getSelectedRow();
+        if (row > -1) {
+            BookInfo b = getBeanFromRow(row);
+            if (b != null) {
+                BookStockUpdateDialog bookStockUpdateDialog = new BookStockUpdateDialog((JFrame) SwingUtilities.getWindowAncestor(this),
+                        true, b);
+                bookStockUpdateDialog.setItemUpdatListener((BookInfo bookInfo) -> {
+                    updateBookData(bookInfo, row);
+                });
+                bookStockUpdateDialog.setSubjectListener(subjectListener);
+                bookStockUpdateDialog.setAuthorListener(authorListener);
+                bookStockUpdateDialog.setPublisherListener(publisherListener);
+                bookStockUpdateDialog.setShelfListener(shelfListener);
+                bookStockUpdateDialog.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_updateBookButtonActionPerformed
 
     @Override
@@ -329,6 +344,36 @@ public class BookStockPanel extends javax.swing.JPanel implements BookView<BookI
             bookInfo.getShelfNo().getLocation(),
             bookInfo.getAvailableCopies() > 0
         });
+    }
+
+    private void updateBookData(BookInfo bookInfo, int row) {
+        for (BookInfo book : bookList) {
+            if (book.getId() == bookInfo.getId()) {
+                book.setTitle(bookInfo.getTitle());
+                book.setSubject(bookInfo.getSubject());
+                book.setPublisher(bookInfo.getPublisher());
+                book.setAuthor(bookInfo.getAuthor());
+                book.setEdition(bookInfo.getEdition());
+                book.setIsbn(bookInfo.getIsbn());
+                book.setNumberOfCopy(bookInfo.getNumberOfCopy());
+                book.setShelfNo(bookInfo.getShelfNo());
+                break;
+            }
+        }
+
+        updateBookRowData(bookInfo, row);
+    }
+
+    private void updateBookRowData(BookInfo bookInfo, int row) {
+        ((DefaultTableModel) table.getModel()).setValueAt(bookInfo.getTitle(), row, 1);
+        ((DefaultTableModel) table.getModel()).setValueAt(bookInfo.getSubject().getTitle(), row, 2);
+        ((DefaultTableModel) table.getModel()).setValueAt(bookInfo.getAuthor().getTitle(), row, 3);
+        ((DefaultTableModel) table.getModel()).setValueAt(bookInfo.getPublisher().getTitle(), row, 4);
+        ((DefaultTableModel) table.getModel()).setValueAt(bookInfo.getEdition(), row, 5);
+        ((DefaultTableModel) table.getModel()).setValueAt(bookInfo.getIsbn(), row, 6);
+        ((DefaultTableModel) table.getModel()).setValueAt(bookInfo.getNumberOfCopy(), row, 7);
+        ((DefaultTableModel) table.getModel()).setValueAt(bookInfo.getShelfNo().getLocation(), row, 9);
+        ((DefaultTableModel) table.getModel()).setValueAt(bookInfo.getAvailableCopies() > 0, row, 10);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -404,6 +449,14 @@ public class BookStockPanel extends javax.swing.JPanel implements BookView<BookI
      */
     public void setShelfListener(ShelfListener shelfListener) {
         this.shelfListener = shelfListener;
+    }
+
+    private BookInfo getBeanFromRow(int row) {
+        int id = (int) table.getModel().getValueAt(row, 0);
+        return bookList.stream()
+                .filter((book) -> book.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
 }

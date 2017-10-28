@@ -217,7 +217,18 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
     }//GEN-LAST:event_addBookButtonActionPerformed
 
     private void updateBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookButtonActionPerformed
-
+        int row = table.getSelectedRow();
+        if (row > -1) {
+            Subject s = getBeanFromRow(row);
+            if (s != null) {
+                BookSubjectUpdateDialog bookSubjectUpdateDialog = new BookSubjectUpdateDialog((JFrame) SwingUtilities.getWindowAncestor(this),
+                        true, s);
+                bookSubjectUpdateDialog.setItemUpdatListener((Subject subject) -> {
+                    updateSubjectData(subject, row);
+                });
+                bookSubjectUpdateDialog.setVisible(true);
+            }
+        }
 
     }//GEN-LAST:event_updateBookButtonActionPerformed
 
@@ -256,6 +267,28 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
 
     }
 
+    private void updateSubjectData(Subject s, int row) {
+        for (Subject subject : subjectList) {
+            if (subject.getId() == subject.getId()) {
+                subject.setTitle(subject.getTitle());
+                break;
+            }
+        }
+
+        updateSubjectRowData(s, row);
+    }
+
+    private void updateSubjectRowData(Subject subject, int row) {
+        ((DefaultTableModel) table.getModel()).setValueAt(subject.getTitle(), row, 1);
+    }
+
+    private Subject getBeanFromRow(int row) {
+        int id = (int) table.getModel().getValueAt(row, 0);
+        return subjectList.stream()
+                .filter((subject) -> subject.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBookButton;

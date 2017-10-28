@@ -24,6 +24,11 @@ public class Address implements Serializable {
         this.temporary = temporary;
     }
 
+    public Address(String temporary) {
+        this.permanent = temporary;
+        this.temporary = temporary;
+    }
+
     /**
      * @return the permanent
      */

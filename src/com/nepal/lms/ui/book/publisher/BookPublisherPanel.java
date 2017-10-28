@@ -217,7 +217,18 @@ public class BookPublisherPanel extends javax.swing.JPanel implements BookView<P
     }//GEN-LAST:event_addPublisherButtonActionPerformed
 
     private void updatePublisherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePublisherButtonActionPerformed
-        // TODO add your handling code here:
+        int row = table.getSelectedRow();
+        if (row > -1) {
+            Publisher p = getBeanFromRow(row);
+            if (p != null) {
+                BookPublisherUpdateDialog bookPublisherUpdateDialog = new BookPublisherUpdateDialog((JFrame) SwingUtilities.getWindowAncestor(this),
+                        true, p);
+                bookPublisherUpdateDialog.setItemUpdatedListener((Publisher publisher) -> {
+                    updatePublisherData(publisher, row);
+                });
+                bookPublisherUpdateDialog.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_updatePublisherButtonActionPerformed
 
     @Override
@@ -261,6 +272,30 @@ public class BookPublisherPanel extends javax.swing.JPanel implements BookView<P
 
     }
 
+    private void updatePublisherData(Publisher s, int row) {
+        for (Publisher publisher : publisherList) {
+            if (publisher.getId() == publisher.getId()) {
+                publisher.setTitle(publisher.getTitle());
+                publisher.setContact(publisher.getContact());
+                break;
+            }
+        }
+
+        updatePublisherRowData(s, row);
+    }
+
+    private void updatePublisherRowData(Publisher publisher, int row) {
+        ((DefaultTableModel) table.getModel()).setValueAt(publisher.getTitle(), row, 1);
+        ((DefaultTableModel) table.getModel()).setValueAt(publisher.getContact(), row, 2);
+    }
+
+    private Publisher getBeanFromRow(int row) {
+        int id = (int) table.getModel().getValueAt(row, 0);
+        return publisherList.stream()
+                .filter((publisher) -> publisher.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addPublisherButton;

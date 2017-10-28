@@ -25,6 +25,7 @@ public class ComponentUtils {
         Logy.d("Attaching panel");
         root.removeAll();
         root.add(child);
+        root.revalidate();
         root.repaint();
     }
 
