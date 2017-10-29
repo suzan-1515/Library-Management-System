@@ -128,5 +128,31 @@
       "location": "B6-A1"
     },
     "numberOfCopy": 5
+  },
+  {
+    "availableCopies": 58,
+    "id": 4755,
+    "title": "milan",
+    "subject": {
+      "id": 1,
+      "title": "Android"
+    },
+    "author": {
+      "id": 1,
+      "title": "Sujan Parajuli",
+      "contact": "996525555"
+    },
+    "publisher": {
+      "id": 1,
+      "title": "Black Horse Publication",
+      "contact": "442629555"
+    },
+    "edition": "5458",
+    "isbn": "jah54",
+    "shelfNo": {
+      "id": 1,
+      "location": "A4"
+    },
+    "numberOfCopy": 58
   }
 ]

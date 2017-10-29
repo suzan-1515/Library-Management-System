@@ -17,7 +17,7 @@ import com.nepal.lms.util.Logy;
  *
  * @author Suzn
  */
-public class LibrarianBookPanel extends javax.swing.JPanel {
+public class BookPanel extends javax.swing.JPanel {
 
     private BookStockPanel bookStockPanel;
     private BookSubjectPanel bookSubjectPanel;
@@ -28,7 +28,7 @@ public class LibrarianBookPanel extends javax.swing.JPanel {
     /**
      * Creates new form LibrarianBookPanel
      */
-    public LibrarianBookPanel() {
+    public BookPanel() {
         initComponents();
 
         Logy.d("Librarian Book panel initialized");

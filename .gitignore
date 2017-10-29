@@ -11,3 +11,4 @@ project-root-directory/
 + build.xml
 /build/
 /nbproject/private/
+/dist/

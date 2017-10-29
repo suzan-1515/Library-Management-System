@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @member Suzn
  */
-public class LibrarianMemberPanel extends javax.swing.JPanel implements MemberView<MemberInfo> {
+public class MemberPanel extends javax.swing.JPanel implements MemberView<MemberInfo> {
 
     private List<MemberInfo> memberList;
     private MemberListener memberListener;
@@ -31,7 +31,7 @@ public class LibrarianMemberPanel extends javax.swing.JPanel implements MemberVi
     /**
      * Creates new form LibrarianBookPanel
      */
-    public LibrarianMemberPanel() {
+    public MemberPanel() {
         initComponents();
 
         Logy.d("Librarian member panel initialized");

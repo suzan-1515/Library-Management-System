@@ -6,8 +6,8 @@
 package com.nepal.lms.ui.dashboard;
 
 import com.nepal.lms.entity.user.UserInfo;
-import com.nepal.lms.ui.book.LibrarianBookPanel;
-import com.nepal.lms.ui.member.LibrarianMemberPanel;
+import com.nepal.lms.ui.book.BookPanel;
+import com.nepal.lms.ui.member.MemberPanel;
 import com.nepal.lms.util.ComponentUtils;
 import com.nepal.lms.util.Logy;
 
@@ -15,11 +15,11 @@ import com.nepal.lms.util.Logy;
  *
  * @author Suzn
  */
-public class LibrarianDashboard extends javax.swing.JFrame {
+public final class Dashboard extends BaseDashboard {
 
-    private LibrarianBookPanel librarianBookPanel;
-    private LibrarianMemberPanel librarianMemberPanel;
-    private LibrarianHomePanel librarianHomePanel;
+    private BookPanel bookPanel;
+    private MemberPanel memberPanel;
+    private HomePanel homePanel;
 
     private final UserInfo userInfo;
 
@@ -28,12 +28,13 @@ public class LibrarianDashboard extends javax.swing.JFrame {
      *
      * @param userInfo
      */
-    public LibrarianDashboard(UserInfo userInfo) {
+    public Dashboard(UserInfo userInfo) {
         initComponents();
         setLocationRelativeTo(null);
         this.userInfo = userInfo;
-        Logy.d("Librarian panel initialized");
-        ComponentUtils.addToPanel(this.centerPanel, getLibrarianHomePanel());
+        setupUserView(userInfo);
+        Logy.d("Dashboard panel initialized");
+        ComponentUtils.addToPanel(this.centerPanel, getHomePanel());
     }
 
     /**
@@ -65,6 +66,8 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         bookMenuButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         memberMenuButton = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        reportMenuButton = new javax.swing.JButton();
         logoutButtonPanel = new javax.swing.JPanel();
         logoutButton = new javax.swing.JButton();
 
@@ -190,6 +193,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
                 homeMenuButton.setBorder(selectedDashboardMenuBorder);
                 bookMenuButton.setBorder(defaultDashboardMenuBorder);
                 memberMenuButton.setBorder(defaultDashboardMenuBorder);
+                reportMenuButton.setBorder(defaultDashboardMenuBorder);
                 homeMenuButtonActionPerformed(evt);
             }
         });
@@ -232,6 +236,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
                 bookMenuButton.setBorder(selectedDashboardMenuBorder);
                 memberMenuButton.setBorder(defaultDashboardMenuBorder);
                 homeMenuButton.setBorder(defaultDashboardMenuBorder);
+                reportMenuButton.setBorder(defaultDashboardMenuBorder);
                 bookMenuButtonActionPerformed(evt);
             }
         });
@@ -274,6 +279,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
                 memberMenuButton.setBorder(selectedDashboardMenuBorder);
                 bookMenuButton.setBorder(defaultDashboardMenuBorder);
                 homeMenuButton.setBorder(defaultDashboardMenuBorder);
+                reportMenuButton.setBorder(defaultDashboardMenuBorder);
                 userMenuButtonActionPerformed(evt);
             }
         });
@@ -293,6 +299,49 @@ public class LibrarianDashboard extends javax.swing.JFrame {
         );
 
         jPanel7.add(jPanel4);
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setOpaque(false);
+        jPanel9.setPreferredSize(new java.awt.Dimension(136, 70));
+
+        reportMenuButton.setBackground(new java.awt.Color(102, 102, 255));
+        reportMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        reportMenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        reportMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
+        reportMenuButton.setText("Report");
+        reportMenuButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
+        buttonGroup1.add(reportMenuButton);
+        reportMenuButton.setContentAreaFilled(false);
+        reportMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        reportMenuButton.setIconTextGap(10);
+        reportMenuButton.setOpaque(true);
+        reportMenuButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
+        reportMenuButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user1x.png"))); // NOI18N
+        reportMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportMenuButton.setBorder(selectedDashboardMenuBorder);
+                bookMenuButton.setBorder(defaultDashboardMenuBorder);
+                homeMenuButton.setBorder(defaultDashboardMenuBorder);
+                memberMenuButton.setBorder(defaultDashboardMenuBorder);
+                reportMenuButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(reportMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(reportMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel7.add(jPanel9);
 
         logoutButtonPanel.setBackground(new java.awt.Color(255, 255, 255));
         logoutButtonPanel.setOpaque(false);
@@ -345,7 +394,7 @@ public class LibrarianDashboard extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(logoutButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -384,17 +433,22 @@ public class LibrarianDashboard extends javax.swing.JFrame {
 
     private void bookMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Book menu clicked");
-        ComponentUtils.addToPanel(this.centerPanel, getLibrarianBookPanel());
+        ComponentUtils.addToPanel(this.centerPanel, getBookPanel());
     }
 
     private void userMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Member menu clicked");
-        ComponentUtils.addToPanel(this.centerPanel, getLibrarianMemberPanel());
+        ComponentUtils.addToPanel(this.centerPanel, getMemberPanel());
     }
 
     private void homeMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Home menu clicked");
-        ComponentUtils.addToPanel(this.centerPanel, getLibrarianHomePanel());
+        ComponentUtils.addToPanel(this.centerPanel, getHomePanel());
+    }
+
+    private void reportMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("Report menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getReportPanel());
     }
 
     /**
@@ -414,15 +468,16 @@ public class LibrarianDashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LibrarianDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new LibrarianDashboard(new UserInfo()).setVisible(true);
+            new Dashboard(new UserInfo()).setVisible(true);
         });
     }
 
@@ -443,40 +498,61 @@ public class LibrarianDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JLabel logo;
     private javax.swing.JButton logoutButton;
     private javax.swing.JPanel logoutButtonPanel;
     private javax.swing.JButton memberMenuButton;
+    private javax.swing.JButton reportMenuButton;
     private javax.swing.JPanel rootPanel;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
 
-    private LibrarianBookPanel getLibrarianBookPanel() {
-        if (librarianBookPanel == null) {
-            Logy.d("Creating librarian book panel instance");
-            librarianBookPanel = new LibrarianBookPanel();
+    private BookPanel getBookPanel() {
+        if (bookPanel == null) {
+            Logy.d("Creating book panel instance");
+            bookPanel = new BookPanel();
         }
 
-        return librarianBookPanel;
+        return bookPanel;
     }
 
-    private LibrarianMemberPanel getLibrarianMemberPanel() {
-        if (librarianMemberPanel == null) {
-            Logy.d("Creating librarian member panel instance");
-            librarianMemberPanel = new LibrarianMemberPanel();
+    private MemberPanel getMemberPanel() {
+        if (memberPanel == null) {
+            Logy.d("Creating member panel instance");
+            memberPanel = new MemberPanel();
         }
 
-        return librarianMemberPanel;
+        return memberPanel;
     }
 
-    private LibrarianHomePanel getLibrarianHomePanel() {
-        if (librarianHomePanel == null) {
-            Logy.d("Creating librarian home panel instance");
-            librarianHomePanel = new LibrarianHomePanel(userInfo);
+    private HomePanel getHomePanel() {
+        if (homePanel == null) {
+            Logy.d("Creating home panel instance");
+            homePanel = new HomePanel(userInfo);
         }
 
-        return librarianHomePanel;
+        return homePanel;
+    }
+
+    private HomePanel getReportPanel() {
+        if (homePanel == null) {
+            Logy.d("Creating home panel instance");
+            homePanel = new HomePanel(userInfo);
+        }
+
+        return homePanel;
+    }
+
+    @Override
+    protected void setupAdminView() {
+        reportMenuButton.setVisible(true);
+    }
+
+    @Override
+    protected void setupLibrarianView() {
+        reportMenuButton.setVisible(false);
     }
 }

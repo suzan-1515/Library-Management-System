@@ -9,6 +9,7 @@ import com.nepal.lms.bll.BookBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.book.BookInfo;
 import com.nepal.lms.entity.book.BookParams;
+import com.nepal.lms.entity.role.Role;
 import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
@@ -312,8 +313,9 @@ public class GuestDashboard extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         UserInfo userInfo = new UserInfo();
-        userInfo.setName("Sujan Parajuli");
-        LibrarianDashboard librarianDashboard = new LibrarianDashboard(userInfo);
+        userInfo.setName("Milan");
+        userInfo.setRole(new Role(2, ""));
+        Dashboard librarianDashboard = new Dashboard(userInfo);
         librarianDashboard.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loginButtonActionPerformed

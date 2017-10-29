@@ -12,7 +12,7 @@ import com.nepal.lms.util.Logy;
  *
  * @author Suzn
  */
-public class LibrarianHomePanel extends javax.swing.JPanel {
+public class HomePanel extends javax.swing.JPanel {
 
 
     /**
@@ -20,7 +20,7 @@ public class LibrarianHomePanel extends javax.swing.JPanel {
      *
      * @param userInfo
      */
-    public LibrarianHomePanel(UserInfo userInfo) {
+    public HomePanel(UserInfo userInfo) {
         initComponents();
         
         this.title.setText(String.format("Welcome %s,", userInfo.getName()));

@@ -6,7 +6,7 @@
     "password": "admin",
     "role": {
       "id": 1,
-      "title": "admin"
+      "title": "Admin"
     }
   },
   {
@@ -16,7 +16,7 @@
     "password": "passowrd",
     "role": {
       "id": 2,
-      "title": "student"
+      "title": "Librarian"
     }
   }
 ]

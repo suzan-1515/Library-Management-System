@@ -544,7 +544,7 @@ public class BookStockInsertDialog extends javax.swing.JDialog {
                 BookBLL.insertBook(bookInfo);
                 notifyDataSetChanged(bookInfo);
                 Alert.showInformation(this, "Book inserted successfully!");
-                
+
                 resetFields();
             } catch (DuplicateRecordException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
