@@ -15,4 +15,6 @@ public interface ShelfListener {
 
     void onShelfDataChanged(Shelf s);
 
+    void onShelfDataRemoved(Shelf s);
+
 }

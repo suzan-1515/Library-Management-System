@@ -5,42 +5,40 @@
  */
 package com.nepal.lms.entity.member;
 
-import java.sql.Date;
-
 /**
  *
  * @author Suzn
  */
 public class MemberInfo extends Member {
 
-    private Date expiryDate;
-    private Date joinedDate;
+    private long expiryDate;
+    private long joinedDate;
 
     /**
      * @return the expiryDate
      */
-    public Date getExpiryDate() {
+    public long getExpiryDate() {
         return expiryDate;
     }
 
     /**
      * @param expiryDate the expiryDate to set
      */
-    public void setExpiryDate(Date expiryDate) {
+    public void setExpiryDate(long expiryDate) {
         this.expiryDate = expiryDate;
     }
 
     /**
      * @return the joinedDate
      */
-    public Date getJoinedDate() {
+    public long getJoinedDate() {
         return joinedDate;
     }
 
     /**
      * @param joinedDate the joinedDate to set
      */
-    public void setJoinedDate(Date joinedDate) {
+    public void setJoinedDate(long joinedDate) {
         this.joinedDate = joinedDate;
     }
 

@@ -5,9 +5,13 @@
  */
 package com.nepal.lms.ui.dashboard;
 
+import com.nepal.lms.ui.BaseDashboard;
+import com.nepal.lms.ui.home.HomePanel;
 import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.ui.book.BookPanel;
 import com.nepal.lms.ui.member.MemberPanel;
+import com.nepal.lms.ui.report.ReportPanel;
+import com.nepal.lms.ui.user.UserPanel;
 import com.nepal.lms.util.ComponentUtils;
 import com.nepal.lms.util.Logy;
 
@@ -17,9 +21,11 @@ import com.nepal.lms.util.Logy;
  */
 public final class Dashboard extends BaseDashboard {
 
+    private HomePanel homePanel;
     private BookPanel bookPanel;
     private MemberPanel memberPanel;
-    private HomePanel homePanel;
+    private UserPanel userPanel;
+    private ReportPanel reportPanel;
 
     private final UserInfo userInfo;
 
@@ -67,6 +73,8 @@ public final class Dashboard extends BaseDashboard {
         jPanel4 = new javax.swing.JPanel();
         memberMenuButton = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
+        staffMenuButton = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
         reportMenuButton = new javax.swing.JButton();
         logoutButtonPanel = new javax.swing.JPanel();
         logoutButton = new javax.swing.JButton();
@@ -74,6 +82,7 @@ public final class Dashboard extends BaseDashboard {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Knowledgica - Librarian Panel");
         setExtendedState(6);
+        setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/icon.png")));
         getContentPane().setLayout(new java.awt.CardLayout());
 
         rootPanel.setBackground(new java.awt.Color(214, 217, 223));
@@ -193,6 +202,7 @@ public final class Dashboard extends BaseDashboard {
                 homeMenuButton.setBorder(selectedDashboardMenuBorder);
                 bookMenuButton.setBorder(defaultDashboardMenuBorder);
                 memberMenuButton.setBorder(defaultDashboardMenuBorder);
+                staffMenuButton.setBorder(defaultDashboardMenuBorder);
                 reportMenuButton.setBorder(defaultDashboardMenuBorder);
                 homeMenuButtonActionPerformed(evt);
             }
@@ -202,7 +212,7 @@ public final class Dashboard extends BaseDashboard {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(homeMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(homeMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,6 +246,7 @@ public final class Dashboard extends BaseDashboard {
                 bookMenuButton.setBorder(selectedDashboardMenuBorder);
                 memberMenuButton.setBorder(defaultDashboardMenuBorder);
                 homeMenuButton.setBorder(defaultDashboardMenuBorder);
+                staffMenuButton.setBorder(defaultDashboardMenuBorder);
                 reportMenuButton.setBorder(defaultDashboardMenuBorder);
                 bookMenuButtonActionPerformed(evt);
             }
@@ -245,7 +256,7 @@ public final class Dashboard extends BaseDashboard {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bookMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bookMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +275,7 @@ public final class Dashboard extends BaseDashboard {
         memberMenuButton.setBackground(new java.awt.Color(102, 102, 255));
         memberMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         memberMenuButton.setForeground(new java.awt.Color(255, 255, 255));
-        memberMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
+        memberMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/member.png"))); // NOI18N
         memberMenuButton.setText("Member");
         memberMenuButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
         buttonGroup1.add(memberMenuButton);
@@ -272,15 +283,16 @@ public final class Dashboard extends BaseDashboard {
         memberMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         memberMenuButton.setIconTextGap(10);
         memberMenuButton.setOpaque(true);
-        memberMenuButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
-        memberMenuButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user1x.png"))); // NOI18N
+        memberMenuButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/member.png"))); // NOI18N
+        memberMenuButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/member1x.png"))); // NOI18N
         memberMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 memberMenuButton.setBorder(selectedDashboardMenuBorder);
                 bookMenuButton.setBorder(defaultDashboardMenuBorder);
                 homeMenuButton.setBorder(defaultDashboardMenuBorder);
+                staffMenuButton.setBorder(defaultDashboardMenuBorder);
                 reportMenuButton.setBorder(defaultDashboardMenuBorder);
-                userMenuButtonActionPerformed(evt);
+                memberMenuButtonActionPerformed(evt);
             }
         });
 
@@ -288,7 +300,7 @@ public final class Dashboard extends BaseDashboard {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(memberMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(memberMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,26 +316,27 @@ public final class Dashboard extends BaseDashboard {
         jPanel9.setOpaque(false);
         jPanel9.setPreferredSize(new java.awt.Dimension(136, 70));
 
-        reportMenuButton.setBackground(new java.awt.Color(102, 102, 255));
-        reportMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        reportMenuButton.setForeground(new java.awt.Color(255, 255, 255));
-        reportMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
-        reportMenuButton.setText("Report");
-        reportMenuButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
-        buttonGroup1.add(reportMenuButton);
-        reportMenuButton.setContentAreaFilled(false);
-        reportMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        reportMenuButton.setIconTextGap(10);
-        reportMenuButton.setOpaque(true);
-        reportMenuButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
-        reportMenuButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user1x.png"))); // NOI18N
-        reportMenuButton.addActionListener(new java.awt.event.ActionListener() {
+        staffMenuButton.setBackground(new java.awt.Color(102, 102, 255));
+        staffMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        staffMenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        staffMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/staff.png"))); // NOI18N
+        staffMenuButton.setText("User");
+        staffMenuButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
+        buttonGroup1.add(staffMenuButton);
+        staffMenuButton.setContentAreaFilled(false);
+        staffMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        staffMenuButton.setIconTextGap(10);
+        staffMenuButton.setOpaque(true);
+        staffMenuButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/staff.png"))); // NOI18N
+        staffMenuButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/staff1x.png"))); // NOI18N
+        staffMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reportMenuButton.setBorder(selectedDashboardMenuBorder);
+                staffMenuButton.setBorder(selectedDashboardMenuBorder);
                 bookMenuButton.setBorder(defaultDashboardMenuBorder);
                 homeMenuButton.setBorder(defaultDashboardMenuBorder);
                 memberMenuButton.setBorder(defaultDashboardMenuBorder);
-                reportMenuButtonActionPerformed(evt);
+                reportMenuButton.setBorder(defaultDashboardMenuBorder);
+                userMenuButtonActionPerformed(evt);
             }
         });
 
@@ -331,17 +344,61 @@ public final class Dashboard extends BaseDashboard {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(reportMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(staffMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(reportMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(staffMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPanel7.add(jPanel9);
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setOpaque(false);
+        jPanel10.setPreferredSize(new java.awt.Dimension(136, 70));
+
+        reportMenuButton.setBackground(new java.awt.Color(102, 102, 255));
+        reportMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        reportMenuButton.setForeground(new java.awt.Color(255, 255, 255));
+        reportMenuButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
+        reportMenuButton.setText("Report");
+        reportMenuButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
+        buttonGroup1.add(reportMenuButton);
+        reportMenuButton.setContentAreaFilled(false);
+        reportMenuButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        reportMenuButton.setIconTextGap(10);
+        reportMenuButton.setOpaque(true);
+        reportMenuButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
+        reportMenuButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report1x.png"))); // NOI18N
+        reportMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportMenuButton.setBorder(selectedDashboardMenuBorder);
+                homeMenuButton.setBorder(defaultDashboardMenuBorder);
+                bookMenuButton.setBorder(defaultDashboardMenuBorder);
+                memberMenuButton.setBorder(defaultDashboardMenuBorder);
+                staffMenuButton.setBorder(defaultDashboardMenuBorder);
+                reportMenuButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(reportMenuButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(reportMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel7.add(jPanel10);
 
         logoutButtonPanel.setBackground(new java.awt.Color(255, 255, 255));
         logoutButtonPanel.setOpaque(false);
@@ -386,7 +443,7 @@ public final class Dashboard extends BaseDashboard {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(logoutButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
         jPanel8Layout.setVerticalGroup(
@@ -394,7 +451,7 @@ public final class Dashboard extends BaseDashboard {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(logoutButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -431,19 +488,29 @@ public final class Dashboard extends BaseDashboard {
         this.dispose();
     }//GEN-LAST:event_logoutButtonActionPerformed
 
+    private void homeMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("Home menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getHomePanel());
+    }
+
     private void bookMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Book menu clicked");
         ComponentUtils.addToPanel(this.centerPanel, getBookPanel());
     }
 
-    private void userMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void transactionMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("Transaction menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getTransactionPanel());
+    }
+
+    private void memberMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Logy.d("Member menu clicked");
         ComponentUtils.addToPanel(this.centerPanel, getMemberPanel());
     }
 
-    private void homeMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Logy.d("Home menu clicked");
-        ComponentUtils.addToPanel(this.centerPanel, getHomePanel());
+    private void userMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("User menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getUserPanel());
     }
 
     private void reportMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -491,6 +558,7 @@ public final class Dashboard extends BaseDashboard {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -506,6 +574,7 @@ public final class Dashboard extends BaseDashboard {
     private javax.swing.JButton memberMenuButton;
     private javax.swing.JButton reportMenuButton;
     private javax.swing.JPanel rootPanel;
+    private javax.swing.JButton staffMenuButton;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel topPanel;
     // End of variables declaration//GEN-END:variables
@@ -513,7 +582,7 @@ public final class Dashboard extends BaseDashboard {
     private BookPanel getBookPanel() {
         if (bookPanel == null) {
             Logy.d("Creating book panel instance");
-            bookPanel = new BookPanel();
+            bookPanel = new BookPanel(userInfo);
         }
 
         return bookPanel;
@@ -522,10 +591,19 @@ public final class Dashboard extends BaseDashboard {
     private MemberPanel getMemberPanel() {
         if (memberPanel == null) {
             Logy.d("Creating member panel instance");
-            memberPanel = new MemberPanel();
+            memberPanel = new MemberPanel(userInfo);
         }
 
         return memberPanel;
+    }
+
+    private UserPanel getUserPanel() {
+        if (userPanel == null) {
+            Logy.d("Creating user panel instance");
+            userPanel = new UserPanel(userInfo);
+        }
+
+        return userPanel;
     }
 
     private HomePanel getHomePanel() {
@@ -537,22 +615,31 @@ public final class Dashboard extends BaseDashboard {
         return homePanel;
     }
 
-    private HomePanel getReportPanel() {
+    private HomePanel getTransactionPanel() {
         if (homePanel == null) {
-            Logy.d("Creating home panel instance");
+            Logy.d("Creating transaction panel instance");
             homePanel = new HomePanel(userInfo);
         }
 
         return homePanel;
     }
 
+    private ReportPanel getReportPanel() {
+        if (reportPanel == null) {
+            Logy.d("Creating report panel instance");
+            reportPanel = new ReportPanel(userInfo);
+        }
+
+        return reportPanel;
+    }
+
     @Override
     protected void setupAdminView() {
-        reportMenuButton.setVisible(true);
     }
 
     @Override
     protected void setupLibrarianView() {
+        staffMenuButton.setVisible(false);
         reportMenuButton.setVisible(false);
     }
 }

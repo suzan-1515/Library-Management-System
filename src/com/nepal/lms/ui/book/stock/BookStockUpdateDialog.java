@@ -68,6 +68,20 @@ public class BookStockUpdateDialog extends javax.swing.JDialog {
         shelfComboBox.getModel().setSelectedItem(bookInfo.getShelfNo());
     }
 
+    private int calculateAvailableCopies(int parseInt) {
+
+        if (parseInt == bookInfo.getNumberOfCopy()) {
+            return bookInfo.getAvailableCopies();
+        }
+
+        if (parseInt >= bookInfo.getAvailableCopies()) {
+            return bookInfo.getAvailableCopies();
+        } else {
+            return parseInt;
+        }
+
+    }
+
     public interface ItemUpdatedListener {
 
         void onItemUpdated(BookInfo bookInfo);
@@ -548,6 +562,7 @@ public class BookStockUpdateDialog extends javax.swing.JDialog {
             bookInfo.setPublisher((Publisher) publisherComboBox.getModel().getSelectedItem());
             bookInfo.setEdition(editionTextField.getText());
             bookInfo.setIsbn(isbnTextField.getText());
+            bookInfo.setAvailableCopies(calculateAvailableCopies(Integer.parseInt(quantityTextField.getText())));
             bookInfo.setNumberOfCopy(Integer.parseInt(quantityTextField.getText()));
             bookInfo.setShelfNo((Shelf) shelfComboBox.getModel().getSelectedItem());
 

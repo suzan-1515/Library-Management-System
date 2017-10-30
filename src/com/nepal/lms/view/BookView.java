@@ -5,17 +5,11 @@
  */
 package com.nepal.lms.view;
 
-import java.util.List;
-
 /**
  *
  * @author Suzn
  * @param <T>
  */
-public interface BookView<T> {
-
-    void loadTableData();
-
-    void fillTableData(List<T> list);
+public interface BookView<T> extends View<T> {
 
 }

@@ -1,6 +1,6 @@
 [
   {
-    "availableCopies": 5,
+    "availableCopies": 6,
     "id": 1,
     "title": "C++ ho ho",
     "subject": {
@@ -23,10 +23,10 @@
       "id": 2,
       "location": "B7"
     },
-    "numberOfCopy": 5
+    "numberOfCopy": 8
   },
   {
-    "availableCopies": 5,
+    "availableCopies": 2,
     "id": 2,
     "title": "Java Programming",
     "subject": {
@@ -52,7 +52,7 @@
     "numberOfCopy": 5
   },
   {
-    "availableCopies": 5,
+    "availableCopies": 4,
     "id": 8601,
     "title": "Java for Dummies",
     "subject": {
@@ -75,7 +75,7 @@
       "id": 2,
       "location": "B2-C"
     },
-    "numberOfCopy": 0
+    "numberOfCopy": 5
   },
   {
     "availableCopies": 1,
@@ -104,7 +104,7 @@
     "numberOfCopy": 1
   },
   {
-    "availableCopies": 5,
+    "availableCopies": 3,
     "id": 5975,
     "title": "Networking for Professional",
     "subject": {
@@ -130,7 +130,7 @@
     "numberOfCopy": 5
   },
   {
-    "availableCopies": 58,
+    "availableCopies": 0,
     "id": 4755,
     "title": "milan",
     "subject": {
@@ -153,6 +153,6 @@
       "id": 1,
       "location": "A4"
     },
-    "numberOfCopy": 58
+    "numberOfCopy": 1
   }
 ]

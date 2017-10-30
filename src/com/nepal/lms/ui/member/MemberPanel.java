@@ -9,11 +9,15 @@ import com.nepal.lms.action.MemberListener;
 import com.nepal.lms.bll.MemberBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.member.MemberInfo;
+import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
+import com.nepal.lms.ui.BaseUserPanel;
 import com.nepal.lms.util.Logy;
+import com.nepal.lms.util.Utils;
 import com.nepal.lms.view.MemberView;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -23,16 +27,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @member Suzn
  */
-public class MemberPanel extends javax.swing.JPanel implements MemberView<MemberInfo> {
+public final class MemberPanel extends BaseUserPanel implements MemberView {
 
     private List<MemberInfo> memberList;
     private MemberListener memberListener;
+    private final UserInfo userInfo;
 
     /**
      * Creates new form LibrarianBookPanel
+     *
+     * @param userInfo
      */
-    public MemberPanel() {
+    public MemberPanel(UserInfo userInfo) {
         initComponents();
+        this.userInfo = userInfo;
+        memberList = new ArrayList<>();
 
         Logy.d("Librarian member panel initialized");
         this.loadTableData();
@@ -61,8 +70,9 @@ public class MemberPanel extends javax.swing.JPanel implements MemberView<Member
         table = new javax.swing.JTable();
         bottomPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        updateBookButton = new javax.swing.JButton();
-        addBookButton = new javax.swing.JButton();
+        addMemberButton = new javax.swing.JButton();
+        updateMemberButton = new javax.swing.JButton();
+        deleteMemberButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -203,42 +213,35 @@ public class MemberPanel extends javax.swing.JPanel implements MemberView<Member
 
         jPanel3.setOpaque(false);
 
-        updateBookButton.setText("Update");
-        updateBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updateBookButton.addActionListener(new java.awt.event.ActionListener() {
+        addMemberButton.setText("Add New");
+        addMemberButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addMemberButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        addMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBookButtonActionPerformed(evt);
+                addMemberButtonActionPerformed(evt);
             }
         });
+        jPanel3.add(addMemberButton);
 
-        addBookButton.setText("Add New");
-        addBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addBookButton.addActionListener(new java.awt.event.ActionListener() {
+        updateMemberButton.setText("Update");
+        updateMemberButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateMemberButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        updateMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBookButtonActionPerformed(evt);
+                updateMemberButtonActionPerformed(evt);
             }
         });
+        jPanel3.add(updateMemberButton);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(addBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        deleteMemberButton.setText("Delete");
+        deleteMemberButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deleteMemberButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        deleteMemberButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMemberButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(deleteMemberButton);
 
         bottomPanel.add(jPanel3);
 
@@ -249,7 +252,7 @@ public class MemberPanel extends javax.swing.JPanel implements MemberView<Member
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookButtonActionPerformed
+    private void updateMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMemberButtonActionPerformed
         int row = table.getSelectedRow();
         if (row > -1) {
             MemberInfo b = getBeanFromRow(row);
@@ -262,16 +265,20 @@ public class MemberPanel extends javax.swing.JPanel implements MemberView<Member
                 memberMemberUpdateDialog.setVisible(true);
             }
         }
-    }//GEN-LAST:event_updateBookButtonActionPerformed
+    }//GEN-LAST:event_updateMemberButtonActionPerformed
 
-    private void addBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookButtonActionPerformed
+    private void addMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMemberButtonActionPerformed
         MemberInsertDialog memberInsertDialog = new MemberInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true);
         memberInsertDialog.setItemAddedListener((MemberInfo memberInfo) -> {
             appendMemberData(memberInfo);
         });
 
         memberInsertDialog.setVisible(true);
-    }//GEN-LAST:event_addBookButtonActionPerformed
+    }//GEN-LAST:event_addMemberButtonActionPerformed
+
+    private void deleteMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMemberButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteMemberButtonActionPerformed
 
     @Override
     public final void loadTableData() {
@@ -306,8 +313,8 @@ public class MemberPanel extends javax.swing.JPanel implements MemberView<Member
             member.getName(),
             member.getAddress().getTemporary(),
             member.getContact(),
-            member.getJoinedDate(),
-            member.getExpiryDate()
+            Utils.millisToSql(member.getJoinedDate()),
+            Utils.millisToSql(member.getExpiryDate())
         });
     }
 
@@ -334,7 +341,7 @@ public class MemberPanel extends javax.swing.JPanel implements MemberView<Member
         ((DefaultTableModel) table.getModel()).setValueAt(member.getName(), row, 1);
         ((DefaultTableModel) table.getModel()).setValueAt(member.getAddress().getTemporary(), row, 2);
         ((DefaultTableModel) table.getModel()).setValueAt(member.getContact(), row, 3);
-        ((DefaultTableModel) table.getModel()).setValueAt(member.getExpiryDate(), row, 5);
+        ((DefaultTableModel) table.getModel()).setValueAt(Utils.millisToSql(member.getExpiryDate()), row, 5);
     }
 
     private MemberInfo getBeanFromRow(int row) {
@@ -347,10 +354,11 @@ public class MemberPanel extends javax.swing.JPanel implements MemberView<Member
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBookButton;
+    private javax.swing.JButton addMemberButton;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerSubPanel;
+    private javax.swing.JButton deleteMemberButton;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -362,7 +370,7 @@ public class MemberPanel extends javax.swing.JPanel implements MemberView<Member
     private javax.swing.JLabel title;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel topPanel;
-    private javax.swing.JButton updateBookButton;
+    private javax.swing.JButton updateMemberButton;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -377,6 +385,15 @@ public class MemberPanel extends javax.swing.JPanel implements MemberView<Member
      */
     public void setMemberListener(MemberListener memberListener) {
         this.memberListener = memberListener;
+    }
+
+    @Override
+    protected void setupAdminView() {
+    }
+
+    @Override
+    protected void setupLibrarianView() {
+        this.deleteMemberButton.setVisible(false);
     }
 
 }

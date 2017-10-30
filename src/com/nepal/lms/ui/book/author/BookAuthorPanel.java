@@ -7,15 +7,24 @@ package com.nepal.lms.ui.book.author;
 
 import com.nepal.lms.action.AuthorListener;
 import com.nepal.lms.bll.AuthorBLL;
+import com.nepal.lms.bll.BookBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.author.Author;
+import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
+import com.nepal.lms.ui.BaseUserPanel;
 import com.nepal.lms.util.Logy;
+import com.nepal.lms.util.Utils;
 import com.nepal.lms.view.BookView;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,15 +32,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Suzn
  */
-public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Author>, AuthorListener {
+public final class BookAuthorPanel extends BaseUserPanel implements BookView<Author>, AuthorListener {
 
     private List<Author> authorList;
+    private final UserInfo userInfo;
 
     /**
      * Creates new form BookAuthorPanel
+     *
+     * @param userInfo
      */
-    public BookAuthorPanel() {
+    public BookAuthorPanel(UserInfo userInfo) {
         initComponents();
+        this.userInfo = userInfo;
+        setupUserView(userInfo);
+        authorList = new ArrayList<>();
         this.loadTableData();
     }
 
@@ -55,8 +70,9 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
         table = new javax.swing.JTable();
         bottomPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        updateBookAuthorButton = new javax.swing.JButton();
         addBookAuthorButton = new javax.swing.JButton();
+        updateBookAuthorButton = new javax.swing.JButton();
+        deleteBookAuthorButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -162,42 +178,35 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
 
         jPanel3.setOpaque(false);
 
-        updateBookAuthorButton.setText("Update");
-        updateBookAuthorButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updateBookAuthorButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBookAuthorButtonActionPerformed(evt);
-            }
-        });
-
         addBookAuthorButton.setText("Add New");
         addBookAuthorButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addBookAuthorButton.setPreferredSize(new java.awt.Dimension(80, 40));
         addBookAuthorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBookAuthorButtonActionPerformed(evt);
             }
         });
+        jPanel3.add(addBookAuthorButton);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(addBookAuthorButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateBookAuthorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBookAuthorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBookAuthorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        updateBookAuthorButton.setText("Update");
+        updateBookAuthorButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateBookAuthorButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        updateBookAuthorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBookAuthorButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(updateBookAuthorButton);
+
+        deleteBookAuthorButton.setText("Delete");
+        deleteBookAuthorButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deleteBookAuthorButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        deleteBookAuthorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBookAuthorButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(deleteBookAuthorButton);
 
         bottomPanel.add(jPanel3);
 
@@ -230,6 +239,24 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
             }
         }
     }//GEN-LAST:event_updateBookAuthorButtonActionPerformed
+
+    private void deleteBookAuthorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBookAuthorButtonActionPerformed
+        if (Utils.isTableRowSelected(table)) {
+            if (Alert.showDeleteConfirmDialog(this) == JOptionPane.YES_OPTION) {
+                int row = table.getSelectedRow();
+                int id = Utils.getIdFromTable(table, row);
+                try {
+                    Author author = new Author(id);
+                    AuthorBLL.deleteAuthor(author);
+                    removeAuthorData(author, row);
+                } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
+                    Logy.e(ex);
+                    Alert.showError(this, ex.getMessage());
+                }
+            }
+
+        }
+    }//GEN-LAST:event_deleteBookAuthorButtonActionPerformed
 
     @Override
     public final void loadTableData() {
@@ -303,6 +330,7 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerSubPanel;
+    private javax.swing.JButton deleteBookAuthorButton;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -322,5 +350,30 @@ public class BookAuthorPanel extends javax.swing.JPanel implements BookView<Auth
     private void appendAuthorData(Author author) {
         authorList.add(author);
         addAuthorRowData(author);
+    }
+
+    @Override
+    protected void setupAdminView() {
+    }
+
+    @Override
+    protected void setupLibrarianView() {
+        this.deleteBookAuthorButton.setVisible(false);
+    }
+
+    @Override
+    public void onAuthorDataRemoved(Author a) {
+        for (Author auth : authorList) {
+            if (auth.getId() == a.getId()) {
+                authorList.remove(auth);
+                break;
+            }
+        }
+
+    }
+
+    private void removeAuthorData(Author a, int row) {
+        onAuthorDataRemoved(a);
+        ((DefaultTableModel) table.getModel()).removeRow(row);
     }
 }

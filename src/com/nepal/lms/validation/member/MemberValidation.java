@@ -9,8 +9,6 @@ import com.nepal.lms.custom.Alert;
 import com.nepal.lms.util.Logy;
 import com.nepal.lms.validation.BaseValidation;
 import java.awt.Component;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Calendar;
 
 /**
@@ -50,7 +48,7 @@ public class MemberValidation extends BaseValidation {
             Logy.d("Member expiry date not valid");
             Alert.showError(component, "Expiry date field cannot be empty.");
             return false;
-        } else if (expiryDate.before(java.util.Calendar.getInstance())) {
+        } else if (isExpiryDateValid(expiryDate)) {
             Logy.d("Member expiry date not valid");
             Alert.showError(component, "Expiry date must be after current date.");
             return false;

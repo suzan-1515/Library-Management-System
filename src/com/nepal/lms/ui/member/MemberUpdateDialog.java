@@ -44,7 +44,7 @@ public class MemberUpdateDialog extends javax.swing.JDialog {
         nameTextField.setText(member.getName());
         addressTextField.setText(member.getAddress().getTemporary());
         contactTextField.setText(member.getContact());
-        expiryDatePicker.setSelectedDate(Utils.sqlToCalandarDate(member.getExpiryDate()));
+        expiryDatePicker.setSelectedDate(Utils.millisToCalendar(member.getExpiryDate()));
     }
 
     public interface ItemUpdatedListener {
@@ -293,7 +293,7 @@ public class MemberUpdateDialog extends javax.swing.JDialog {
             member.setName(nameTextField.getText());
             member.setAddress(new Address(addressTextField.getText()));
             member.setContact(contactTextField.getText());
-            member.setExpiryDate(Utils.calanderToSqlDate(expiryDatePicker.getSelectedDate()));
+            member.setExpiryDate(expiryDatePicker.getSelectedDate().getTimeInMillis());
 
             try {
                 MemberBLL.updateMember(member);

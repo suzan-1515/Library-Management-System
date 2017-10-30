@@ -11,8 +11,6 @@ import com.nepal.lms.entity.user.UserInfo;
  *
  * @author Suzn
  */
-public interface UserView {
-    
-    void setupUserView(UserInfo userInfo);
-    
+public interface UserView extends View<UserInfo> {
+
 }

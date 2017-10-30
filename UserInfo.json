@@ -1,21 +1,21 @@
 [
-  {
-    "id": 1,
-    "name": "Sujan Parajuli",
+    {
+    "id": 6856,
+    "name": "Admin",
     "username": "admin",
     "password": "admin",
     "role": {
-      "id": 1,
+      "id": 0,
       "title": "Admin"
     }
   },
   {
-    "id": 2,
-    "name": "Leela",
-    "username": "Student",
-    "password": "passowrd",
+    "id": 6859,
+    "name": "Bond",
+    "username": "suzan",
+    "password": "suzan123",
     "role": {
-      "id": 2,
+      "id": 1,
       "title": "Librarian"
     }
   }

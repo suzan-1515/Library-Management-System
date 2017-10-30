@@ -15,4 +15,6 @@ public interface MemberListener {
 
     void onMemberDataChanged(Member m);
 
+    void onMemberDataRemoved(Member m);
+
 }

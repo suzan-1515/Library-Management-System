@@ -7,8 +7,11 @@ package com.nepal.lms.validation.book;
 
 import com.nepal.lms.validation.BaseValidation;
 import com.nepal.lms.custom.Alert;
+import com.nepal.lms.entity.book.BookInfo;
 import com.nepal.lms.util.Logy;
+import com.nepal.lms.util.Utils;
 import java.awt.Component;
+import java.util.Calendar;
 
 /**
  *
@@ -129,5 +132,60 @@ public class BookValidation extends BaseValidation {
 
         return true;
     }
+
+    public boolean isBorrowFormValid(String book, String member, Calendar expiryDate) {
+        Logy.d("Validating borrow insert form");
+        if (isStringEmptyOrNull(book)) {
+            Logy.d("Borrow book not valid");
+            Alert.showError(component, "Book Id field cannot be empty.");
+            return false;
+        }
+
+        if (isStringEmptyOrNull(member)) {
+            Logy.d("Borrow member not valid");
+            Alert.showError(component, "Member Id field cannot be empty.");
+            return false;
+        }
+
+        if (isDateEmptyOrNull(expiryDate)) {
+            Logy.d("Borrow expirydate not valid");
+            Alert.showError(component, "Expiry date field cannot be empty.");
+            return false;
+        } else if (isExpiryDateValid(expiryDate)) {
+            Logy.d("Borrow expiry date not valid");
+            Alert.showError(component, "Expiry date must be after current date.");
+            return false;
+        }
+
+        Logy.d("Borrow insert form is validated");
+
+        return true;
+    }
+
+    public boolean isReturnFormValid(String book, String member) {
+        Logy.d("Validating return insert form");
+        if (isStringEmptyOrNull(book)) {
+            Logy.d("Return book not valid");
+            Alert.showError(component, "Book Id field cannot be empty.");
+            return false;
+        }
+
+        if (isStringEmptyOrNull(member)) {
+            Logy.d("Return member not valid");
+            Alert.showError(component, "Member Id field cannot be empty.");
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean isBookAvailable(int availableCopies) {
+        return availableCopies > 0;
+    }
+
+    public boolean isMemberValid(long expiryDate) {
+        return !isExpiryDateValid(Utils.millisToCalendar(expiryDate));
+    }
+
 
 }

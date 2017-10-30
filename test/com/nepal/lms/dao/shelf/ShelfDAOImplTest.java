@@ -7,7 +7,9 @@ package com.nepal.lms.dao.shelf;
 
 import com.nepal.lms.bll.ShelfBLL;
 import com.nepal.lms.entity.shelf.Shelf;
+import com.nepal.lms.entity.user.UserParams;
 import java.util.List;
+import java.util.prefs.Preferences;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -46,12 +48,8 @@ public class ShelfDAOImplTest {
     @Test
     public void testIsShelfAvailable() throws Exception {
         System.out.println("isShelfAvailable");
-        Shelf shelf = new Shelf(1, "B4");
-        boolean expResult = false;
-        boolean result = ShelfBLL.isShelfAvailable(shelf);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Preferences prefs = Preferences.userRoot().node(this.getClass().getName());
+                prefs.clear();
     }
 
     /**

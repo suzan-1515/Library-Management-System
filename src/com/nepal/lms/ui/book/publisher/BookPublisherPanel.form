@@ -237,45 +237,8 @@
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="addPublisherButton" pref="71" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="updatePublisherButton" min="-2" pref="78" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="addPublisherButton" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                                  <Component id="updatePublisherButton" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="updatePublisherButton">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Update"/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
-                            <BevelBorder/>
-                          </Border>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updatePublisherButtonActionPerformed"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JButton" name="addPublisherButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Add New"/>
@@ -284,9 +247,44 @@
                             <BevelBorder/>
                           </Border>
                         </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[80, 40]"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPublisherButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="updatePublisherButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Update"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[80, 40]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updatePublisherButtonActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="deletePublisherButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                            <BevelBorder/>
+                          </Border>
+                        </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[80, 40]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deletePublisherButtonActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

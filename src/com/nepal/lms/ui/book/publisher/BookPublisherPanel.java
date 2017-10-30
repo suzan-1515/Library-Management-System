@@ -9,13 +9,18 @@ import com.nepal.lms.action.PublisherListener;
 import com.nepal.lms.bll.PublisherBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.publisher.Publisher;
+import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
+import com.nepal.lms.ui.BaseUserPanel;
 import com.nepal.lms.util.Logy;
+import com.nepal.lms.util.Utils;
 import com.nepal.lms.view.BookView;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,15 +28,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @publisher Suzn
  */
-public class BookPublisherPanel extends javax.swing.JPanel implements BookView<Publisher>, PublisherListener {
+public final class BookPublisherPanel extends BaseUserPanel implements BookView<Publisher>, PublisherListener {
 
     private List<Publisher> publisherList;
 
     /**
      * Creates new form BookPublisherPanel
+     *
+     * @param userInfo
      */
-    public BookPublisherPanel() {
+    public BookPublisherPanel(UserInfo userInfo) {
         initComponents();
+        setupUserView(userInfo);
+        publisherList = new ArrayList<>();
         this.loadTableData();
     }
 
@@ -55,8 +64,9 @@ public class BookPublisherPanel extends javax.swing.JPanel implements BookView<P
         table = new javax.swing.JTable();
         bottomPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        updatePublisherButton = new javax.swing.JButton();
         addPublisherButton = new javax.swing.JButton();
+        updatePublisherButton = new javax.swing.JButton();
+        deletePublisherButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -162,42 +172,35 @@ public class BookPublisherPanel extends javax.swing.JPanel implements BookView<P
 
         jPanel3.setOpaque(false);
 
-        updatePublisherButton.setText("Update");
-        updatePublisherButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updatePublisherButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updatePublisherButtonActionPerformed(evt);
-            }
-        });
-
         addPublisherButton.setText("Add New");
         addPublisherButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addPublisherButton.setPreferredSize(new java.awt.Dimension(80, 40));
         addPublisherButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addPublisherButtonActionPerformed(evt);
             }
         });
+        jPanel3.add(addPublisherButton);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(addPublisherButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updatePublisherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addPublisherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updatePublisherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        updatePublisherButton.setText("Update");
+        updatePublisherButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updatePublisherButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        updatePublisherButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePublisherButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(updatePublisherButton);
+
+        deletePublisherButton.setText("Delete");
+        deletePublisherButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deletePublisherButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        deletePublisherButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePublisherButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(deletePublisherButton);
 
         bottomPanel.add(jPanel3);
 
@@ -230,6 +233,25 @@ public class BookPublisherPanel extends javax.swing.JPanel implements BookView<P
             }
         }
     }//GEN-LAST:event_updatePublisherButtonActionPerformed
+
+    private void deletePublisherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePublisherButtonActionPerformed
+        if (Utils.isTableRowSelected(table)) {
+            if (Alert.showDeleteConfirmDialog(this) == JOptionPane.YES_OPTION) {
+                int row = table.getSelectedRow();
+                int id = Utils.getIdFromTable(table, row);
+                try {
+                    Publisher publisher = new Publisher();
+                    publisher.setId(id);
+                    PublisherBLL.deletePublisher(publisher);
+                    removePublisherData(publisher, row);
+                } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
+                    Logy.e(ex);
+                    Alert.showError(this, ex.getMessage());
+                }
+            }
+
+        }
+    }//GEN-LAST:event_deletePublisherButtonActionPerformed
 
     @Override
     public final void loadTableData() {
@@ -302,6 +324,7 @@ public class BookPublisherPanel extends javax.swing.JPanel implements BookView<P
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerSubPanel;
+    private javax.swing.JButton deletePublisherButton;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -321,6 +344,31 @@ public class BookPublisherPanel extends javax.swing.JPanel implements BookView<P
     private void appendPublisherData(Publisher publisher) {
         publisherList.add(publisher);
         addPublisherRowData(publisher);
+    }
+
+    @Override
+    protected void setupAdminView() {
+    }
+
+    @Override
+    protected void setupLibrarianView() {
+        this.deletePublisherButton.setVisible(false);
+    }
+
+    @Override
+    public void onPublisherDataRemoved(Publisher p) {
+        for (Publisher auth : publisherList) {
+            if (auth.getId() == p.getId()) {
+                publisherList.remove(auth);
+                break;
+            }
+        }
+
+    }
+
+    private void removePublisherData(Publisher a, int row) {
+        onPublisherDataRemoved(a);
+        ((DefaultTableModel) table.getModel()).removeRow(row);
     }
 
 }

@@ -5,17 +5,12 @@
  */
 package com.nepal.lms.view;
 
-import java.util.List;
+import com.nepal.lms.entity.member.MemberInfo;
 
 /**
  *
  * @author Suzn
- * @param <T>
  */
-public interface MemberView<T> {
-
-    void loadTableData();
-
-    void fillTableData(List<T> list);
+public interface MemberView extends View<MemberInfo> {
 
 }

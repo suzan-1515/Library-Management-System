@@ -9,13 +9,18 @@ import com.nepal.lms.action.SubjectListener;
 import com.nepal.lms.bll.SubjectBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.subject.Subject;
+import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
+import com.nepal.lms.ui.BaseUserPanel;
 import com.nepal.lms.util.Logy;
+import com.nepal.lms.util.Utils;
 import com.nepal.lms.view.BookView;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,15 +28,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Suzn
  */
-public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Subject>, SubjectListener {
+public final class BookSubjectPanel extends BaseUserPanel implements BookView<Subject>, SubjectListener {
 
     private List<Subject> subjectList;
 
     /**
      * Creates new form BookSubjectPanel
+     *
+     * @param userInfo
      */
-    public BookSubjectPanel() {
+    public BookSubjectPanel(UserInfo userInfo) {
         initComponents();
+        setupUserView(userInfo);
+        subjectList = new ArrayList<>();
         this.loadTableData();
     }
 
@@ -55,8 +64,9 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
         table = new javax.swing.JTable();
         bottomPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        updateBookButton = new javax.swing.JButton();
         addBookButton = new javax.swing.JButton();
+        updateBookButton = new javax.swing.JButton();
+        deleteBookButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -160,43 +170,37 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
         bottomPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
         jPanel3.setOpaque(false);
-
-        updateBookButton.setText("Update");
-        updateBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updateBookButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBookButtonActionPerformed(evt);
-            }
-        });
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.TRAILING));
 
         addBookButton.setText("Add New");
         addBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addBookButton.setPreferredSize(new java.awt.Dimension(80, 40));
         addBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBookButtonActionPerformed(evt);
             }
         });
+        jPanel3.add(addBookButton);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(addBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        updateBookButton.setText("Update");
+        updateBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateBookButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        updateBookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBookButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(updateBookButton);
+
+        deleteBookButton.setText("Delete");
+        deleteBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deleteBookButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        deleteBookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBookButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(deleteBookButton);
 
         bottomPanel.add(jPanel3);
 
@@ -231,6 +235,25 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
         }
 
     }//GEN-LAST:event_updateBookButtonActionPerformed
+
+    private void deleteBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBookButtonActionPerformed
+        if (Utils.isTableRowSelected(table)) {
+            if (Alert.showDeleteConfirmDialog(this) == JOptionPane.YES_OPTION) {
+                int row = table.getSelectedRow();
+                int id = Utils.getIdFromTable(table, row);
+                try {
+                    Subject subject = new Subject();
+                    subject.setId(id);
+                    SubjectBLL.deleteSubject(subject);
+                    removeSubjectData(subject, row);
+                } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
+                    Logy.e(ex);
+                    Alert.showError(this, ex.getMessage());
+                }
+            }
+
+        }
+    }//GEN-LAST:event_deleteBookButtonActionPerformed
 
     public void addSubjectRowData(Subject subject) {
         ((DefaultTableModel) table.getModel()).insertRow(0, new Object[]{
@@ -295,6 +318,7 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerSubPanel;
+    private javax.swing.JButton deleteBookButton;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -314,5 +338,31 @@ public class BookSubjectPanel extends javax.swing.JPanel implements BookView<Sub
     private void appendSubjectData(Subject s) {
         subjectList.add(s);
         addSubjectRowData(s);
+    }
+
+    @Override
+    protected void setupAdminView() {
+
+    }
+
+    @Override
+    protected void setupLibrarianView() {
+        this.deleteBookButton.setVisible(false);
+    }
+
+    @Override
+    public void onSubectDataRemoved(Subject s) {
+        for (Subject auth : subjectList) {
+            if (auth.getId() == s.getId()) {
+                subjectList.remove(auth);
+                break;
+            }
+        }
+
+    }
+
+    private void removeSubjectData(Subject a, int row) {
+        onSubectDataRemoved(a);
+        ((DefaultTableModel) table.getModel()).removeRow(row);
     }
 }

@@ -17,6 +17,7 @@ import com.nepal.lms.util.Utils;
 import com.nepal.lms.validation.member.MemberValidation;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Calendar;
 
 /**
  *
@@ -317,8 +318,8 @@ public class MemberInsertDialog extends javax.swing.JDialog {
             member.setName(nameTextField.getText());
             member.setAddress(new Address(addressTextField.getText()));
             member.setContact(contactTextField.getText());
-            member.setExpiryDate(Utils.calanderToSqlDate(expiryDatePicker.getSelectedDate()));
-            member.setJoinedDate(Date.valueOf(LocalDate.now()));
+            member.setExpiryDate(expiryDatePicker.getSelectedDate().getTimeInMillis());
+            member.setJoinedDate(Calendar.getInstance().getTimeInMillis());
 
             try {
                 MemberBLL.insertMember(member);

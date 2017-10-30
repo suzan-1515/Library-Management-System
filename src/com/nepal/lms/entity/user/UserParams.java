@@ -19,5 +19,6 @@ public class UserParams extends Params {
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";
     public static final String ROLE = "role";
+    public static String LIBRARIAN_FIRST_LOGIN = "lfl";
 
 }

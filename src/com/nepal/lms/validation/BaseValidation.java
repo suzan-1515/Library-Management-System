@@ -5,6 +5,7 @@
  */
 package com.nepal.lms.validation;
 
+import com.nepal.lms.util.Logy;
 import java.awt.Component;
 import java.util.Calendar;
 
@@ -32,6 +33,10 @@ public abstract class BaseValidation {
 
     protected boolean isDateEmptyOrNull(Calendar date) {
         return (date == null);
+    }
+
+    protected boolean isExpiryDateValid(Calendar expiryDate) {
+        return expiryDate.before(java.util.Calendar.getInstance());
     }
 
 }

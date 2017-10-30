@@ -20,6 +20,10 @@ public class Author implements Serializable {
     public Author() {
     }
 
+    public Author(int id) {
+        this.id = id;
+    }
+
     public Author(int id, String title, String contact) {
         this.id = id;
         this.title = title;

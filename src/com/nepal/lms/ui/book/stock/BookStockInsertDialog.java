@@ -538,6 +538,7 @@ public class BookStockInsertDialog extends javax.swing.JDialog {
             bookInfo.setEdition(editionTextField.getText());
             bookInfo.setIsbn(isbnTextField.getText());
             bookInfo.setNumberOfCopy(Integer.parseInt(quantityTextField.getText()));
+            bookInfo.setAvailableCopies(bookInfo.getNumberOfCopy());
             bookInfo.setShelfNo(shelfComboBox.getItemAt(shelfComboBox.getSelectedIndex()));
 
             try {

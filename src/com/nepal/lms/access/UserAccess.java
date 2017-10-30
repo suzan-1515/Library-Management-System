@@ -13,8 +13,8 @@ import com.nepal.lms.entity.user.UserInfo;
  */
 public class UserAccess {
 
-    public static final int ADMIN = 1;
-    public static final int LIBRARIAN = 2;
+    public static final int ADMIN = 0;
+    public static final int LIBRARIAN = 1;
 
     public boolean isAdmin(UserInfo userInfo) {
         return userInfo.getRole().getId() == ADMIN;

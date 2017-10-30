@@ -15,4 +15,6 @@ public interface PublisherListener {
 
     void onPublisherDataChanged(Publisher p);
 
+    void onPublisherDataRemoved(Publisher p);
+
 }

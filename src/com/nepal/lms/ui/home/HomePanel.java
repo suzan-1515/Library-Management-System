@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.ui.dashboard;
+package com.nepal.lms.ui.home;
 
 import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.util.Logy;

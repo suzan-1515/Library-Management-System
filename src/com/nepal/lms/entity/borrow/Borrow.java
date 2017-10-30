@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.entity.book;
+package com.nepal.lms.entity.borrow;
 
+import com.nepal.lms.entity.book.Book;
+import com.nepal.lms.entity.book.BookInfo;
 import com.nepal.lms.entity.member.Member;
 import com.nepal.lms.entity.user.User;
 import java.io.Serializable;
@@ -14,13 +16,14 @@ import java.sql.Timestamp;
  *
  * @author Suzn
  */
-public class Return implements Serializable{
-    
+public class Borrow implements Serializable {
+
     private int id;
-    private Books books;
+    private BookInfo book;
     private Member member;
     private User user;
-    private Fine fine;
+    private int numOfDays;
+    private long returningDate;
     private Timestamp timestamp;
 
     /**
@@ -38,17 +41,17 @@ public class Return implements Serializable{
     }
 
     /**
-     * @return the books
+     * @return the book
      */
-    public Books getBooks() {
-        return books;
+    public BookInfo getBook() {
+        return book;
     }
 
     /**
-     * @param books the books to set
+     * @param book the books to set
      */
-    public void setBooks(Books books) {
-        this.books = books;
+    public void setBook(BookInfo book) {
+        this.book = book;
     }
 
     /**
@@ -80,17 +83,31 @@ public class Return implements Serializable{
     }
 
     /**
-     * @return the fine
+     * @return the numOfDays
      */
-    public Fine getFine() {
-        return fine;
+    public int getNumOfDays() {
+        return numOfDays;
     }
 
     /**
-     * @param fine the fine to set
+     * @param numOfDays the numOfDays to set
      */
-    public void setFine(Fine fine) {
-        this.fine = fine;
+    public void setNumOfDays(int numOfDays) {
+        this.numOfDays = numOfDays;
+    }
+
+    /**
+     * @return the returningDate
+     */
+    public long getReturningDate() {
+        return returningDate;
+    }
+
+    /**
+     * @param returningDate the returningDate to set
+     */
+    public void setReturningDate(long returningDate) {
+        this.returningDate = returningDate;
     }
 
     /**
@@ -106,5 +123,5 @@ public class Return implements Serializable{
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
-    
+
 }

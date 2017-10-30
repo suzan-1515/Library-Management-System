@@ -14,5 +14,7 @@ import com.nepal.lms.entity.author.Author;
 public interface AuthorListener {
 
     void onAuthorDataChanged(Author a);
-    
+
+    void onAuthorDataRemoved(Author a);
+
 }

@@ -13,6 +13,13 @@ public class BookInfo extends Book {
 
     private int availableCopies;
 
+    public BookInfo() {
+    }
+
+    public BookInfo(int id) {
+        super(id);
+    }
+
     /**
      * @return the available
      */
@@ -30,14 +37,8 @@ public class BookInfo extends Book {
     /**
      * @param availableCopies the availableCopies to set
      */
-    private void setAvailableCopies(int availableCopies) {
+    public void setAvailableCopies(int availableCopies) {
         this.availableCopies = availableCopies;
-    }
-
-    @Override
-    public void setNumberOfCopy(int numberOfCopy) {
-        super.setNumberOfCopy(numberOfCopy);
-        setAvailableCopies(numberOfCopy);
     }
 
 }

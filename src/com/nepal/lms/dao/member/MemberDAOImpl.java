@@ -114,10 +114,10 @@ public class MemberDAOImpl implements MemberDAO {
                 JsonObject item = iterator.next().getAsJsonObject();
                 if (item.get(MemberParams.ID).getAsInt() == t.getId()) {
 
-                    item.addProperty(MemberParams.EXPIRY_DATE, t.getExpiryDate().toString());
                     item.addProperty(MemberParams.NAME, t.getName());
                     item.add(MemberParams.ADDRESS, gson.toJsonTree(t.getAddress()));
                     item.addProperty(MemberParams.CONTACT, t.getContact());
+                    item.addProperty(MemberParams.EXPIRY_DATE, t.getExpiryDate());
 
                     found = true;
                     break;

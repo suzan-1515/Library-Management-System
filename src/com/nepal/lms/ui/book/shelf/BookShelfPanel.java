@@ -9,13 +9,18 @@ import com.nepal.lms.action.ShelfListener;
 import com.nepal.lms.bll.ShelfBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.shelf.Shelf;
+import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
+import com.nepal.lms.ui.BaseUserPanel;
 import com.nepal.lms.util.Logy;
+import com.nepal.lms.util.Utils;
 import com.nepal.lms.view.BookView;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,15 +28,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @shelf Suzn
  */
-public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf>, ShelfListener {
+public final class BookShelfPanel extends BaseUserPanel implements BookView<Shelf>, ShelfListener {
 
     private List<Shelf> shelfList;
 
     /**
      * Creates new form BookShelfPanel
+     *
+     * @param userInfo
      */
-    public BookShelfPanel() {
+    public BookShelfPanel(UserInfo userInfo) {
         initComponents();
+        setupUserView(userInfo);
+        shelfList = new ArrayList<>();
         this.loadTableData();
     }
 
@@ -55,8 +64,9 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
         table = new javax.swing.JTable();
         bottomPanel2 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        updateBookShelfButton = new javax.swing.JButton();
         addBookShelfButton = new javax.swing.JButton();
+        updateBookShelfButton = new javax.swing.JButton();
+        deleteBookShelfButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -161,42 +171,35 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
 
         jPanel10.setOpaque(false);
 
-        updateBookShelfButton.setText("Update");
-        updateBookShelfButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updateBookShelfButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBookShelfButtonActionPerformed(evt);
-            }
-        });
-
         addBookShelfButton.setText("Add New");
         addBookShelfButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addBookShelfButton.setPreferredSize(new java.awt.Dimension(80, 40));
         addBookShelfButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBookShelfButtonActionPerformed(evt);
             }
         });
+        jPanel10.add(addBookShelfButton);
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(addBookShelfButton, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(updateBookShelfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBookShelfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateBookShelfButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        updateBookShelfButton.setText("Update");
+        updateBookShelfButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        updateBookShelfButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        updateBookShelfButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBookShelfButtonActionPerformed(evt);
+            }
+        });
+        jPanel10.add(updateBookShelfButton);
+
+        deleteBookShelfButton.setText("Delete");
+        deleteBookShelfButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        deleteBookShelfButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        deleteBookShelfButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBookShelfButtonActionPerformed(evt);
+            }
+        });
+        jPanel10.add(deleteBookShelfButton);
 
         bottomPanel2.add(jPanel10);
 
@@ -229,6 +232,25 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
         });
         bookShelfInsertDialog.setVisible(true);
     }//GEN-LAST:event_addBookShelfButtonActionPerformed
+
+    private void deleteBookShelfButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBookShelfButtonActionPerformed
+        if (Utils.isTableRowSelected(table)) {
+            if (Alert.showDeleteConfirmDialog(this) == JOptionPane.YES_OPTION) {
+                int row = table.getSelectedRow();
+                int id = Utils.getIdFromTable(table, row);
+                try {
+                    Shelf shelf = new Shelf();
+                    shelf.setId(id);
+                    ShelfBLL.deleteShelf(shelf);
+                    removeShelfData(shelf, row);
+                } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
+                    Logy.e(ex);
+                    Alert.showError(this, ex.getMessage());
+                }
+            }
+
+        }
+    }//GEN-LAST:event_deleteBookShelfButtonActionPerformed
 
     @Override
     public final void loadTableData() {
@@ -298,6 +320,7 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
     private javax.swing.JPanel bottomPanel2;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerSubPanel;
+    private javax.swing.JButton deleteBookShelfButton;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel8;
@@ -317,5 +340,30 @@ public class BookShelfPanel extends javax.swing.JPanel implements BookView<Shelf
     private void appendShelfData(Shelf s) {
         shelfList.add(s);
         addShelfRowData(s);
+    }
+
+    @Override
+    protected void setupAdminView() {
+    }
+
+    @Override
+    protected void setupLibrarianView() {
+        this.deleteBookShelfButton.setVisible(false);
+    }
+
+    @Override
+    public void onShelfDataRemoved(Shelf s) {
+        for (Shelf auth : shelfList) {
+            if (auth.getId() == s.getId()) {
+                shelfList.remove(auth);
+                break;
+            }
+        }
+
+    }
+
+    private void removeShelfData(Shelf a, int row) {
+        onShelfDataRemoved(a);
+        ((DefaultTableModel) table.getModel()).removeRow(row);
     }
 }

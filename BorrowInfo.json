@@ -1,0 +1,53 @@
+[
+  {
+    "id": 4624,
+    "book": {
+      "availableCopies": 6,
+      "id": 1,
+      "title": "C++ ho ho",
+      "subject": {
+        "id": 2,
+        "title": "C++"
+      },
+      "author": {
+        "id": 2,
+        "title": "Rajesh",
+        "contact": "2562"
+      },
+      "publisher": {
+        "id": 4,
+        "title": "Himalayan Publication",
+        "contact": "4935562"
+      },
+      "edition": "2012",
+      "isbn": "2256fsjjil78g",
+      "shelfNo": {
+        "id": 2,
+        "location": "B7"
+      },
+      "numberOfCopy": 8
+    },
+    "member": {
+      "expiryDate": 1602927722673,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Bond",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 0,
+      "name": "Sujan",
+      "role": {
+        "id": 1,
+        "title": ""
+      }
+    },
+    "numOfDays": 346,
+    "returningDate": 1539371462052,
+    "timestamp": "Oct 31, 2017 12:56:11 AM"
+  }
+]

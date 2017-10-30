@@ -3,26 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.entity.book;
+package com.nepal.lms.entity.returnn;
 
+import com.nepal.lms.entity.book.Book;
+import com.nepal.lms.entity.book.Fine;
 import com.nepal.lms.entity.member.Member;
 import com.nepal.lms.entity.user.User;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  *
  * @author Suzn
  */
-public class Borrow implements Serializable {
+public class Return implements Serializable {
 
     private int id;
-    private Books books;
+    private Book book;
     private Member member;
     private User user;
-    private int numOfDays;
-    private Date returningDate;
+    private Fine fine;
+    private long returnedDate;
     private Timestamp timestamp;
 
     /**
@@ -42,15 +43,15 @@ public class Borrow implements Serializable {
     /**
      * @return the books
      */
-    public Books getBooks() {
-        return books;
+    public Book getBook() {
+        return book;
     }
 
     /**
-     * @param books the books to set
+     * @param book the book to set
      */
-    public void setBooks(Books books) {
-        this.books = books;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     /**
@@ -82,31 +83,17 @@ public class Borrow implements Serializable {
     }
 
     /**
-     * @return the numOfDays
+     * @return the fine
      */
-    public int getNumOfDays() {
-        return numOfDays;
+    public Fine getFine() {
+        return fine;
     }
 
     /**
-     * @param numOfDays the numOfDays to set
+     * @param fine the fine to set
      */
-    public void setNumOfDays(int numOfDays) {
-        this.numOfDays = numOfDays;
-    }
-
-    /**
-     * @return the returningDate
-     */
-    public Date getReturningDate() {
-        return returningDate;
-    }
-
-    /**
-     * @param returningDate the returningDate to set
-     */
-    public void setReturningDate(Date returningDate) {
-        this.returningDate = returningDate;
+    public void setFine(Fine fine) {
+        this.fine = fine;
     }
 
     /**
@@ -121,6 +108,20 @@ public class Borrow implements Serializable {
      */
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    /**
+     * @return the returnedDate
+     */
+    public long getReturnedDate() {
+        return returnedDate;
+    }
+
+    /**
+     * @param returnedDate the returnedDate to set
+     */
+    public void setReturnedDate(long returnedDate) {
+        this.returnedDate = returnedDate;
     }
 
 }

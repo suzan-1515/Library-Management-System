@@ -27,6 +27,16 @@ public class Book implements Serializable {
     private Shelf shelfNo;
     private int numberOfCopy;
 
+    public Book() {
+    }
+
+    
+    
+    public Book(int id) {
+        this.id = id;
+    }
+
+        
     /**
      * @return the id
      */

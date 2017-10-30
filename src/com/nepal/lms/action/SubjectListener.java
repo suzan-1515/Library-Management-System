@@ -15,4 +15,6 @@ public interface SubjectListener {
 
     void onSubjectDataChanged(Subject s);
 
+    void onSubectDataRemoved(Subject s);
+
 }

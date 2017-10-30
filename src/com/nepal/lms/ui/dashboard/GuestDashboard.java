@@ -14,6 +14,7 @@ import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
+import com.nepal.lms.ui.login.Login;
 import com.nepal.lms.util.Logy;
 import java.util.List;
 import javax.swing.RowFilter;
@@ -31,7 +32,6 @@ public class GuestDashboard extends javax.swing.JFrame {
     /**
      * Creates new form GuestDashboard
      *
-     * @param userInfo
      */
     public GuestDashboard() {
         initComponents();
@@ -312,11 +312,8 @@ public class GuestDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        UserInfo userInfo = new UserInfo();
-        userInfo.setName("Milan");
-        userInfo.setRole(new Role(2, ""));
-        Dashboard librarianDashboard = new Dashboard(userInfo);
-        librarianDashboard.setVisible(true);
+        Login login = new Login();
+        login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
 

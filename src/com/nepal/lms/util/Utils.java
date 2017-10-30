@@ -6,6 +6,8 @@
 package com.nepal.lms.util;
 
 import java.sql.Date;
+import java.util.Calendar;
+import javax.swing.JTable;
 
 /**
  *
@@ -26,5 +28,24 @@ public class Utils {
         c.setTime(expiryDate);
         return c;
     }
+
+    public static Calendar millisToCalendar(long expiryDate) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(expiryDate);
+        return c;
+    }
+
+    public static java.sql.Date millisToSql(long expiryDate) {
+        return new java.sql.Date(expiryDate);
+    }
+
+    public static boolean isTableRowSelected(final javax.swing.JTable table) {
+        return table.getSelectedRow() > -1;
+    }
+
+    public static int getIdFromTable(JTable table, int row) {
+        return (int) table.getModel().getValueAt(row, 0);
+    }
+   
 
 }
