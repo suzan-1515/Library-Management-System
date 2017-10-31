@@ -5,10 +5,8 @@
  */
 package com.nepal.lms.ui.book.returnn;
 
-import com.nepal.lms.ui.book.returnn.*;
 import com.nepal.lms.bll.ReturnBLL;
 import com.nepal.lms.custom.Alert;
-import com.nepal.lms.entity.book.Book;
 import com.nepal.lms.entity.book.BookInfo;
 import com.nepal.lms.entity.returnn.Return;
 import com.nepal.lms.entity.member.Member;
@@ -41,7 +39,7 @@ public class BookReturnInsertDialog extends BaseBookTransaction {
 
     public void setBookId(int bookId) {
         this.bookId = bookId;
-        userIdTextField.setText(String.valueOf(bookId));
+        bookIdTextField.setText(String.valueOf(bookId));
     }
 
     public interface ItemAddedListener {

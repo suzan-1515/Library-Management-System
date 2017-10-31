@@ -8,6 +8,7 @@ package com.nepal.lms.dao.shelf;
 import com.nepal.lms.bll.ShelfBLL;
 import com.nepal.lms.entity.shelf.Shelf;
 import com.nepal.lms.entity.user.UserParams;
+import com.nepal.lms.ui.login.Login;
 import java.util.List;
 import java.util.prefs.Preferences;
 import org.junit.After;
@@ -48,7 +49,7 @@ public class ShelfDAOImplTest {
     @Test
     public void testIsShelfAvailable() throws Exception {
         System.out.println("isShelfAvailable");
-        Preferences prefs = Preferences.userRoot().node(this.getClass().getName());
+        Preferences prefs = Preferences.userRoot().node(Login.class.getName());
                 prefs.clear();
     }
 

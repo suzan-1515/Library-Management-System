@@ -635,12 +635,14 @@ public final class BookStockPanel extends BaseUserPanel implements BookView<Book
     }
 
     private void appendBorrowData(Borrow borrow) {
+        onBorrowDataChanged(borrow);
         if (borrowListener != null) {
             borrowListener.onBorrowDataChanged(borrow);
         }
     }
 
     private void appendReturnData(Return returnn) {
+        onReturnDataChanged(returnn);
         if (returnListener != null) {
             returnListener.onReturnDataChanged(returnn);
         }
