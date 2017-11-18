@@ -78,7 +78,7 @@
     "numberOfCopy": 5
   },
   {
-    "availableCopies": 1,
+    "availableCopies": 0,
     "id": 6050,
     "title": "hci for dummies",
     "subject": {
@@ -104,7 +104,7 @@
     "numberOfCopy": 1
   },
   {
-    "availableCopies": 3,
+    "availableCopies": 2,
     "id": 5975,
     "title": "Networking for Professional",
     "subject": {
@@ -127,15 +127,15 @@
       "id": 2857,
       "location": "B6-A1"
     },
-    "numberOfCopy": 5
+    "numberOfCopy": 2
   },
   {
-    "availableCopies": 0,
+    "availableCopies": 4,
     "id": 4755,
     "title": "milan",
     "subject": {
-      "id": 1,
-      "title": "Android"
+      "id": 3492,
+      "title": "Science"
     },
     "author": {
       "id": 1,
@@ -153,6 +153,6 @@
       "id": 1,
       "location": "A4"
     },
-    "numberOfCopy": 1
+    "numberOfCopy": 4
   }
 ]

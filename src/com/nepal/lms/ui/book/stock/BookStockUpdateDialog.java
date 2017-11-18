@@ -70,15 +70,11 @@ public class BookStockUpdateDialog extends javax.swing.JDialog {
 
     private int calculateAvailableCopies(int parseInt) {
 
-        if (parseInt == bookInfo.getNumberOfCopy()) {
-            return bookInfo.getAvailableCopies();
-        }
-
-        if (parseInt >= bookInfo.getAvailableCopies()) {
-            return bookInfo.getAvailableCopies();
-        } else {
+        if (parseInt < bookInfo.getAvailableCopies()) {
             return parseInt;
         }
+
+        return (parseInt - bookInfo.getNumberOfCopy()) + bookInfo.getAvailableCopies();
 
     }
 
@@ -572,6 +568,7 @@ public class BookStockUpdateDialog extends javax.swing.JDialog {
                 Alert.showInformation(this, "Book updated successfully!");
 
                 resetFields();
+                this.dispose();
             } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
                 Alert.showError(this, ex.getMessage());

@@ -5,11 +5,13 @@
  */
 package com.nepal.lms.ui.book.borrow;
 
-import com.nepal.lms.bll.BorrowBLL;
+import com.nepal.lms.ui.book.transaction.BaseBookTransaction;
+import com.nepal.lms.bll.TransactionBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.book.BookInfo;
 import com.nepal.lms.entity.borrow.Borrow;
 import com.nepal.lms.entity.member.MemberInfo;
+import com.nepal.lms.entity.transaction.Transaction;
 import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.DuplicateRecordException;
@@ -30,15 +32,15 @@ public class BookBorrowInsertDialog extends BaseBookTransaction {
     private final UserInfo userInfo;
     private int bookId = -1;
 
-    private void notifyDataSetChanged(Borrow borrow) {
+    private void notifyDataSetChanged(Transaction t) {
         if (getItemAddedListener() != null) {
-            getItemAddedListener().onNewItemAdded(borrow);
+            getItemAddedListener().onNewItemAdded(t);
         }
     }
 
     public interface ItemAddedListener {
 
-        void onNewItemAdded(Borrow borrow);
+        void onNewItemAdded(Transaction t);
     }
 
     /**
@@ -342,21 +344,28 @@ public class BookBorrowInsertDialog extends BaseBookTransaction {
                     MemberInfo member = getMember(memberIdTextField.getText());
                     if (member != null) {
                         if (validation.isMemberValid(member.getExpiryDate())) {
+                            Transaction transaction = new Transaction();
+                            transaction.setId(Utils.generateRandomID());
+                            transaction.setBook(bookById);
+                            transaction.setMember(member);
+                            transaction.setUser(userInfo);
+
                             Borrow borrow = new Borrow();
                             borrow.setId(Utils.generateRandomID());
-                            borrow.setBook(bookById);
-                            borrow.setMember(member);
-                            borrow.setUser(userInfo);
                             borrow.setNumOfDays(getDays(expiryDateChooser.getSelectedDate()));
                             borrow.setReturningDate(expiryDateChooser.getSelectedDate().getTimeInMillis());
                             borrow.setTimestamp(new java.sql.Timestamp(Calendar.getInstance().getTimeInMillis()));
 
+                            transaction.setTimestamp(new java.sql.Timestamp(Calendar.getInstance().getTimeInMillis()));
+                            transaction.setBorrow(borrow);
+                            transaction.setStatus(true);
                             try {
-                                BorrowBLL.insertBorrow(borrow);
-                                notifyDataSetChanged(borrow);
-                                Alert.showInformation(this, "Borrow details inserted successfully!");
+                                TransactionBLL.insertTransaction(transaction);
+                                notifyDataSetChanged(transaction);
+                                Alert.showInformation(this, "Book borrowed successfully!");
 
                                 resetFields();
+                                this.dispose();
                             } catch (DuplicateRecordException | MissingFileException | CorruptedDataException ex) {
                                 Logy.e(ex);
                                 Alert.showError(this, ex.getMessage());

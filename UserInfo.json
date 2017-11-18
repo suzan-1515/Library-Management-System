@@ -1,7 +1,7 @@
 [
   {
     "id": 6856,
-    "name": "Admin",
+    "name": "Sujan",
     "username": "admin",
     "password": "admin",
     "role": {
@@ -11,9 +11,9 @@
   },
   {
     "id": 6859,
-    "name": "Bond",
-    "username": "suzan",
-    "password": "sujan123",
+    "name": "Phoolmaya",
+    "username": "lib",
+    "password": "lib",
     "role": {
       "id": 1,
       "title": "Librarian"

@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.ui.book.returnn;
+package com.nepal.lms.ui.book.transaction;
 
-import com.nepal.lms.action.ReturnListener;
-import com.nepal.lms.bll.ReturnBLL;
+import com.nepal.lms.bll.TransactionBLL;
 import com.nepal.lms.custom.Alert;
-import com.nepal.lms.entity.returnn.Return;
 import com.nepal.lms.entity.user.UserInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;
@@ -20,31 +18,36 @@ import com.nepal.lms.view.BookView;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import com.nepal.lms.action.TransactionListener;
+import com.nepal.lms.entity.transaction.Transaction;
+import com.nepal.lms.entity.transaction.TransactionParams;
+import com.nepal.lms.ui.book.borrow.BookBorrowInsertDialog;
+import com.nepal.lms.ui.book.returnn.BookReturnInsertDialog;
 
 /**
  *
- * @returnn Suzn
+ * @borrow Suzn
  */
-public final class BookReturnPanel extends BaseUserPanel implements BookView<Return>, ReturnListener {
+public final class BookTransactionPanel extends BaseUserPanel implements BookView<Transaction>,
+        TransactionListener {
 
-    private List<Return> returnnList;
+    private List<Transaction> transactionList;
     private final UserInfo userInfo;
 
-    private ReturnListener returnnListener;
+    private TransactionListener transactionListener;
 
     /**
-     * Creates new form BookReturnPanel
+     * Creates new form BookBorrowPanel
      *
      * @param userInfo
      */
-    public BookReturnPanel(UserInfo userInfo) {
+    public BookTransactionPanel(UserInfo userInfo) {
         initComponents();
         this.userInfo = userInfo;
         setupUserView(userInfo);
-        returnnList = new ArrayList<>();
+        transactionList = new ArrayList<>();
         this.loadTableData();
     }
 
@@ -68,9 +71,8 @@ public final class BookReturnPanel extends BaseUserPanel implements BookView<Ret
         table = new javax.swing.JTable();
         bottomPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        addBookReturnButton = new javax.swing.JButton();
-        updateBookReturnButton = new javax.swing.JButton();
-        deleteBookReturnButton = new javax.swing.JButton();
+        borrowButton = new javax.swing.JButton();
+        returnButton = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -158,11 +160,15 @@ public final class BookReturnPanel extends BaseUserPanel implements BookView<Ret
             }
         };
 
-        tableModel.addColumn(com.nepal.lms.entity.returnn.ReturnParams.ID.toUpperCase());
-        tableModel.addColumn(com.nepal.lms.entity.returnn.ReturnParams.BOOK.toUpperCase());
-        tableModel.addColumn(com.nepal.lms.entity.returnn.ReturnParams.MEMBER.toUpperCase());
-        tableModel.addColumn(com.nepal.lms.entity.returnn.ReturnParams.USER.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.transaction.TransactionParams.ID.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.transaction.TransactionParams.BOOK.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.transaction.TransactionParams.MEMBER.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.transaction.TransactionParams.USER.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.borrow.BorrowParams.DAYS.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.borrow.BorrowParams.BORROWED_DATE.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.borrow.BorrowParams.RETURNING_DATE.toUpperCase());
         tableModel.addColumn(com.nepal.lms.entity.returnn.ReturnParams.RETURNED_DATE.toUpperCase());
+        tableModel.addColumn(com.nepal.lms.entity.transaction.TransactionParams.STATUS.toUpperCase());
         table.setModel(tableModel);
         table.setRowHeight(26);
         table.setShowHorizontalLines(false);
@@ -178,36 +184,25 @@ public final class BookReturnPanel extends BaseUserPanel implements BookView<Ret
 
         jPanel3.setOpaque(false);
 
-        addBookReturnButton.setText("Add New");
-        addBookReturnButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addBookReturnButton.setPreferredSize(new java.awt.Dimension(80, 40));
-        addBookReturnButton.addActionListener(new java.awt.event.ActionListener() {
+        borrowButton.setText("Borrow");
+        borrowButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        borrowButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        borrowButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBookReturnButtonActionPerformed(evt);
+                borrowButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(addBookReturnButton);
+        jPanel3.add(borrowButton);
 
-        updateBookReturnButton.setText("Update");
-        updateBookReturnButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        updateBookReturnButton.setPreferredSize(new java.awt.Dimension(80, 40));
-        updateBookReturnButton.addActionListener(new java.awt.event.ActionListener() {
+        returnButton.setText("Return");
+        returnButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        returnButton.setPreferredSize(new java.awt.Dimension(80, 40));
+        returnButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBookReturnButtonActionPerformed(evt);
+                returnButtonActionPerformed(evt);
             }
         });
-        updateBookReturnButton.setVisible(false);
-        jPanel3.add(updateBookReturnButton);
-
-        deleteBookReturnButton.setText("Delete");
-        deleteBookReturnButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        deleteBookReturnButton.setPreferredSize(new java.awt.Dimension(80, 40));
-        deleteBookReturnButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteBookReturnButtonActionPerformed(evt);
-            }
-        });
-        jPanel3.add(deleteBookReturnButton);
+        jPanel3.add(returnButton);
 
         bottomPanel.add(jPanel3);
 
@@ -218,55 +213,38 @@ public final class BookReturnPanel extends BaseUserPanel implements BookView<Ret
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addBookReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookReturnButtonActionPerformed
-        BookReturnInsertDialog bookReturnInsertDialog = new BookReturnInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true, userInfo);
-        bookReturnInsertDialog.setItemAddedListener((Return returnn) -> {
-            appendReturnData(returnn);
+    private void borrowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrowButtonActionPerformed
+        BookBorrowInsertDialog bookBorrowInsertDialog = new BookBorrowInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true, userInfo);
+        bookBorrowInsertDialog.setItemAddedListener((Transaction transaction) -> {
+            appendTransactionData(transaction);
         });
-        bookReturnInsertDialog.setVisible(true);
-    }//GEN-LAST:event_addBookReturnButtonActionPerformed
+        bookBorrowInsertDialog.setVisible(true);
+    }//GEN-LAST:event_borrowButtonActionPerformed
 
-    private void updateBookReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBookReturnButtonActionPerformed
+    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         int row = table.getSelectedRow();
-        if (row > -1) {
-            Return s = getBeanFromRow(row);
-            if (s != null) {
-                BookReturnUpdateDialog bookReturnUpdateDialog = new BookReturnUpdateDialog((JFrame) SwingUtilities.getWindowAncestor(this),
-                        true, s);
-                bookReturnUpdateDialog.setItemUpdatedListener((Return returnn) -> {
-                    updateReturnData(returnn, row);
-                });
-                bookReturnUpdateDialog.setVisible(true);
-            }
+        if (row < 0) {
+            return;
         }
-    }//GEN-LAST:event_updateBookReturnButtonActionPerformed
-
-    private void deleteBookReturnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBookReturnButtonActionPerformed
-        if (Utils.isTableRowSelected(table)) {
-            if (Alert.showDeleteConfirmDialog(this) == JOptionPane.YES_OPTION) {
-                int row = table.getSelectedRow();
-                int id = Utils.getIdFromTable(table, row);
-                try {
-                    Return retn = new Return();
-                    retn.setId(id);
-                    ReturnBLL.deleteReturn(retn);
-                    removeReturnData(retn, row);
-                } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
-                    Logy.e(ex);
-                    Alert.showError(this, ex.getMessage());
-                }
-            }
-
+        Transaction transaction = getBeanFromRow(row);
+        if (transaction.isStatus()) {
+            BookReturnInsertDialog bookReturnInsertDialog = new BookReturnInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true, transaction);
+            bookReturnInsertDialog.setItemAddedListener((Transaction t) -> {
+                bookReturnedTransaction(t, row);
+            });
+            bookReturnInsertDialog.setVisible(true);
+        } else {
+            Alert.showInformation(this, "Book already returned");
         }
-    }//GEN-LAST:event_deleteBookReturnButtonActionPerformed
+    }//GEN-LAST:event_returnButtonActionPerformed
 
     @Override
     public final void loadTableData() {
 
-        if (returnnList == null || returnnList.isEmpty()) {
-            Logy.d("Loading returnn from file for first Time");
+        if (transactionList == null || transactionList.isEmpty()) {
+            Logy.d("Loading transaction from file for first Time");
             try {
-                returnnList = ReturnBLL.getAllReturn();
+                transactionList = TransactionBLL.getAllTransaction();
             } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
                 Alert.showError(this, ex.getMessage());
@@ -274,92 +252,88 @@ public final class BookReturnPanel extends BaseUserPanel implements BookView<Ret
             }
 
         } else {
-            Logy.d("returnn already loaded");
+            Logy.d("transaction already loaded");
         }
 
-        this.fillTableData(returnnList);
+        this.fillTableData(transactionList);
 
     }
 
     /**
      *
-     * @param returnnInfoList
+     * @param transactionList
      */
     @Override
-    public final void fillTableData(List<Return> returnnInfoList) {
+    public final void fillTableData(List<Transaction> transactionList) {
 
-        returnnInfoList.stream().forEach((returnnInfo) -> {
-            addReturnRowData(returnnInfo);
+        transactionList.stream().forEach((transaction) -> {
+            addTransactionRowData(transaction);
         });
 
     }
 
-    public void addReturnRowData(Return returnn) {
+    public void addTransactionRowData(Transaction transaction) {
         ((DefaultTableModel) table.getModel()).insertRow(0, new Object[]{
-            returnn.getId(),
-            returnn.getBook().getTitle(),
-            returnn.getMember().getName(),
-            returnn.getUser().getName(),
-            Utils.millisToSql(returnn.getReturnedDate())
+            transaction.getId(),
+            transaction.getBook().getTitle(),
+            transaction.getMember().getName(),
+            transaction.getUser().getName(),
+            transaction.getBorrow().getNumOfDays(),
+            transaction.getBorrow().getTimestamp(),
+            Utils.millisToSql(transaction.getBorrow().getReturningDate()),
+            transaction.getRetrn() == null ? "-" : Utils.millisToSql(transaction.getRetrn().getReturnedDate()),
+            transaction.isStatus() ? TransactionParams.Status.BORROWED : TransactionParams.Status.RETURNED
         });
     }
 
-    private void updateReturnData(Return s, int row) {
-        for (Return returnn : returnnList) {
-            if (returnn.getId() == returnn.getId()) {
-                returnn.setBook(returnn.getBook());
-                returnn.setMember(returnn.getMember());
-                break;
-            }
-        }
-
-        updateReturnRowData(s, row);
-//        if (returnnListener != null) {
-//            returnnListener.onReturnDataChanged(s);
-//        }
-    }
-
-    private void updateReturnRowData(Return returnn, int row) {
-        ((DefaultTableModel) table.getModel()).setValueAt(returnn.getBook().getTitle(), row, 1);
-        ((DefaultTableModel) table.getModel()).setValueAt(returnn.getMember().getName(), row, 2);
-        ((DefaultTableModel) table.getModel()).setValueAt(Utils.millisToSql(returnn.getReturnedDate()), row, 4);
-    }
-
-    private Return getBeanFromRow(int row) {
+    private Transaction getBeanFromRow(int row) {
         int id = (int) table.getModel().getValueAt(row, 0);
-        return returnnList.stream()
-                .filter((returnn) -> returnn.getId() == id)
+        return transactionList.stream()
+                .filter((transaction) -> transaction.getId() == id)
                 .findFirst()
                 .orElse(null);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBookReturnButton;
+    private javax.swing.JButton borrowButton;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel centerSubPanel;
-    private javax.swing.JButton deleteBookReturnButton;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton returnButton;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JTable table;
-    private javax.swing.JButton updateBookReturnButton;
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void onReturnDataChanged(Return a) {
-        appendReturnData(a);
+    public void onBookBorrowed(Transaction transaction) {
+        transactionList.add(transaction);
+        addTransactionRowData(transaction);
     }
 
-    private void appendReturnData(Return returnn) {
-        returnnList.add(returnn);
-        addReturnRowData(returnn);
-        if (returnnListener != null) {
-            returnnListener.onReturnDataChanged(returnn);
+    @Override
+    public void onBookReturned(Transaction transaction) {
+    }
+
+    private void appendTransactionData(Transaction transaction) {
+        onBookBorrowed(transaction);
+        if (transactionListener != null) {
+            transactionListener.onBookBorrowed(transaction);
+        }
+    }
+
+    private void bookReturnedTransaction(Transaction transaction, int row) {
+
+        ((DefaultTableModel) table.getModel()).setValueAt(Utils.millisToSql(transaction.getRetrn().getReturnedDate()), row, 7);
+        ((DefaultTableModel) table.getModel()).setValueAt(transaction.isStatus() ? TransactionParams.Status.BORROWED : TransactionParams.Status.RETURNED, row, 8);
+
+        if (transactionListener != null) {
+            transactionListener.onBookReturned(transaction);
         }
     }
 
@@ -369,36 +343,20 @@ public final class BookReturnPanel extends BaseUserPanel implements BookView<Ret
 
     @Override
     protected void setupLibrarianView() {
-        this.deleteBookReturnButton.setVisible(false);
     }
 
     /**
-     * @return the returnnListener
+     * @return the transactionListener
      */
-    public ReturnListener getReturnListener() {
-        return returnnListener;
+    public TransactionListener getTransactionListener() {
+        return transactionListener;
     }
 
     /**
-     * @param returnnListener the returnnListener to set
+     * @param borrowListener the transactionListener to set
      */
-    public void setReturnListener(ReturnListener returnnListener) {
-        this.returnnListener = returnnListener;
+    public void setTransactionListener(TransactionListener borrowListener) {
+        this.transactionListener = borrowListener;
     }
 
-    @Override
-    public void onReturnDataRemoved(Return r) {
-        for (Return auth : returnnList) {
-            if (auth.getId() == r.getId()) {
-                returnnList.remove(auth);
-                break;
-            }
-        }
-
-    }
-
-    private void removeReturnData(Return a, int row) {
-        onReturnDataRemoved(a);
-        ((DefaultTableModel) table.getModel()).removeRow(row);
-    }
 }

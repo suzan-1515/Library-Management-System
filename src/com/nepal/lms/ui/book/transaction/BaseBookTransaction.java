@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.ui.book.borrow;
+package com.nepal.lms.ui.book.transaction;
 
 import com.nepal.lms.bll.BookBLL;
 import com.nepal.lms.bll.MemberBLL;
 import com.nepal.lms.custom.Alert;
-import com.nepal.lms.entity.book.Book;
 import com.nepal.lms.entity.book.BookInfo;
-import com.nepal.lms.entity.member.Member;
 import com.nepal.lms.entity.member.MemberInfo;
 import com.nepal.lms.exception.CorruptedDataException;
 import com.nepal.lms.exception.MissingFileException;

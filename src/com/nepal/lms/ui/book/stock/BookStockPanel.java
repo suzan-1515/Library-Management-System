@@ -6,7 +6,6 @@
 package com.nepal.lms.ui.book.stock;
 
 import com.nepal.lms.action.AuthorListener;
-import com.nepal.lms.action.BorrowListener;
 import com.nepal.lms.action.PublisherListener;
 import com.nepal.lms.action.ReturnListener;
 import com.nepal.lms.action.ShelfListener;
@@ -22,7 +21,6 @@ import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.ui.BaseUserPanel;
 import com.nepal.lms.ui.book.borrow.BookBorrowInsertDialog;
-import com.nepal.lms.ui.book.returnn.BookReturnInsertDialog;
 import com.nepal.lms.util.Logy;
 import com.nepal.lms.util.Utils;
 import com.nepal.lms.view.BookView;
@@ -32,20 +30,22 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import com.nepal.lms.action.TransactionListener;
+import com.nepal.lms.entity.transaction.Transaction;
 
 /**
  *
  * @author Suzn
  */
 public final class BookStockPanel extends BaseUserPanel implements BookView<BookInfo>,
-        BorrowListener, ReturnListener {
+        TransactionListener {
 
     private List<BookInfo> bookList;
     private SubjectListener subjectListener;
     private AuthorListener authorListener;
     private PublisherListener publisherListener;
     private ShelfListener shelfListener;
-    private BorrowListener borrowListener;
+    private TransactionListener borrowListener;
     private ReturnListener returnListener;
     private final UserInfo userInfo;
 
@@ -83,7 +83,6 @@ public final class BookStockPanel extends BaseUserPanel implements BookView<Book
         bottomPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         borrowBookButton = new javax.swing.JButton();
-        returnBookButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         addBookButton = new javax.swing.JButton();
         updateBookButton = new javax.swing.JButton();
@@ -211,16 +210,6 @@ public final class BookStockPanel extends BaseUserPanel implements BookView<Book
         });
         jPanel3.add(borrowBookButton);
 
-        returnBookButton.setText("Return");
-        returnBookButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(255, 51, 0), new java.awt.Color(255, 51, 0)));
-        returnBookButton.setPreferredSize(new java.awt.Dimension(80, 40));
-        returnBookButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                returnBookButtonActionPerformed(evt);
-            }
-        });
-        jPanel3.add(returnBookButton);
-
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setPreferredSize(new java.awt.Dimension(2, 40));
         jPanel3.add(jSeparator1);
@@ -272,8 +261,8 @@ public final class BookStockPanel extends BaseUserPanel implements BookView<Book
         row = (int) table.getModel().getValueAt(row, 0);
         BookBorrowInsertDialog bookBorrowInsertDialog = new BookBorrowInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true, userInfo);
         bookBorrowInsertDialog.setBookId(row);
-        bookBorrowInsertDialog.setItemAddedListener((Borrow borrow) -> {
-            appendBorrowData(borrow);
+        bookBorrowInsertDialog.setItemAddedListener((Transaction t) -> {
+            appendBorrowData(t);
         });
         bookBorrowInsertDialog.setVisible(true);
     }//GEN-LAST:event_borrowBookButtonActionPerformed
@@ -326,20 +315,6 @@ public final class BookStockPanel extends BaseUserPanel implements BookView<Book
 
         }
     }//GEN-LAST:event_deleteBookButtonActionPerformed
-
-    private void returnBookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBookButtonActionPerformed
-        int row = table.getSelectedRow();
-        if (row < 0) {
-            return;
-        }
-        row = (int) table.getModel().getValueAt(row, 0);
-        BookReturnInsertDialog bookReturnInsertDialog = new BookReturnInsertDialog((JFrame) SwingUtilities.getWindowAncestor(this), true, userInfo);
-        bookReturnInsertDialog.setBookId(row);
-        bookReturnInsertDialog.setItemAddedListener((Return returnn) -> {
-            appendReturnData(returnn);
-        });
-        bookReturnInsertDialog.setVisible(true);
-    }//GEN-LAST:event_returnBookButtonActionPerformed
 
     @Override
     public final void loadTableData() {
@@ -439,67 +414,39 @@ public final class BookStockPanel extends BaseUserPanel implements BookView<Book
     }
 
     @Override
-    public void onBorrowDataChanged(Borrow b) {
-        BookInfo updatedBook = updateBookBorrowTransaction(b, true);
-
-        if (updatedBook != null) {
-            try {
-                BookBLL.updateBook(updatedBook);
-                updateBookRowData(updatedBook);
-            } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
-                Logy.e(ex);
-                Alert.showError(this, "Error updating book borrow details");
-            }
-        }
+    public void onBookBorrowed(Transaction transaction) {
+        updateBookTransaction(transaction, true);
     }
 
-    private BookInfo updateBookBorrowTransaction(Borrow b, boolean operation) {
+    @Override
+    public void onBookReturned(Transaction transaction) {
+        updateBookTransaction(transaction, false);
+    }
+
+    private void updateBookTransaction(Transaction transaction, boolean operation) {
+
+        BookInfo updatedBookInfo = null;
 
         for (BookInfo book : bookList) {
-            if (book.getId() == b.getBook().getId()) {
+            if (book.getId() == transaction.getBook().getId()) {
                 book.setAvailableCopies(operation ? (book.getAvailableCopies() - 1) : (book.getAvailableCopies() + 1));
-                return book;
+                updatedBookInfo = book;
+                break;
             }
         }
 
-        return null;
-    }
-
-    private BookInfo updateBookRetutnTransaction(Return r, boolean operation) {
-
-        for (BookInfo book : bookList) {
-            if (book.getId() == r.getBook().getId()) {
-                book.setAvailableCopies(operation ? (book.getAvailableCopies() + 1) : (book.getAvailableCopies() - 1));
-                return book;
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    public void onReturnDataChanged(Return r) {
-        BookInfo updatedBook = updateBookRetutnTransaction(r, true);
-        if (updatedBook != null) {
+        if (updatedBookInfo != null) {
             try {
-                BookBLL.updateBook(updatedBook);
-                updateBookRowData(updatedBook);
+                BookBLL.updateBook(updatedBookInfo);
+                updateBookRowData(updatedBookInfo);
             } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
                 Alert.showError(this, "Error updating book borrow details");
             }
         }
+
     }
 
-    @Override
-    public void onBorrowDataRemoved(Borrow b) {
-        updateBookBorrowTransaction(b, false);
-    }
-
-    @Override
-    public void onReturnDataRemoved(Return r) {
-        updateBookRetutnTransaction(r, false);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBookButton;
@@ -514,7 +461,6 @@ public final class BookStockPanel extends BaseUserPanel implements BookView<Book
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton returnBookButton;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
     private javax.swing.JTable table;
@@ -598,14 +544,14 @@ public final class BookStockPanel extends BaseUserPanel implements BookView<Book
     /**
      * @return the borrowListener
      */
-    public BorrowListener getBorrowListener() {
+    public TransactionListener getBorrowListener() {
         return borrowListener;
     }
 
     /**
      * @param borrowListener the borrowListener to set
      */
-    public void setBorrowListener(BorrowListener borrowListener) {
+    public void setBorrowListener(TransactionListener borrowListener) {
         this.borrowListener = borrowListener;
     }
 
@@ -634,17 +580,10 @@ public final class BookStockPanel extends BaseUserPanel implements BookView<Book
         ((DefaultTableModel) table.getModel()).removeRow(row);
     }
 
-    private void appendBorrowData(Borrow borrow) {
-        onBorrowDataChanged(borrow);
+    private void appendBorrowData(Transaction transaction) {
+        onBookBorrowed(transaction);
         if (borrowListener != null) {
-            borrowListener.onBorrowDataChanged(borrow);
-        }
-    }
-
-    private void appendReturnData(Return returnn) {
-        onReturnDataChanged(returnn);
-        if (returnListener != null) {
-            returnListener.onReturnDataChanged(returnn);
+            borrowListener.onBookBorrowed(transaction);
         }
     }
 

@@ -15,9 +15,6 @@ public class ReturnParams extends Params {
 
     public static final String FILENAME = "ReturnInfo.json";
 
-    public static final String BOOK = "Book";
-    public static final String MEMBER = "Member";
-    public static final String USER = "User";
     public static final String RETURNED_DATE = "ReturnedDate";
     public static final String FINE = "Fine";
 

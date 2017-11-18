@@ -1,0 +1,370 @@
+[
+  {
+    "id": 8345,
+    "book": {
+      "availableCopies": 4,
+      "id": 8601,
+      "title": "Java for Dummies",
+      "subject": {
+        "id": 1,
+        "title": "Java"
+      },
+      "author": {
+        "id": 4,
+        "title": "Xi Jinping",
+        "contact": "236952"
+      },
+      "publisher": {
+        "id": 4,
+        "title": "Himalayan Publication",
+        "contact": "4935562"
+      },
+      "edition": "2008",
+      "isbn": "nnlo52s556",
+      "shelfNo": {
+        "id": 2,
+        "location": "B2-C"
+      },
+      "numberOfCopy": 5
+    },
+    "member": {
+      "expiryDate": 1602927722673,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Bond",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6856,
+      "name": "Admin",
+      "username": "admin",
+      "password": "admin",
+      "role": {
+        "id": 0,
+        "title": "Admin"
+      }
+    },
+    "borrow": {
+      "id": 4074,
+      "numOfDays": 741,
+      "returningDate": 1575134707379,
+      "timestamp": "Nov 18, 2017 11:10:24 PM"
+    },
+    "status": false,
+    "timestamp": "Nov 18, 2017 11:10:24 PM",
+    "retrn": {
+      "id": 2880,
+      "returnedDate": 1511027243400
+    }
+  },
+  {
+    "id": 9453,
+    "book": {
+      "availableCopies": 2,
+      "id": 2,
+      "title": "Java Programming",
+      "subject": {
+        "id": 1,
+        "title": "Java"
+      },
+      "author": {
+        "id": 1,
+        "title": "Sujan",
+        "contact": "2562"
+      },
+      "publisher": {
+        "id": 3,
+        "title": "Lala Publication",
+        "contact": "455225"
+      },
+      "edition": "2010",
+      "isbn": "2256fs",
+      "shelfNo": {
+        "id": 2,
+        "location": "B7"
+      },
+      "numberOfCopy": 5
+    },
+    "member": {
+      "expiryDate": 1602927722673,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Bond",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6856,
+      "name": "Admin",
+      "username": "admin",
+      "password": "admin",
+      "role": {
+        "id": 0,
+        "title": "Admin"
+      }
+    },
+    "borrow": {
+      "id": 2449,
+      "numOfDays": 46,
+      "returningDate": 1515086937403,
+      "timestamp": "Nov 18, 2017 11:14:30 PM"
+    },
+    "status": false,
+    "timestamp": "Nov 18, 2017 11:14:30 PM",
+    "retrn": {
+      "id": 5394,
+      "returnedDate": 1511027210712
+    }
+  },
+  {
+    "id": 3547,
+    "book": {
+      "availableCopies": 1,
+      "id": 2,
+      "title": "Java Programming",
+      "subject": {
+        "id": 1,
+        "title": "Java"
+      },
+      "author": {
+        "id": 1,
+        "title": "Sujan",
+        "contact": "2562"
+      },
+      "publisher": {
+        "id": 3,
+        "title": "Lala Publication",
+        "contact": "455225"
+      },
+      "edition": "2010",
+      "isbn": "2256fs",
+      "shelfNo": {
+        "id": 2,
+        "location": "B7"
+      },
+      "numberOfCopy": 5
+    },
+    "member": {
+      "expiryDate": 1602927722673,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Bond",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6856,
+      "name": "Admin",
+      "username": "admin",
+      "password": "admin",
+      "role": {
+        "id": 0,
+        "title": "Admin"
+      }
+    },
+    "borrow": {
+      "id": 3037,
+      "numOfDays": 19,
+      "returningDate": 1512754234642,
+      "timestamp": "Nov 18, 2017 11:15:43 PM"
+    },
+    "status": false,
+    "timestamp": "Nov 18, 2017 11:15:43 PM",
+    "retrn": {
+      "id": 5445,
+      "returnedDate": 1511026331642
+    }
+  },
+  {
+    "id": 2045,
+    "book": {
+      "availableCopies": 4,
+      "id": 4755,
+      "title": "milan",
+      "subject": {
+        "id": 3492,
+        "title": "Science"
+      },
+      "author": {
+        "id": 1,
+        "title": "Sujan Parajuli",
+        "contact": "996525555"
+      },
+      "publisher": {
+        "id": 1,
+        "title": "Black Horse Publication",
+        "contact": "442629555"
+      },
+      "edition": "5458",
+      "isbn": "jah54",
+      "shelfNo": {
+        "id": 1,
+        "location": "A4"
+      },
+      "numberOfCopy": 4
+    },
+    "member": {
+      "expiryDate": 1602927722673,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Bond",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6859,
+      "name": "Phoolmaya",
+      "username": "lib",
+      "password": "lib",
+      "role": {
+        "id": 1,
+        "title": "Librarian"
+      }
+    },
+    "borrow": {
+      "id": 1531,
+      "numOfDays": 18,
+      "returningDate": 1512671054209,
+      "timestamp": "Nov 19, 2017 12:09:21 AM"
+    },
+    "status": false,
+    "timestamp": "Nov 19, 2017 12:09:21 AM",
+    "retrn": {
+      "id": 8904,
+      "returnedDate": 1511029576864
+    }
+  },
+  {
+    "id": 9838,
+    "book": {
+      "availableCopies": 1,
+      "id": 6050,
+      "title": "hci for dummies",
+      "subject": {
+        "id": 6873,
+        "title": "HCI"
+      },
+      "author": {
+        "id": 1,
+        "title": "Sujan Parajuli",
+        "contact": "499652"
+      },
+      "publisher": {
+        "id": 1,
+        "title": "Black Horse Publication",
+        "contact": "442623"
+      },
+      "edition": "1",
+      "isbn": "1A",
+      "shelfNo": {
+        "id": 2,
+        "location": "B2-C"
+      },
+      "numberOfCopy": 1
+    },
+    "member": {
+      "expiryDate": 1602927722673,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Bond",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6859,
+      "name": "Phoolmaya",
+      "username": "lib",
+      "password": "lib",
+      "role": {
+        "id": 1,
+        "title": "Librarian"
+      }
+    },
+    "borrow": {
+      "id": 5141,
+      "numOfDays": 25,
+      "returningDate": 1513275869445,
+      "timestamp": "Nov 19, 2017 12:09:36 AM"
+    },
+    "status": false,
+    "timestamp": "Nov 19, 2017 12:09:36 AM",
+    "retrn": {
+      "id": 1474,
+      "returnedDate": 1511029550888
+    }
+  },
+  {
+    "id": 9609,
+    "book": {
+      "availableCopies": 1,
+      "id": 6050,
+      "title": "hci for dummies",
+      "subject": {
+        "id": 6873,
+        "title": "HCI"
+      },
+      "author": {
+        "id": 1,
+        "title": "Sujan Parajuli",
+        "contact": "499652"
+      },
+      "publisher": {
+        "id": 1,
+        "title": "Black Horse Publication",
+        "contact": "442623"
+      },
+      "edition": "1",
+      "isbn": "1A",
+      "shelfNo": {
+        "id": 2,
+        "location": "B2-C"
+      },
+      "numberOfCopy": 1
+    },
+    "member": {
+      "expiryDate": 1602927722673,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Bond",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6859,
+      "name": "Phoolmaya",
+      "username": "lib",
+      "password": "lib",
+      "role": {
+        "id": 1,
+        "title": "Librarian"
+      }
+    },
+    "borrow": {
+      "id": 3288,
+      "numOfDays": 16,
+      "returningDate": 1512498387374,
+      "timestamp": "Nov 19, 2017 12:11:34 AM"
+    },
+    "status": true,
+    "timestamp": "Nov 19, 2017 12:11:34 AM"
+  }
+]

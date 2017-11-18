@@ -5,16 +5,16 @@
  */
 package com.nepal.lms.action;
 
-import com.nepal.lms.entity.borrow.Borrow;
+import com.nepal.lms.entity.transaction.Transaction;
 
 /**
  *
  * @author Suzn
  */
-public interface BorrowListener {
+public interface TransactionListener {
 
-    void onBorrowDataChanged(Borrow b);
+    void onBookBorrowed(Transaction transaction);
 
-    void onBorrowDataRemoved(Borrow b);
+    void onBookReturned(Transaction transaction);
 
 }

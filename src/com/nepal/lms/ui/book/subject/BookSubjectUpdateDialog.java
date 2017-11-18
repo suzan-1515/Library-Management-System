@@ -274,6 +274,7 @@ public class BookSubjectUpdateDialog extends javax.swing.JDialog {
                 Alert.showInformation(this, "Subject updated successfully!");
 
                 resetFields();
+                this.dispose();
             } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
                 Logy.e(ex);
                 Alert.showError(this, ex.getMessage());

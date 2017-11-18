@@ -5,10 +5,6 @@
  */
 package com.nepal.lms.entity.borrow;
 
-import com.nepal.lms.entity.book.Book;
-import com.nepal.lms.entity.book.BookInfo;
-import com.nepal.lms.entity.member.Member;
-import com.nepal.lms.entity.user.User;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -19,9 +15,6 @@ import java.sql.Timestamp;
 public class Borrow implements Serializable {
 
     private int id;
-    private BookInfo book;
-    private Member member;
-    private User user;
     private int numOfDays;
     private long returningDate;
     private Timestamp timestamp;
@@ -38,48 +31,6 @@ public class Borrow implements Serializable {
      */
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * @return the book
-     */
-    public BookInfo getBook() {
-        return book;
-    }
-
-    /**
-     * @param book the books to set
-     */
-    public void setBook(BookInfo book) {
-        this.book = book;
-    }
-
-    /**
-     * @return the member
-     */
-    public Member getMember() {
-        return member;
-    }
-
-    /**
-     * @param member the member to set
-     */
-    public void setMember(Member member) {
-        this.member = member;
-    }
-
-    /**
-     * @return the user
-     */
-    public User getUser() {
-        return user;
-    }
-
-    /**
-     * @param user the user to set
-     */
-    public void setUser(User user) {
-        this.user = user;
     }
 
     /**

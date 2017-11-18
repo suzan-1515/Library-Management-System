@@ -10,8 +10,7 @@ import com.nepal.lms.ui.book.stock.BookStockPanel;
 import com.nepal.lms.ui.book.shelf.BookShelfPanel;
 import com.nepal.lms.ui.book.publisher.BookPublisherPanel;
 import com.nepal.lms.ui.book.author.BookAuthorPanel;
-import com.nepal.lms.ui.book.borrow.BookBorrowPanel;
-import com.nepal.lms.ui.book.returnn.BookReturnPanel;
+import com.nepal.lms.ui.book.transaction.BookTransactionPanel;
 import com.nepal.lms.ui.book.subject.BookSubjectPanel;
 import com.nepal.lms.util.ComponentUtils;
 import com.nepal.lms.util.Logy;
@@ -27,8 +26,7 @@ public class BookPanel extends javax.swing.JPanel {
     private BookAuthorPanel bookAuthorPanel;
     private BookPublisherPanel bookPublisherPanel;
     private BookShelfPanel bookShelfPanel;
-    private BookBorrowPanel bookBorrowPanel;
-    private BookReturnPanel bookReturnPanel;
+    private BookTransactionPanel bookTransactionPanel;
     private final UserInfo userInfo;
 
     /**
@@ -66,9 +64,9 @@ public class BookPanel extends javax.swing.JPanel {
         authorMenuButton = new javax.swing.JButton();
         publisherMenuButton = new javax.swing.JButton();
         shelfMenuButton = new javax.swing.JButton();
-        borrowMenuButton = new javax.swing.JButton();
-        returnMenuButton = new javax.swing.JButton();
+        transactionMenuButton = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(300, 80));
         setLayout(new java.awt.BorderLayout());
 
         centerPanel.setLayout(new java.awt.CardLayout());
@@ -76,12 +74,12 @@ public class BookPanel extends javax.swing.JPanel {
 
         topPanel.setBackground(new java.awt.Color(249, 249, 249));
         topPanel.setOpaque(false);
-        topPanel.setPreferredSize(new java.awt.Dimension(367, 80));
+        topPanel.setPreferredSize(new java.awt.Dimension(300, 80));
         topPanel.setLayout(new java.awt.GridLayout(1, 2, 5, 0));
 
         titlePanel.setBackground(new java.awt.Color(255, 255, 255));
         titlePanel.setOpaque(false);
-        titlePanel.setPreferredSize(new java.awt.Dimension(100, 80));
+        titlePanel.setPreferredSize(new java.awt.Dimension(50, 80));
         titlePanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
         jPanel1.setOpaque(false);
@@ -111,7 +109,7 @@ public class BookPanel extends javax.swing.JPanel {
         topPanel.add(titlePanel);
 
         tabMenuPanel.setOpaque(false);
-        tabMenuPanel.setPreferredSize(new java.awt.Dimension(471, 70));
+        tabMenuPanel.setPreferredSize(new java.awt.Dimension(300, 70));
 
         tabsPanel.setBackground(new java.awt.Color(255, 255, 255));
         tabsPanel.setOpaque(false);
@@ -153,12 +151,10 @@ public class BookPanel extends javax.swing.JPanel {
                 shelfMenuButton.setBackground(defaultMenuColor);
                 shelfMenuButton.setBorder(defaultMenuBorder);
                 shelfMenuButton.setForeground(defaultMenuTextColor);
-                borrowMenuButton.setBackground(defaultMenuColor);
-                borrowMenuButton.setBorder(defaultMenuBorder);
-                borrowMenuButton.setForeground(defaultMenuTextColor);
-                returnMenuButton.setBackground(defaultMenuColor);
-                returnMenuButton.setBorder(defaultMenuBorder);
-                returnMenuButton.setForeground(defaultMenuTextColor);
+                transactionMenuButton.setBackground(defaultMenuColor);
+                transactionMenuButton.setBorder(defaultMenuBorder);
+                transactionMenuButton.setForeground(defaultMenuTextColor);
+
                 stockMenuButtonActionPerformed(evt);
             }
         });
@@ -199,12 +195,10 @@ public class BookPanel extends javax.swing.JPanel {
                 shelfMenuButton.setBackground(defaultMenuColor);
                 shelfMenuButton.setBorder(defaultMenuBorder);
                 shelfMenuButton.setForeground(defaultMenuTextColor);
-                borrowMenuButton.setBackground(defaultMenuColor);
-                borrowMenuButton.setBorder(defaultMenuBorder);
-                borrowMenuButton.setForeground(defaultMenuTextColor);
-                returnMenuButton.setBackground(defaultMenuColor);
-                returnMenuButton.setBorder(defaultMenuBorder);
-                returnMenuButton.setForeground(defaultMenuTextColor);
+                transactionMenuButton.setBackground(defaultMenuColor);
+                transactionMenuButton.setBorder(defaultMenuBorder);
+                transactionMenuButton.setForeground(defaultMenuTextColor);
+
                 subjectMenuButtonActionPerformed(evt);
             }
         });
@@ -245,12 +239,10 @@ public class BookPanel extends javax.swing.JPanel {
                 shelfMenuButton.setBackground(defaultMenuColor);
                 shelfMenuButton.setBorder(defaultMenuBorder);
                 shelfMenuButton.setForeground(defaultMenuTextColor);
-                borrowMenuButton.setBackground(defaultMenuColor);
-                borrowMenuButton.setBorder(defaultMenuBorder);
-                borrowMenuButton.setForeground(defaultMenuTextColor);
-                returnMenuButton.setBackground(defaultMenuColor);
-                returnMenuButton.setBorder(defaultMenuBorder);
-                returnMenuButton.setForeground(defaultMenuTextColor);
+                transactionMenuButton.setBackground(defaultMenuColor);
+                transactionMenuButton.setBorder(defaultMenuBorder);
+                transactionMenuButton.setForeground(defaultMenuTextColor);
+
                 authorMenuButtonActionPerformed(evt);
             }
         });
@@ -291,12 +283,9 @@ public class BookPanel extends javax.swing.JPanel {
                 shelfMenuButton.setBackground(defaultMenuColor);
                 shelfMenuButton.setBorder(defaultMenuBorder);
                 shelfMenuButton.setForeground(defaultMenuTextColor);
-                borrowMenuButton.setBackground(defaultMenuColor);
-                borrowMenuButton.setBorder(defaultMenuBorder);
-                borrowMenuButton.setForeground(defaultMenuTextColor);
-                returnMenuButton.setBackground(defaultMenuColor);
-                returnMenuButton.setBorder(defaultMenuBorder);
-                returnMenuButton.setForeground(defaultMenuTextColor);
+                transactionMenuButton.setBackground(defaultMenuColor);
+                transactionMenuButton.setBorder(defaultMenuBorder);
+                transactionMenuButton.setForeground(defaultMenuTextColor);
                 publisherMenuButtonActionPerformed(evt);
             }
         });
@@ -337,43 +326,36 @@ public class BookPanel extends javax.swing.JPanel {
                 publisherMenuButton.setBackground(defaultMenuColor);
                 publisherMenuButton.setBorder(defaultMenuBorder);
                 publisherMenuButton.setForeground(defaultMenuTextColor);
-                borrowMenuButton.setBackground(defaultMenuColor);
-                borrowMenuButton.setBorder(defaultMenuBorder);
-                borrowMenuButton.setForeground(defaultMenuTextColor);
-                returnMenuButton.setBackground(defaultMenuColor);
-                returnMenuButton.setBorder(defaultMenuBorder);
-                returnMenuButton.setForeground(defaultMenuTextColor);
+                transactionMenuButton.setBackground(defaultMenuColor);
+                transactionMenuButton.setBorder(defaultMenuBorder);
+                transactionMenuButton.setForeground(defaultMenuTextColor);
                 shelfMenuButtonActionPerformed(evt);
             }
         });
 
-        borrowMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        borrowMenuButton.setForeground(new java.awt.Color(62, 40, 40));
-        borrowMenuButton.setText("Borrow");
-        borrowMenuButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 51, 0)));
-        borrowMenuButton.setContentAreaFilled(false);
-        borrowMenuButton.setOpaque(true);
-        borrowMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        transactionMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        transactionMenuButton.setForeground(new java.awt.Color(62, 40, 40));
+        transactionMenuButton.setText("Transaction");
+        transactionMenuButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 51, 0)));
+        transactionMenuButton.setContentAreaFilled(false);
+        transactionMenuButton.setOpaque(true);
+        transactionMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                if(!com.nepal.lms.util.ColorUtils.isSame(borrowMenuButton.getBackground(),selectedMenuColor)){
-                    borrowMenuButton.setBackground(hoverMenuColor);
+                if(!com.nepal.lms.util.ColorUtils.isSame(transactionMenuButton.getBackground(),selectedMenuColor)){
+                    transactionMenuButton.setBackground(hoverMenuColor);
                 }
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                if(!com.nepal.lms.util.ColorUtils.isSame(borrowMenuButton.getBackground(),selectedMenuColor)){
-                    borrowMenuButton.setBackground(defaultMenuColor);
+                if(!com.nepal.lms.util.ColorUtils.isSame(transactionMenuButton.getBackground(),selectedMenuColor)){
+                    transactionMenuButton.setBackground(defaultMenuColor);
                 }
             }
         });
-        borrowMenuButton.addActionListener(new java.awt.event.ActionListener() {
+        transactionMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                borrowMenuButton.setBackground(selectedMenuColor);
-                borrowMenuButton.setForeground(selectedMenuTextColor);
-                borrowMenuButton.setBorder(selectedMenuBorder);
-
-                returnMenuButton.setBackground(defaultMenuColor);
-                returnMenuButton.setBorder(defaultMenuBorder);
-                returnMenuButton.setForeground(defaultMenuTextColor);
+                transactionMenuButton.setBackground(selectedMenuColor);
+                transactionMenuButton.setForeground(selectedMenuTextColor);
+                transactionMenuButton.setBorder(selectedMenuBorder);
 
                 stockMenuButton.setBackground(defaultMenuColor);
                 stockMenuButton.setForeground(defaultMenuTextColor);
@@ -390,53 +372,7 @@ public class BookPanel extends javax.swing.JPanel {
                 shelfMenuButton.setBackground(defaultMenuColor);
                 shelfMenuButton.setBorder(defaultMenuBorder);
                 shelfMenuButton.setForeground(defaultMenuTextColor);
-                borrowMenuButtonActionPerformed(evt);
-            }
-        });
-
-        returnMenuButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        returnMenuButton.setForeground(new java.awt.Color(62, 40, 40));
-        returnMenuButton.setText("Return");
-        returnMenuButton.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 51, 0)));
-        returnMenuButton.setContentAreaFilled(false);
-        returnMenuButton.setOpaque(true);
-        returnMenuButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                if(!com.nepal.lms.util.ColorUtils.isSame(returnMenuButton.getBackground(),selectedMenuColor)){
-                    returnMenuButton.setBackground(hoverMenuColor);
-                }
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                if(!com.nepal.lms.util.ColorUtils.isSame(returnMenuButton.getBackground(),selectedMenuColor)){
-                    returnMenuButton.setBackground(defaultMenuColor);
-                }
-            }
-        });
-        returnMenuButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                returnMenuButton.setBackground(selectedMenuColor);
-                returnMenuButton.setForeground(selectedMenuTextColor);
-                returnMenuButton.setBorder(selectedMenuBorder);
-
-                borrowMenuButton.setBackground(defaultMenuColor);
-                borrowMenuButton.setBorder(defaultMenuBorder);
-                borrowMenuButton.setForeground(defaultMenuTextColor);
-                stockMenuButton.setBackground(defaultMenuColor);
-                stockMenuButton.setForeground(defaultMenuTextColor);
-                stockMenuButton.setBorder(defaultMenuBorder);
-                subjectMenuButton.setBackground(defaultMenuColor);
-                subjectMenuButton.setBorder(defaultMenuBorder);
-                subjectMenuButton.setForeground(defaultMenuTextColor);
-                authorMenuButton.setBackground(defaultMenuColor);
-                authorMenuButton.setBorder(defaultMenuBorder);
-                authorMenuButton.setForeground(defaultMenuTextColor);
-                publisherMenuButton.setBackground(defaultMenuColor);
-                publisherMenuButton.setBorder(defaultMenuBorder);
-                publisherMenuButton.setForeground(defaultMenuTextColor);
-                shelfMenuButton.setBackground(defaultMenuColor);
-                shelfMenuButton.setBorder(defaultMenuBorder);
-                shelfMenuButton.setForeground(defaultMenuTextColor);
-                returnMenuButtonActionPerformed(evt);
+                transactionMenuButtonActionPerformed(evt);
             }
         });
 
@@ -456,13 +392,11 @@ public class BookPanel extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(shelfMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(borrowMenuButton)
-                .addGap(0, 0, 0)
-                .addComponent(returnMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transactionMenuButton)
                 .addContainerGap())
         );
 
-        tabsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {authorMenuButton, borrowMenuButton, publisherMenuButton, returnMenuButton, shelfMenuButton, stockMenuButton, subjectMenuButton});
+        tabsPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {authorMenuButton, publisherMenuButton, shelfMenuButton, stockMenuButton, subjectMenuButton});
 
         tabsPanelLayout.setVerticalGroup(
             tabsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,9 +405,7 @@ public class BookPanel extends javax.swing.JPanel {
                     .addComponent(authorMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(subjectMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(stockMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(borrowMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(returnMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(transactionMenuButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(publisherMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(shelfMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -487,8 +419,9 @@ public class BookPanel extends javax.swing.JPanel {
         tabMenuPanelLayout.setHorizontalGroup(
             tabMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabMenuPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(tabsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tabsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         tabMenuPanelLayout.setVerticalGroup(
             tabMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,14 +460,9 @@ public class BookPanel extends javax.swing.JPanel {
         ComponentUtils.addToPanel(this.centerPanel, getBookShelfPanel());
     }
 
-    private void borrowMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Logy.d("Borrow menu clicked");
-        ComponentUtils.addToPanel(this.centerPanel, getBorrowPanel());
-    }
-
-    private void returnMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Logy.d("Return menu clicked");
-        ComponentUtils.addToPanel(this.centerPanel, getReturnPanel());
+    private void transactionMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Logy.d("Transacttion menu clicked");
+        ComponentUtils.addToPanel(this.centerPanel, getBookTransactionPanel());
     }
 
     private BookStockPanel getBookStockPanel() {
@@ -591,37 +519,24 @@ public class BookPanel extends javax.swing.JPanel {
         return bookShelfPanel;
     }
 
-    private BookBorrowPanel getBorrowPanel() {
-        if (bookBorrowPanel == null) {
-            Logy.d("Creating borrow panel instance");
-            bookBorrowPanel = new BookBorrowPanel(userInfo);
-            bookBorrowPanel.setBorrowListener(bookStockPanel);
-            bookStockPanel.setBorrowListener(bookBorrowPanel);
+    private BookTransactionPanel getBookTransactionPanel() {
+        if (bookTransactionPanel == null) {
+            Logy.d("Creating transaction panel instance");
+            bookTransactionPanel = new BookTransactionPanel(userInfo);
+            bookTransactionPanel.setTransactionListener(bookStockPanel);
+            bookStockPanel.setBorrowListener(bookTransactionPanel);
         } else {
-            Logy.d("borrow panel already created, returning available instance");
+            Logy.d("transaction panel already created, returning available instance");
         }
-        return bookBorrowPanel;
+        return bookTransactionPanel;
     }
 
-    private BookReturnPanel getReturnPanel() {
-        if (bookReturnPanel == null) {
-            Logy.d("Creating return panel instance");
-            bookReturnPanel = new BookReturnPanel(userInfo);
-            bookReturnPanel.setReturnListener(bookStockPanel);
-            bookStockPanel.setReturnListener(bookReturnPanel);
-        } else {
-            Logy.d("return panel already created, returning available instance");
-        }
-        return bookReturnPanel;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton authorMenuButton;
-    private javax.swing.JButton borrowMenuButton;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton publisherMenuButton;
-    private javax.swing.JButton returnMenuButton;
     private javax.swing.JButton shelfMenuButton;
     private javax.swing.JButton stockMenuButton;
     private java.awt.Color selectedMenuColor = new java.awt.Color(149, 149, 149);
@@ -637,6 +552,7 @@ public class BookPanel extends javax.swing.JPanel {
     private javax.swing.JLabel title;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JButton transactionMenuButton;
     // End of variables declaration//GEN-END:variables
 
 }

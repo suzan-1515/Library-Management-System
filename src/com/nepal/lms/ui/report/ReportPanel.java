@@ -18,7 +18,6 @@ import com.nepal.lms.exception.MissingFileException;
 import com.nepal.lms.exception.RecordNotFoundException;
 import com.nepal.lms.util.Logy;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -71,6 +70,7 @@ public class ReportPanel extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         centerPanel.setOpaque(false);
+        centerPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Book", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel2.setOpaque(false);
@@ -109,6 +109,8 @@ public class ReportPanel extends javax.swing.JPanel {
         borrowedBook.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 2, 2, 2));
         jPanel2.add(borrowedBook);
 
+        centerPanel.add(jPanel2);
+
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Member", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
@@ -123,6 +125,8 @@ public class ReportPanel extends javax.swing.JPanel {
         totalMember.setText("0");
         totalMember.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 2, 2, 2));
         jPanel4.add(totalMember);
+
+        centerPanel.add(jPanel4);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "User", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel5.setOpaque(false);
@@ -161,34 +165,7 @@ public class ReportPanel extends javax.swing.JPanel {
         totalAdmin.setBorder(javax.swing.BorderFactory.createEmptyBorder(2, 2, 2, 2));
         jPanel5.add(totalAdmin);
 
-        javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
-        centerPanel.setLayout(centerPanelLayout);
-        centerPanelLayout.setHorizontalGroup(
-            centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, centerPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        centerPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPanel2, jPanel4, jPanel5});
-
-        centerPanelLayout.setVerticalGroup(
-            centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, centerPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        centerPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jPanel2, jPanel4, jPanel5});
+        centerPanel.add(jPanel5);
 
         add(centerPanel, java.awt.BorderLayout.CENTER);
 
@@ -255,10 +232,12 @@ public class ReportPanel extends javax.swing.JPanel {
             List<MemberInfo> allMember = MemberBLL.getAllMember();
             List<UserInfo> allUser = UserBLL.getAllUser();
 
+            int totalCopy = allBook.parallelStream()
+                    .mapToInt(b -> b.getNumberOfCopy())
+                    .sum();
+
             totalBook.setText(String.valueOf(
-                    allBook.parallelStream()
-                            .mapToInt(book -> book.getNumberOfCopy())
-                            .sum()
+                    totalCopy
             ));
             availableBook.setText(
                     String.valueOf(
@@ -269,12 +248,6 @@ public class ReportPanel extends javax.swing.JPanel {
                     )
             );
 
-            allBook = allBook.parallelStream()
-                    .filter(book -> book.getAvailableCopies() != book.getNumberOfCopy())
-                    .collect(Collectors.toList());
-            int totalCopy = allBook.parallelStream()
-                    .mapToInt(b -> b.getNumberOfCopy())
-                    .sum();
             int totalAvai = allBook.parallelStream()
                     .mapToInt(b -> b.getAvailableCopies())
                     .sum();

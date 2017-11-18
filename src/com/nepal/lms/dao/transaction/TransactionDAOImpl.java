@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nepal.lms.dao.returnn;
+package com.nepal.lms.dao.transaction;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -13,8 +13,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.nepal.lms.entity.returnn.Return;
-import com.nepal.lms.entity.returnn.ReturnParams;
+import com.nepal.lms.entity.transaction.Transaction;
+import com.nepal.lms.entity.transaction.TransactionParams;
 import com.nepal.lms.util.JsonHelper;
 import java.io.FileReader;
 import java.io.IOException;
@@ -25,9 +25,9 @@ import java.util.List;
 
 /**
  *
- * @returnn Suzn
+ * @transaction Suzn
  */
-public class ReturnDAOImpl implements ReturnDAO {
+public class TransactionDAOImpl implements TransactionDAO {
 
     private final String filename;
     private final Gson gson;
@@ -37,22 +37,22 @@ public class ReturnDAOImpl implements ReturnDAO {
      * @param gson
      * @param filename
      */
-    public ReturnDAOImpl(Gson gson, String filename) {
+    public TransactionDAOImpl(Gson gson, String filename) {
         this.gson = gson;
         this.filename = filename;
     }
 
     /**
      *
-     * @param returnn
+     * @param transaction
      * @return boolean
      * @throws IOException
      * @throws JsonIOException
      * @throws JsonSyntaxException
      */
     @Override
-    public boolean isReturnAvailable(Return returnn) throws IOException, JsonIOException, JsonSyntaxException {
-        return findById(returnn.getId()) != null;
+    public boolean isTransactionAvailable(Transaction transaction) throws IOException, JsonIOException, JsonSyntaxException {
+        return findById(transaction.getId()) != null;
     }
 
     /**
@@ -64,7 +64,7 @@ public class ReturnDAOImpl implements ReturnDAO {
      * @throws JsonSyntaxException
      */
     @Override
-    public int save(Return t) throws IOException, JsonIOException, JsonSyntaxException {
+    public int save(Transaction t) throws IOException, JsonIOException, JsonSyntaxException {
         JsonHelper.writeToFile(Arrays.asList(t), filename, gson);
         return t.getId();
     }
@@ -78,7 +78,7 @@ public class ReturnDAOImpl implements ReturnDAO {
      * @throws JsonSyntaxException
      */
     @Override
-    public int append(Return t) throws IOException, JsonIOException, JsonSyntaxException {
+    public int append(Transaction t) throws IOException, JsonIOException, JsonSyntaxException {
 
         try (Reader reader = new FileReader(filename)) {
             JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
@@ -102,7 +102,7 @@ public class ReturnDAOImpl implements ReturnDAO {
      * @throws JsonSyntaxException
      */
     @Override
-    public int update(Return t) throws IOException, JsonIOException, JsonSyntaxException {
+    public int update(Transaction t) throws IOException, JsonIOException, JsonSyntaxException {
 
         try (Reader reader = new FileReader(filename)) {
             JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
@@ -110,11 +110,10 @@ public class ReturnDAOImpl implements ReturnDAO {
             boolean found = false;
             while (iterator.hasNext()) {
                 JsonObject item = iterator.next().getAsJsonObject();
-                if (item.get(ReturnParams.ID).getAsInt() == t.getId()) {
+                if (item.get(TransactionParams.ID).getAsInt() == t.getId()) {
 
-                    item.add(ReturnParams.BOOK, gson.toJsonTree(t.getBook()));
-                    item.add(ReturnParams.MEMBER, gson.toJsonTree(t.getMember()));
-                    item.add(ReturnParams.FINE, gson.toJsonTree(t.getFine()));
+                    item.add(TransactionParams.RETURN, gson.toJsonTree(t.getRetrn()));
+                    item.addProperty(TransactionParams.STATUS, t.isStatus());
 
                     found = true;
                     break;
@@ -138,7 +137,7 @@ public class ReturnDAOImpl implements ReturnDAO {
      * @throws JsonSyntaxException
      */
     @Override
-    public int remove(Return t) throws IOException, JsonIOException, JsonSyntaxException {
+    public int remove(Transaction t) throws IOException, JsonIOException, JsonSyntaxException {
 
         try (Reader reader = new FileReader(filename)) {
             JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
@@ -146,7 +145,7 @@ public class ReturnDAOImpl implements ReturnDAO {
             boolean found = false;
             while (iterator.hasNext()) {
                 JsonObject item = iterator.next().getAsJsonObject();
-                if (item.get(ReturnParams.ID).getAsInt() == t.getId()) {
+                if (item.get(TransactionParams.ID).getAsInt() == t.getId()) {
                     rootArray.remove(item);
                     found = true;
                     break;
@@ -165,21 +164,21 @@ public class ReturnDAOImpl implements ReturnDAO {
     /**
      *
      * @param id
-     * @return Return
+     * @return Transaction
      * @throws IOException
      * @throws JsonIOException
      * @throws JsonSyntaxException
      */
     @Override
-    public Return findById(int id) throws IOException, JsonIOException, JsonSyntaxException {
+    public Transaction findById(int id) throws IOException, JsonIOException, JsonSyntaxException {
 
         try (Reader reader = new FileReader(filename)) {
             JsonArray rootArray = gson.fromJson(reader, JsonArray.class);
             Iterator<JsonElement> iterator = rootArray.iterator();
             while (iterator.hasNext()) {
                 JsonObject item = iterator.next().getAsJsonObject();
-                if (item.get(ReturnParams.ID).getAsInt() == id) {
-                    return gson.fromJson(item, Return.class);
+                if (item.get(TransactionParams.ID).getAsInt() == id) {
+                    return gson.fromJson(item, Transaction.class);
                 }
             }
         }
@@ -193,10 +192,10 @@ public class ReturnDAOImpl implements ReturnDAO {
      * @throws JsonSyntaxException
      */
     @Override
-    public List<Return> findAll() throws IOException, JsonIOException, JsonSyntaxException {
+    public List<Transaction> findAll() throws IOException, JsonIOException, JsonSyntaxException {
 
         try (Reader reader = new FileReader(filename)) {
-            return gson.fromJson(reader, new TypeToken<List<Return>>() {
+            return gson.fromJson(reader, new TypeToken<List<Transaction>>() {
             }.getType());
         }
 

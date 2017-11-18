@@ -5,16 +5,16 @@
  */
 package com.nepal.lms.ui.book.returnn;
 
-import com.nepal.lms.bll.ReturnBLL;
+import com.nepal.lms.bll.TransactionBLL;
 import com.nepal.lms.custom.Alert;
 import com.nepal.lms.entity.book.BookInfo;
 import com.nepal.lms.entity.returnn.Return;
-import com.nepal.lms.entity.member.Member;
-import com.nepal.lms.entity.user.UserInfo;
+import com.nepal.lms.entity.member.MemberInfo;
+import com.nepal.lms.entity.transaction.Transaction;
 import com.nepal.lms.exception.CorruptedDataException;
-import com.nepal.lms.exception.DuplicateRecordException;
 import com.nepal.lms.exception.MissingFileException;
-import com.nepal.lms.ui.book.borrow.BaseBookTransaction;
+import com.nepal.lms.exception.RecordNotFoundException;
+import com.nepal.lms.ui.book.transaction.BaseBookTransaction;
 import com.nepal.lms.util.Logy;
 import com.nepal.lms.util.Utils;
 import com.nepal.lms.validation.book.BookValidation;
@@ -28,23 +28,17 @@ public class BookReturnInsertDialog extends BaseBookTransaction {
 
     private final BookValidation validation;
     private ItemAddedListener itemAddedListener;
-    private final UserInfo userInfo;
-    private int bookId;
+    private final Transaction transaction;
 
-    private void notifyDataSetChanged(Return returnn) {
+    private void notifyDataSetChanged(Transaction transaction) {
         if (getItemAddedListener() != null) {
-            getItemAddedListener().onNewItemAdded(returnn);
+            getItemAddedListener().onNewItemAdded(transaction);
         }
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-        bookIdTextField.setText(String.valueOf(bookId));
     }
 
     public interface ItemAddedListener {
 
-        void onNewItemAdded(Return returnn);
+        void onNewItemAdded(Transaction transaction);
     }
 
     /**
@@ -52,16 +46,18 @@ public class BookReturnInsertDialog extends BaseBookTransaction {
      *
      * @param parent
      * @param modal
-     * @param userInfo
+     * @param transaction
      */
-    public BookReturnInsertDialog(java.awt.Frame parent, boolean modal, UserInfo userInfo) {
+    public BookReturnInsertDialog(java.awt.Frame parent, boolean modal, Transaction transaction) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(parent);
-        this.userInfo = userInfo;
+        this.transaction = transaction;
         validation = new BookValidation(parent);
 
-        userIdTextField.setText(String.valueOf(userInfo.getId()));
+        bookIdTextField.setText(String.valueOf(transaction.getBook().getId()));
+        memberIdTextField.setText(String.valueOf(transaction.getMember().getId()));
+        userIdTextField.setText(String.valueOf(transaction.getUser().getId()));
     }
 
     /**
@@ -171,6 +167,7 @@ public class BookReturnInsertDialog extends BaseBookTransaction {
                 }
             }
         });
+        bookIdTextField.setEditable(false);
 
         jLabel3.setText("Member Id");
 
@@ -182,6 +179,7 @@ public class BookReturnInsertDialog extends BaseBookTransaction {
                 }
             }
         });
+        memberIdTextField.setEditable(false);
 
         jLabel4.setText("User Id");
 
@@ -325,27 +323,27 @@ public class BookReturnInsertDialog extends BaseBookTransaction {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         if (validation.isReturnFormValid(bookIdTextField.getText(), memberIdTextField.getText())) {
+            BookInfo bookInfo = transaction.getBook();
+            if (bookInfo != null) {
+                MemberInfo memberInfo = transaction.getMember();
+                if (validation.isBookAvailable(bookInfo.getAvailableCopies())) {
+                    if (memberInfo != null) {
 
-            BookInfo bookById = getBook(bookIdTextField.getText());
-            if (bookById != null) {
-                if (validation.isBookAvailable(bookById.getAvailableCopies())) {
-                    Member member = getMember(memberIdTextField.getText());
-                    if (member != null) {
                         Return returnn = new Return();
                         returnn.setId(Utils.generateRandomID());
-                        returnn.setBook(bookById);
-                        returnn.setMember(member);
-                        returnn.setUser(userInfo);
                         returnn.setReturnedDate(Calendar.getInstance().getTimeInMillis());
-                        returnn.setTimestamp(new java.sql.Timestamp(Calendar.getInstance().getTimeInMillis()));
+
+                        transaction.setRetrn(returnn);
+                        transaction.setStatus(false);
 
                         try {
-                            ReturnBLL.insertReturn(returnn);
-                            notifyDataSetChanged(returnn);
-                            Alert.showInformation(this, "Return details inserted successfully!");
+                            TransactionBLL.updateTransaction(transaction);
+                            notifyDataSetChanged(transaction);
+                            Alert.showInformation(this, "Book returned successfully!");
 
                             resetFields();
-                        } catch (DuplicateRecordException | MissingFileException | CorruptedDataException ex) {
+                            this.dispose();
+                        } catch (RecordNotFoundException | MissingFileException | CorruptedDataException ex) {
                             Logy.e(ex);
                             Alert.showError(this, ex.getMessage());
                         }
@@ -398,7 +396,7 @@ public class BookReturnInsertDialog extends BaseBookTransaction {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
-            BookReturnInsertDialog dialog = new BookReturnInsertDialog(new javax.swing.JFrame(), true, new UserInfo());
+            BookReturnInsertDialog dialog = new BookReturnInsertDialog(new javax.swing.JFrame(), true, new Transaction());
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
