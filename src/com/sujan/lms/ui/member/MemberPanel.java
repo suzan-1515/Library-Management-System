@@ -40,6 +40,7 @@ public final class MemberPanel extends BaseUserPanel implements MemberView {
     public MemberPanel(UserInfo userInfo) {
         initComponents();
         this.userInfo = userInfo;
+        setupUserView(userInfo);
         memberList = new ArrayList<>();
 
         Logy.d("Librarian member panel initialized");
