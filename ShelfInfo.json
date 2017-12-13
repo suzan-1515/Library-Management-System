@@ -1,18 +1,54 @@
 [
   {
-    "id": 1,
-    "location": "A4"
+    "id": 2954,
+    "location": "C3"
   },
   {
-    "id": 3,
-    "location": "A1"
+    "id": 6960,
+    "location": "A2"
   },
   {
-    "id": 4471,
-    "location": "A4"
+    "id": 2302,
+    "location": "B3"
   },
   {
-    "id": 2857,
-    "location": "B6-A1"
+    "id": 7325,
+    "location": "B1"
+  },
+  {
+    "id": 9488,
+    "location": "B1"
+  },
+  {
+    "id": 5352,
+    "location": "D2"
+  },
+  {
+    "id": 1915,
+    "location": "A2"
+  },
+  {
+    "id": 2803,
+    "location": "B1"
+  },
+  {
+    "id": 7630,
+    "location": "D1"
+  },
+  {
+    "id": 6702,
+    "location": "A3"
+  },
+  {
+    "id": 7333,
+    "location": "E1"
+  },
+  {
+    "id": 6781,
+    "location": "B1"
+  },
+  {
+    "id": 9112,
+    "location": "B2"
   }
 ]

@@ -5,10 +5,11 @@
  */
 package com.nepal.lms.dao.shelf;
 
-import com.nepal.lms.bll.ShelfBLL;
-import com.nepal.lms.entity.shelf.Shelf;
-import com.nepal.lms.entity.user.UserParams;
-import com.nepal.lms.ui.login.Login;
+import com.sujan.lms.dao.shelf.ShelfDAOImpl;
+import com.sujan.lms.bll.ShelfBLL;
+import com.sujan.lms.entity.shelf.Shelf;
+import com.sujan.lms.entity.user.UserParams;
+import com.sujan.lms.ui.login.Login;
 import java.util.List;
 import java.util.prefs.Preferences;
 import org.junit.After;

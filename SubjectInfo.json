@@ -1,46 +1,298 @@
 [
   {
-    "id": 1,
-    "title": "Android"
+    "id": 9600,
+    "title": "Accounting  and  Finance"
   },
   {
-    "id": 2,
-    "title": "C++"
+    "id": 9489,
+    "title": "Aeronautical  and  Manufacturing Engineering"
   },
   {
-    "id": 3,
-    "title": "Networkings"
+    "id": 4878,
+    "title": "Agriculture  and  Forestry"
   },
   {
-    "id": 4,
-    "title": "Database"
+    "id": 9518,
+    "title": "American Studies"
   },
   {
-    "id": 6873,
-    "title": "HCI"
+    "id": 1514,
+    "title": "Anatomy  and  Physiology"
   },
   {
-    "id": 6129,
-    "title": "Nepali"
+    "id": 8591,
+    "title": "Anthropology"
   },
   {
-    "id": 9164,
+    "id": 2880,
+    "title": "Archaeology"
+  },
+  {
+    "id": 7954,
+    "title": "Architecture"
+  },
+  {
+    "id": 8231,
+    "title": "Art  and  Design"
+  },
+  {
+    "id": 9082,
+    "title": "Aural  and  Oral Sciences"
+  },
+  {
+    "id": 4965,
+    "title": "Biological Sciences"
+  },
+  {
+    "id": 9895,
+    "title": "Building"
+  },
+  {
+    "id": 7386,
+    "title": "Business  and  Management Studies"
+  },
+  {
+    "id": 8178,
+    "title": "Celtic Studies"
+  },
+  {
+    "id": 7891,
+    "title": "Chemical Engineering"
+  },
+  {
+    "id": 6564,
+    "title": "Chemistry"
+  },
+  {
+    "id": 6822,
+    "title": "Civil Engineering"
+  },
+  {
+    "id": 4551,
+    "title": "Classics  and  Ancient History"
+  },
+  {
+    "id": 4118,
+    "title": "Communication  and  Media Studies"
+  },
+  {
+    "id": 9890,
+    "title": "Complementary Medicine"
+  },
+  {
+    "id": 1913,
+    "title": "Computer Science"
+  },
+  {
+    "id": 3155,
+    "title": "Counselling"
+  },
+  {
+    "id": 6625,
+    "title": "Creative Writing"
+  },
+  {
+    "id": 4299,
+    "title": "Criminology"
+  },
+  {
+    "id": 5085,
+    "title": "Dentistry"
+  },
+  {
+    "id": 5674,
+    "title": "Drama, Dance  and  Cinematics"
+  },
+  {
+    "id": 3769,
+    "title": "East  and  South Asian Studies"
+  },
+  {
+    "id": 4823,
+    "title": "Economics"
+  },
+  {
+    "id": 4233,
+    "title": "Education"
+  },
+  {
+    "id": 4670,
+    "title": "Electrical  and  Electronic Engineering"
+  },
+  {
+    "id": 8663,
     "title": "English"
   },
   {
-    "id": 2528,
-    "title": "hci"
+    "id": 5746,
+    "title": "Fashion"
   },
   {
-    "id": 6575,
-    "title": "PD"
+    "id": 3148,
+    "title": "Film Making"
   },
   {
-    "id": 3713,
-    "title": "umesh"
+    "id": 5159,
+    "title": "Food Science"
   },
   {
-    "id": 3492,
-    "title": "Science"
+    "id": 4085,
+    "title": "French"
+  },
+  {
+    "id": 5363,
+    "title": "Geography  and  Environmental Sciences"
+  },
+  {
+    "id": 3184,
+    "title": "Geology"
+  },
+  {
+    "id": 6756,
+    "title": "General Engineering"
+  },
+  {
+    "id": 1998,
+    "title": "German"
+  },
+  {
+    "id": 3081,
+    "title": "History"
+  },
+  {
+    "id": 7906,
+    "title": "History of Art, Architecture  and  Design"
+  },
+  {
+    "id": 9429,
+    "title": "Hospitality, Leisure, Recreation  and  Tourism"
+  },
+  {
+    "id": 2661,
+    "title": "Iberian Languages/Hispanic Studies"
+  },
+  {
+    "id": 4949,
+    "title": "Italian"
+  },
+  {
+    "id": 7916,
+    "title": "Land  and  Property Management"
+  },
+  {
+    "id": 4122,
+    "title": "Law"
+  },
+  {
+    "id": 2212,
+    "title": "Librarianship  and  Information Management"
+  },
+  {
+    "id": 6505,
+    "title": "Linguistics"
+  },
+  {
+    "id": 9718,
+    "title": "Marketing"
+  },
+  {
+    "id": 7268,
+    "title": "Materials Technology"
+  },
+  {
+    "id": 8151,
+    "title": "Mathematics"
+  },
+  {
+    "id": 7044,
+    "title": "Mechanical Engineering"
+  },
+  {
+    "id": 7821,
+    "title": "Medical Technology"
+  },
+  {
+    "id": 5257,
+    "title": "Medicine"
+  },
+  {
+    "id": 1940,
+    "title": "Middle Eastern  and  African Studies"
+  },
+  {
+    "id": 4518,
+    "title": "Music"
+  },
+  {
+    "id": 7464,
+    "title": "Nursing"
+  },
+  {
+    "id": 8066,
+    "title": "Occupational Therapy"
+  },
+  {
+    "id": 5652,
+    "title": "Optometry, Ophthalmology  and  Orthoptics"
+  },
+  {
+    "id": 3814,
+    "title": "Pharmacology  and  Pharmacy"
+  },
+  {
+    "id": 4758,
+    "title": "Philosophy"
+  },
+  {
+    "id": 1956,
+    "title": "Physics and Astronomy"
+  },
+  {
+    "id": 1198,
+    "title": "Physiotherapy"
+  },
+  {
+    "id": 3451,
+    "title": "Politics"
+  },
+  {
+    "id": 7974,
+    "title": "Psychology"
+  },
+  {
+    "id": 4976,
+    "title": "Robotics"
+  },
+  {
+    "id": 6058,
+    "title": "Russian  and  East European Languages"
+  },
+  {
+    "id": 5264,
+    "title": "Social Policy"
+  },
+  {
+    "id": 1740,
+    "title": "Social Work"
+  },
+  {
+    "id": 6449,
+    "title": "Sociology"
+  },
+  {
+    "id": 7459,
+    "title": "Sports Science"
+  },
+  {
+    "id": 6159,
+    "title": "Theology  and  Religious Studies"
+  },
+  {
+    "id": 5183,
+    "title": "Town  and  Country Planning and Landscape Design"
+  },
+  {
+    "id": 1623,
+    "title": "Youth Work"
   }
 ]

@@ -364,7 +364,375 @@
       "returningDate": 1512498387374,
       "timestamp": "Nov 19, 2017 12:11:34 AM"
     },
+    "status": false,
+    "timestamp": "Nov 19, 2017 12:11:34 AM",
+    "retrn": {
+      "id": 7022,
+      "returnedDate": 1512747697759
+    }
+  },
+  {
+    "id": 8678,
+    "book": {
+      "availableCopies": 4,
+      "id": 4755,
+      "title": "milan",
+      "subject": {
+        "id": 3492,
+        "title": "Science"
+      },
+      "author": {
+        "id": 1,
+        "title": "Sujan Parajuli",
+        "contact": "996525555"
+      },
+      "publisher": {
+        "id": 1,
+        "title": "Black Horse Publication",
+        "contact": "442629555"
+      },
+      "edition": "5458",
+      "isbn": "jah54",
+      "shelfNo": {
+        "id": 1,
+        "location": "A4"
+      },
+      "numberOfCopy": 4
+    },
+    "member": {
+      "expiryDate": 1541087160101,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Sujan",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6856,
+      "name": "Sujan",
+      "username": "admin",
+      "password": "admin",
+      "role": {
+        "id": 0,
+        "title": "Admin"
+      }
+    },
+    "borrow": {
+      "id": 9194,
+      "numOfDays": 358,
+      "returningDate": 1544194168558,
+      "timestamp": "Dec 13, 2017 8:34:39 PM"
+    },
+    "status": false,
+    "timestamp": "Dec 13, 2017 8:34:39 PM",
+    "retrn": {
+      "id": 4997,
+      "returnedDate": 1513176614873
+    }
+  },
+  {
+    "id": 88294,
+    "book": {
+      "availableCopies": 6,
+      "id": 51071,
+      "title": "OPERATING INSTRUCTIONS",
+      "subject": {
+        "id": 3184,
+        "title": "Geology"
+      },
+      "author": {
+        "id": 2986,
+        "title": "Anne Lamott",
+        "contact": "(479) 285-6570"
+      },
+      "publisher": {
+        "id": 8002,
+        "title": "cel231",
+        "contact": "(191) 521-0403"
+      },
+      "edition": "1993",
+      "isbn": "3-598-21598-3",
+      "shelfNo": {
+        "id": 6702,
+        "location": "A3"
+      },
+      "numberOfCopy": 6
+    },
+    "member": {
+      "expiryDate": 1541087160101,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Sujan",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6856,
+      "name": "Sujan",
+      "username": "admin",
+      "password": "admin",
+      "role": {
+        "id": 0,
+        "title": "Admin"
+      }
+    },
+    "borrow": {
+      "id": 19913,
+      "numOfDays": 366,
+      "returningDate": 1544896896836,
+      "timestamp": "Dec 13, 2017 11:46:48 PM"
+    },
+    "status": false,
+    "timestamp": "Dec 13, 2017 11:46:48 PM",
+    "retrn": {
+      "id": 18849,
+      "returnedDate": 1513188176006
+    }
+  },
+  {
+    "id": 76570,
+    "book": {
+      "availableCopies": 12,
+      "id": 94644,
+      "title": "THE JOURNALIST AND THE MURDERER",
+      "subject": {
+        "id": 5652,
+        "title": "Optometry, Ophthalmology  and  Orthoptics"
+      },
+      "author": {
+        "id": 7921,
+        "title": "Janet Malcolm",
+        "contact": "(662) 520-1218"
+      },
+      "publisher": {
+        "id": 8615,
+        "title": "Thought Collection Publishing",
+        "contact": "(818) 737-3945"
+      },
+      "edition": "2002",
+      "isbn": "3-598-21596-7",
+      "shelfNo": {
+        "id": 6960,
+        "location": "A2"
+      },
+      "numberOfCopy": 12
+    },
+    "member": {
+      "expiryDate": 1541087160101,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Sujan",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6856,
+      "name": "Sujan",
+      "username": "admin",
+      "password": "admin",
+      "role": {
+        "id": 0,
+        "title": "Admin"
+      }
+    },
+    "borrow": {
+      "id": 47172,
+      "numOfDays": 364,
+      "returningDate": 1544724240121,
+      "timestamp": "Dec 13, 2017 11:49:06 PM"
+    },
+    "status": false,
+    "timestamp": "Dec 13, 2017 11:49:06 PM",
+    "retrn": {
+      "id": 61362,
+      "returnedDate": 1513191305551
+    }
+  },
+  {
+    "id": 21609,
+    "book": {
+      "availableCopies": 11,
+      "id": 94644,
+      "title": "THE JOURNALIST AND THE MURDERER",
+      "subject": {
+        "id": 5652,
+        "title": "Optometry, Ophthalmology  and  Orthoptics"
+      },
+      "author": {
+        "id": 7921,
+        "title": "Janet Malcolm",
+        "contact": "(662) 520-1218"
+      },
+      "publisher": {
+        "id": 8615,
+        "title": "Thought Collection Publishing",
+        "contact": "(818) 737-3945"
+      },
+      "edition": "2002",
+      "isbn": "3-598-21596-7",
+      "shelfNo": {
+        "id": 6960,
+        "location": "A2"
+      },
+      "numberOfCopy": 12
+    },
+    "member": {
+      "expiryDate": 1541087160101,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Sujan",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6856,
+      "name": "Sujan",
+      "username": "admin",
+      "password": "admin",
+      "role": {
+        "id": 0,
+        "title": "Admin"
+      }
+    },
+    "borrow": {
+      "id": 55790,
+      "numOfDays": 352,
+      "returningDate": 1543687451408,
+      "timestamp": "Dec 13, 2017 11:49:17 PM"
+    },
+    "status": false,
+    "timestamp": "Dec 13, 2017 11:49:17 PM",
+    "retrn": {
+      "id": 12054,
+      "returnedDate": 1513191309788
+    }
+  },
+  {
+    "id": 81061,
+    "book": {
+      "availableCopies": 14,
+      "id": 28525,
+      "title": "MELBOURNE",
+      "subject": {
+        "id": 8663,
+        "title": "English"
+      },
+      "author": {
+        "id": 3590,
+        "title": "Lord David Cecil",
+        "contact": "(771) 101-1817"
+      },
+      "publisher": {
+        "id": 7638,
+        "title": "Nephilim Press",
+        "contact": "(932) 265-7342"
+      },
+      "edition": "1995",
+      "isbn": "3-598-21599-1",
+      "shelfNo": {
+        "id": 2803,
+        "location": "B1"
+      },
+      "numberOfCopy": 14
+    },
+    "member": {
+      "expiryDate": 1541087160101,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Sujan",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6856,
+      "name": "Sujan",
+      "username": "admin",
+      "password": "admin",
+      "role": {
+        "id": 0,
+        "title": "Admin"
+      }
+    },
+    "borrow": {
+      "id": 60125,
+      "numOfDays": 372,
+      "returningDate": 1545415520543,
+      "timestamp": "Dec 13, 2017 11:50:31 PM"
+    },
     "status": true,
-    "timestamp": "Nov 19, 2017 12:11:34 AM"
+    "timestamp": "Dec 13, 2017 11:50:31 PM"
+  },
+  {
+    "id": 72299,
+    "book": {
+      "availableCopies": 14,
+      "id": 99448,
+      "title": "WORKING",
+      "subject": {
+        "id": 6505,
+        "title": "Linguistics"
+      },
+      "author": {
+        "id": 6513,
+        "title": "Studs Terkel",
+        "contact": "(711) 793-3495"
+      },
+      "publisher": {
+        "id": 5858,
+        "title": "Rowanvale Books",
+        "contact": "(892) 798-9510"
+      },
+      "edition": "2006",
+      "isbn": "3-598-21553-3",
+      "shelfNo": {
+        "id": 7333,
+        "location": "E1"
+      },
+      "numberOfCopy": 14
+    },
+    "member": {
+      "expiryDate": 1541087160101,
+      "joinedDate": 1509355930599,
+      "id": 5289,
+      "name": "Sujan",
+      "address": {
+        "permanent": "Parajuli",
+        "temporary": "Parajuli"
+      },
+      "contact": "9849056767"
+    },
+    "user": {
+      "id": 6856,
+      "name": "Sujan",
+      "username": "admin",
+      "password": "admin",
+      "role": {
+        "id": 0,
+        "title": "Admin"
+      }
+    },
+    "borrow": {
+      "id": 95088,
+      "numOfDays": 365,
+      "returningDate": 1544811110437,
+      "timestamp": "Dec 13, 2017 11:57:02 PM"
+    },
+    "status": true,
+    "timestamp": "Dec 13, 2017 11:57:02 PM"
   }
 ]

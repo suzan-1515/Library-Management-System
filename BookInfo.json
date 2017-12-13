@@ -1,158 +1,2602 @@
 [
   {
-    "availableCopies": 7,
-    "id": 1,
-    "title": "C++ ho ho",
+    "availableCopies": 10,
+    "id": 26353,
+    "title": "THE EDUCATION OF HENRY ADAMS",
     "subject": {
-      "id": 2,
-      "title": "C++"
+      "id": 3184,
+      "title": "Geology"
     },
     "author": {
-      "id": 2,
-      "title": "Rajesh",
-      "contact": "2562"
+      "id": 4356,
+      "title": "Henry Adams",
+      "contact": "(287) 174-6469"
     },
     "publisher": {
-      "id": 4,
-      "title": "Himalayan Publication",
-      "contact": "4935562"
+      "id": 3038,
+      "title": "Arma Technologies",
+      "contact": "(634) 791-3745"
+    },
+    "edition": "2009",
+    "isbn": "3-598-21500-2",
+    "shelfNo": {
+      "id": 7325,
+      "location": "B1"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 6,
+    "id": 59785,
+    "title": "THE VARIETIES OF RELIGIOUS EXPERIENCE",
+    "subject": {
+      "id": 7464,
+      "title": "Nursing"
+    },
+    "author": {
+      "id": 5846,
+      "title": "William James",
+      "contact": "(580) 710-3667"
+    },
+    "publisher": {
+      "id": 3449,
+      "title": "Flame Lily Books Ltd",
+      "contact": "(690) 367-7028"
+    },
+    "edition": "2010",
+    "isbn": "3-598-21501-0",
+    "shelfNo": {
+      "id": 6781,
+      "location": "B1"
+    },
+    "numberOfCopy": 6
+  },
+  {
+    "availableCopies": 10,
+    "id": 76878,
+    "title": "UP FROM SLAVERY",
+    "subject": {
+      "id": 8066,
+      "title": "Occupational Therapy"
+    },
+    "author": {
+      "id": 5867,
+      "title": "Booker T. Washington",
+      "contact": "(856) 713-6078"
+    },
+    "publisher": {
+      "id": 7790,
+      "title": "eLectio Publishing",
+      "contact": "(608) 880-6170"
+    },
+    "edition": "1986",
+    "isbn": "3-598-21502-9",
+    "shelfNo": {
+      "id": 2302,
+      "location": "B3"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 14,
+    "id": 39111,
+    "title": "A ROOM OF ONE�S OWN",
+    "subject": {
+      "id": 8231,
+      "title": "Art  and  Design"
+    },
+    "author": {
+      "id": 3487,
+      "title": "Virginia Woolf",
+      "contact": "(239) 169-4036"
+    },
+    "publisher": {
+      "id": 5222,
+      "title": "Weasel Press",
+      "contact": "(742) 404-1767"
+    },
+    "edition": "1984",
+    "isbn": "3-598-21503-7",
+    "shelfNo": {
+      "id": 6702,
+      "location": "A3"
+    },
+    "numberOfCopy": 14
+  },
+  {
+    "availableCopies": 10,
+    "id": 36598,
+    "title": "SILENT SPRING",
+    "subject": {
+      "id": 9429,
+      "title": "Hospitality, Leisure, Recreation  and  Tourism"
+    },
+    "author": {
+      "id": 3128,
+      "title": "Rachel Carson",
+      "contact": "(539) 404-3270"
+    },
+    "publisher": {
+      "id": 7821,
+      "title": "Alfresco Press",
+      "contact": "(231) 875-9763"
     },
     "edition": "2012",
-    "isbn": "2256fsjjil78g",
+    "isbn": "3-598-21504-5",
     "shelfNo": {
-      "id": 2,
-      "location": "B7"
+      "id": 9112,
+      "location": "B2"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 10,
+    "id": 40241,
+    "title": "SELECTED ESSAYS, 1917-1932",
+    "subject": {
+      "id": 4299,
+      "title": "Criminology"
+    },
+    "author": {
+      "id": 2305,
+      "title": "T. S. Eliot",
+      "contact": "(982) 279-4282"
+    },
+    "publisher": {
+      "id": 4861,
+      "title": "Native Ink Press",
+      "contact": "(489) 157-5914"
+    },
+    "edition": "2011",
+    "isbn": "3-598-21505-3",
+    "shelfNo": {
+      "id": 7333,
+      "location": "E1"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 10,
+    "id": 45263,
+    "title": "THE DOUBLE HELIX",
+    "subject": {
+      "id": 9890,
+      "title": "Complementary Medicine"
+    },
+    "author": {
+      "id": 6785,
+      "title": "James D. Watson",
+      "contact": "(523) 744-3736"
+    },
+    "publisher": {
+      "id": 9379,
+      "title": "ABDO",
+      "contact": "(226) 752-4920"
+    },
+    "edition": "2014",
+    "isbn": "3-598-21506-1",
+    "shelfNo": {
+      "id": 7333,
+      "location": "E1"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 8,
+    "id": 39399,
+    "title": "SPEAK, MEMORY",
+    "subject": {
+      "id": 8178,
+      "title": "Celtic Studies"
+    },
+    "author": {
+      "id": 1579,
+      "title": "Vladimir Nabokov",
+      "contact": "(378) 385-8954"
+    },
+    "publisher": {
+      "id": 7294,
+      "title": "Virgogray Press",
+      "contact": "(860) 441-9474"
+    },
+    "edition": "2001",
+    "isbn": "3-598-21507-X",
+    "shelfNo": {
+      "id": 5352,
+      "location": "D2"
     },
     "numberOfCopy": 8
   },
   {
-    "availableCopies": 2,
-    "id": 2,
-    "title": "Java Programming",
+    "availableCopies": 13,
+    "id": 23484,
+    "title": "THE AMERICAN LANGUAGE",
     "subject": {
-      "id": 1,
-      "title": "Java"
+      "id": 7954,
+      "title": "Architecture"
     },
     "author": {
-      "id": 1,
-      "title": "Sujan",
-      "contact": "2562"
+      "id": 2686,
+      "title": "H. L. Mencken",
+      "contact": "(377) 416-6760"
     },
     "publisher": {
-      "id": 3,
-      "title": "Lala Publication",
-      "contact": "455225"
+      "id": 6896,
+      "title": "Search and Intro",
+      "contact": "(191) 521-0403"
+    },
+    "edition": "1988",
+    "isbn": "3-598-21508-8",
+    "shelfNo": {
+      "id": 5352,
+      "location": "D2"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 8,
+    "id": 44662,
+    "title": "THE GENERAL THEORY OF EMPLOYMENT, INTEREST, AND MONEY",
+    "subject": {
+      "id": 3184,
+      "title": "Geology"
+    },
+    "author": {
+      "id": 8601,
+      "title": "John Maynard Keynes",
+      "contact": "(315) 879-0772"
+    },
+    "publisher": {
+      "id": 1086,
+      "title": "Torquere Press",
+      "contact": "(767) 240-6915"
+    },
+    "edition": "1989",
+    "isbn": "3-598-21509-6",
+    "shelfNo": {
+      "id": 7630,
+      "location": "D1"
+    },
+    "numberOfCopy": 8
+  },
+  {
+    "availableCopies": 10,
+    "id": 26474,
+    "title": "THE LIVES OF A CELL",
+    "subject": {
+      "id": 3081,
+      "title": "History"
+    },
+    "author": {
+      "id": 6992,
+      "title": "Lewis Thomas",
+      "contact": "(634) 791-3745"
+    },
+    "publisher": {
+      "id": 8224,
+      "title": "Pants On Fire Press",
+      "contact": "(818) 737-3945"
+    },
+    "edition": "1993",
+    "isbn": "3-598-21510-X",
+    "shelfNo": {
+      "id": 6960,
+      "location": "A2"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 15,
+    "id": 60170,
+    "title": "THE FRONTIER IN AMERICAN HISTORY",
+    "subject": {
+      "id": 8663,
+      "title": "English"
+    },
+    "author": {
+      "id": 8634,
+      "title": "Frederick Jackson Turner",
+      "contact": "(377) 565-6701"
+    },
+    "publisher": {
+      "id": 7134,
+      "title": "Figroot Press",
+      "contact": "(297) 757-8352"
+    },
+    "edition": "1990",
+    "isbn": "3-598-21511-8",
+    "shelfNo": {
+      "id": 6781,
+      "location": "B1"
+    },
+    "numberOfCopy": 15
+  },
+  {
+    "availableCopies": 7,
+    "id": 21250,
+    "title": "BLACK BOY",
+    "subject": {
+      "id": 1913,
+      "title": "Computer Science"
+    },
+    "author": {
+      "id": 6168,
+      "title": "Richard Wright",
+      "contact": "(158) 395-2250"
+    },
+    "publisher": {
+      "id": 9631,
+      "title": "CKN Christian Publishing",
+      "contact": "(162) 522-9854"
     },
     "edition": "2010",
-    "isbn": "2256fs",
+    "isbn": "3-598-21512-6",
     "shelfNo": {
-      "id": 2,
-      "location": "B7"
+      "id": 5352,
+      "location": "D2"
     },
-    "numberOfCopy": 5
+    "numberOfCopy": 7
   },
   {
-    "availableCopies": 4,
-    "id": 8601,
-    "title": "Java for Dummies",
+    "availableCopies": 12,
+    "id": 22636,
+    "title": "ASPECTS OF THE NOVEL",
     "subject": {
-      "id": 1,
-      "title": "Java"
+      "id": 9518,
+      "title": "American Studies"
     },
     "author": {
-      "id": 4,
-      "title": "Xi Jinping",
-      "contact": "236952"
+      "id": 6028,
+      "title": "E. M. Forster",
+      "contact": "(445) 833-0715"
     },
     "publisher": {
-      "id": 4,
-      "title": "Himalayan Publication",
-      "contact": "4935562"
+      "id": 8580,
+      "title": "Wordpool Press",
+      "contact": "(287) 174-6469"
     },
-    "edition": "2008",
-    "isbn": "nnlo52s556",
+    "edition": "1986",
+    "isbn": "3-598-21513-4",
     "shelfNo": {
-      "id": 2,
-      "location": "B2-C"
+      "id": 2302,
+      "location": "B3"
     },
-    "numberOfCopy": 5
+    "numberOfCopy": 12
   },
   {
-    "availableCopies": 0,
-    "id": 6050,
-    "title": "hci for dummies",
+    "availableCopies": 7,
+    "id": 17057,
+    "title": "THE CIVIL WAR",
     "subject": {
-      "id": 6873,
-      "title": "HCI"
+      "id": 9082,
+      "title": "Aural  and  Oral Sciences"
     },
     "author": {
-      "id": 1,
-      "title": "Sujan Parajuli",
-      "contact": "499652"
+      "id": 7329,
+      "title": "ShelFoote",
+      "contact": "(546) 372-4263"
     },
     "publisher": {
-      "id": 1,
-      "title": "Black Horse Publication",
-      "contact": "442623"
+      "id": 2723,
+      "title": "Ink Smith Publisher",
+      "contact": "(982) 434-4048"
     },
-    "edition": "1",
-    "isbn": "1A",
+    "edition": "1995",
+    "isbn": "3-598-21514-2",
     "shelfNo": {
-      "id": 2,
-      "location": "B2-C"
+      "id": 2803,
+      "location": "B1"
     },
-    "numberOfCopy": 1
+    "numberOfCopy": 7
   },
   {
-    "availableCopies": 2,
-    "id": 5975,
-    "title": "Networking for Professional",
+    "availableCopies": 13,
+    "id": 21902,
+    "title": "THE GUNS OF AUGUST",
     "subject": {
-      "id": 3,
-      "title": "Networking"
+      "id": 4551,
+      "title": "Classics  and  Ancient History"
     },
     "author": {
-      "id": 6793,
-      "title": "Ram Sharma",
-      "contact": "985632651"
+      "id": 2465,
+      "title": "Barbara Tuchman",
+      "contact": "(767) 240-6915"
     },
     "publisher": {
-      "id": 3,
-      "title": "Sajha Publication",
-      "contact": "4496352"
+      "id": 3486,
+      "title": "Ephesians 612 Publishing",
+      "contact": "(353) 445-4588"
+    },
+    "edition": "2012",
+    "isbn": "3-598-21515-0",
+    "shelfNo": {
+      "id": 6702,
+      "location": "A3"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 9,
+    "id": 83237,
+    "title": "THE PROPER STUDY OF MANKIND",
+    "subject": {
+      "id": 7464,
+      "title": "Nursing"
+    },
+    "author": {
+      "id": 5052,
+      "title": "Isaiah Berlin",
+      "contact": "(158) 395-2250"
+    },
+    "publisher": {
+      "id": 7340,
+      "title": "ZitrO Publications",
+      "contact": "(369) 599-5334"
+    },
+    "edition": "1990",
+    "isbn": "3-598-21516-9",
+    "shelfNo": {
+      "id": 9488,
+      "location": "B1"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 6,
+    "id": 12455,
+    "title": "THE NATURE AND DESTINY OF MAN",
+    "subject": {
+      "id": 4670,
+      "title": "Electrical  and  Electronic Engineering"
+    },
+    "author": {
+      "id": 8803,
+      "title": "Reinhold Niebuhr",
+      "contact": "(378) 385-8954"
+    },
+    "publisher": {
+      "id": 2595,
+      "title": "Wolfpack Publishing",
+      "contact": "(595) 578-7050"
+    },
+    "edition": "2011",
+    "isbn": "3-598-21517-7",
+    "shelfNo": {
+      "id": 5352,
+      "location": "D2"
+    },
+    "numberOfCopy": 6
+  },
+  {
+    "availableCopies": 7,
+    "id": 22275,
+    "title": "NOTES OF A NATIVE SON",
+    "subject": {
+      "id": 7386,
+      "title": "Business  and  Management Studies"
+    },
+    "author": {
+      "id": 4281,
+      "title": "James Baldwin",
+      "contact": "(947) 706-1502"
+    },
+    "publisher": {
+      "id": 6355,
+      "title": "MindView Press",
+      "contact": "(982) 434-4048"
+    },
+    "edition": "1999",
+    "isbn": "3-598-21518-5",
+    "shelfNo": {
+      "id": 7333,
+      "location": "E1"
+    },
+    "numberOfCopy": 7
+  },
+  {
+    "availableCopies": 15,
+    "id": 35339,
+    "title": "THE AUTOBIOGRAPHY OF ALICE B. TOKLAS",
+    "subject": {
+      "id": 1913,
+      "title": "Computer Science"
+    },
+    "author": {
+      "id": 4813,
+      "title": "Gertrude Stein",
+      "contact": "(109) 116-5482"
+    },
+    "publisher": {
+      "id": 6652,
+      "title": "Erotic Pleasures Publishing",
+      "contact": "(892) 798-9510"
+    },
+    "edition": "2007",
+    "isbn": "3-598-21519-3",
+    "shelfNo": {
+      "id": 2954,
+      "location": "C3"
+    },
+    "numberOfCopy": 15
+  },
+  {
+    "availableCopies": 15,
+    "id": 77422,
+    "title": "THE ELEMENTS OF STYLE",
+    "subject": {
+      "id": 6058,
+      "title": "Russian  and  East European Languages"
+    },
+    "author": {
+      "id": 2428,
+      "title": "William Strunk and E. B. White",
+      "contact": "(947) 706-1502"
+    },
+    "publisher": {
+      "id": 5029,
+      "title": "WriterPrint",
+      "contact": "(502) 204-2539"
+    },
+    "edition": "1991",
+    "isbn": "3-598-21520-7",
+    "shelfNo": {
+      "id": 6781,
+      "location": "B1"
+    },
+    "numberOfCopy": 15
+  },
+  {
+    "availableCopies": 14,
+    "id": 87852,
+    "title": "AN AMERICAN DILEMMA",
+    "subject": {
+      "id": 3155,
+      "title": "Counselling"
+    },
+    "author": {
+      "id": 3400,
+      "title": "Gunnar Myrdal",
+      "contact": "(839) 236-3908"
+    },
+    "publisher": {
+      "id": 4398,
+      "title": "Moonshine Cove Publishing, LLC",
+      "contact": "(370) 471-0231"
+    },
+    "edition": "2003",
+    "isbn": "3-598-21521-5",
+    "shelfNo": {
+      "id": 1915,
+      "location": "A2"
+    },
+    "numberOfCopy": 14
+  },
+  {
+    "availableCopies": 8,
+    "id": 61489,
+    "title": "PRINCIPIA MATHEMATICA",
+    "subject": {
+      "id": 6159,
+      "title": "Theology  and  Religious Studies"
+    },
+    "author": {
+      "id": 8091,
+      "title": "Alfred North Whitehead and Bertrand Russell",
+      "contact": "(523) 744-3736"
+    },
+    "publisher": {
+      "id": 7287,
+      "title": "Redd Ink Press",
+      "contact": "(117) 197-8723"
+    },
+    "edition": "2004",
+    "isbn": "3-598-21522-3",
+    "shelfNo": {
+      "id": 7325,
+      "location": "B1"
+    },
+    "numberOfCopy": 8
+  },
+  {
+    "availableCopies": 10,
+    "id": 73998,
+    "title": "THE MISMEASURE OF MAN",
+    "subject": {
+      "id": 8066,
+      "title": "Occupational Therapy"
+    },
+    "author": {
+      "id": 7572,
+      "title": "Stephen Jay Gould",
+      "contact": "(876) 444-7244"
+    },
+    "publisher": {
+      "id": 4259,
+      "title": "WiDo Publishing",
+      "contact": "(287) 174-6469"
+    },
+    "edition": "2003",
+    "isbn": "3-598-21523-1",
+    "shelfNo": {
+      "id": 6960,
+      "location": "A2"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 11,
+    "id": 74210,
+    "title": "THE MIRROR AND THE LAMP",
+    "subject": {
+      "id": 5257,
+      "title": "Medicine"
+    },
+    "author": {
+      "id": 3079,
+      "title": "Meyer Howard Abrams",
+      "contact": "(982) 434-4048"
+    },
+    "publisher": {
+      "id": 5784,
+      "title": "Mason J. Press",
+      "contact": "(197) 468-6962"
+    },
+    "edition": "2014",
+    "isbn": "3-598-21524-X",
+    "shelfNo": {
+      "id": 9488,
+      "location": "B1"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 7,
+    "id": 11590,
+    "title": "THE ART OF THE SOLUBLE",
+    "subject": {
+      "id": 8231,
+      "title": "Art  and  Design"
+    },
+    "author": {
+      "id": 1487,
+      "title": "Peter B. Medawar",
+      "contact": "(502) 204-2539"
+    },
+    "publisher": {
+      "id": 5233,
+      "title": "Bon Chance Press",
+      "contact": "(634) 791-3745"
+    },
+    "edition": "1995",
+    "isbn": "3-598-21525-8",
+    "shelfNo": {
+      "id": 6702,
+      "location": "A3"
+    },
+    "numberOfCopy": 7
+  },
+  {
+    "availableCopies": 11,
+    "id": 71457,
+    "title": "THE ANTS",
+    "subject": {
+      "id": 8178,
+      "title": "Celtic Studies"
+    },
+    "author": {
+      "id": 3598,
+      "title": "Bert Hoelldobler and Edward O. Wilson",
+      "contact": "(908) 197-0763"
+    },
+    "publisher": {
+      "id": 6152,
+      "title": "Kharis Publishing",
+      "contact": "(595) 578-7050"
+    },
+    "edition": "1988",
+    "isbn": "3-598-21526-6",
+    "shelfNo": {
+      "id": 6781,
+      "location": "B1"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 11,
+    "id": 10945,
+    "title": "A THEORY OF JUSTICE",
+    "subject": {
+      "id": 9718,
+      "title": "Marketing"
+    },
+    "author": {
+      "id": 3426,
+      "title": "John Rawls",
+      "contact": "(297) 757-8352"
+    },
+    "publisher": {
+      "id": 3208,
+      "title": "Neverland Publishing Company",
+      "contact": "(963) 172-9909"
     },
     "edition": "2015",
-    "isbn": "2555asd22",
+    "isbn": "3-598-21527-4",
     "shelfNo": {
-      "id": 2857,
-      "location": "B6-A1"
+      "id": 7630,
+      "location": "D1"
     },
-    "numberOfCopy": 2
+    "numberOfCopy": 11
   },
   {
-    "availableCopies": 4,
-    "id": 4755,
-    "title": "milan",
+    "availableCopies": 13,
+    "id": 57727,
+    "title": "ART AND ILLUSION",
     "subject": {
-      "id": 3492,
-      "title": "Science"
+      "id": 1198,
+      "title": "Physiotherapy"
     },
     "author": {
-      "id": 1,
-      "title": "Sujan Parajuli",
-      "contact": "996525555"
+      "id": 1506,
+      "title": "Ernest H. Gombrich",
+      "contact": "(231) 875-9763"
     },
     "publisher": {
-      "id": 1,
-      "title": "Black Horse Publication",
-      "contact": "442629555"
+      "id": 8184,
+      "title": "CyPress Publicatioins",
+      "contact": "(742) 404-1767"
     },
-    "edition": "5458",
-    "isbn": "jah54",
+    "edition": "1996",
+    "isbn": "3-598-21528-2",
     "shelfNo": {
-      "id": 1,
-      "location": "A4"
+      "id": 2803,
+      "location": "B1"
     },
-    "numberOfCopy": 4
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 6,
+    "id": 36443,
+    "title": "THE MAKING OF THE ENGLISH WORKING CLASS",
+    "subject": {
+      "id": 8066,
+      "title": "Occupational Therapy"
+    },
+    "author": {
+      "id": 6401,
+      "title": "E. P. Thompson",
+      "contact": "(964) 144-4926"
+    },
+    "publisher": {
+      "id": 6206,
+      "title": "The Key Publishing House Inc",
+      "contact": "(378) 385-8954"
+    },
+    "edition": "1992",
+    "isbn": "3-598-21529-0",
+    "shelfNo": {
+      "id": 2954,
+      "location": "C3"
+    },
+    "numberOfCopy": 6
+  },
+  {
+    "availableCopies": 9,
+    "id": 19152,
+    "title": "THE SOULS OF BLACK FOLK",
+    "subject": {
+      "id": 3814,
+      "title": "Pharmacology  and  Pharmacy"
+    },
+    "author": {
+      "id": 7532,
+      "title": "W.E.B. Du Bois",
+      "contact": "(629) 485-4626"
+    },
+    "publisher": {
+      "id": 8986,
+      "title": "Dragon Moon Press",
+      "contact": "(220) 206-7833"
+    },
+    "edition": "2004",
+    "isbn": "3-598-21530-4",
+    "shelfNo": {
+      "id": 2803,
+      "location": "B1"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 9,
+    "id": 51353,
+    "title": "PRINCIPIA ETHICA",
+    "subject": {
+      "id": 4518,
+      "title": "Music"
+    },
+    "author": {
+      "id": 7449,
+      "title": "G. E. Moore",
+      "contact": "(662) 520-1218"
+    },
+    "publisher": {
+      "id": 9614,
+      "title": "SpringGun Press",
+      "contact": "(494) 647-6935"
+    },
+    "edition": "2011",
+    "isbn": "3-598-21531-2",
+    "shelfNo": {
+      "id": 2803,
+      "location": "B1"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 14,
+    "id": 74189,
+    "title": "PHILOSOPHY AND CIVILIZATION",
+    "subject": {
+      "id": 9489,
+      "title": "Aeronautical  and  Manufacturing Engineering"
+    },
+    "author": {
+      "id": 1235,
+      "title": "John Dewey",
+      "contact": "(287) 174-6469"
+    },
+    "publisher": {
+      "id": 7336,
+      "title": "DLite Press",
+      "contact": "(742) 404-1767"
+    },
+    "edition": "1986",
+    "isbn": "3-598-21532-0",
+    "shelfNo": {
+      "id": 1915,
+      "location": "A2"
+    },
+    "numberOfCopy": 14
+  },
+  {
+    "availableCopies": 8,
+    "id": 50807,
+    "title": "ON GROWTH AND FORM",
+    "subject": {
+      "id": 3155,
+      "title": "Counselling"
+    },
+    "author": {
+      "id": 1325,
+      "title": "D�Arcy Thompson",
+      "contact": "(109) 116-5482"
+    },
+    "publisher": {
+      "id": 5533,
+      "title": "BOA Editions, Ltd.",
+      "contact": "(932) 265-7342"
+    },
+    "edition": "1996",
+    "isbn": "3-598-21533-9",
+    "shelfNo": {
+      "id": 7333,
+      "location": "E1"
+    },
+    "numberOfCopy": 8
+  },
+  {
+    "availableCopies": 8,
+    "id": 22487,
+    "title": "IDEAS AND OPINIONS",
+    "subject": {
+      "id": 7906,
+      "title": "History of Art, Architecture  and  Design"
+    },
+    "author": {
+      "id": 9248,
+      "title": "Albert Einstein",
+      "contact": "(129) 520-2154"
+    },
+    "publisher": {
+      "id": 7581,
+      "title": "Not So Noble Books",
+      "contact": "(129) 520-2154"
+    },
+    "edition": "1997",
+    "isbn": "3-598-21534-7",
+    "shelfNo": {
+      "id": 7325,
+      "location": "B1"
+    },
+    "numberOfCopy": 8
+  },
+  {
+    "availableCopies": 9,
+    "id": 89830,
+    "title": "THE AGE OF JACKSON",
+    "subject": {
+      "id": 7464,
+      "title": "Nursing"
+    },
+    "author": {
+      "id": 3469,
+      "title": ", Arthur Schlesinger Jr.",
+      "contact": "(892) 798-9510"
+    },
+    "publisher": {
+      "id": 8764,
+      "title": "PressPress",
+      "contact": "(964) 144-4926"
+    },
+    "edition": "2015",
+    "isbn": "3-598-21535-5",
+    "shelfNo": {
+      "id": 6960,
+      "location": "A2"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 7,
+    "id": 74701,
+    "title": "THE MAKING OF THE ATOMIC BOMB",
+    "subject": {
+      "id": 7464,
+      "title": "Nursing"
+    },
+    "author": {
+      "id": 2053,
+      "title": "Richard Rhodes",
+      "contact": "(793) 715-5480"
+    },
+    "publisher": {
+      "id": 1405,
+      "title": "Divertir Publishing",
+      "contact": "(672) 266-9471"
+    },
+    "edition": "2000",
+    "isbn": "3-598-21536-3",
+    "shelfNo": {
+      "id": 1915,
+      "location": "A2"
+    },
+    "numberOfCopy": 7
+  },
+  {
+    "availableCopies": 13,
+    "id": 26979,
+    "title": "BLACK LAMB AND GREY FALCON",
+    "subject": {
+      "id": 4518,
+      "title": "Music"
+    },
+    "author": {
+      "id": 6599,
+      "title": "Rebecca West",
+      "contact": "(733) 441-0207"
+    },
+    "publisher": {
+      "id": 9800,
+      "title": "Autumn House Press",
+      "contact": "(426) 329-5990"
+    },
+    "edition": "1999",
+    "isbn": "3-598-21537-1",
+    "shelfNo": {
+      "id": 7333,
+      "location": "E1"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 11,
+    "id": 70716,
+    "title": "AUTOBIOGRAPHIES",
+    "subject": {
+      "id": 7974,
+      "title": "Psychology"
+    },
+    "author": {
+      "id": 7158,
+      "title": "W. B. Yeats",
+      "contact": "(819) 747-3036"
+    },
+    "publisher": {
+      "id": 8720,
+      "title": "C and R Press",
+      "contact": "(129) 520-2154"
+    },
+    "edition": "2008",
+    "isbn": "3-598-21538-X",
+    "shelfNo": {
+      "id": 1915,
+      "location": "A2"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 13,
+    "id": 28127,
+    "title": "SCIENCE AND CIVILIZATION IN CHINA",
+    "subject": {
+      "id": 5257,
+      "title": "Medicine"
+    },
+    "author": {
+      "id": 3246,
+      "title": "Joseph Needham",
+      "contact": "(144) 193-0182"
+    },
+    "publisher": {
+      "id": 9427,
+      "title": "John Hunt Publishing",
+      "contact": "(220) 206-7833"
+    },
+    "edition": "1999",
+    "isbn": "3-598-21539-8",
+    "shelfNo": {
+      "id": 7333,
+      "location": "E1"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 7,
+    "id": 85289,
+    "title": "GOODBYE TO ALL THAT",
+    "subject": {
+      "id": 7916,
+      "title": "Land  and  Property Management"
+    },
+    "author": {
+      "id": 1994,
+      "title": "Robert Graves",
+      "contact": "(489) 157-5914"
+    },
+    "publisher": {
+      "id": 7743,
+      "title": "White Knuckle Press",
+      "contact": "(546) 372-4263"
+    },
+    "edition": "2012",
+    "isbn": "3-598-21540-1",
+    "shelfNo": {
+      "id": 6781,
+      "location": "B1"
+    },
+    "numberOfCopy": 7
+  },
+  {
+    "availableCopies": 6,
+    "id": 65009,
+    "title": "HOMAGE TO CATALONIA",
+    "subject": {
+      "id": 7268,
+      "title": "Materials Technology"
+    },
+    "author": {
+      "id": 3843,
+      "title": "George Orwell",
+      "contact": "(921) 118-6117"
+    },
+    "publisher": {
+      "id": 4193,
+      "title": "Anthem Press",
+      "contact": "(672) 266-9471"
+    },
+    "edition": "2016",
+    "isbn": "3-598-21541-X",
+    "shelfNo": {
+      "id": 9488,
+      "location": "B1"
+    },
+    "numberOfCopy": 6
+  },
+  {
+    "availableCopies": 14,
+    "id": 26187,
+    "title": "THE AUTOBIOGRAPHY OF MARK TWAIN",
+    "subject": {
+      "id": 6756,
+      "title": "General Engineering"
+    },
+    "author": {
+      "id": 4326,
+      "title": "Mark Twain",
+      "contact": "(764) 901-2575"
+    },
+    "publisher": {
+      "id": 5046,
+      "title": "Writerists House",
+      "contact": "(876) 444-7244"
+    },
+    "edition": "1998",
+    "isbn": "3-598-21542-8",
+    "shelfNo": {
+      "id": 6702,
+      "location": "A3"
+    },
+    "numberOfCopy": 14
+  },
+  {
+    "availableCopies": 10,
+    "id": 84418,
+    "title": "CHILDREN OF CRISIS",
+    "subject": {
+      "id": 2880,
+      "title": "Archaeology"
+    },
+    "author": {
+      "id": 3765,
+      "title": "Robert Coles",
+      "contact": "(377) 416-6760"
+    },
+    "publisher": {
+      "id": 3036,
+      "title": "Horrified Press",
+      "contact": "(978) 262-2182"
+    },
+    "edition": "2008",
+    "isbn": "3-598-21543-6",
+    "shelfNo": {
+      "id": 7325,
+      "location": "B1"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 13,
+    "id": 93893,
+    "title": "A STUDY OF HISTORY",
+    "subject": {
+      "id": 5674,
+      "title": "Drama, Dance  and  Cinematics"
+    },
+    "author": {
+      "id": 9232,
+      "title": "Arnold J. Toynbee",
+      "contact": "(481) 647-3325"
+    },
+    "publisher": {
+      "id": 4996,
+      "title": "St. Polycarp Publishing House",
+      "contact": "(377) 416-6760"
+    },
+    "edition": "2013",
+    "isbn": "3-598-21544-4",
+    "shelfNo": {
+      "id": 2803,
+      "location": "B1"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 12,
+    "id": 63910,
+    "title": "THE AFFLUENT SOCIETY",
+    "subject": {
+      "id": 4551,
+      "title": "Classics  and  Ancient History"
+    },
+    "author": {
+      "id": 3808,
+      "title": "John Kenneth Galbraith",
+      "contact": "(368) 107-2313"
+    },
+    "publisher": {
+      "id": 7844,
+      "title": "Lore Lush Publishing",
+      "contact": "(231) 875-9763"
+    },
+    "edition": "2012",
+    "isbn": "3-598-21545-2",
+    "shelfNo": {
+      "id": 7325,
+      "location": "B1"
+    },
+    "numberOfCopy": 12
+  },
+  {
+    "availableCopies": 5,
+    "id": 95660,
+    "title": "PRESENT AT THE CREATION",
+    "subject": {
+      "id": 6058,
+      "title": "Russian  and  East European Languages"
+    },
+    "author": {
+      "id": 8978,
+      "title": "Dean Acheson",
+      "contact": "(876) 444-7244"
+    },
+    "publisher": {
+      "id": 7550,
+      "title": "Tiny Fox Press",
+      "contact": "(523) 665-5813"
+    },
+    "edition": "2007",
+    "isbn": "3-598-21546-0",
+    "shelfNo": {
+      "id": 2803,
+      "location": "B1"
+    },
+    "numberOfCopy": 5
+  },
+  {
+    "availableCopies": 5,
+    "id": 60083,
+    "title": "THE GREAT BRIDGE",
+    "subject": {
+      "id": 5085,
+      "title": "Dentistry"
+    },
+    "author": {
+      "id": 8199,
+      "title": "David McCullough",
+      "contact": "(631) 138-9029"
+    },
+    "publisher": {
+      "id": 5561,
+      "title": "Books to Go Now",
+      "contact": "(819) 747-3036"
+    },
+    "edition": "2013",
+    "isbn": "3-598-21547-9",
+    "shelfNo": {
+      "id": 1915,
+      "location": "A2"
+    },
+    "numberOfCopy": 5
+  },
+  {
+    "availableCopies": 11,
+    "id": 42609,
+    "title": "PATRIOTIC GORE",
+    "subject": {
+      "id": 9718,
+      "title": "Marketing"
+    },
+    "author": {
+      "id": 7207,
+      "title": "Edmund Wilson",
+      "contact": "(309) 448-2645"
+    },
+    "publisher": {
+      "id": 7783,
+      "title": "Oberlin College Press",
+      "contact": "(315) 879-0772"
+    },
+    "edition": "2006",
+    "isbn": "3-598-21548-7",
+    "shelfNo": {
+      "id": 2302,
+      "location": "B3"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 12,
+    "id": 85038,
+    "title": "SAMUEL JOHNSON",
+    "subject": {
+      "id": 9082,
+      "title": "Aural  and  Oral Sciences"
+    },
+    "author": {
+      "id": 6147,
+      "title": "Walter Jackson Bate",
+      "contact": "(426) 329-5990"
+    },
+    "publisher": {
+      "id": 9740,
+      "title": "Kore Press",
+      "contact": "(742) 404-1767"
+    },
+    "edition": "1991",
+    "isbn": "3-598-21549-5",
+    "shelfNo": {
+      "id": 7630,
+      "location": "D1"
+    },
+    "numberOfCopy": 12
+  },
+  {
+    "availableCopies": 11,
+    "id": 62405,
+    "title": "THE AUTOBIOGRAPHY OF MALCOLM X",
+    "subject": {
+      "id": 7906,
+      "title": "History of Art, Architecture  and  Design"
+    },
+    "author": {
+      "id": 6914,
+      "title": "Alex Haley and Malcolm X",
+      "contact": "(523) 665-5813"
+    },
+    "publisher": {
+      "id": 9915,
+      "title": "Bottom Dog Press/ Bird Dog Publishing",
+      "contact": "(353) 445-4588"
+    },
+    "edition": "2013",
+    "isbn": "3-598-21550-9",
+    "shelfNo": {
+      "id": 6781,
+      "location": "B1"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 11,
+    "id": 33663,
+    "title": "THE RIGHT STUFF",
+    "subject": {
+      "id": 7044,
+      "title": "Mechanical Engineering"
+    },
+    "author": {
+      "id": 8335,
+      "title": "Tom Wolfe",
+      "contact": "(662) 520-1218"
+    },
+    "publisher": {
+      "id": 1117,
+      "title": "Echoic Mobile Press",
+      "contact": "(368) 107-2313"
+    },
+    "edition": "2011",
+    "isbn": "3-598-21551-7",
+    "shelfNo": {
+      "id": 9488,
+      "location": "B1"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 9,
+    "id": 43525,
+    "title": "EMINENT VICTORIANS",
+    "subject": {
+      "id": 1940,
+      "title": "Middle Eastern  and  African Studies"
+    },
+    "author": {
+      "id": 7627,
+      "title": "Lytton Strachey",
+      "contact": "(254) 322-9310"
+    },
+    "publisher": {
+      "id": 5824,
+      "title": "Salem-Danvers Village Press",
+      "contact": "(205) 558-1712"
+    },
+    "edition": "1992",
+    "isbn": "3-598-21552-5",
+    "shelfNo": {
+      "id": 2954,
+      "location": "C3"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 13,
+    "id": 99448,
+    "title": "WORKING",
+    "subject": {
+      "id": 6505,
+      "title": "Linguistics"
+    },
+    "author": {
+      "id": 6513,
+      "title": "Studs Terkel",
+      "contact": "(711) 793-3495"
+    },
+    "publisher": {
+      "id": 5858,
+      "title": "Rowanvale Books",
+      "contact": "(892) 798-9510"
+    },
+    "edition": "2006",
+    "isbn": "3-598-21553-3",
+    "shelfNo": {
+      "id": 7333,
+      "location": "E1"
+    },
+    "numberOfCopy": 14
+  },
+  {
+    "availableCopies": 11,
+    "id": 99971,
+    "title": "DARKNESS VISIBLE",
+    "subject": {
+      "id": 7464,
+      "title": "Nursing"
+    },
+    "author": {
+      "id": 1050,
+      "title": "William Styron",
+      "contact": "(778) 285-7624"
+    },
+    "publisher": {
+      "id": 9205,
+      "title": "Blue Swan Publishing",
+      "contact": "(481) 647-3325"
+    },
+    "edition": "1985",
+    "isbn": "3-598-21554-1",
+    "shelfNo": {
+      "id": 7333,
+      "location": "E1"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 5,
+    "id": 54485,
+    "title": "THE LIBERAL IMAGINATION",
+    "subject": {
+      "id": 4976,
+      "title": "Robotics"
+    },
+    "author": {
+      "id": 8520,
+      "title": "Lionel Trilling",
+      "contact": "(377) 416-6760"
+    },
+    "publisher": {
+      "id": 4616,
+      "title": "Austin Macauley Publishers Ltd.",
+      "contact": "(597) 553-3932"
+    },
+    "edition": "2003",
+    "isbn": "3-598-21555-X",
+    "shelfNo": {
+      "id": 2302,
+      "location": "B3"
+    },
+    "numberOfCopy": 5
+  },
+  {
+    "availableCopies": 11,
+    "id": 28165,
+    "title": "THE SECOND WORLD WAR",
+    "subject": {
+      "id": 4299,
+      "title": "Criminology"
+    },
+    "author": {
+      "id": 4184,
+      "title": "Winston Churchill",
+      "contact": "(377) 565-6701"
+    },
+    "publisher": {
+      "id": 5624,
+      "title": "Regal House Publishing",
+      "contact": "(129) 520-2154"
+    },
+    "edition": "1989",
+    "isbn": "3-598-21556-8",
+    "shelfNo": {
+      "id": 6702,
+      "location": "A3"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 15,
+    "id": 42173,
+    "title": "OUT OF AFRICA",
+    "subject": {
+      "id": 7821,
+      "title": "Medical Technology"
+    },
+    "author": {
+      "id": 1675,
+      "title": "Isak Dinesen",
+      "contact": "(109) 116-5482"
+    },
+    "publisher": {
+      "id": 9459,
+      "title": "Deux Voiliers Publishing",
+      "contact": "(982) 434-4048"
+    },
+    "edition": "2015",
+    "isbn": "3-598-21557-6",
+    "shelfNo": {
+      "id": 6781,
+      "location": "B1"
+    },
+    "numberOfCopy": 15
+  },
+  {
+    "availableCopies": 9,
+    "id": 24655,
+    "title": "JEFFERSON AND HIS TIME",
+    "subject": {
+      "id": 7459,
+      "title": "Sports Science"
+    },
+    "author": {
+      "id": 8599,
+      "title": "Dumas Malone",
+      "contact": "(502) 204-2539"
+    },
+    "publisher": {
+      "id": 2636,
+      "title": "Sonder Press",
+      "contact": "(368) 107-2313"
+    },
+    "edition": "1989",
+    "isbn": "3-598-21558-4",
+    "shelfNo": {
+      "id": 9112,
+      "location": "B2"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 12,
+    "id": 30329,
+    "title": "IN THE AMERICAN GRAIN",
+    "subject": {
+      "id": 6449,
+      "title": "Sociology"
+    },
+    "author": {
+      "id": 2424,
+      "title": "William Carlos Williams",
+      "contact": "(876) 444-7244"
+    },
+    "publisher": {
+      "id": 3991,
+      "title": "Fat Dog Books",
+      "contact": "(818) 737-3945"
+    },
+    "edition": "1997",
+    "isbn": "3-598-21559-2",
+    "shelfNo": {
+      "id": 5352,
+      "location": "D2"
+    },
+    "numberOfCopy": 12
+  },
+  {
+    "availableCopies": 11,
+    "id": 93761,
+    "title": "CADILLAC DESERT",
+    "subject": {
+      "id": 8151,
+      "title": "Mathematics"
+    },
+    "author": {
+      "id": 2118,
+      "title": "Marc Reisner",
+      "contact": "(947) 706-1502"
+    },
+    "publisher": {
+      "id": 1084,
+      "title": "39 West Press",
+      "contact": "(254) 322-9310"
+    },
+    "edition": "2003",
+    "isbn": "3-598-21560-6",
+    "shelfNo": {
+      "id": 2302,
+      "location": "B3"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 13,
+    "id": 11518,
+    "title": "THE HOUSE OF MORGAN",
+    "subject": {
+      "id": 4965,
+      "title": "Biological Sciences"
+    },
+    "author": {
+      "id": 8569,
+      "title": "Ron Chernow",
+      "contact": "(239) 169-4036"
+    },
+    "publisher": {
+      "id": 7718,
+      "title": "Perpetuity Publishing",
+      "contact": "(963) 172-9909"
+    },
+    "edition": "1988",
+    "isbn": "3-598-21561-4",
+    "shelfNo": {
+      "id": 1915,
+      "location": "A2"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 9,
+    "id": 66457,
+    "title": "THE SWEET SCIENCE",
+    "subject": {
+      "id": 1623,
+      "title": "Youth Work"
+    },
+    "author": {
+      "id": 7604,
+      "title": "A. J. Liebling",
+      "contact": "(963) 172-9909"
+    },
+    "publisher": {
+      "id": 8420,
+      "title": "Stone Pier Press",
+      "contact": "(197) 468-6962"
+    },
+    "edition": "2015",
+    "isbn": "3-598-21562-2",
+    "shelfNo": {
+      "id": 7325,
+      "location": "B1"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 15,
+    "id": 94490,
+    "title": "THE OPEN SOCIETY AND ITS ENEMIES",
+    "subject": {
+      "id": 6159,
+      "title": "Theology  and  Religious Studies"
+    },
+    "author": {
+      "id": 5175,
+      "title": "Karl Popper",
+      "contact": "(254) 322-9310"
+    },
+    "publisher": {
+      "id": 3832,
+      "title": "Carbon Books",
+      "contact": "(819) 311-2967"
+    },
+    "edition": "1996",
+    "isbn": "3-598-21563-0",
+    "shelfNo": {
+      "id": 7325,
+      "location": "B1"
+    },
+    "numberOfCopy": 15
+  },
+  {
+    "availableCopies": 15,
+    "id": 84353,
+    "title": "THE ART OF MEMORY",
+    "subject": {
+      "id": 9518,
+      "title": "American Studies"
+    },
+    "author": {
+      "id": 3979,
+      "title": "Frances A. Yates",
+      "contact": "(662) 520-1218"
+    },
+    "publisher": {
+      "id": 7634,
+      "title": "Publication Consultants",
+      "contact": "(908) 197-0763"
+    },
+    "edition": "1984",
+    "isbn": "3-598-21564-9",
+    "shelfNo": {
+      "id": 7325,
+      "location": "B1"
+    },
+    "numberOfCopy": 15
+  },
+  {
+    "availableCopies": 8,
+    "id": 10685,
+    "title": "RELIGION AND THE RISE OF CAPITALISM",
+    "subject": {
+      "id": 7459,
+      "title": "Sports Science"
+    },
+    "author": {
+      "id": 7466,
+      "title": "R. H. Tawney",
+      "contact": "(856) 713-6078"
+    },
+    "publisher": {
+      "id": 2099,
+      "title": "Grivante Press",
+      "contact": "(494) 647-6935"
+    },
+    "edition": "1993",
+    "isbn": "3-598-21565-7",
+    "shelfNo": {
+      "id": 6960,
+      "location": "A2"
+    },
+    "numberOfCopy": 8
+  },
+  {
+    "availableCopies": 9,
+    "id": 77632,
+    "title": "A PREFACE TO MORALS",
+    "subject": {
+      "id": 5264,
+      "title": "Social Policy"
+    },
+    "author": {
+      "id": 6831,
+      "title": "Walter Lippmann",
+      "contact": "(733) 441-0207"
+    },
+    "publisher": {
+      "id": 7922,
+      "title": "Divine Phoenix",
+      "contact": "(856) 713-6078"
+    },
+    "edition": "1993",
+    "isbn": "3-598-21566-5",
+    "shelfNo": {
+      "id": 7333,
+      "location": "E1"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 9,
+    "id": 77538,
+    "title": "THE GATE OF HEAVENLY PEACE",
+    "subject": {
+      "id": 4122,
+      "title": "Law"
+    },
+    "author": {
+      "id": 2661,
+      "title": "Jonathan D. Spence",
+      "contact": "(608) 880-6170"
+    },
+    "publisher": {
+      "id": 7440,
+      "title": "Savant Books and Publications",
+      "contact": "(144) 193-0182"
+    },
+    "edition": "1993",
+    "isbn": "3-598-21567-3",
+    "shelfNo": {
+      "id": 1915,
+      "location": "A2"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 13,
+    "id": 61054,
+    "title": "THE STRUCTURE OF SCIENTIFIC REVOLUTIONS",
+    "subject": {
+      "id": 3451,
+      "title": "Politics"
+    },
+    "author": {
+      "id": 5206,
+      "title": "Thomas S. Kuhn",
+      "contact": "(932) 265-7342"
+    },
+    "publisher": {
+      "id": 8782,
+      "title": "Jan-Carol Publishing, INC",
+      "contact": "(767) 240-6915"
+    },
+    "edition": "1984",
+    "isbn": "3-598-21568-1",
+    "shelfNo": {
+      "id": 7630,
+      "location": "D1"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 12,
+    "id": 92368,
+    "title": "THE STRANGE CAREER OF JIM CROW",
+    "subject": {
+      "id": 4518,
+      "title": "Music"
+    },
+    "author": {
+      "id": 9671,
+      "title": "C. Vann Woodward",
+      "contact": "(690) 367-7028"
+    },
+    "publisher": {
+      "id": 2181,
+      "title": "The Parliament House",
+      "contact": "(528) 269-8881"
+    },
+    "edition": "1991",
+    "isbn": "3-598-21569-X",
+    "shelfNo": {
+      "id": 2803,
+      "location": "B1"
+    },
+    "numberOfCopy": 12
+  },
+  {
+    "availableCopies": 10,
+    "id": 33792,
+    "title": "THE RISE OF THE WEST",
+    "subject": {
+      "id": 9429,
+      "title": "Hospitality, Leisure, Recreation  and  Tourism"
+    },
+    "author": {
+      "id": 1251,
+      "title": "William H. McNeill",
+      "contact": "(928) 220-7390"
+    },
+    "publisher": {
+      "id": 5605,
+      "title": "Aionios Books",
+      "contact": "(711) 793-3495"
+    },
+    "edition": "1992",
+    "isbn": "3-598-21570-3",
+    "shelfNo": {
+      "id": 2803,
+      "location": "B1"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 13,
+    "id": 58222,
+    "title": "THE GNOSTIC GOSPELS",
+    "subject": {
+      "id": 8151,
+      "title": "Mathematics"
+    },
+    "author": {
+      "id": 6058,
+      "title": "Elaine Pagels",
+      "contact": "(315) 879-0772"
+    },
+    "publisher": {
+      "id": 1633,
+      "title": "Radion Media",
+      "contact": "(287) 174-6469"
+    },
+    "edition": "2006",
+    "isbn": "3-598-21571-1",
+    "shelfNo": {
+      "id": 1915,
+      "location": "A2"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 13,
+    "id": 33701,
+    "title": "JAMES JOYCE",
+    "subject": {
+      "id": 5746,
+      "title": "Fashion"
+    },
+    "author": {
+      "id": 1385,
+      "title": "Richard Ellmann",
+      "contact": "(629) 485-4626"
+    },
+    "publisher": {
+      "id": 8152,
+      "title": "Biblio You",
+      "contact": "(523) 665-5813"
+    },
+    "edition": "1994",
+    "isbn": "3-598-21572-X",
+    "shelfNo": {
+      "id": 2302,
+      "location": "B3"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 6,
+    "id": 94262,
+    "title": "FLORENCE NIGHTINGALE",
+    "subject": {
+      "id": 7974,
+      "title": "Psychology"
+    },
+    "author": {
+      "id": 2450,
+      "title": "Cecil Woodham-Smith",
+      "contact": "(129) 520-2154"
+    },
+    "publisher": {
+      "id": 6835,
+      "title": "Tozer Publishing",
+      "contact": "(819) 311-2967"
+    },
+    "edition": "1984",
+    "isbn": "3-598-21573-8",
+    "shelfNo": {
+      "id": 7630,
+      "location": "D1"
+    },
+    "numberOfCopy": 6
+  },
+  {
+    "availableCopies": 8,
+    "id": 34956,
+    "title": "THE GREAT WAR AND MODERN MEMORY",
+    "subject": {
+      "id": 7954,
+      "title": "Architecture"
+    },
+    "author": {
+      "id": 9602,
+      "title": "Paul Fussell",
+      "contact": "(818) 737-3945"
+    },
+    "publisher": {
+      "id": 9528,
+      "title": "Anaphora Literary Press",
+      "contact": "(353) 445-4588"
+    },
+    "edition": "1993",
+    "isbn": "3-598-21574-6",
+    "shelfNo": {
+      "id": 6702,
+      "location": "A3"
+    },
+    "numberOfCopy": 8
+  },
+  {
+    "availableCopies": 7,
+    "id": 86039,
+    "title": "THE CITY IN HISTORY",
+    "subject": {
+      "id": 7954,
+      "title": "Architecture"
+    },
+    "author": {
+      "id": 5872,
+      "title": "Lewis Mumford",
+      "contact": "(462) 595-6720"
+    },
+    "publisher": {
+      "id": 1847,
+      "title": "Sigma\u0027s Bookshelf",
+      "contact": "(445) 833-0715"
+    },
+    "edition": "1987",
+    "isbn": "3-598-21575-4",
+    "shelfNo": {
+      "id": 6702,
+      "location": "A3"
+    },
+    "numberOfCopy": 7
+  },
+  {
+    "availableCopies": 6,
+    "id": 65614,
+    "title": "BATTLE CRY OF FREEDOM",
+    "subject": {
+      "id": 8231,
+      "title": "Art  and  Design"
+    },
+    "author": {
+      "id": 2298,
+      "title": "James M. McPherson",
+      "contact": "(629) 485-4626"
+    },
+    "publisher": {
+      "id": 4418,
+      "title": "Indigo River Publishing",
+      "contact": "(963) 172-9909"
+    },
+    "edition": "1989",
+    "isbn": "3-598-21576-2",
+    "shelfNo": {
+      "id": 7630,
+      "location": "D1"
+    },
+    "numberOfCopy": 6
+  },
+  {
+    "availableCopies": 8,
+    "id": 94895,
+    "title": "WHY WE CAN�T WAIT",
+    "subject": {
+      "id": 4878,
+      "title": "Agriculture  and  Forestry"
+    },
+    "author": {
+      "id": 3084,
+      "title": "Martin Luther King Jr.",
+      "contact": "(567) 165-0506"
+    },
+    "publisher": {
+      "id": 8931,
+      "title": "Whosoever Press",
+      "contact": "(426) 329-5990"
+    },
+    "edition": "2010",
+    "isbn": "3-598-21577-0",
+    "shelfNo": {
+      "id": 2954,
+      "location": "C3"
+    },
+    "numberOfCopy": 8
+  },
+  {
+    "availableCopies": 13,
+    "id": 62944,
+    "title": "THE RISE OF THEODORE ROOSEVELT",
+    "subject": {
+      "id": 6505,
+      "title": "Linguistics"
+    },
+    "author": {
+      "id": 5770,
+      "title": "Edmund Morris",
+      "contact": "(672) 266-9471"
+    },
+    "publisher": {
+      "id": 7349,
+      "title": "KiCam Projects",
+      "contact": "(908) 197-0763"
+    },
+    "edition": "1989",
+    "isbn": "3-598-21578-9",
+    "shelfNo": {
+      "id": 7630,
+      "location": "D1"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 14,
+    "id": 95222,
+    "title": "STUDIES IN ICONOLOGY",
+    "subject": {
+      "id": 1740,
+      "title": "Social Work"
+    },
+    "author": {
+      "id": 9063,
+      "title": "Erwin Panofsky",
+      "contact": "(494) 647-6935"
+    },
+    "publisher": {
+      "id": 1314,
+      "title": "Air University Press",
+      "contact": "(239) 169-4036"
+    },
+    "edition": "2001",
+    "isbn": "3-598-21579-7",
+    "shelfNo": {
+      "id": 9488,
+      "location": "B1"
+    },
+    "numberOfCopy": 14
+  },
+  {
+    "availableCopies": 14,
+    "id": 94167,
+    "title": "THE FACE OF BATTLE",
+    "subject": {
+      "id": 7464,
+      "title": "Nursing"
+    },
+    "author": {
+      "id": 5132,
+      "title": "John Keegan",
+      "contact": "(370) 471-0231"
+    },
+    "publisher": {
+      "id": 5710,
+      "title": "Animal Mineral Press",
+      "contact": "(778) 285-7624"
+    },
+    "edition": "1992",
+    "isbn": "3-598-21580-0",
+    "shelfNo": {
+      "id": 2803,
+      "location": "B1"
+    },
+    "numberOfCopy": 14
+  },
+  {
+    "availableCopies": 5,
+    "id": 84631,
+    "title": "THE STRANGE DEATH OF LIBERAL ENGLAND",
+    "subject": {
+      "id": 4551,
+      "title": "Classics  and  Ancient History"
+    },
+    "author": {
+      "id": 6253,
+      "title": "George Dangerfield",
+      "contact": "(205) 558-1712"
+    },
+    "publisher": {
+      "id": 8018,
+      "title": "Big O Publishing Group",
+      "contact": "(191) 521-0403"
+    },
+    "edition": "2012",
+    "isbn": "3-598-21581-9",
+    "shelfNo": {
+      "id": 6781,
+      "location": "B1"
+    },
+    "numberOfCopy": 5
+  },
+  {
+    "availableCopies": 10,
+    "id": 37055,
+    "title": "VERMEER",
+    "subject": {
+      "id": 4670,
+      "title": "Electrical  and  Electronic Engineering"
+    },
+    "author": {
+      "id": 7971,
+      "title": "Lawrence Gowing",
+      "contact": "(742) 404-1767"
+    },
+    "publisher": {
+      "id": 6108,
+      "title": "Strategic Book Publishing (SBP)",
+      "contact": "(378) 385-8954"
+    },
+    "edition": "2009",
+    "isbn": "3-598-21582-7",
+    "shelfNo": {
+      "id": 7325,
+      "location": "B1"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 13,
+    "id": 56146,
+    "title": "A BRIGHT SHINING LIE",
+    "subject": {
+      "id": 2212,
+      "title": "Librarianship  and  Information Management"
+    },
+    "author": {
+      "id": 3033,
+      "title": "Neil Sheehan",
+      "contact": "(231) 875-9763"
+    },
+    "publisher": {
+      "id": 3399,
+      "title": "Grace Notes Books (DEFUNCT)",
+      "contact": "(711) 793-3495"
+    },
+    "edition": "1997",
+    "isbn": "3-598-21583-5",
+    "shelfNo": {
+      "id": 9112,
+      "location": "B2"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 11,
+    "id": 92485,
+    "title": "WEST WITH THE NIGHT",
+    "subject": {
+      "id": 4823,
+      "title": "Economics"
+    },
+    "author": {
+      "id": 7450,
+      "title": "Beryl Markham",
+      "contact": "(162) 522-9854"
+    },
+    "publisher": {
+      "id": 4379,
+      "title": "Cracked Jar Press",
+      "contact": "(963) 172-9909"
+    },
+    "edition": "1988",
+    "isbn": "3-598-21584-3",
+    "shelfNo": {
+      "id": 9488,
+      "location": "B1"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 11,
+    "id": 36262,
+    "title": "THIS BOY�S LIFE",
+    "subject": {
+      "id": 2880,
+      "title": "Archaeology"
+    },
+    "author": {
+      "id": 7152,
+      "title": "Tobias Wolff",
+      "contact": "(353) 445-4588"
+    },
+    "publisher": {
+      "id": 8634,
+      "title": "Wolfpack Publishing",
+      "contact": "(767) 240-6915"
+    },
+    "edition": "1986",
+    "isbn": "3-598-21585-1",
+    "shelfNo": {
+      "id": 9112,
+      "location": "B2"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 10,
+    "id": 42105,
+    "title": "A MATHEMATICIAN�S APOLOGY",
+    "subject": {
+      "id": 3148,
+      "title": "Film Making"
+    },
+    "author": {
+      "id": 6983,
+      "title": "G. H. Hardy",
+      "contact": "(426) 329-5990"
+    },
+    "publisher": {
+      "id": 8252,
+      "title": "La Llorona Road",
+      "contact": "(672) 266-9471"
+    },
+    "edition": "2016",
+    "isbn": "3-598-21586-X",
+    "shelfNo": {
+      "id": 9112,
+      "location": "B2"
+    },
+    "numberOfCopy": 10
+  },
+  {
+    "availableCopies": 11,
+    "id": 35475,
+    "title": "SIX EASY PIECES",
+    "subject": {
+      "id": 9518,
+      "title": "American Studies"
+    },
+    "author": {
+      "id": 7546,
+      "title": "Richard P. Feynman",
+      "contact": "(733) 441-0207"
+    },
+    "publisher": {
+      "id": 3373,
+      "title": "M Publishing House",
+      "contact": "(348) 638-0437"
+    },
+    "edition": "2016",
+    "isbn": "3-598-21587-8",
+    "shelfNo": {
+      "id": 9488,
+      "location": "B1"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 6,
+    "id": 41747,
+    "title": "PILGRIM AT TINKER CREEK",
+    "subject": {
+      "id": 1623,
+      "title": "Youth Work"
+    },
+    "author": {
+      "id": 7798,
+      "title": "Annie Dillard",
+      "contact": "(819) 747-3036"
+    },
+    "publisher": {
+      "id": 6221,
+      "title": "Afrocentric Books",
+      "contact": "(978) 262-2182"
+    },
+    "edition": "2001",
+    "isbn": "3-598-21588-6",
+    "shelfNo": {
+      "id": 7325,
+      "location": "B1"
+    },
+    "numberOfCopy": 6
+  },
+  {
+    "availableCopies": 6,
+    "id": 33189,
+    "title": "THE GOLDEN BOUGH",
+    "subject": {
+      "id": 6625,
+      "title": "Creative Writing"
+    },
+    "author": {
+      "id": 6031,
+      "title": "James George Frazer",
+      "contact": "(757) 831-5909"
+    },
+    "publisher": {
+      "id": 2179,
+      "title": "North South Publishing",
+      "contact": "(361) 593-2691"
+    },
+    "edition": "1986",
+    "isbn": "3-598-21589-4",
+    "shelfNo": {
+      "id": 2803,
+      "location": "B1"
+    },
+    "numberOfCopy": 6
+  },
+  {
+    "availableCopies": 13,
+    "id": 61558,
+    "title": "SHADOW AND ACT",
+    "subject": {
+      "id": 1514,
+      "title": "Anatomy  and  Physiology"
+    },
+    "author": {
+      "id": 1909,
+      "title": "Ralph Ellison",
+      "contact": "(688) 818-8112"
+    },
+    "publisher": {
+      "id": 5651,
+      "title": "Timekeepers Press",
+      "contact": "(546) 372-4263"
+    },
+    "edition": "2014",
+    "isbn": "3-598-21590-8",
+    "shelfNo": {
+      "id": 6702,
+      "location": "A3"
+    },
+    "numberOfCopy": 13
+  },
+  {
+    "availableCopies": 6,
+    "id": 60770,
+    "title": "THE POWER BROKER",
+    "subject": {
+      "id": 9082,
+      "title": "Aural  and  Oral Sciences"
+    },
+    "author": {
+      "id": 8867,
+      "title": "Robert A. Caro",
+      "contact": "(662) 520-1218"
+    },
+    "publisher": {
+      "id": 4176,
+      "title": "Brukat Publishing, LLC",
+      "contact": "(131) 305-2352"
+    },
+    "edition": "2015",
+    "isbn": "3-598-21591-6",
+    "shelfNo": {
+      "id": 6781,
+      "location": "B1"
+    },
+    "numberOfCopy": 6
+  },
+  {
+    "availableCopies": 11,
+    "id": 89240,
+    "title": "THE AMERICAN POLITICAL TRADITION",
+    "subject": {
+      "id": 7821,
+      "title": "Medical Technology"
+    },
+    "author": {
+      "id": 7062,
+      "title": "Richard Hofstadter",
+      "contact": "(866) 133-9035"
+    },
+    "publisher": {
+      "id": 3535,
+      "title": "Copper Pen Press LLC",
+      "contact": "(826) 623-6593"
+    },
+    "edition": "2007",
+    "isbn": "3-598-21592-4",
+    "shelfNo": {
+      "id": 1915,
+      "location": "A2"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 12,
+    "id": 40875,
+    "title": "THE CONTOURS OF AMERICAN HISTORY",
+    "subject": {
+      "id": 9518,
+      "title": "American Studies"
+    },
+    "author": {
+      "id": 1075,
+      "title": "William Appleman Williams",
+      "contact": "(932) 265-7342"
+    },
+    "publisher": {
+      "id": 4527,
+      "title": "Cactus Moon Publications, LLC",
+      "contact": "(771) 101-1817"
+    },
+    "edition": "2015",
+    "isbn": "3-598-21593-2",
+    "shelfNo": {
+      "id": 2302,
+      "location": "B3"
+    },
+    "numberOfCopy": 12
+  },
+  {
+    "availableCopies": 9,
+    "id": 23762,
+    "title": "THE PROMISE OF AMERICAN LIFE",
+    "subject": {
+      "id": 9895,
+      "title": "Building"
+    },
+    "author": {
+      "id": 9207,
+      "title": "Herbert Croly",
+      "contact": "(567) 165-0506"
+    },
+    "publisher": {
+      "id": 3595,
+      "title": "Mira Digital Publishing",
+      "contact": "(309) 448-2645"
+    },
+    "edition": "2001",
+    "isbn": "3-598-21594-0",
+    "shelfNo": {
+      "id": 1915,
+      "location": "A2"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 11,
+    "id": 58699,
+    "title": "IN COLD BLOOD",
+    "subject": {
+      "id": 9890,
+      "title": "Complementary Medicine"
+    },
+    "author": {
+      "id": 4682,
+      "title": "Truman Capote",
+      "contact": "(152) 678-2286"
+    },
+    "publisher": {
+      "id": 8989,
+      "title": "Fifth Ink Publishing, LLC.",
+      "contact": "(502) 204-2539"
+    },
+    "edition": "2006",
+    "isbn": "3-598-21595-9",
+    "shelfNo": {
+      "id": 6702,
+      "location": "A3"
+    },
+    "numberOfCopy": 11
+  },
+  {
+    "availableCopies": 12,
+    "id": 94644,
+    "title": "THE JOURNALIST AND THE MURDERER",
+    "subject": {
+      "id": 5652,
+      "title": "Optometry, Ophthalmology  and  Orthoptics"
+    },
+    "author": {
+      "id": 7921,
+      "title": "Janet Malcolm",
+      "contact": "(662) 520-1218"
+    },
+    "publisher": {
+      "id": 8615,
+      "title": "Thought Collection Publishing",
+      "contact": "(818) 737-3945"
+    },
+    "edition": "2002",
+    "isbn": "3-598-21596-7",
+    "shelfNo": {
+      "id": 6960,
+      "location": "A2"
+    },
+    "numberOfCopy": 12
+  },
+  {
+    "availableCopies": 9,
+    "id": 18969,
+    "title": "THE TAMING OF CHANCE",
+    "subject": {
+      "id": 4878,
+      "title": "Agriculture  and  Forestry"
+    },
+    "author": {
+      "id": 5810,
+      "title": "Ian Hacking",
+      "contact": "(760) 689-9702"
+    },
+    "publisher": {
+      "id": 7808,
+      "title": "Createbook",
+      "contact": "(144) 193-0182"
+    },
+    "edition": "2014",
+    "isbn": "3-598-21597-5",
+    "shelfNo": {
+      "id": 2954,
+      "location": "C3"
+    },
+    "numberOfCopy": 9
+  },
+  {
+    "availableCopies": 6,
+    "id": 51071,
+    "title": "OPERATING INSTRUCTIONS",
+    "subject": {
+      "id": 3184,
+      "title": "Geology"
+    },
+    "author": {
+      "id": 2986,
+      "title": "Anne Lamott",
+      "contact": "(479) 285-6570"
+    },
+    "publisher": {
+      "id": 8002,
+      "title": "cel231",
+      "contact": "(191) 521-0403"
+    },
+    "edition": "1993",
+    "isbn": "3-598-21598-3",
+    "shelfNo": {
+      "id": 6702,
+      "location": "A3"
+    },
+    "numberOfCopy": 6
+  },
+  {
+    "availableCopies": 13,
+    "id": 28525,
+    "title": "MELBOURNE",
+    "subject": {
+      "id": 8663,
+      "title": "English"
+    },
+    "author": {
+      "id": 3590,
+      "title": "Lord David Cecil",
+      "contact": "(771) 101-1817"
+    },
+    "publisher": {
+      "id": 7638,
+      "title": "Nephilim Press",
+      "contact": "(932) 265-7342"
+    },
+    "edition": "1995",
+    "isbn": "3-598-21599-1",
+    "shelfNo": {
+      "id": 2803,
+      "location": "B1"
+    },
+    "numberOfCopy": 14
   }
 ]

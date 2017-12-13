@@ -1,27 +1,842 @@
 [
   {
-    "id": 1,
-    "title": "Black Horse Publication",
-    "contact": "442629555"
+    "id": 3038,
+    "title": "Arma Technologies",
+    "contact": "(634) 791-3745"
   },
   {
-    "id": 2,
-    "title": "Asian Publication",
-    "contact": "5526354"
+    "id": 3449,
+    "title": "Flame Lily Books Ltd",
+    "contact": "(690) 367-7028"
   },
   {
-    "id": 3,
-    "title": "Sajha Publication",
-    "contact": "4496352"
+    "id": 7790,
+    "title": "eLectio Publishing",
+    "contact": "(608) 880-6170"
   },
   {
-    "id": 4,
-    "title": "Himalayan Publication",
-    "contact": "4935562"
+    "id": 5222,
+    "title": "Weasel Press",
+    "contact": "(742) 404-1767"
   },
   {
-    "id": 7633,
-    "title": "Mero Publication",
-    "contact": "499070936"
+    "id": 7821,
+    "title": "Alfresco Press",
+    "contact": "(231) 875-9763"
+  },
+  {
+    "id": 4861,
+    "title": "Native Ink Press",
+    "contact": "(489) 157-5914"
+  },
+  {
+    "id": 9379,
+    "title": "ABDO",
+    "contact": "(226) 752-4920"
+  },
+  {
+    "id": 7294,
+    "title": "Virgogray Press",
+    "contact": "(860) 441-9474"
+  },
+  {
+    "id": 6896,
+    "title": "Search and Intro",
+    "contact": "(191) 521-0403"
+  },
+  {
+    "id": 1086,
+    "title": "Torquere Press",
+    "contact": "(767) 240-6915"
+  },
+  {
+    "id": 8224,
+    "title": "Pants On Fire Press",
+    "contact": "(818) 737-3945"
+  },
+  {
+    "id": 7134,
+    "title": "Figroot Press",
+    "contact": "(297) 757-8352"
+  },
+  {
+    "id": 9631,
+    "title": "CKN Christian Publishing",
+    "contact": "(162) 522-9854"
+  },
+  {
+    "id": 8580,
+    "title": "Wordpool Press",
+    "contact": "(287) 174-6469"
+  },
+  {
+    "id": 2723,
+    "title": "Ink Smith Publisher",
+    "contact": "(982) 434-4048"
+  },
+  {
+    "id": 3486,
+    "title": "Ephesians 612 Publishing",
+    "contact": "(353) 445-4588"
+  },
+  {
+    "id": 7340,
+    "title": "ZitrO Publications",
+    "contact": "(369) 599-5334"
+  },
+  {
+    "id": 2595,
+    "title": "Wolfpack Publishing",
+    "contact": "(595) 578-7050"
+  },
+  {
+    "id": 6355,
+    "title": "MindView Press",
+    "contact": "(982) 434-4048"
+  },
+  {
+    "id": 6652,
+    "title": "Erotic Pleasures Publishing",
+    "contact": "(892) 798-9510"
+  },
+  {
+    "id": 5029,
+    "title": "WriterPrint",
+    "contact": "(502) 204-2539"
+  },
+  {
+    "id": 4398,
+    "title": "Moonshine Cove Publishing, LLC",
+    "contact": "(370) 471-0231"
+  },
+  {
+    "id": 7287,
+    "title": "Redd Ink Press",
+    "contact": "(117) 197-8723"
+  },
+  {
+    "id": 4259,
+    "title": "WiDo Publishing",
+    "contact": "(287) 174-6469"
+  },
+  {
+    "id": 5784,
+    "title": "Mason J. Press",
+    "contact": "(197) 468-6962"
+  },
+  {
+    "id": 5233,
+    "title": "Bon Chance Press",
+    "contact": "(634) 791-3745"
+  },
+  {
+    "id": 6152,
+    "title": "Kharis Publishing",
+    "contact": "(595) 578-7050"
+  },
+  {
+    "id": 3208,
+    "title": "Neverland Publishing Company",
+    "contact": "(963) 172-9909"
+  },
+  {
+    "id": 8184,
+    "title": "CyPress Publicatioins",
+    "contact": "(742) 404-1767"
+  },
+  {
+    "id": 6206,
+    "title": "The Key Publishing House Inc",
+    "contact": "(378) 385-8954"
+  },
+  {
+    "id": 8986,
+    "title": "Dragon Moon Press",
+    "contact": "(220) 206-7833"
+  },
+  {
+    "id": 9614,
+    "title": "SpringGun Press",
+    "contact": "(494) 647-6935"
+  },
+  {
+    "id": 7336,
+    "title": "DLite Press",
+    "contact": "(742) 404-1767"
+  },
+  {
+    "id": 5533,
+    "title": "BOA Editions, Ltd.",
+    "contact": "(932) 265-7342"
+  },
+  {
+    "id": 7581,
+    "title": "Not So Noble Books",
+    "contact": "(129) 520-2154"
+  },
+  {
+    "id": 8764,
+    "title": "PressPress",
+    "contact": "(964) 144-4926"
+  },
+  {
+    "id": 1405,
+    "title": "Divertir Publishing",
+    "contact": "(672) 266-9471"
+  },
+  {
+    "id": 9800,
+    "title": "Autumn House Press",
+    "contact": "(426) 329-5990"
+  },
+  {
+    "id": 8720,
+    "title": "C and R Press",
+    "contact": "(129) 520-2154"
+  },
+  {
+    "id": 9427,
+    "title": "John Hunt Publishing",
+    "contact": "(220) 206-7833"
+  },
+  {
+    "id": 7743,
+    "title": "White Knuckle Press",
+    "contact": "(546) 372-4263"
+  },
+  {
+    "id": 4193,
+    "title": "Anthem Press",
+    "contact": "(672) 266-9471"
+  },
+  {
+    "id": 5046,
+    "title": "Writerists House",
+    "contact": "(876) 444-7244"
+  },
+  {
+    "id": 3036,
+    "title": "Horrified Press",
+    "contact": "(978) 262-2182"
+  },
+  {
+    "id": 4996,
+    "title": "St. Polycarp Publishing House",
+    "contact": "(377) 416-6760"
+  },
+  {
+    "id": 7844,
+    "title": "Lore Lush Publishing",
+    "contact": "(231) 875-9763"
+  },
+  {
+    "id": 7550,
+    "title": "Tiny Fox Press",
+    "contact": "(523) 665-5813"
+  },
+  {
+    "id": 5561,
+    "title": "Books to Go Now",
+    "contact": "(819) 747-3036"
+  },
+  {
+    "id": 7783,
+    "title": "Oberlin College Press",
+    "contact": "(315) 879-0772"
+  },
+  {
+    "id": 9740,
+    "title": "Kore Press",
+    "contact": "(742) 404-1767"
+  },
+  {
+    "id": 9915,
+    "title": "Bottom Dog Press/ Bird Dog Publishing",
+    "contact": "(353) 445-4588"
+  },
+  {
+    "id": 1117,
+    "title": "Echoic Mobile Press",
+    "contact": "(368) 107-2313"
+  },
+  {
+    "id": 5824,
+    "title": "Salem-Danvers Village Press",
+    "contact": "(205) 558-1712"
+  },
+  {
+    "id": 5858,
+    "title": "Rowanvale Books",
+    "contact": "(892) 798-9510"
+  },
+  {
+    "id": 9205,
+    "title": "Blue Swan Publishing",
+    "contact": "(481) 647-3325"
+  },
+  {
+    "id": 4616,
+    "title": "Austin Macauley Publishers Ltd.",
+    "contact": "(597) 553-3932"
+  },
+  {
+    "id": 5624,
+    "title": "Regal House Publishing",
+    "contact": "(129) 520-2154"
+  },
+  {
+    "id": 9459,
+    "title": "Deux Voiliers Publishing",
+    "contact": "(982) 434-4048"
+  },
+  {
+    "id": 2636,
+    "title": "Sonder Press",
+    "contact": "(368) 107-2313"
+  },
+  {
+    "id": 3991,
+    "title": "Fat Dog Books",
+    "contact": "(818) 737-3945"
+  },
+  {
+    "id": 1084,
+    "title": "39 West Press",
+    "contact": "(254) 322-9310"
+  },
+  {
+    "id": 7718,
+    "title": "Perpetuity Publishing",
+    "contact": "(963) 172-9909"
+  },
+  {
+    "id": 8420,
+    "title": "Stone Pier Press",
+    "contact": "(197) 468-6962"
+  },
+  {
+    "id": 3832,
+    "title": "Carbon Books",
+    "contact": "(819) 311-2967"
+  },
+  {
+    "id": 7634,
+    "title": "Publication Consultants",
+    "contact": "(908) 197-0763"
+  },
+  {
+    "id": 2099,
+    "title": "Grivante Press",
+    "contact": "(494) 647-6935"
+  },
+  {
+    "id": 7922,
+    "title": "Divine Phoenix",
+    "contact": "(856) 713-6078"
+  },
+  {
+    "id": 7440,
+    "title": "Savant Books and Publications",
+    "contact": "(144) 193-0182"
+  },
+  {
+    "id": 8782,
+    "title": "Jan-Carol Publishing, INC",
+    "contact": "(767) 240-6915"
+  },
+  {
+    "id": 2181,
+    "title": "The Parliament House",
+    "contact": "(528) 269-8881"
+  },
+  {
+    "id": 5605,
+    "title": "Aionios Books",
+    "contact": "(711) 793-3495"
+  },
+  {
+    "id": 1633,
+    "title": "Radion Media",
+    "contact": "(287) 174-6469"
+  },
+  {
+    "id": 8152,
+    "title": "Biblio You",
+    "contact": "(523) 665-5813"
+  },
+  {
+    "id": 6835,
+    "title": "Tozer Publishing",
+    "contact": "(819) 311-2967"
+  },
+  {
+    "id": 9528,
+    "title": "Anaphora Literary Press",
+    "contact": "(353) 445-4588"
+  },
+  {
+    "id": 1847,
+    "title": "Sigma\u0027s Bookshelf",
+    "contact": "(445) 833-0715"
+  },
+  {
+    "id": 4418,
+    "title": "Indigo River Publishing",
+    "contact": "(963) 172-9909"
+  },
+  {
+    "id": 8931,
+    "title": "Whosoever Press",
+    "contact": "(426) 329-5990"
+  },
+  {
+    "id": 7349,
+    "title": "KiCam Projects",
+    "contact": "(908) 197-0763"
+  },
+  {
+    "id": 1314,
+    "title": "Air University Press",
+    "contact": "(239) 169-4036"
+  },
+  {
+    "id": 5710,
+    "title": "Animal Mineral Press",
+    "contact": "(778) 285-7624"
+  },
+  {
+    "id": 8018,
+    "title": "Big O Publishing Group",
+    "contact": "(191) 521-0403"
+  },
+  {
+    "id": 6108,
+    "title": "Strategic Book Publishing (SBP)",
+    "contact": "(378) 385-8954"
+  },
+  {
+    "id": 3399,
+    "title": "Grace Notes Books (DEFUNCT)",
+    "contact": "(711) 793-3495"
+  },
+  {
+    "id": 4379,
+    "title": "Cracked Jar Press",
+    "contact": "(963) 172-9909"
+  },
+  {
+    "id": 8634,
+    "title": "Wolfpack Publishing",
+    "contact": "(767) 240-6915"
+  },
+  {
+    "id": 8252,
+    "title": "La Llorona Road",
+    "contact": "(672) 266-9471"
+  },
+  {
+    "id": 3373,
+    "title": "M Publishing House",
+    "contact": "(348) 638-0437"
+  },
+  {
+    "id": 6221,
+    "title": "Afrocentric Books",
+    "contact": "(978) 262-2182"
+  },
+  {
+    "id": 2179,
+    "title": "North South Publishing",
+    "contact": "(361) 593-2691"
+  },
+  {
+    "id": 5651,
+    "title": "Timekeepers Press",
+    "contact": "(546) 372-4263"
+  },
+  {
+    "id": 4176,
+    "title": "Brukat Publishing, LLC",
+    "contact": "(131) 305-2352"
+  },
+  {
+    "id": 3535,
+    "title": "Copper Pen Press LLC",
+    "contact": "(826) 623-6593"
+  },
+  {
+    "id": 4527,
+    "title": "Cactus Moon Publications, LLC",
+    "contact": "(771) 101-1817"
+  },
+  {
+    "id": 3595,
+    "title": "Mira Digital Publishing",
+    "contact": "(309) 448-2645"
+  },
+  {
+    "id": 8989,
+    "title": "Fifth Ink Publishing, LLC.",
+    "contact": "(502) 204-2539"
+  },
+  {
+    "id": 8615,
+    "title": "Thought Collection Publishing",
+    "contact": "(818) 737-3945"
+  },
+  {
+    "id": 7808,
+    "title": "Createbook",
+    "contact": "(144) 193-0182"
+  },
+  {
+    "id": 8002,
+    "title": "cel231",
+    "contact": "(191) 521-0403"
+  },
+  {
+    "id": 7638,
+    "title": "Nephilim Press",
+    "contact": "(932) 265-7342"
+  },
+  {
+    "id": 5550,
+    "title": "Shoestring Book Publishing",
+    "contact": "(733) 441-0207"
+  },
+  {
+    "id": 4017,
+    "title": "Ink Smith Publishing",
+    "contact": "(860) 441-9474"
+  },
+  {
+    "id": 1335,
+    "title": "City Owl Press",
+    "contact": "(963) 172-9909"
+  },
+  {
+    "id": 3149,
+    "title": "EMSA Publishing",
+    "contact": "(866) 133-9035"
+  },
+  {
+    "id": 4439,
+    "title": "Burning Bush Press (DEFUNCT)",
+    "contact": "(567) 165-0506"
+  },
+  {
+    "id": 6405,
+    "title": "Fantasy Works Publishing",
+    "contact": "(494) 647-6935"
+  },
+  {
+    "id": 6961,
+    "title": "Moonstone Publishing",
+    "contact": "(826) 623-6593"
+  },
+  {
+    "id": 1006,
+    "title": "Building Voices",
+    "contact": "(634) 791-3745"
+  },
+  {
+    "id": 6390,
+    "title": "Dancing Lemur Press, L.L.C.",
+    "contact": "(662) 520-1218"
+  },
+  {
+    "id": 5799,
+    "title": "Elevation Book Publishing",
+    "contact": "(964) 144-4926"
+  },
+  {
+    "id": 1938,
+    "title": "Digital Fabulists",
+    "contact": "(757) 831-5909"
+  },
+  {
+    "id": 2904,
+    "title": "Another New Calligraphy",
+    "contact": "(162) 715-3638"
+  },
+  {
+    "id": 4908,
+    "title": "Enigmatic Books",
+    "contact": "(287) 174-6469"
+  },
+  {
+    "id": 8297,
+    "title": "Copyhouse Press Ltd",
+    "contact": "(117) 197-8723"
+  },
+  {
+    "id": 7473,
+    "title": "Brick Mantel Books",
+    "contact": "(866) 133-9035"
+  },
+  {
+    "id": 4044,
+    "title": "5 Fold Media, LLC",
+    "contact": "(131) 305-2352"
+  },
+  {
+    "id": 7546,
+    "title": "Center One Publishing",
+    "contact": "(368) 107-2313"
+  },
+  {
+    "id": 6002,
+    "title": "Penmore Press",
+    "contact": "(659) 136-9968"
+  },
+  {
+    "id": 4540,
+    "title": "Firefly Hill Press",
+    "contact": "(479) 285-6570"
+  },
+  {
+    "id": 4291,
+    "title": "Blue Monkey Studio",
+    "contact": "(660) 933-1024"
+  },
+  {
+    "id": 9919,
+    "title": "Inknbeans Press",
+    "contact": "(866) 133-9035"
+  },
+  {
+    "id": 4728,
+    "title": "Open Books",
+    "contact": "(287) 174-6469"
+  },
+  {
+    "id": 8388,
+    "title": "Wicked Tales",
+    "contact": "(494) 647-6935"
+  },
+  {
+    "id": 9723,
+    "title": "Love Knot Books",
+    "contact": "(162) 522-9854"
+  },
+  {
+    "id": 9461,
+    "title": "Cambron Publishing Group LLC",
+    "contact": "(368) 107-2313"
+  },
+  {
+    "id": 9846,
+    "title": "Empire Publishing  and  Literary Service Bureau",
+    "contact": "(352) 857-9681"
+  },
+  {
+    "id": 7941,
+    "title": "Supposed Crimes",
+    "contact": "(494) 647-6935"
+  },
+  {
+    "id": 3382,
+    "title": "Rocín Publishing",
+    "contact": "(982) 434-4048"
+  },
+  {
+    "id": 4519,
+    "title": "Atomic Drop Press",
+    "contact": "(481) 647-3325"
+  },
+  {
+    "id": 8711,
+    "title": "BLVNP",
+    "contact": "(546) 372-4263"
+  },
+  {
+    "id": 9313,
+    "title": "Elephantine Publishing",
+    "contact": "(523) 744-3736"
+  },
+  {
+    "id": 1288,
+    "title": "Revival Waves of Glory Books  and  Publishing",
+    "contact": "(135) 830-3466"
+  },
+  {
+    "id": 7665,
+    "title": "Severed Press",
+    "contact": "(733) 441-0207"
+  },
+  {
+    "id": 8321,
+    "title": "Wild Crane Press",
+    "contact": "(580) 710-3667"
+  },
+  {
+    "id": 1935,
+    "title": "Riddle Brook Publishing LLC",
+    "contact": "(947) 706-1502"
+  },
+  {
+    "id": 5986,
+    "title": "Joffe Books",
+    "contact": "(445) 833-0715"
+  },
+  {
+    "id": 5328,
+    "title": "Convurgent Publishing",
+    "contact": "(523) 665-5813"
+  },
+  {
+    "id": 9161,
+    "title": "Periplaneta Publishing  and  Media Group",
+    "contact": "(523) 744-3736"
+  },
+  {
+    "id": 1038,
+    "title": "Glass Lyre Press",
+    "contact": "(539) 404-3270"
+  },
+  {
+    "id": 5220,
+    "title": "Zharmae Publishing Press",
+    "contact": "(659) 136-9968"
+  },
+  {
+    "id": 5113,
+    "title": "Three Rooms Press",
+    "contact": "(152) 693-6420"
+  },
+  {
+    "id": 5387,
+    "title": "Neon Books",
+    "contact": "(729) 203-9442"
+  },
+  {
+    "id": 7464,
+    "title": "WFL Publisher",
+    "contact": "(580) 710-3667"
+  },
+  {
+    "id": 3493,
+    "title": "Malachite Quills Publishing",
+    "contact": "(287) 174-6469"
+  },
+  {
+    "id": 8422,
+    "title": "By Light Unseen Media",
+    "contact": "(818) 737-3945"
+  },
+  {
+    "id": 4788,
+    "title": "Bookkus Publishiung",
+    "contact": "(660) 933-1024"
+  },
+  {
+    "id": 7055,
+    "title": "Tirgearr Publishing",
+    "contact": "(839) 236-3908"
+  },
+  {
+    "id": 4592,
+    "title": "Nitis Books",
+    "contact": "(205) 558-1712"
+  },
+  {
+    "id": 9236,
+    "title": "Editorial Trance",
+    "contact": "(131) 305-2352"
+  },
+  {
+    "id": 1194,
+    "title": "The Hamburg Press",
+    "contact": "(377) 565-6701"
+  },
+  {
+    "id": 8111,
+    "title": "Baal Hamon Publishers",
+    "contact": "(580) 710-3667"
+  },
+  {
+    "id": 9365,
+    "title": "ASHANTI PUBLISHING GROUP",
+    "contact": "(947) 706-1502"
+  },
+  {
+    "id": 5174,
+    "title": "Bellevue Literary Press",
+    "contact": "(729) 203-9442"
+  },
+  {
+    "id": 5263,
+    "title": "Editions Dedicaces LLC",
+    "contact": "(528) 269-8881"
+  },
+  {
+    "id": 9644,
+    "title": "Brandt Street Press",
+    "contact": "(489) 157-5914"
+  },
+  {
+    "id": 5310,
+    "title": "Dark Regions Press",
+    "contact": "(129) 520-2154"
+  },
+  {
+    "id": 9196,
+    "title": "Ex-L-Ence Publishing",
+    "contact": "(162) 522-9854"
+  },
+  {
+    "id": 7817,
+    "title": "Musa Publishing",
+    "contact": "(152) 678-2286"
+  },
+  {
+    "id": 2423,
+    "title": "2Leaf Press",
+    "contact": "(580) 710-3667"
+  },
+  {
+    "id": 7766,
+    "title": "Champlain Avenue Books, Inc.",
+    "contact": "(771) 101-1817"
+  },
+  {
+    "id": 4155,
+    "title": "Kal-Ba Publishing Company",
+    "contact": "(688) 818-8112"
+  },
+  {
+    "id": 8054,
+    "title": "ScienceThrillers Media",
+    "contact": "(725) 150-4101"
+  },
+  {
+    "id": 7765,
+    "title": "Spinetinglers Publishing",
+    "contact": "(523) 461-1827"
+  },
+  {
+    "id": 9847,
+    "title": "Helping you Promote Your Books",
+    "contact": "(662) 520-1218"
+  },
+  {
+    "id": 3018,
+    "title": "Vernon Press",
+    "contact": "(528) 269-8881"
+  },
+  {
+    "id": 1566,
+    "title": "Triplicity Publishing",
+    "contact": "(475) 668-6975"
+  },
+  {
+    "id": 7845,
+    "title": "Laughing Fire Press",
+    "contact": "(580) 710-3667"
+  },
+  {
+    "id": 6358,
+    "title": "Not Your Eyes",
+    "contact": "(319) 337-4978"
   }
 ]
